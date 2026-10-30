@@ -1,0 +1,41 @@
+// The "should/must" detector for model replies. It flags a reply so the page can warn the reader;
+// it does not change the reply. These tests pin what it catches today and list what it does not yet.
+import test from "node:test";
+import assert from "node:assert/strict";
+import { ADVICE } from "../shared/safety.js";
+
+const FLAGGED = {
+  en: "You should file a motion.",
+  en2: "I recommend that you wait.",
+  es: "Usted debería presentar una moción.",
+  fr: "Vous devriez déposer une requête.",
+  pt: "Você deve apresentar o pedido.",
+  de: "Sie sollten einen Antrag stellen.",
+  it: "Dovresti presentare una richiesta.",
+  vi: "Bạn nên nộp đơn.",
+  "zh-Hans": "您应该提交申请。",
+  ru: "Вам следует подать ходатайство.",
+  ht: "Ou dwe depoze yon mosyon.",
+  hi: "आपको चाहिए कि आवेदन दें।",
+  pl: "Powinien Pan złożyć wniosek.",
+  ja: "申請するべきです。",
+  ar: "يجب عليك تقديم طلب.",
+  ur: "آپ کو چاہیے کہ درخواست دیں۔"
+};
+const NOT_FLAGGED = [
+  "The notice says the hearing is on Tuesday, November 24, 2026.",
+  "A landlord’s notice is not a court order.",
+  "Indiana Legal Help has a continuance form."
+];
+
+test("replies with should/must-style words are flagged in the languages the pattern covers", () => {
+  for (const [lang, text] of Object.entries(FLAGGED)) assert.ok(ADVICE.test(text), lang + ": " + text);
+});
+
+test("plain statements of information are not flagged", () => {
+  for (const text of NOT_FLAGGED) assert.ok(!ADVICE.test(text), text);
+});
+
+// Known gaps, kept visible. Closing them is a separate change.
+test.todo("flag replies in Tagalog, Somali, Burmese, Bengali, Gujarati, Punjabi, Nepali and Amharic (no patterns yet)");
+test.todo("flag third-person phrasing such as “Tenants should file…” (only second-person is caught today)");

@@ -1,0 +1,586 @@
+{
+  "safety": {
+    "sample": {
+      "safe": "SAMPLE DOCUMENT FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL.\n\nSTATE OF INDIANA, COUNTY OF ALLEN\nIN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION\nCause No. [CASE_1]\n\nNOTICE OF EVICTION CLAIM\n\nPlaintiff: [NAME_1], by its attorney [NAME_3] (Attorney No. [ATTY_1])\nDefendant: [NAME_2], [ADDRESS_1], Fort Wayne, IN [ZIP_1]\nDefendant phone: [PHONE_1]\n\nClaim: Plaintiff seeks possession of the premises and unpaid rent of $3,150.00 for August, September, and October 2026, plus late fees and court costs. Plaintiff is seeking immediate possession.\n\nYou are ordered to appear for an initial status conference on Tuesday, November 24, 2026 at 9:00 a.m., Room 000, Allen County Courthouse, Fort Wayne, Indiana. The first appearance will be an initial status conference to give information to both parties and set the next court date.\n\nIf you do not appear, the court may enter a default judgment against you or dismiss the case.\n\nBring all documents about this claim to the hearing, including your lease, rent receipts, and messages with your landlord.\n\nRequests to change the hearing date must be made in person more than seven (7) days before the hearing.\n\nYou may ask for a jury trial within ten (10) days of receiving this notice. A fee applies.\n\nThe Court and the Clerk can only answer questions about court procedures. They cannot give legal advice.\n\nDate issued: November 2, 2026\n\nFree legal information: indianalegalhelp.org\n\nPlaintiff relies on IC 32-31-1-6, Small Claims Rule 10(B), and Smith v. Example Properties, 999 N.E.3d 123 (Ind. Ct. App. 2025) (fictional citation for testing).",
+      "counts": {
+        "CASE": 1,
+        "ATTY": 1,
+        "PHONE": 1,
+        "ADDRESS": 1,
+        "ZIP": 1,
+        "NAME": 3
+      },
+      "removed": 0,
+      "truncated": false,
+      "back": {
+        "[CASE_1]": "02D00-2611-SC-000000",
+        "[ATTY_1]": "00000-00",
+        "[PHONE_1]": "(260) 555-0147",
+        "[ADDRESS_1]": "123 Example Street, Apt. 4",
+        "[ZIP_1]": "46802",
+        "[NAME_1]": "Maple Row Apartments LLC",
+        "[NAME_2]": "Kimi Sample",
+        "[NAME_3]": "Jordan Doe"
+      }
+    },
+    "testPaper": {
+      "safe": "SAMPLE DOCUMENT FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL.\n\nSTATE OF INDIANA, COUNTY OF ALLEN\nIN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION\nCause No. [CASE_1]\n\nNOTICE OF EVICTION CLAIM\n\nPlaintiff: [NAME_1], by its attorney [NAME_3] (Attorney No. [ATTY_1])\nDefendant: [NAME_2], [ADDRESS_1], Fort Wayne, IN [ZIP_1]\nDefendant phone: [PHONE_1]\n\nClaim: Plaintiff seeks possession of the premises and unpaid rent of $3,150.00 for August, September, and October 2026, plus late fees and court costs. Plaintiff is seeking immediate possession.\n\nYou are ordered to appear for an initial status conference on Tuesday, November 24, 2026 at 9:00 a.m., Room 000, Allen County Courthouse, Fort Wayne, Indiana. The first appearance will be an initial status conference to give information to both parties and set the next court date.\n\nIf you do not appear, the court may enter a default judgment against you or dismiss the case.\n\nBring all documents about this claim to the hearing, including your lease, rent receipts, and messages with your landlord.\n\nRequests to change the hearing date must be made in person more than seven (7) days before the hearing.\n\nYou may ask for a jury trial within ten (10) days of receiving this notice. A fee applies.\n\nThe Court and the Clerk can only answer questions about court procedures. They cannot give legal advice.\n\nDate issued: November 2, 2026\n\nFree legal information: indianalegalhelp.org\n\nPlaintiff relies on IC 32-31-1-6, Small Claims Rule 10(B), and Smith v. Example Properties, 999 N.E.3d 123 (Ind. Ct. App. 2025) (fictional citation for testing).\n\n[Removed: text that looked like instructions to an AI]\n[Removed: text that looked like instructions to an AI]\nTenant email: [EMAIL_1]. Tenant SSN [SSN_1].",
+      "counts": {
+        "SSN": 1,
+        "EMAIL": 1,
+        "CASE": 1,
+        "ATTY": 1,
+        "PHONE": 1,
+        "ADDRESS": 1,
+        "ZIP": 1,
+        "NAME": 3
+      },
+      "removed": 2,
+      "truncated": false,
+      "back": {
+        "[SSN_1]": "000-12-3456",
+        "[EMAIL_1]": "kimi.sample@example.com",
+        "[CASE_1]": "02D00-2611-SC-000000",
+        "[ATTY_1]": "00000-00",
+        "[PHONE_1]": "(260) 555-0147",
+        "[ADDRESS_1]": "123 Example Street, Apt. 4",
+        "[ZIP_1]": "46802",
+        "[NAME_1]": "Maple Row Apartments LLC",
+        "[NAME_2]": "Kimi Sample",
+        "[NAME_3]": "Jordan Doe"
+      }
+    },
+    "form": {
+      "safe": "SAMPLE FILLED-IN FORM FOR TESTING. ALL NAMES ARE FICTIONAL.\n\nSTATE OF INDIANA, COUNTY OF ALLEN\nIN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION\nCause No. ____________________\n\n[NAME_2], Plaintiff,\nv.\n[NAME_1], Defendant.\n\nMOTION FOR CONTINUANCE\n\nThe Defendant asks the Court to reschedule the hearing set for November 24, 2026.\nThe reason for this request is: ______________________________________\n\n[ ] I have contacted the other party about this request.\n[ ] I have not contacted the other party.\n\nSignature: ____________________\nPrinted name: [NAME_1]\nMailing address: [ADDRESS_1], Fort Wayne, IN [ZIP_1]\nPhone: ____________________\nEmail (if any): ____________________\nDate: ____________________",
+      "counts": {
+        "ADDRESS": 1,
+        "ZIP": 1,
+        "NAME": 2
+      },
+      "removed": 0,
+      "truncated": false,
+      "back": {
+        "[ADDRESS_1]": "123 Example Street, Apt. 4",
+        "[ZIP_1]": "46802",
+        "[NAME_1]": "Kimi Sample",
+        "[NAME_2]": "Maple Row Apartments LLC"
+      }
+    },
+    "filledForm": {
+      "safe": "STATE OF INDIANA, COUNTY OF ALLEN\nIN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION\nCause No. [CASE_1]\n\n[NAME_2], Plaintiff,\nv.\n[NAME_1], Defendant.\n\nMOTION FOR CONTINUANCE\n\nThe Defendant asks the Court to reschedule the hearing set for November 24, 2026.\nThe reason for this request is: I have a medical appointment that day.\n\nSignature: /s/ Kimi Sample\nPrinted name: [NAME_1]\nMailing address: [ADDRESS_1], Fort Wayne, IN [ZIP_1]\nPhone: [PHONE_1]\nEmail (if any): none\nDate: November 10, 2026\n\nCERTIFICATE OF SERVICE\nI certify that a copy of this motion was mailed to the plaintiff on November 10, 2026.",
+      "counts": {
+        "CASE": 1,
+        "PHONE": 1,
+        "ADDRESS": 1,
+        "ZIP": 1,
+        "NAME": 2
+      },
+      "removed": 0,
+      "truncated": false,
+      "back": {
+        "[CASE_1]": "02D00-2611-SC-000000",
+        "[PHONE_1]": "(260) 555-0147",
+        "[ADDRESS_1]": "123 Example Street, Apt. 4",
+        "[ZIP_1]": "46802",
+        "[NAME_1]": "Kimi Sample",
+        "[NAME_2]": "Maple Row Apartments LLC"
+      }
+    },
+    "clerk": {
+      "safe": "SAMPLE CLERK NOTICE FOR TESTING. FICTIONAL.\n\nOFFICE OF THE CLERK OF THE ALLEN CIRCUIT AND SUPERIOR COURTS\nNOTICE OF NON-CONFORMING FILING\n\nDate: November 9, 2026\nCase: Cause No. [CASE_1]\nFiled by: [NAME_1]\nDocument: Motion for Continuance\n\nYour filing has been returned for correction for the following reasons:\n1. The document is not signed.\n2. The filer's telephone number is missing (Trial Rule 11.1).\n3. The cause number is missing from the caption.\n\nYou may correct these items and resubmit within three (3) business days of this notice. A filing corrected in time will be treated as filed on the original date. The Clerk cannot give legal advice.",
+      "counts": {
+        "CASE": 1,
+        "NAME": 1
+      },
+      "removed": 0,
+      "truncated": false,
+      "back": {
+        "[CASE_1]": "02D00-2611-SC-000000",
+        "[NAME_1]": "Kimi Sample"
+      }
+    },
+    "miscPii": {
+      "safe": "Plaintiff: [NAME_1].\nDefendant: [NAME_2]\nTenant phone [PHONE_1], alt [PHONE_2]. Email: [EMAIL_1]\nDOB: [DOB_1]. Date of birth: [DOB_2]\nCard [CARD_1]and not-a-card 1234 5678 9012 3456\nAccount number: [ACCOUNT_1]. Routing no. [ACCOUNT_2]\nAttorney No. [ATTY_1]\nCase [CASE_1] at [ADDRESS_1], Fort Wayne, Indiana [ZIP_1].\n[Removed: text that looked like instructions to an AI]\n[Removed: text that looked like instructions to an AI] [Removed: text that looked like instructions to an AI]\n[Removed: text that looked like instructions to an AI] A normal sentence stays.",
+      "counts": {
+        "EMAIL": 1,
+        "CASE": 1,
+        "ATTY": 1,
+        "ACCOUNT": 2,
+        "CARD": 1,
+        "PHONE": 2,
+        "DOB": 2,
+        "ADDRESS": 1,
+        "ZIP": 1,
+        "NAME": 2
+      },
+      "removed": 4,
+      "truncated": false,
+      "back": {
+        "[EMAIL_1]": "pat@example.org",
+        "[CASE_1]": "02D01-2610-SC-004321",
+        "[ATTY_1]": "12345-49",
+        "[ACCOUNT_1]": "123456789",
+        "[ACCOUNT_2]": "021000021",
+        "[CARD_1]": "4111 1111 1111 1111",
+        "[PHONE_1]": "260.555.0188",
+        "[PHONE_2]": "(260) 555-0111",
+        "[DOB_1]": "03/14/1985",
+        "[DOB_2]": "March 3, 1990",
+        "[ADDRESS_1]": "4500 N Clinton Street, Unit 12",
+        "[ZIP_1]": "46805-1234",
+        "[NAME_1]": "Riverbend Management Inc",
+        "[NAME_2]": "Pat Q. Example"
+      }
+    },
+    "empty": {
+      "safe": "",
+      "counts": {},
+      "removed": 0,
+      "truncated": false,
+      "back": {}
+    }
+  },
+  "dates": {
+    "sample": [
+      {
+        "date": "2026-11-02",
+        "time": "",
+        "place": "",
+        "hearingLike": false,
+        "ctx": "…about court procedures. They cannot give legal advice. Date issued: November 2, 2026 Free legal information: indianalegalhelp.org Pl…"
+      },
+      {
+        "date": "2026-11-24",
+        "time": "09:00",
+        "place": "Room 000, Allen County Courthouse, Fort Wayne, Indiana",
+        "hearingLike": true,
+        "ctx": "…ssion. You are ordered to appear for an initial status conference on Tuesday, November 24, 2026 at 9:00 a.m., Room 000, Allen County Courthouse,…"
+      }
+    ],
+    "clerk": [
+      {
+        "date": "2026-11-09",
+        "time": "",
+        "place": "",
+        "hearingLike": false,
+        "ctx": "…EN CIRCUIT AND SUPERIOR COURTS NOTICE OF NON-CONFORMING FILING Date: November 9, 2026 Case: Cause No. 02D00-2611-SC-000000 Filed by: Ki…"
+      }
+    ],
+    "misc": [
+      {
+        "date": "2026-11-24",
+        "time": "13:30",
+        "place": "Room 5, Allen County Courthouse",
+        "hearingLike": true,
+        "ctx": "Hearing on 11/24/2026 at 1:30 pm, Room 5, Allen County Courthouse. Also…"
+      },
+      {
+        "date": "2026-12-07",
+        "time": "08:15",
+        "place": "",
+        "hearingLike": true,
+        "ctx": "…Room 5, Allen County Courthouse. Also see January 5, 2027. Appear on Monday, December 7, 2026 at 8:15 a.m. before the court.…"
+      },
+      {
+        "date": "2027-01-05",
+        "time": "",
+        "place": "",
+        "hearingLike": true,
+        "ctx": "…g on 11/24/2026 at 1:30 pm, Room 5, Allen County Courthouse. Also see January 5, 2027. Appear on Monday, December 7, 2026 at 8:15 a.m.…"
+      }
+    ]
+  },
+  "cites": {
+    "sample": [
+      {
+        "kind": "kind_code",
+        "label": "IC 32-31-1-6",
+        "url": "https://iga.in.gov/ic/2026/Title_32/Article_31/Chapter_1.pdf"
+      },
+      {
+        "kind": "kind_sc",
+        "label": "Small Claims Rule 10(B)",
+        "url": "https://rules.incourts.gov/pdf/PDF%20-%20Small%20Claims/small-claims.pdf"
+      },
+      {
+        "kind": "kind_case",
+        "label": "Smith v. Example Properties, 999 N.E.3d 123",
+        "url": "https://www.courtlistener.com/?q=%22999%20N.E.3d%20123%22"
+      }
+    ],
+    "misc": [
+      {
+        "kind": "kind_code",
+        "label": "Ind. Code 32-31-1-6",
+        "url": "https://iga.in.gov/ic/2026/Title_32/Article_31/Chapter_1.pdf"
+      },
+      {
+        "kind": "kind_trial",
+        "label": "Trial Rule 11.1(A)",
+        "url": "https://rules.incourts.gov/Content/trial/rule11-1/current.htm"
+      },
+      {
+        "kind": "kind_trial",
+        "label": "T.R. 5",
+        "url": "https://rules.incourts.gov/Content/trial/rule5/current.htm"
+      },
+      {
+        "kind": "kind_sc",
+        "label": "Small Claims Rule 9(A)",
+        "url": "https://rules.incourts.gov/pdf/PDF%20-%20Small%20Claims/small-claims.pdf"
+      },
+      {
+        "kind": "kind_case",
+        "label": "Doe v. Roe, 123 N.E.2d 456",
+        "url": "https://www.courtlistener.com/?q=%22123%20N.E.2d%20456%22"
+      },
+      {
+        "kind": "kind_case",
+        "label": "77 N.E.3d 9",
+        "url": "https://www.courtlistener.com/?q=%2277%20N.E.3d%209%22"
+      }
+    ]
+  },
+  "forms": {
+    "form": {
+      "type": "type_cont",
+      "checks": [
+        {
+          "lbl": "c_court",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_cause",
+          "st": "miss",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_parties",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_title",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_blanks",
+          "st": "miss",
+          "src": null,
+          "snips": [
+            "Cause No. ____________________",
+            "The reason for this request is: ______________________________________",
+            "[ ] I have contacted the other party about this request.",
+            "[ ] I have not contacted the other party.",
+            "Signature: ____________________",
+            "Phone: ____________________",
+            "Email (if any): ____________________",
+            "Date: ____________________"
+          ]
+        },
+        {
+          "lbl": "c_sign",
+          "st": "miss",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_contact",
+          "st": "miss",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_date",
+          "st": "miss",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_service",
+          "st": "miss",
+          "src": "Indiana Trial Rule 5",
+          "snips": null
+        },
+        {
+          "lbl": "c_timing",
+          "st": "ok",
+          "src": "Allen County Notice of Eviction Claim (rev. 1-25)",
+          "snips": null
+        },
+        {
+          "lbl": "c_copies",
+          "st": "info",
+          "src": "Indiana Office of Court Services: Filing with the Court",
+          "snips": null
+        },
+        {
+          "lbl": "c_ilh",
+          "st": "info",
+          "src": "Indiana Legal Help",
+          "snips": null
+        }
+      ]
+    },
+    "filledForm": {
+      "type": "type_cont",
+      "checks": [
+        {
+          "lbl": "c_court",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_cause",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_parties",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_title",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_blanks",
+          "st": "ok",
+          "src": null,
+          "snips": []
+        },
+        {
+          "lbl": "c_sign",
+          "st": "ok",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_contact",
+          "st": "ok",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_date",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_service",
+          "st": "ok",
+          "src": "Indiana Trial Rule 5",
+          "snips": null
+        },
+        {
+          "lbl": "c_timing",
+          "st": "ok",
+          "src": "Allen County Notice of Eviction Claim (rev. 1-25)",
+          "snips": null
+        },
+        {
+          "lbl": "c_copies",
+          "st": "info",
+          "src": "Indiana Office of Court Services: Filing with the Court",
+          "snips": null
+        },
+        {
+          "lbl": "c_ilh",
+          "st": "info",
+          "src": "Indiana Legal Help",
+          "snips": null
+        }
+      ]
+    },
+    "sample": {
+      "type": "type_app",
+      "checks": [
+        {
+          "lbl": "c_court",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_cause",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_parties",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_title",
+          "st": "ok",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_blanks",
+          "st": "ok",
+          "src": null,
+          "snips": []
+        },
+        {
+          "lbl": "c_sign",
+          "st": "unclear",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_contact",
+          "st": "unclear",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_date",
+          "st": "miss",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_service",
+          "st": "miss",
+          "src": "Indiana Trial Rule 5",
+          "snips": null
+        },
+        {
+          "lbl": "c_copies",
+          "st": "info",
+          "src": "Indiana Office of Court Services: Filing with the Court",
+          "snips": null
+        },
+        {
+          "lbl": "c_ilh",
+          "st": "info",
+          "src": "Indiana Legal Help",
+          "snips": null
+        }
+      ]
+    },
+    "empty": {
+      "type": "type_unknown",
+      "checks": [
+        {
+          "lbl": "c_court",
+          "st": "miss",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_cause",
+          "st": "unclear",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_parties",
+          "st": "unclear",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_title",
+          "st": "unclear",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_blanks",
+          "st": "ok",
+          "src": null,
+          "snips": []
+        },
+        {
+          "lbl": "c_sign",
+          "st": "unclear",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_contact",
+          "st": "unclear",
+          "src": "Indiana Trial Rule 11.1",
+          "snips": null
+        },
+        {
+          "lbl": "c_date",
+          "st": "unclear",
+          "src": null,
+          "snips": null
+        },
+        {
+          "lbl": "c_service",
+          "st": "miss",
+          "src": "Indiana Trial Rule 5",
+          "snips": null
+        },
+        {
+          "lbl": "c_copies",
+          "st": "info",
+          "src": "Indiana Office of Court Services: Filing with the Court",
+          "snips": null
+        },
+        {
+          "lbl": "c_ilh",
+          "st": "info",
+          "src": "Indiana Legal Help",
+          "snips": null
+        }
+      ]
+    }
+  },
+  "deadlines": {
+    "clerk": {
+      "n": 3,
+      "unit": "days",
+      "kind": "business",
+      "quote": "You may correct these items and resubmit within three (3) business days of this notice.",
+      "date": "2026-11-12",
+      "base": "2026-11-09"
+    },
+    "hours": {
+      "n": 72,
+      "unit": "hours",
+      "kind": "",
+      "quote": "Correct within 72 hours.",
+      "date": "2026-11-12",
+      "base": "2026-11-09"
+    },
+    "calendar": {
+      "n": 5,
+      "unit": "days",
+      "kind": "calendar",
+      "quote": "Date: November 9, 2026 Please resubmit within five (5) calendar days of this notice.",
+      "date": "2026-11-14",
+      "base": "2026-11-09"
+    },
+    "business": {
+      "n": 10,
+      "unit": "days",
+      "kind": "business",
+      "quote": "Fix within ten (10) business days.",
+      "date": "2026-11-26",
+      "base": "2026-11-12"
+    },
+    "none": null
+  }
+}
