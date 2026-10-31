@@ -44,9 +44,9 @@ export function docBlock(safeText, label, nonce) {
 }
 
 const TASKS = {
-  explain: (name) => "TASK: Explain the document below in plain words for the person who received it. Use these parts in order, each starting with a short bold label on its own line: what this paper is; who it is from and who it is to; what it says happens next; dates and deadlines in it (quote what each date is for); what it asks the person to bring or do (say “the paper says…”); up to 5 hard words with short meanings; and, only if a source above supports it, what this paper is not (for example, a landlord’s notice is not a court order). Keep it under 250 words.",
+  explain: (name) => "TASK: Explain the document below in plain words for the person who received it. Write these parts in this order. Start each part with its heading in bold on its own line, using exactly these headings (translated into the reply language): **What this paper is**; **Who it is from and who it is to**; **What happens next**; **Dates and deadlines** (quote what each date is for); **What it asks you to bring or do** (say “the paper says…”); **Hard words** (up to 5, each with a short meaning); **What this paper is not** (only if a source above supports it, for example: a landlord’s notice is not a court order). Use only dates that are written in the document: never work out a new date, for example by counting days. Keep it under 250 words.",
   blanks: (name) => "TASK: The document below is a court form the person filled in. List each line, box, or blank that looks empty or unfinished. For each one, quote the form’s own label and explain in one plain sentence what that line is asking for, using the form’s own words or the sources. Do not suggest what to write, do not write any content, and do not say whether the person should fill it in. Reply with only JSON in this shape: {\"items\":[{\"label\":\"the form’s words\",\"asks\":\"what it asks for\"}]}. Write the asks text in " + name + ".",
-  clerk: (name) => "TASK: The document below is a notice from a court clerk or a court order about a filing that was returned or found incomplete. Explain it in plain words. Reply with only JSON in this shape: {\"summary\":\"2 or 3 plain sentences about what the notice is\",\"items\":[{\"quote\":\"the notice’s exact words about one problem\",\"plain\":\"what that means, in plain words, without saying what the person should do\"}]}. Write summary and plain in " + name + "; keep quote in the notice’s original words."
+  clerk: (name) => "TASK: The document below is a notice from a court clerk or a court order about a filing that was returned or found incomplete. Explain it in plain words. Reply with only JSON in this shape: {\"summary\":\"2 or 3 plain sentences about what the notice is\",\"items\":[{\"quote\":\"the notice’s exact words about one problem\",\"plain\":\"what that means, in plain words, without saying what the person should do\"}]}. Write summary and plain in " + name + "; keep quote in the notice’s original words. Use only dates that are written in the notice: never work out a new date, for example by counting days; say “three business days” as the notice says it."
 };
 
 // One-shot prompts: rules in `system`, the task and the wrapped document in the user message.
@@ -61,7 +61,7 @@ export function documentRequest(task, langCode, safeText, nonce) {
 export function chatRequest(langCode, safeDoc, turns, nonce) {
   const first = turns[0];
   const messages = turns.map((t, i) => (i === 0
-    ? { role: "user", content: docBlock(safeDoc, "DOCUMENT", nonce) + "\n\nQuestion from the person: " + first.content }
+    ? { role: "user", content: docBlock(safeDoc, "DOCUMENT", nonce) + "\n\nAnswer the question below from the document and the sources. Start with the answer. Say that you can’t advise only when the question asks what the person should do. Use only dates that are written in the document or the sources: never work out a new date, for example by counting days.\n\nQuestion from the person: " + first.content }
     : { role: t.role, content: t.content }));
   return { system: baseRules(langCode), messages };
 }
@@ -69,7 +69,7 @@ export function chatRequest(langCode, safeDoc, turns, nonce) {
 // Translating the page needs no user text at all: only a language code in, only the app's own strings out.
 export function translationPrompts(langCode) {
   const name = LANG[langCode].name;
-  const rules = "Translate the values in this JSON from English into " + name + " for a website that helps tenants in Indiana eviction cases understand court papers. Rules: keep every key and the same structure, and keep arrays the same length and order. Keep placeholders such as {n}, {m}, {t}, {x}, and {d} exactly as written. Keep these names in English: Indiana Legal Help, Indiana Legal Services, MyCase, Google Calendar, Claude, Allen County, WCAG, SOC 2, ISO 27001. Keep rule numbers like Trial Rule 11.1 recognizable. Use plain, simple words at about a 6th-grade reading level and the punctuation that is normal for " + name + ". Reply with only the JSON.\n\n";
+  const rules = "Translate the values in this JSON from English into " + name + " for a website that helps tenants in Indiana eviction cases understand court papers. Rules: keep every key and the same structure, and keep arrays the same length and order. Keep placeholders such as {n}, {m}, {t}, {x}, and {d} exactly as written. Keep these names in English: Indiana Legal Help, Indiana Legal Services, MyCase, Google Calendar, Allen County, WCAG, SOC 2, ISO 27001. Keep rule numbers like Trial Rule 11.1 recognizable. Use plain, simple words at about a 6th-grade reading level and the punctuation that is normal for " + name + ". Reply with only the JSON.\n\n";
   return {
     ui: rules + JSON.stringify(I18N.en),
     faq: rules + JSON.stringify(FAQ.map((f) => ({ q: f.q.en, a: f.a.en })))

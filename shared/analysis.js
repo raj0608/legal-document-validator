@@ -1,6 +1,6 @@
 // Reading a paper without any AI: dates, citations, the form checklist and the clerk's fix-by date.
 // Pure functions, no DOM. Text for the results comes from the UI strings (see detailKey/vars).
-import { SRC } from "./i18n.js";
+import { SRC, FAQ } from "./i18n.js";
 import { ADDR_RE } from "./safety.js";
 import { pad, toISO, addDays, addBusinessDays } from "./dates.js";
 import { holidaysBetween } from "./holidays.js";
@@ -154,4 +154,10 @@ export function findDeadline(text) {
   // `skipped`: the court holidays that were left out of a business-day count
   const skipped = (kind === "business" || kind === "court") && unit !== "hours" ? holidaysBetween(addDays(base, 1), date) : [];
   return { n, unit, kind, quote, date, base, skipped };
+}
+
+// Dates an answer may mention: the ones written in the paper, and the ones in our own FAQ sources (such as July 1, 2025).
+const FAQ_DATES = FAQ.flatMap((f) => findDates(f.a.en).map((d) => toISO(d.date)));
+export function allowedDates(paperText) {
+  return new Set([...(paperText ? findDates(paperText).map((d) => toISO(d.date)) : []), ...FAQ_DATES]);
 }

@@ -1,6 +1,8 @@
 // Whether the AI helper is available, and how its errors and replies are shown.
 import { $, el, t } from "./core.js";
-import { ADVICE } from "/shared/safety.js";
+import { looksLikeAdvice } from "/shared/safety.js";
+import { unsupportedDates } from "/shared/text.js";
+import { allowedDates } from "/shared/analysis.js";
 import * as api from "./api-client.js";
 
 export const ai = { on: false, demo: false };
@@ -32,7 +34,13 @@ export async function initAi() {
   else AI_BUTTONS.forEach((id) => { $(id).disabled = false; });
 }
 
+// A date in an answer that is not in the paper was worked out by the AI, which it is told never to do. Say so.
+export function addDateFlag(container, text, paperText) {
+  const extra = unsupportedDates(text, allowedDates(paperText));
+  if (extra.length) container.appendChild(el("p", "warn flag", t("date_flag", { x: extra.join(", ") })));
+}
+
 // Replies are shown as they are. A reply with should/must-style words gets a warning under it.
 export function addAdviceFlag(container, text) {
-  if (ADVICE.test(text)) container.appendChild(el("p", "warn flag", t("advice_flag")));
+  if (looksLikeAdvice(text)) container.appendChild(el("p", "warn flag", t("advice_flag")));
 }

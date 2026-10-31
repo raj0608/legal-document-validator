@@ -1,5 +1,7 @@
 // Shared page state and small helpers. State lives in memory only: nothing is written to storage.
 import { LANG, I18N } from "/shared/i18n.js";
+import { unredact } from "/shared/safety.js";
+import { markDates } from "/shared/text.js";
 
 export const state = {
   lang: "en",
@@ -66,6 +68,11 @@ export function mdToHtml(text) {
   if (list) html += "</" + list + ">";
   return html;
 }
+
+// What the AI wrote, ready to show: private details put back, dates highlighted, everything escaped first.
+export function answerHtml(text, back) { return mdToHtml(markDates(unredact(text, back))); }
+// The same for a single line (the JSON answers), without paragraph tags.
+export function inlineHtml(text, back) { return inline(escapeHtml(markDates(unredact(text, back)))); }
 
 // ---------- Support contact ----------
 export const SUPPORT_PHONE = "+1000000000";

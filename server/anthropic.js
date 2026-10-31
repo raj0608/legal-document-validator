@@ -1,6 +1,8 @@
 // The only file that talks to the Anthropic API. The key never leaves the server.
 import Anthropic from "@anthropic-ai/sdk";
 import { ApiError } from "./errors.js";
+import { parseJson } from "./json.js";
+export { parseJson }; // kept here for older imports
 
 // Turns an SDK error into one of the codes the page already knows how to show.
 export function mapError(err, text) {
@@ -11,15 +13,6 @@ export function mapError(err, text) {
   // A missing or rejected key is a setup problem, not something the person can fix: the page turns the helper off.
   if (err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError) return new ApiError("unavailable", 503, extra);
   return new ApiError("generic", 502, extra);
-}
-
-// Models sometimes wrap JSON in a code fence or add a sentence around it.
-export function parseJson(text) {
-  const s = String(text || "").replace(/^\s*```(?:json)?\s*/i, "").replace(/\s*```\s*$/, "");
-  const start = s.search(/[{[]/);
-  const end = Math.max(s.lastIndexOf("}"), s.lastIndexOf("]"));
-  if (start < 0 || end < start) throw new ApiError("invalid_json", 502);
-  try { return JSON.parse(s.slice(start, end + 1)); } catch { throw new ApiError("invalid_json", 502); }
 }
 
 export function createAi({ client, model, effort = "medium", fallback = false }) {

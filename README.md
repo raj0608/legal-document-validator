@@ -8,7 +8,7 @@ You can run the whole prototype on your own computer in about five minutes. **Yo
 
 **What you need**
 
-- **Node.js 22.9 or newer.** Check with `node -v`. If it is missing or older, install the “LTS” version from [nodejs.org](https://nodejs.org) (it includes `npm`).
+- **Node.js 22.13 or newer.** Check with `node -v`. If it is missing or older, install the “LTS” version from [nodejs.org](https://nodejs.org) (it includes `npm`).
 - **Git**, to download the code (or use GitHub’s green “Code” button → “Download ZIP” and unzip it).
 - A recent browser (Chrome, Edge, Firefox or Safari).
 
@@ -34,15 +34,24 @@ Then open **http://localhost:3000** in your browser. To stop the server, press `
 5. Try the language menu (Spanish is built in), **A+ Bigger text**, and **Hide this page**.
 6. Want to see the safety layer? Add `?tester` to the address (`http://localhost:3000/?tester`), use **Try the safety test paper**, and open “See exactly what is sent”.
 
-**Running with the real AI** (needs an Anthropic API key; each answer costs a little)
+**Running with the real AI (Google Gemini, free tier)**
 
-```bash
-cp .env.example .env        # Windows: copy .env.example .env
-# open .env in a text editor and paste your key after ANTHROPIC_API_KEY=
-npm start                   # http://localhost:3000
-```
+1. Get a free key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey) (a Google account is enough).
+2. Make your settings file and paste the key after `GEMINI_API_KEY=`:
+   ```bash
+   cp .env.example .env        # Windows: copy .env.example .env
+   ```
+3. Start it:
+   ```bash
+   npm start                   # http://localhost:3000
+   ```
+   The first lines it prints say which AI it is using, for example `AI helper: on (gemini: gemini-3.5-flash-lite)`, or why it is off.
 
-The `.env` file is ignored by git, so your key is never uploaded. The key stays on the server and is never sent to the browser. Without a key, `npm start` still works, but the AI helper, chat and translation show “not available” (dates, form checks, questions and privacy still work).
+The `.env` file is ignored by git, so your key is never uploaded, and the key stays on the server: it is never sent to the browser. Without a key, `npm start` still works, but the AI helper, chat and translation show “not available” (dates, form checks, questions and privacy still work).
+
+**Two things to know about the free tier.** (1) Google’s pricing page says the free plan’s content is “used to improve our products”, so what the site sends to Gemini may be kept and used by Google. The site hides names, phone numbers and other private details first, but the rest of a real case would still go to Google: **use the sample papers, not real ones.** A paid key (Google’s paid plan, or Anthropic) is the way to change that. (2) The free tier has its own limits per project (shown in AI Studio), lower than our own `RATE_LIMIT_PER_MIN`. If many people try it at once, some will see “Too many questions at once”.
+
+Want Claude instead? Put `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...` in `.env` (paid).
 
 **Checking it works:** `npm test` runs the automatic checks (about 100, a few seconds, no key needed).
 
@@ -51,22 +60,29 @@ The `.env` file is ignored by git, so your key is never uploaded. The key stays 
 | What you see | What to do |
 |---|---|
 | `node: command not found` or `npm: command not found` | Install Node.js (see above), then open a new terminal. |
-| `node: bad option: --env-file-if-exists` | Your Node is too old. Install 22.9 or newer. |
+| `node: bad option: --env-file-if-exists` | Your Node is too old. Install 22.13 or newer. |
 | `address already in use` / `EADDRINUSE` | Something else uses port 3000. Use another: `PORT=3001 npm run demo` (Mac/Linux), `set PORT=3001&& npm run demo` (Windows cmd), or `$env:PORT=3001; npm run demo` (PowerShell). Then open that port. |
 | The page looks old after you change code | Reload the page. The browser keeps modules until you do. |
-| “The AI helper isn’t available in this view” | You started with `npm start` and no key. Use `npm run demo`, or add a key. |
+| “The AI helper isn’t available in this view” | You started with `npm start` and no working key. Read the line it printed when it started: it says why (no key, or `AI_PROVIDER` set to one without a key). Use `npm run demo`, or fix `.env`. |
+| “Too many questions at once” | Gemini’s free tier allows only a few requests a minute per project. Wait a minute and try again. |
 | Page text is in English after choosing a language | Only English and Spanish are built in; the others are translated by the AI, which is off in demo mode. |
 
 Learning the project? Read [docs/study-guide.md](docs/study-guide.md) first, then [docs/design.md](docs/design.md).
 
 ## Settings
 
-| Setting (`.env`) | Default | What it does |
+All in `.env` (see `.env.example`). Only one AI key is needed.
+
+| Setting | Default | What it does |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | none | Stays on the server. Never sent to the browser. |
+| `AI_PROVIDER` | the one whose key is set (Gemini first) | `gemini` or `anthropic`. |
+| `GEMINI_API_KEY` | none | Google AI Studio key. Stays on the server. |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Google’s current stable “basic” model; the free tier covers it. `gemini-3.1-flash-lite` is the other free Flash-Lite. |
+| `GEMINI_THINKING_LEVEL` | model’s default | `minimal`, `low`, `medium` or `high`. Thinking tokens count toward the output limit. |
+| `ANTHROPIC_API_KEY` | none | Only if `AI_PROVIDER=anthropic`. |
 | `ANTHROPIC_MODEL` | `claude-sonnet-5-5` | Model for answers and translation. |
-| `AI_EFFORT` | `medium` | Thinking depth. |
-| `AI_REFUSAL_FALLBACK` | off | `1` retries a safety refusal on another model inside the same call. Not tested against the live API yet. |
+| `AI_EFFORT` | `medium` | Claude’s thinking depth. |
+| `AI_REFUSAL_FALLBACK` | off | `1` retries a Claude safety refusal on another model inside the same call. Not tested against the live API yet. |
 | `RATE_LIMIT_PER_MIN` | `20` | Per client address. |
 | `DAILY_REQUEST_CAP` | `2000` | All clients together; resets at midnight UTC. In memory only. |
 | `TRUST_PROXY` | unset | Number of proxies in front of the server (usually `1`), so rate limits see real addresses. |
@@ -83,7 +99,8 @@ shared/    code and data used by the browser, the server and the tests
              holidays.js  court holidays and court-day counting
              nav.js       the map of screens and the four-step path
              i18n.js      all page text, FAQ, source links
-server/    Express app: routes, input checks, prompts (the rules live here), Anthropic client
+server/    Express app: routes, input checks, prompts (the rules live here), and the AI connections
+             (gemini.js, anthropic.js; provider.js picks one from .env)
 tests/     node:test; golden/ holds outputs captured from the original single-file code;
              fixtures/ holds fictional PDFs (rebuild with node tests/fixtures/make-fixtures.mjs)
 legacy/    the original single-file prototype, kept for reference
@@ -154,10 +171,25 @@ Sources (read 2026-10-30): [Trial Rule 6(A)](https://rules.incourts.gov/Content/
 
 **Decision for the court:** the statute and the court’s list disagree on two holidays. Lincoln’s Birthday is Feb 12 in the statute but the Friday after Thanksgiving on the court’s list; Washington’s Birthday is the third Monday in February in the statute but Dec 24 (2026) on the court’s list. The code counts neither, because counting a day that is not a holiday would make a deadline later than it really is. It counts the twelve holidays both sources agree on. If the court says which dates are right, flip `counted` in `shared/holidays.js`. The courts’ page also says county clerk’s offices may keep different holidays, so the page still tells people to check with the clerk.
 
+## Live testing with Gemini (2026-10-31)
+
+Every AI route was run against the real Gemini free tier (`gemini-3.5-flash-lite`) with the sample papers, the fillable and flattened PDFs, the two real court forms and a 29,000-character paper, in the API and in the browser. What it found, and what we did:
+
+| Found | Cause | Fix |
+|---|---|---|
+| The “should/must” warning appeared on the reply that **refused** to advise (“I can’t advise you on what you should do”). | The detector is word-based, and the refusal our rules require contains the words. | `looksLikeAdvice` sets aside only those exact refusal phrasings (English and Spanish). Real advice in the same reply is still flagged (tested). |
+| Dates were rarely highlighted, sometimes had no weekday, and the clerk-notice answers showed a literal `==`. | A small model follows the formatting rule only some of the time; the JSON answers were not rendered with highlighting. | `markDates` highlights every date and adds the correct weekday from the calendar; all AI text goes through one safe renderer. |
+| The explanation had headings like “Up to 5 hard words with short meanings”, in lower case. | The task prompt listed the parts as instructions and the model copied them. | The prompt now names the headings. The rules text is unchanged. |
+| Chat began with “I cannot advise you” even for plain questions. | The model over-applied the advice rule. | The chat prompt says to answer first and refuse only when asked what to do. |
+| The AI **invented a deadline range** for a clerk notice (“Wednesday, November 11 through Friday, November 13”): not in the notice, and Nov 11 is a court holiday. | It counted days itself, which the rules forbid but a small model sometimes does. | The prompts say never to work out a date, and the page now **flags any date in an answer that is not in the paper** (`unsupportedDates`). The fix-by date shown above the answer is still computed by code, not by the AI. |
+| A form with nothing blank showed an empty card. | No message for “nothing found”. | “No empty lines or boxes were found.” |
+
+Checked and fine: streaming, a 29k paper (about 1.5 s), Arabic, Burmese, Amharic and French translation (14 to 26 s, right-to-left works), a bad key (turns the helper off), the injection paper, a phone number typed into chat. Not fixed: while the page is being translated the waiting message is in English, and the explanation sometimes ignores the 250-word limit. The AI’s answers vary from run to run, so the checks above are tests of the page around the AI; the AI itself should still be spot-checked.
+
 ## Security notes
 
-- **pdf.js 3.11.174 has a published advisory** ([GHSA-wgrm-67xf-hhpq](https://github.com/advisories/GHSA-wgrm-67xf-hhpq): a crafted PDF could run code through font handling). The advisory’s workaround is to open PDFs with `isEvalSupported: false`. We always do (`shared/pdf-text.js`, covered by a test, and a caller cannot turn it back on). Upgrading to a current pdf.js is a breaking change and is planned. `npm audit` also reports `tar`, which comes in through an optional build-time tool of pdf.js and is not used when the site runs.
-- The AI key lives only in `.env` on the server (ignored by git). Never commit it. If a key is ever pushed by mistake, revoke it in the Anthropic console at once.
+- **pdf.js is current (6.4.299).** The older 3.11.174 we started with had a published advisory ([GHSA-wgrm-67xf-hhpq](https://github.com/advisories/GHSA-wgrm-67xf-hhpq): a crafted PDF could run code through font handling), which is fixed in current versions. We upgraded, and `npm audit` now reports 0 vulnerabilities. As a second layer we still always open PDFs with `isEvalSupported: false` (`shared/pdf-text.js`, covered by a test, and a caller cannot turn it back on). The page loads pdf.js only when someone chooses a PDF, as a module from this site; the upgrade needs Node 22.13 or newer.
+- The AI key lives only in `.env` on the server (ignored by git). Never commit it. If a key is ever pushed by mistake, revoke it at once (Google AI Studio for Gemini, the Anthropic console for Claude).
 - This is a class prototype, not an audited court system. “What a real launch would need” is on the Privacy screen.
 
 ## Known gaps

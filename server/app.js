@@ -53,7 +53,7 @@ export function createApp({ ai = null, config = {} } = {}) {
 
   const api = express.Router();
   api.use((req, res, next) => { res.set("Cache-Control", "no-store"); next(); });
-  api.get("/health", (req, res) => res.json({ ok: true, ai: Boolean(ai), demo: cfg.demo }));
+  api.get("/health", (req, res) => res.json({ ok: true, ai: Boolean(ai), demo: cfg.demo, ...(ai && ai.provider ? { provider: ai.provider } : {}) }));
 
   api.use(express.json({ limit: "256kb" }));
   api.use(rateLimit({
@@ -148,7 +148,8 @@ export function createApp({ ai = null, config = {} } = {}) {
 
   // Libraries and the font come from the npm packages, pinned in package.json, not from a CDN.
   const vendor = (dir) => express.static(path.join(root, "node_modules", dir), { maxAge: "1d", index: false, dotfiles: "ignore" });
-  app.use("/vendor/pdfjs/cmaps", vendor("pdfjs-dist/cmaps")); // character maps for PDFs in Chinese, Japanese and Korean
+  // pdf.js: its files, plus character maps (PDFs in Chinese, Japanese, Korean), image decoders, colour profiles and standard fonts
+  for (const dir of ["cmaps", "wasm", "iccs", "standard_fonts"]) app.use("/vendor/pdfjs/" + dir, vendor("pdfjs-dist/" + dir));
   app.use("/vendor/pdfjs", vendor("pdfjs-dist/build"));
   app.use("/vendor/fonts", vendor("@fontsource/atkinson-hyperlegible"));
   app.use("/shared", express.static(path.join(root, "shared")));

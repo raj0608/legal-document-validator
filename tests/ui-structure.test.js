@@ -66,7 +66,7 @@ test("Home offers the four things a person comes for, as large links, and the no
 });
 
 test("buttons and links that start a step say what they do", () => {
-  const steps = /<section id="view-papers"[\s\S]*?<\/section>/.exec(html)[0];
+  const steps = /<section id="view-papers"[\s\S]*?(?=\s*<!-- Check my form)/.exec(html)[0];
   assert.equal((steps.match(/class="step" data-step="\d"/g) || []).length, 4);
   assert.match(steps, /id="papersNext1"[^>]*disabled/, "Continue waits for a paper");
 });
@@ -84,4 +84,20 @@ test("the screens for people avoid telling them what to do in their own case", (
   for (const k of Object.keys(I18N.en)) {
     for (const v of [].concat(I18N.en[k])) if (typeof v === "string") assert.doesNotMatch(v, bad, k);
   }
+});
+
+test("steps 1 to 3 of My papers never send the person out of the path; reminders are on step 3 itself", () => {
+  const papers = /<section id="view-papers"[\s\S]*?(?=\s*<!-- Check my form)/.exec(html)[0];
+  for (const n of [1, 2, 3]) {
+    const step = new RegExp('<div class="step" data-step="' + n + '"[\\s\\S]*?(?=<div class="step" data-step="|<p class="disclaim")').exec(papers)[0];
+    assert.doesNotMatch(step, /<a [^>]*href="#/, "step " + n + " has a link out of the path");
+  }
+  const step3 = /<div class="step" data-step="3"[\s\S]*?(?=<div class="step" data-step="4")/.exec(papers)[0];
+  for (const needle of ['class="quick rem-chips"', 'id="flowDateList"', 'id="flowIcsBtn"', 'data-step-go="next"', 'data-step-go="back"']) assert.ok(step3.includes(needle), needle);
+});
+
+test("My dates is still its own page with its own reminders and calendar file", () => {
+  const dates = /<section id="view-dates"[\s\S]*?<\/section>/.exec(html)[0];
+  for (const needle of ['class="quick rem-chips"', 'id="dateList"', 'id="icsBtn"', 'id="saveDates"']) assert.ok(dates.includes(needle), needle);
+  assert.match(html, /<a href="#dates" data-view="dates">/, "and it is in the menu");
 });

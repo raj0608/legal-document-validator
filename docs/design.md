@@ -51,8 +51,10 @@ Help        talk to a real person · common questions · privacy
 |---|---|---|
 | 1 Add your paper | Upload a PDF, try the sample, or paste text. Short line on what to have ready. | Choose, then **Continue** (disabled until a paper is added; focus moves to it). |
 | 2 What it says | A plain-words explanation, with a note that it explains and cannot advise. Laws and cases mentioned are folded away (optional). | **Explain this paper**, then **Continue**. |
-| 3 Your dates | The dates found, each to check against the paper. The hearing date is added to My dates automatically. | **Continue**, or **Set reminders** (goes to My dates). |
+| 3 Your dates | The dates found, each to check against the paper. The hearing date is added to My dates automatically. Reminder choices, calendar links and the calendar file are right here, so nobody has to leave the path. | Choose reminders if wanted, then **Continue**. |
 | 4 What’s next | Ask about your paper; or see my dates, check a form, get free help. | Pick one. |
+
+Steps 1 to 3 never link out of the path (a test enforces it); only step 4, the end, offers other places. **My dates** stays a separate page, reachable from the menu, for people who come back to it.
 
 Steps 2 to 4 need a paper. If someone arrives without one (a reload, or Back after clearing), they are sent to step 1 instead of seeing an empty screen.
 

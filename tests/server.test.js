@@ -282,7 +282,7 @@ test("the page and shared modules are served, with security headers", async () =
   // pdf.js and the font are served from this site, so the page makes no request to any other host
   const html = await (await s.get("/")).text();
   assert.doesNotMatch(html, /<(?:link|script|img|iframe)\b[^>]*(?:href|src)="(?:https?:)?\/\//i, "scripts, styles and fonts are never loaded from another host");
-  for (const url of ["/vendor/pdfjs/pdf.min.js", "/vendor/pdfjs/pdf.worker.min.js", "/vendor/pdfjs/cmaps/UniGB-UCS2-H.bcmap", "/vendor/fonts/400.css", "/vendor/fonts/files/atkinson-hyperlegible-latin-400-normal.woff2"]) {
+  for (const url of ["/vendor/pdfjs/pdf.min.mjs", "/vendor/pdfjs/pdf.worker.min.mjs", "/vendor/pdfjs/cmaps/UniGB-UCS2-H.bcmap", "/vendor/pdfjs/wasm/openjpeg.wasm", "/vendor/pdfjs/standard_fonts/FoxitDingbats.pfb", "/vendor/fonts/400.css", "/vendor/fonts/files/atkinson-hyperlegible-latin-400-normal.woff2"]) {
     assert.equal((await s.get(url)).status, 200, url);
   }
   for (const m of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)) assert.equal((await s.get(m[1])).status, 200, m[1]);
@@ -359,4 +359,21 @@ test("demo mode answers from the paper, labels every answer, and is announced to
   const tr = await post("/api/translate", { lang: "fr" }); // not faked: fails like an outage
   assert.equal(tr.status, 502);
   await shutdown(server);
+});
+
+test("the explanation prompt names its headings, and the chat prompt says to answer first", async () => {
+  const s = await start();
+  await readSse(await s.post("/api/explain", { lang: "en", doc: doc(SAMPLE) }));
+  const explain = s.client.calls[0].messages[0].content;
+  for (const h of ["**What this paper is**", "**Who it is from and who it is to**", "**What happens next**", "**Dates and deadlines**", "**Hard words**", "**What this paper is not**"]) assert.ok(explain.includes(h), h);
+  assert.doesNotMatch(explain, /Up to 5 hard words with short meanings/, "a heading that is really an instruction");
+  assert.match(explain, /never work out a new date/);
+  await readSse(await s.post("/api/chat", { lang: "en", doc: doc(SAMPLE), turns: [{ role: "user", content: "What happens next?" }] }));
+  const chat = s.client.calls[1].messages[0].content;
+  assert.match(chat, /Start with the answer\. Say that you can’t advise only when the question asks what the person should do\./);
+  assert.match(chat, /Question from the person: What happens next\?/);
+  assert.match(chat, /never work out a new date/);
+  // the rules themselves are untouched
+  assert.match(s.client.calls[1].system, /Never tell the person what they should, must, or need to do in their own case/);
+  await s.close();
 });

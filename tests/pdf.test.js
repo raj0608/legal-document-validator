@@ -3,14 +3,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { createRequire } from "node:module";
 import { extractPdfText } from "../shared/pdf-text.js";
 import { protect, findResidualPii } from "../shared/safety.js";
 import { findDates, findCites, checkForm, findDeadline, formType } from "../shared/analysis.js";
 import { toISO } from "../shared/dates.js";
 
-const require = createRequire(import.meta.url);
-const lib = require("pdfjs-dist/legacy/build/pdf.js");
+const lib = await import("pdfjs-dist/legacy/build/pdf.mjs"); // the Node-compatible build of the same pdf.js the page loads
 const read = (name) => new Uint8Array(fs.readFileSync(new URL("./fixtures/" + name, import.meta.url)));
 const extract = (name, opts) => extractPdfText(lib, read(name), opts);
 const check = (text) => Object.fromEntries(checkForm(text, { hearingDays: 25 }).map((c) => [c.lbl, c.st]));

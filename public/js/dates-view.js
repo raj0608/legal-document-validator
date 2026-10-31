@@ -28,31 +28,27 @@ function download(data, filename, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+// The reminder choices appear on My dates and, inside the four-step path, on step 3, so nobody has to leave the path to use them.
 export function renderRemChips() {
-  const box = $("remChips");
-  box.textContent = "";
-  REMS.forEach((r) => {
-    const b = el("button", "chip", t(r.key));
-    b.type = "button";
-    b.setAttribute("aria-pressed", String(!!state.rems[r.k]));
-    b.addEventListener("click", () => { state.rems[r.k] = !state.rems[r.k]; renderRemChips(); renderDates(); });
-    box.appendChild(b);
+  document.querySelectorAll(".rem-chips").forEach((box) => {
+    box.textContent = "";
+    REMS.forEach((r) => {
+      const b = el("button", "chip", t(r.key));
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(!!state.rems[r.k]));
+      b.addEventListener("click", () => { state.rems[r.k] = !state.rems[r.k]; renderRemChips(); renderDates(); });
+      box.appendChild(b);
+    });
   });
 }
 
-export function renderDates() {
-  $("fNotice").value = state.dates.notice; $("fDays").value = state.dates.days; $("fServed").value = state.dates.served;
-  $("fHearing").value = state.dates.hearing; $("fTime").value = state.dates.time; $("fPlace").value = state.dates.place;
-  if (state.dates.notice || state.dates.served) $("otherDates").open = true;
-  const list = $("dateList");
+// One date on the timeline, with its calendar links. `upcomingOnly` leaves out dates that have passed (used inside the path).
+function renderTimeline(list, all, { upcomingOnly = false } = {}) {
   list.textContent = "";
-  const all = items();
-  $("noDates").hidden = all.length > 0;
-  $("saveDates").hidden = !all.length;
-  $("icsBox").hidden = !all.some((it) => dayDiff(it.date) >= 0);
   all.forEach((it) => {
-    const li = el("li");
     const diff = dayDiff(it.date);
+    if (upcomingOnly && diff < 0) return;
+    const li = el("li");
     if (diff < 0) li.classList.add("past");
     const dateEl = el("span", "tl-date");
     dateEl.appendChild(el("mark", null, fmtDate(it.date) + (it.time ? " " + t("at_time", { t: fmtTime(it.time) }) : "")));
@@ -77,6 +73,20 @@ export function renderDates() {
     }
     list.appendChild(li);
   });
+}
+
+export function renderDates() {
+  $("fNotice").value = state.dates.notice; $("fDays").value = state.dates.days; $("fServed").value = state.dates.served;
+  $("fHearing").value = state.dates.hearing; $("fTime").value = state.dates.time; $("fPlace").value = state.dates.place;
+  if (state.dates.notice || state.dates.served) $("otherDates").open = true;
+  const all = items();
+  const upcoming = all.some((it) => dayDiff(it.date) >= 0);
+  $("noDates").hidden = all.length > 0;
+  $("saveDates").hidden = !all.length;
+  $("icsBox").hidden = !upcoming;
+  renderTimeline($("dateList"), all);
+  $("flowRem").hidden = !upcoming; // step 3: only when there is something to be reminded about
+  renderTimeline($("flowDateList"), all, { upcomingOnly: true });
   const hearing = fromISO(state.dates.hearing);
   $("hearingCard").hidden = !hearing;
   if (hearing) {
@@ -121,7 +131,7 @@ export function initDates() {
   });
 
   // One calendar file with every upcoming date and the chosen reminders as alarms. Made in the browser; nothing is sent.
-  $("icsBtn").addEventListener("click", () => {
+  const saveIcs = () => {
     const events = items().filter((it) => dayDiff(it.date) >= 0).map((it) => ({
       uid: it.kind + "-" + toISO(it.date) + "@ready-for-court",
       summary: describe(it),
@@ -133,7 +143,9 @@ export function initDates() {
     }));
     download(buildIcs(events, { name: t("dates_h") }), "my-court-dates.ics", "text/calendar;charset=utf-8");
     toast(t("saved"));
-  });
+  };
+  $("icsBtn").addEventListener("click", saveIcs);
+  $("flowIcsBtn").addEventListener("click", saveIcs);
 
   // The file is made in the browser and handed to the browser's own download. It never touches the server.
   $("saveDates").addEventListener("click", () => {

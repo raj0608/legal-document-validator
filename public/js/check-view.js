@@ -1,10 +1,10 @@
 // "Check my form": the checklist for a filled-in form, and the reader for a clerk's notice.
-import { $, el, t, state, fmtDate, mdToHtml } from "./core.js";
+import { $, el, t, state, fmtDate, inlineHtml } from "./core.js";
 import { formType, checkForm, findDeadline } from "/shared/analysis.js";
 import { toISO, fromISO, dayDiff } from "/shared/dates.js";
 import { unredact } from "/shared/safety.js";
 import { SRC } from "/shared/i18n.js";
-import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag } from "./ai.js";
+import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag, addDateFlag } from "./ai.js";
 import * as api from "./api-client.js";
 import { registerSlot } from "./docs.js";
 import { renderDates } from "./dates-view.js";
@@ -104,16 +104,19 @@ function blanks() {
       const data = await api.json("blanks", { lang: state.lang, doc: { safe: d.safe } });
       const items = data && Array.isArray(data.items) ? data.items.filter((x) => x && typeof x.label === "string" && typeof x.asks === "string") : [];
       body.textContent = "";
+      if (!items.length) body.appendChild(el("p", null, t("blanks_none")));
       const ul = el("ul");
       items.forEach((x) => {
         const li = el("li");
         li.appendChild(el("strong", null, unredact(x.label, d.back)));
-        li.append(" ", unredact(x.asks, d.back));
+        const asks = el("span"); asks.innerHTML = inlineHtml(x.asks, d.back);
+        li.append(" ", asks);
         ul.appendChild(li);
       });
       body.appendChild(ul);
       body.lang = state.lang;
       addAdviceFlag(card, items.map((x) => x.asks).join(" "));
+      addDateFlag(card, items.map((x) => x.asks).join(" "), d.raw);
     }
   });
 }
@@ -126,7 +129,7 @@ function clerkNotice() {
     async run(card, body) {
       const data = await api.json("clerk", { lang: state.lang, doc: { safe: d.safe } });
       body.textContent = "";
-      if (data && typeof data.summary === "string") body.appendChild(el("p", null, unredact(data.summary, d.back)));
+      if (data && typeof data.summary === "string") { const p = el("p"); p.innerHTML = inlineHtml(data.summary, d.back); body.appendChild(p); }
       const items = data && Array.isArray(data.items) ? data.items.filter((x) => x && typeof x.quote === "string" && typeof x.plain === "string") : [];
       if (items.length) {
         body.appendChild(el("h3", null, t("clerk_items_h")));
@@ -137,13 +140,15 @@ function clerkNotice() {
           const cb = el("input"); cb.type = "checkbox"; cb.id = "fix" + i;
           lab.htmlFor = cb.id;
           lab.appendChild(el("span", "lbl", " “" + unredact(x.quote, d.back) + "”"));
-          li.append(cb, lab, el("span", "ctx", unredact(x.plain, d.back)));
+          const plain = el("span", "ctx"); plain.innerHTML = inlineHtml(x.plain, d.back);
+          li.append(cb, lab, plain);
           ul.appendChild(li);
         });
         body.appendChild(ul);
       }
       body.lang = state.lang;
       addAdviceFlag(card, (data && data.summary ? data.summary : "") + " " + items.map((x) => x.plain).join(" "));
+      addDateFlag(card, (data && data.summary ? data.summary : "") + " " + items.map((x) => x.plain).join(" "), d.raw);
     }
   });
 }

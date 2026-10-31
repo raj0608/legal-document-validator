@@ -1,9 +1,9 @@
 // "My papers": the plain-words explanation, dates and laws found in the paper, and the chat.
-import { $, el, t, state, fmtDate, fmtTime, toast, mdToHtml } from "./core.js";
+import { $, el, t, state, fmtDate, fmtTime, toast, answerHtml } from "./core.js";
 import { findDates, findCites } from "/shared/analysis.js";
 import { toISO, dayDiff } from "/shared/dates.js";
 import { looksLikeInjection, unredact, redactText, createTokenState } from "/shared/safety.js";
-import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag } from "./ai.js";
+import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag, addDateFlag } from "./ai.js";
 import * as api from "./api-client.js";
 import { registerSlot, currentExtraNames } from "./docs.js";
 import { renderDates } from "./dates-view.js";
@@ -93,7 +93,7 @@ function addMsg(role, text, back) {
   const li = el("li", "msg " + (role === "user" ? "you" : "bot"));
   li.appendChild(el("span", "who", role === "user" ? t("you") : t("helper")));
   const body = el("div");
-  if (role === "user") body.textContent = text; else body.innerHTML = mdToHtml(unredact(text, back));
+  if (role === "user") body.textContent = text; else body.innerHTML = answerHtml(text, back);
   li.appendChild(body);
   if (role !== "user") li.lang = state.lang;
   $("thread").appendChild(li);
@@ -128,14 +128,15 @@ async function ask(question) {
       lang: state.lang,
       doc: state.papers ? { safe: state.papers.safe } : null,
       turns: state.turns.slice(-10)
-    }, { signal: ctl.signal, onText: ({ text }) => { body.innerHTML = mdToHtml(unredact(text, back)); } });
-    body.innerHTML = mdToHtml(unredact(res.text, back));
+    }, { signal: ctl.signal, onText: ({ text }) => { body.innerHTML = answerHtml(text, back); } });
+    body.innerHTML = answerHtml(res.text, back);
     state.turns.push({ role: "assistant", content: res.text });
     addAdviceFlag(li, res.text);
+    addDateFlag(li, res.text, state.papers && state.papers.raw);
     if (res.truncated) li.appendChild(el("p", "small", t("truncated")));
   } catch (e) {
     const code = e && e.code;
-    if (e && e.text) body.innerHTML = mdToHtml(unredact(e.text, back)); else body.textContent = "";
+    if (e && e.text) body.innerHTML = answerHtml(e.text, back); else body.textContent = "";
     if (code === "cancelled") { if (!e.text) li.remove(); }
     else if (PERMANENT.includes(code)) { li.remove(); disableAi(); }
     else li.appendChild(el("p", "warn", errCopy(code)));
@@ -159,10 +160,11 @@ async function explain() {
   const btn = $("explainBtn");
   btn.disabled = true;
   try {
-    const res = await api.stream("explain", { lang: state.lang, doc: { safe: d.safe } }, { onText: ({ text }) => { body.innerHTML = mdToHtml(unredact(text, d.back)); } });
-    body.innerHTML = mdToHtml(unredact(res.text, d.back));
+    const res = await api.stream("explain", { lang: state.lang, doc: { safe: d.safe } }, { onText: ({ text }) => { body.innerHTML = answerHtml(text, d.back); } });
+    body.innerHTML = answerHtml(res.text, d.back);
     body.lang = state.lang;
     addAdviceFlag(card, res.text);
+    addDateFlag(card, res.text, d.raw);
     if (res.truncated) card.appendChild(el("p", "small", t("truncated")));
   } catch (e) {
     if (e && PERMANENT.includes(e.code)) { out.textContent = ""; disableAi(); }

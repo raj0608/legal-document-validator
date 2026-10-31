@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="/vendor/fonts/400.css">
 <link rel="stylesheet" href="/vendor/fonts/700.css">
 <link rel="stylesheet" href="/vendor/fonts/400-italic.css">
-<script defer src="/vendor/pdfjs/pdf.min.js"></script>
 <link rel="stylesheet" href="/styles.css">
 <script type="module" src="/js/main.js"></script>
 </head>
@@ -125,7 +124,16 @@
       <h2 tabindex="-1" data-i18n="s3_h">Your dates</h2>
       <p class="lede" data-i18n="s3_p"></p>
       <ul id="foundDates" class="found"></ul>
-      <div class="row"><a class="btn" href="#dates" data-i18n="s3_reminders">Set reminders</a></div>
+      <section id="flowRem" hidden>
+        <h3 data-i18n="rem_h">Reminders</h3>
+        <p class="small" data-i18n="rem_p"></p>
+        <div class="quick rem-chips" role="group"></div>
+        <h3 data-i18n="s3_cal_h">Add them to your calendar</h3>
+        <ol id="flowDateList" class="timeline"></ol>
+        <p class="small" data-i18n="cal_note"></p>
+        <div class="row"><button id="flowIcsBtn" class="btn primary" type="button" data-i18n="save_ics">Add all to my calendar (.ics file)</button></div>
+        <p class="small" data-i18n="ics_note"></p>
+      </section>
       <div class="step-actions">
         <button class="btn big" type="button" data-step-go="back" data-i18n="back">Back</button>
         <button class="btn primary big" type="button" data-step-go="next" data-i18n="continue">Continue</button>
@@ -220,7 +228,7 @@
 
     <h2 data-i18n="rem_h">Reminders</h2>
     <p class="small" data-i18n="rem_p"></p>
-    <div id="remChips" class="quick" role="group"></div>
+    <div class="quick rem-chips" role="group"></div>
 
     <div id="noDates"><p class="small" data-i18n="no_dates"></p><a class="btn primary" href="#papers" data-i18n="no_dates_cta">Add your paper</a></div>
     <ol id="dateList" class="timeline"></ol>

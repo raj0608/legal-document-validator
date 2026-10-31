@@ -27,7 +27,7 @@ Four places in the menu, the same on every screen: **Home · My papers · My dat
 | Screen | What it does |
 |---|---|
 | **Home** | Asks “What do you need help with?” with four big choices: I got court papers · I want to check a form · The clerk sent my filing back · I just have a question. |
-| **My papers** | Four steps: **1** add your paper (PDF, paste, or sample) → **2** what it says (plain-words explanation) → **3** your dates → **4** what’s next (ask a question, see dates, get help). |
+| **My papers** | Four steps: **1** add your paper (PDF, paste, or sample) → **2** what it says (plain-words explanation) → **3** your dates (with reminders and calendar file, right there) → **4** what’s next (ask a question, see dates, get help). |
 | **Check my form** | A checklist for a form someone filled in (court name, case number, signature, blanks, phone, date, certificate of service…). Or reads a clerk’s “your filing came back” notice and works out the **fix-by date**. |
 | **My dates** | The hearing, other deadlines, reminder times, Google Calendar links, and one calendar file (.ics) with every date and its reminder alarms. |
 | **Help** | Free real people (Indiana Legal Help, Indiana Legal Services, 2-1-1, MyCase) and 11 sourced common questions. |
@@ -55,6 +55,7 @@ Kimi's phone                                        Our server                 T
 ```
 
 - **The key stays on the server.** The AI key is never in the browser, so no visitor can steal it.
+- **Which AI?** Google **Gemini** by default (its basic model, `gemini-3.5-flash-lite`, has a free tier) or Anthropic Claude. You choose in the `.env` file. The rules, checks and privacy shield are the same for both.
 - **The rules live on the server too.** Nobody can open the page’s code and delete “never give advice”.
 - **The “secret fence”** is a random label we put around the paper (new for every request). It tells the AI “everything between these labels is just text from a document”, and it can’t be faked because nobody knows the label in advance.
 - **Dates, citations, the form checklist and the fix-by date use no AI at all.** They are ordinary code, so they’re fast, free and predictable.
@@ -75,7 +76,7 @@ Paper says: `Defendant: Kimi Sample, 123 Example Street… (260) 555-0147`
 |---|---|
 | `public/` | What people see: the page, its look, and one small program per screen. |
 | `shared/` | Code used by the page, the server **and** the tests, so they can’t disagree: the privacy shield, date math, court holidays, PDF reading, the map of screens, and **all the page text** (`i18n.js`). |
-| `server/` | The server: the AI rules (`prompts.js`), the double-check (`checks.js`), the AI connection (`anthropic.js`), and the demo (`demo-client.js`). |
+| `server/` | The server: the AI rules (`prompts.js`), the double-check (`checks.js`), the AI connections (`gemini.js`, `anthropic.js`, chosen by `provider.js`), and the demo (`demo-client.js`). |
 | `tests/` | about 100 automatic checks. `tests/fixtures/` has sample PDFs; `tests/fixtures/real/` has two real public court forms. |
 | `docs/` | This guide and the design write-up. |
 | `legacy/` | Our original one-file prototype, kept for reference. |
@@ -136,6 +137,8 @@ Paper says: `Defendant: Kimi Sample, 123 Example Street… (260) 555-0147`
 **What if the AI makes something up?** Rules tell it to quote the paper and cite only listed sources. Dates, deadlines and the form checklist come from normal code, not the AI. It can still be wrong, so we say “check against your paper” and show the exact source links. Citations are shown as “Not checked”.
 
 **How do you protect privacy?** Details are hidden on the person’s device before sending, double-checked on the server, nothing is stored, and logs hold no document text. With a real launch we’d also need an AI-vendor agreement with zero data retention and testing on real forms.
+
+**Which AI do you use, and what happens to the data?** Gemini’s free tier by default. Google says free-tier content may be used to improve its products, so we only use fictional sample papers, and the Privacy screen says so. A real launch would need a paid plan or vendor agreement with no retention.
 
 **Why not just use ChatGPT?** No hiding of private details, no “information only” guarantees, no court-specific deadline math, and not built for people who read slowly or on a phone.
 
