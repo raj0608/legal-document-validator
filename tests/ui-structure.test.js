@@ -8,8 +8,8 @@ import { parseRoute, hashFor, VIEWS, MENU } from "../shared/screen-map.js";
 import { buildPage } from "../server/http/page.js";
 
 const html = buildPage();
-const jsDir = new URL("../web/js/", import.meta.url);
-const sources = fs.readdirSync(jsDir).filter((f) => f.endsWith(".js")).map((f) => [f, fs.readFileSync(new URL(f, jsDir), "utf8")]);
+const jsDir = new URL("../web/", import.meta.url);
+const sources = fs.readdirSync(jsDir, { recursive: true }).filter((f) => f.endsWith(".js")).map((f) => [f, fs.readFileSync(new URL(f, jsDir), "utf8")]);
 const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
 
 test("every element the scripts look up by id exists in the page, and no id is used twice", () => {

@@ -1,8 +1,8 @@
 // "Questions" (FAQ) and "Privacy" tabs.
-import { $, el, t, state, TR } from "./core.js";
+import { $, el, t, state, TR } from "/web/js/core.js";
 import { FAQ } from "/shared/i18n/faq.js";
 import { SRC } from "/shared/i18n/sources.js";
-import { reprotectAll } from "./docs.js";
+import { reprotectAll } from "/web/js/docs.js";
 
 export function renderFaq() {
   const box = $("faq");

@@ -1,14 +1,14 @@
 // "Check my form": the checklist for a filled-in form, and the reader for a clerk's notice.
-import { $, el, t, state, fmtDate, inlineHtml } from "./core.js";
+import { $, el, t, state, fmtDate, inlineHtml } from "/web/js/core.js";
 import { formType, checkForm } from "/shared/analysis/form-checklist.js";
 import { findDeadline } from "/shared/analysis/fix-by-date.js";
 import { toISO, fromISO, dayDiff } from "/shared/dates/date-math.js";
 import { unredact } from "/shared/safety/redaction.js";
 import { SRC } from "/shared/i18n/sources.js";
-import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag, addDateFlag } from "./ai.js";
-import * as api from "./api-client.js";
-import { registerSlot } from "./docs.js";
-import { renderDates } from "./dates-view.js";
+import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag, addDateFlag } from "/web/js/ai.js";
+import * as api from "/web/js/api-client.js";
+import { registerSlot } from "/web/js/docs.js";
+import { renderDates } from "/web/screens/dates/screen.js";
 
 // ---------- Form checklist (no AI) ----------
 export function renderChecks() {

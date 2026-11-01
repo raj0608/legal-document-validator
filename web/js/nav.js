@@ -2,7 +2,7 @@
 // The addresses are plain links (see shared/screen-map.js), so the phone's Back button always works.
 import { $, el, t, state } from "./core.js";
 import { parseRoute, hashFor, guard, menuItemFor, VIEWS, PAPER_STEPS } from "/shared/screen-map.js";
-import { setMode } from "./check-view.js";
+import { setMode } from "/web/screens/check/screen.js";
 import { renderNext } from "./home.js";
 
 let current = { view: "home" };

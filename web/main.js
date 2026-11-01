@@ -1,15 +1,15 @@
 // Let’s Get Ready for Court: page start-up, routing, language text, and the clear / hide / text-size controls.
-import { $, t, state, TR, renderSupport, toast } from "./core.js";
+import { $, t, state, TR, renderSupport, toast } from "/web/js/core.js";
 import { LANG } from "/shared/i18n/languages.js";
 import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "/shared/sample-papers.js";
-import { initAi } from "./ai.js";
-import { makeLoader, removeDoc, renderDoc } from "./docs.js";
-import { renderDates, renderRemChips, initDates } from "./dates-view.js";
-import { renderFound, renderQuick, initPapers, abortChat } from "./papers-view.js";
-import { renderChecks, renderCure, initCheck } from "./check-view.js";
-import { renderFaq, renderPrivacy, initPrivacy } from "./content-view.js";
-import { initLang } from "./lang.js";
-import { route, initNav, refreshNav } from "./nav.js";
+import { initAi } from "/web/js/ai.js";
+import { makeLoader, removeDoc, renderDoc } from "/web/js/docs.js";
+import { renderDates, renderRemChips, initDates } from "/web/screens/dates/screen.js";
+import { renderFound, renderQuick, initPapers, abortChat } from "/web/screens/papers/screen.js";
+import { renderChecks, renderCure, initCheck } from "/web/screens/check/screen.js";
+import { renderFaq, renderPrivacy, initPrivacy } from "/web/screens/help/screen.js";
+import { initLang } from "/web/js/lang.js";
+import { route, initNav, refreshNav } from "/web/js/nav.js";
 
 // ---------- Static text and language ----------
 function renderSize() {
