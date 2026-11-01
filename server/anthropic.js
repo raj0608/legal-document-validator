@@ -18,14 +18,16 @@ export function mapError(err, text) {
 export function createAi({ client, model, effort = "medium", fallback = false }) {
   async function stream({ system, messages, maxTokens = 16000, signal, onText }) {
     const base = { model, max_tokens: maxTokens, system, messages, output_config: { effort } };
-    // With fallback on, a safety refusal is retried by the API on another model inside the same call.
-    const s = fallback
-      ? client.beta.messages.stream({ ...base, betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" }, { signal })
-      : client.messages.stream(base, { signal });
     let text = "";
-    s.on("text", (delta) => { text += delta; if (onText) onText(delta); });
     let message;
-    try { message = await s.finalMessage(); } catch (err) { throw mapError(err, text); }
+    try {
+      // With fallback on, a safety refusal is retried by the API on another model inside the same call.
+      const s = fallback
+        ? client.beta.messages.stream({ ...base, betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" }, { signal })
+        : client.messages.stream(base, { signal });
+      s.on("text", (delta) => { text += delta; if (onText) onText(delta); });
+      message = await s.finalMessage();
+    } catch (err) { throw mapError(err, text); }
     if (message.stop_reason === "refusal") throw new ApiError("refused", 422, text ? { text } : {});
     return { text, truncated: message.stop_reason === "max_tokens", usage: message.usage };
   }

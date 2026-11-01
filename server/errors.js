@@ -9,3 +9,4 @@ export class ApiError extends Error {
 }
 
 export const bad = (msg) => new ApiError("bad_request", 400, { detail: msg });
+export const toApiError = (err) => (err instanceof ApiError ? err : new ApiError("generic", 502));

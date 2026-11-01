@@ -1,9 +1,9 @@
 // How a failure reaches the page: an error code as JSON, or an "error" event once an answer is streaming.
-import { mapError } from "../anthropic.js";
+import { toApiError } from "../errors.js";
 import { sse } from "./streaming.js";
 
 const sendError = (res, e) => {
-  const err = mapError(e);
+  const err = toApiError(e);
   if (res.headersSent) { // already streaming: report the failure as an event
     if (err.code !== "cancelled") sse(res, "error", { code: err.code, text: err.text || "" });
     return res.end();
