@@ -6,6 +6,7 @@ import { requestLog } from "./request-log.js";
 import { perMinuteLimit, createDailyCap } from "./limits.js";
 import { addHealthRoute, addAiRoutes } from "./routes.js";
 import { notFound, errorHandler } from "./error-responses.js";
+import { servePage } from "./page.js";
 import { serveStaticFiles } from "./static-files.js";
 
 export function createApp({ ai = null, config = {} } = {}) {
@@ -29,6 +30,7 @@ export function createApp({ ai = null, config = {} } = {}) {
   api.use(errorHandler);
   app.use("/api", api);
 
+  app.use(servePage);
   serveStaticFiles(app);
   return app;
 }

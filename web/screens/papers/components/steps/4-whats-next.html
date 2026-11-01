@@ -1,0 +1,22 @@
+    <div class="step" data-step="4" hidden>
+      <h2 tabindex="-1" data-i18n="s4_h">What would you like to do next?</h2>
+      <h3 id="chat-h" data-i18n="s4_ask">Ask about your paper</h3>
+      <p class="small" data-i18n="chat_hint"></p>
+      <div id="chatOff" class="status ai-off" hidden data-i18n="chat_off"></div>
+      <div id="quick" class="quick"></div>
+      <ol id="thread" class="thread"></ol>
+      <div class="ask">
+        <label for="askInput" class="sr" data-i18n="chat_ph">Type a question</label>
+        <textarea id="askInput" rows="2" data-i18n-ph="chat_ph"></textarea>
+        <div class="btn-col">
+          <button class="btn primary" id="askBtn" type="button" data-i18n="send">Ask</button>
+          <button class="btn" id="stopBtn" type="button" hidden data-i18n="stop">Stop</button>
+        </div>
+      </div>
+      <ul class="cards compact">
+        <li><a class="card-link" href="#dates"><span class="card-text"><strong data-i18n="s4_dates_t"></strong><span data-i18n="s4_dates_d"></span></span><span class="chev" aria-hidden="true">›</span></a></li>
+        <li><a class="card-link" href="#check"><span class="card-text"><strong data-i18n="s4_form_t"></strong><span data-i18n="s4_form_d"></span></span><span class="chev" aria-hidden="true">›</span></a></li>
+        <li><a class="card-link" href="#help"><span class="card-text"><strong data-i18n="s4_help_t"></strong><span data-i18n="s4_help_d"></span></span><span class="chev" aria-hidden="true">›</span></a></li>
+      </ul>
+      <div class="step-actions"><button class="btn big" type="button" data-step-go="back" data-i18n="back">Back</button></div>
+    </div>

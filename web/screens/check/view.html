@@ -1,0 +1,34 @@
+  <!-- Check my form -->
+  <section id="view-check" class="view" hidden aria-labelledby="check-h">
+    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
+    <h1 id="check-h" tabindex="-1" data-i18n="check_h">Check my form</h1>
+    <p class="lede" data-i18n="check_p"></p>
+    <p class="disclaim" data-i18n="notice_banner"></p>
+    <div class="seg" role="group" aria-label="Mode">
+      <button type="button" id="modeForm" aria-pressed="true" data-i18n="mode_form">A form I filled in</button>
+      <button type="button" id="modeClerk" aria-pressed="false" data-i18n="mode_clerk">My filing came back</button>
+    </div>
+
+    <div id="formPanel">
+      <div id="formLoader"></div>
+      <div id="formDoc"></div>
+      <div id="formOut" hidden>
+        <p class="small" id="formType"></p>
+        <h2 data-i18n="checklist_h">Checklist</h2>
+        <ul id="checks" class="checks"></ul>
+        <div class="row"><button class="btn primary" id="blanksBtn" type="button" data-i18n="blanks_explain_btn">Explain what each blank asks for</button></div>
+        <div id="blanksOut"></div>
+      </div>
+    </div>
+
+    <div id="clerkPanel" hidden>
+      <div id="clerkLoader"></div>
+      <div id="clerkDoc"></div>
+      <div id="clerkOut" hidden>
+        <div id="cureCard" class="hearing"></div>
+        <div class="row"><button class="btn primary" id="clerkBtn" type="button" data-i18n="clerk_explain_btn">Explain this notice in simple words</button></div>
+        <div id="clerkAi"></div>
+        <div class="row"><button class="btn" id="recheckBtn" type="button" data-i18n="recheck_btn">Check my fixed form</button></div>
+      </div>
+    </div>
+  </section>

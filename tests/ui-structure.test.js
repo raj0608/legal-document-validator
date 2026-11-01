@@ -5,8 +5,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { I18N } from "../shared/i18n/languages.js";
 import { parseRoute, hashFor, VIEWS, MENU } from "../shared/screen-map.js";
+import { buildPage } from "../server/http/page.js";
 
-const html = fs.readFileSync(new URL("../web/index.html", import.meta.url), "utf8");
+const html = buildPage();
 const jsDir = new URL("../web/js/", import.meta.url);
 const sources = fs.readdirSync(jsDir).filter((f) => f.endsWith(".js")).map((f) => [f, fs.readFileSync(new URL(f, jsDir), "utf8")]);
 const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));

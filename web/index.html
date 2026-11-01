@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="/vendor/fonts/400.css">
 <link rel="stylesheet" href="/vendor/fonts/700.css">
 <link rel="stylesheet" href="/vendor/fonts/400-italic.css">
-<link rel="stylesheet" href="/styles.css">
-<script type="module" src="/js/main.js"></script>
+<link rel="stylesheet" href="/web/styles.css">
+<script type="module" src="/web/js/main.js"></script>
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">Skip to the main part of the page</a>
@@ -49,252 +49,17 @@
 <main id="main" tabindex="-1">
   <a id="nextStrip" class="next-strip" href="#dates" hidden><span id="nextStripText"></span> <strong data-i18n="see_dates">See my dates</strong></a>
 
-  <!-- Home: start from the person's situation, not from our tools -->
-  <section id="view-home" class="view" aria-labelledby="home-h">
-    <h1 id="home-h" tabindex="-1" data-i18n="home_h">What do you need help with?</h1>
-    <p class="lede" data-i18n="home_p">Pick one. We will walk you through it, one step at a time.</p>
-    <div id="nextCard" class="hearing" hidden aria-live="polite">
-      <div class="label" data-i18n="next_card_h">Your next date</div>
-      <div class="big"><mark id="nextDate"></mark></div>
-      <div class="sub" id="nextSub"></div>
-      <a class="btn" href="#dates" data-i18n="see_dates">See my dates</a>
-    </div>
-    <ul class="cards">
-      <li><a class="card-link" href="#papers">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6zM14 2v6h6M9 13h8M9 17h8"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_papers_t">I got court papers</strong><span data-i18n="card_papers_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-      <li><a class="card-link" href="#check">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M9 14l2 2 4-4"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_form_t">I want to check a form before I file it</strong><span data-i18n="card_form_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-      <li><a class="card-link" href="#check/clerk">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_clerk_t">The clerk sent my filing back</strong><span data-i18n="card_clerk_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-      <li><a class="card-link" href="#help">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.2a2.6 2.6 0 1 1 3.7 2.3c-.8.4-1.2 1-1.2 1.8M12 17h.01"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_help_t">I just have a question</strong><span data-i18n="card_help_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-    </ul>
-    <ul class="reassure">
-      <li data-i18n="trust_1">Free. You don’t make an account.</li>
-      <li data-i18n="trust_2">We don’t save your papers. When you close this page, they are gone.</li>
-      <li><a href="#privacy" data-i18n="help_privacy_link">How we protect your privacy</a></li>
-    </ul>
-    <p class="disclaim" data-i18n="notice_banner"></p>
-  </section>
+  <!-- include: /web/screens/home/view.html -->
 
-  <!-- My papers: four steps -->
-  <section id="view-papers" class="view" hidden aria-labelledby="papers-h">
-    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
-    <h1 id="papers-h" tabindex="-1" data-i18n="papers_h">Your court papers</h1>
-    <nav id="paperSteps" class="steps" aria-label="Steps"></nav>
+  <!-- include: /web/screens/papers/view.html -->
 
-    <div class="step" data-step="1">
-      <h2 tabindex="-1" data-i18n="s1_h">Add your paper</h2>
-      <p class="lede" data-i18n="s1_p"></p>
-      <div id="papersLoader"></div>
-      <p class="small" data-i18n="s1_test"></p>
-      <div id="papersDoc"></div>
-      <p id="s1Ready" class="status" role="status" hidden data-i18n="s1_ready"></p>
-      <div class="step-actions"><button class="btn primary big" id="papersNext1" type="button" data-step-go="next" disabled data-i18n="continue">Continue</button></div>
-    </div>
+  <!-- include: /web/screens/check/view.html -->
 
-    <div class="step" data-step="2" hidden>
-      <h2 tabindex="-1" data-i18n="s2_h">What your paper says</h2>
-      <p class="lede" data-i18n="s2_p"></p>
-      <div id="explainOff" class="status ai-off" hidden data-i18n="chat_off"></div>
-      <div id="explainWrap" hidden>
-        <div class="row"><button class="btn primary big" id="explainBtn" type="button" data-i18n="explain_btn">Explain this paper in plain words</button></div>
-        <div id="explainOut"></div>
-      </div>
-      <details class="more">
-        <summary data-i18n="s2_cites">Laws and cases mentioned (optional)</summary>
-        <p class="small" data-i18n="cites_note"></p>
-        <ul id="foundCites" class="cites"></ul>
-      </details>
-      <div class="step-actions">
-        <button class="btn big" type="button" data-step-go="back" data-i18n="back">Back</button>
-        <button class="btn primary big" type="button" data-step-go="next" data-i18n="continue">Continue</button>
-      </div>
-    </div>
+  <!-- include: /web/screens/dates/view.html -->
 
-    <div class="step" data-step="3" hidden>
-      <h2 tabindex="-1" data-i18n="s3_h">Your dates</h2>
-      <p class="lede" data-i18n="s3_p"></p>
-      <ul id="foundDates" class="found"></ul>
-      <section id="flowRem" hidden>
-        <h3 data-i18n="rem_h">Reminders</h3>
-        <p class="small" data-i18n="rem_p"></p>
-        <div class="quick rem-chips" role="group"></div>
-        <h3 data-i18n="s3_cal_h">Add them to your calendar</h3>
-        <ol id="flowDateList" class="timeline"></ol>
-        <p class="small" data-i18n="cal_note"></p>
-        <div class="row"><button id="flowIcsBtn" class="btn primary" type="button" data-i18n="save_ics">Add all to my calendar (.ics file)</button></div>
-        <p class="small" data-i18n="ics_note"></p>
-      </section>
-      <div class="step-actions">
-        <button class="btn big" type="button" data-step-go="back" data-i18n="back">Back</button>
-        <button class="btn primary big" type="button" data-step-go="next" data-i18n="continue">Continue</button>
-      </div>
-    </div>
+  <!-- include: /web/screens/help/view.html -->
 
-    <div class="step" data-step="4" hidden>
-      <h2 tabindex="-1" data-i18n="s4_h">What would you like to do next?</h2>
-      <h3 id="chat-h" data-i18n="s4_ask">Ask about your paper</h3>
-      <p class="small" data-i18n="chat_hint"></p>
-      <div id="chatOff" class="status ai-off" hidden data-i18n="chat_off"></div>
-      <div id="quick" class="quick"></div>
-      <ol id="thread" class="thread"></ol>
-      <div class="ask">
-        <label for="askInput" class="sr" data-i18n="chat_ph">Type a question</label>
-        <textarea id="askInput" rows="2" data-i18n-ph="chat_ph"></textarea>
-        <div class="btn-col">
-          <button class="btn primary" id="askBtn" type="button" data-i18n="send">Ask</button>
-          <button class="btn" id="stopBtn" type="button" hidden data-i18n="stop">Stop</button>
-        </div>
-      </div>
-      <ul class="cards compact">
-        <li><a class="card-link" href="#dates"><span class="card-text"><strong data-i18n="s4_dates_t"></strong><span data-i18n="s4_dates_d"></span></span><span class="chev" aria-hidden="true">›</span></a></li>
-        <li><a class="card-link" href="#check"><span class="card-text"><strong data-i18n="s4_form_t"></strong><span data-i18n="s4_form_d"></span></span><span class="chev" aria-hidden="true">›</span></a></li>
-        <li><a class="card-link" href="#help"><span class="card-text"><strong data-i18n="s4_help_t"></strong><span data-i18n="s4_help_d"></span></span><span class="chev" aria-hidden="true">›</span></a></li>
-      </ul>
-      <div class="step-actions"><button class="btn big" type="button" data-step-go="back" data-i18n="back">Back</button></div>
-    </div>
-    <p class="disclaim" data-i18n="notice_banner"></p>
-  </section>
-
-  <!-- Check my form -->
-  <section id="view-check" class="view" hidden aria-labelledby="check-h">
-    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
-    <h1 id="check-h" tabindex="-1" data-i18n="check_h">Check my form</h1>
-    <p class="lede" data-i18n="check_p"></p>
-    <p class="disclaim" data-i18n="notice_banner"></p>
-    <div class="seg" role="group" aria-label="Mode">
-      <button type="button" id="modeForm" aria-pressed="true" data-i18n="mode_form">A form I filled in</button>
-      <button type="button" id="modeClerk" aria-pressed="false" data-i18n="mode_clerk">My filing came back</button>
-    </div>
-
-    <div id="formPanel">
-      <div id="formLoader"></div>
-      <div id="formDoc"></div>
-      <div id="formOut" hidden>
-        <p class="small" id="formType"></p>
-        <h2 data-i18n="checklist_h">Checklist</h2>
-        <ul id="checks" class="checks"></ul>
-        <div class="row"><button class="btn primary" id="blanksBtn" type="button" data-i18n="blanks_explain_btn">Explain what each blank asks for</button></div>
-        <div id="blanksOut"></div>
-      </div>
-    </div>
-
-    <div id="clerkPanel" hidden>
-      <div id="clerkLoader"></div>
-      <div id="clerkDoc"></div>
-      <div id="clerkOut" hidden>
-        <div id="cureCard" class="hearing"></div>
-        <div class="row"><button class="btn primary" id="clerkBtn" type="button" data-i18n="clerk_explain_btn">Explain this notice in simple words</button></div>
-        <div id="clerkAi"></div>
-        <div class="row"><button class="btn" id="recheckBtn" type="button" data-i18n="recheck_btn">Check my fixed form</button></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- My dates -->
-  <section id="view-dates" class="view" hidden aria-labelledby="dates-h">
-    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
-    <h1 id="dates-h" tabindex="-1" data-i18n="dates_h">Your important dates</h1>
-    <p class="lede" data-i18n="dates_p"></p>
-    <div id="hearingCard" class="hearing" hidden aria-live="polite">
-      <div class="label"><span data-i18n="next_hearing">Your hearing</span><span id="hcFrom" class="from" hidden data-i18n="from_paper">From your paper</span></div>
-      <div class="big"><mark id="hcDate"></mark></div>
-      <div class="sub" id="hcSub"></div>
-    </div>
-
-    <h2 data-i18n="dates_hearing_h">Your court hearing</h2>
-    <div class="fields">
-      <div class="field"><label for="fHearing" data-i18n="f_hearing">Hearing date</label><input type="date" id="fHearing"></div>
-      <div class="field"><label for="fTime" data-i18n="f_time">Hearing time</label><input type="time" id="fTime"></div>
-      <div class="field"><label for="fPlace" data-i18n="f_place">Court and room</label><input type="text" id="fPlace" data-i18n-ph="f_place_ph"></div>
-    </div>
-    <details class="more" id="otherDates">
-      <summary data-i18n="dates_other_sum">Other dates (optional)</summary>
-      <div class="fields">
-        <div class="field"><label for="fNotice" data-i18n="f_notice">Date you got the landlord’s notice</label><input type="date" id="fNotice"></div>
-        <div class="field"><label for="fDays" data-i18n="f_notice_days">Days the notice gives you</label><input type="number" id="fDays" min="1" max="90" value="15" inputmode="numeric"></div>
-        <div class="field"><label for="fServed" data-i18n="f_served">Date you got the court papers</label><input type="date" id="fServed"></div>
-      </div>
-    </details>
-
-    <h2 data-i18n="rem_h">Reminders</h2>
-    <p class="small" data-i18n="rem_p"></p>
-    <div class="quick rem-chips" role="group"></div>
-
-    <div id="noDates"><p class="small" data-i18n="no_dates"></p><a class="btn primary" href="#papers" data-i18n="no_dates_cta">Add your paper</a></div>
-    <ol id="dateList" class="timeline"></ol>
-    <p class="small" data-i18n="cal_note"></p>
-    <div id="icsBox" hidden>
-      <div class="row"><button id="icsBtn" class="btn primary" type="button" data-i18n="save_ics">Add all to my calendar (.ics file)</button></div>
-      <p class="small" data-i18n="ics_note"></p>
-    </div>
-    <div class="row"><button id="saveDates" class="btn" type="button" hidden data-i18n="save_dates">Save my dates (text file)</button></div>
-
-    <h2 data-i18n="sms_h">Text or email reminders</h2>
-    <p class="small" data-i18n="sms_p"></p>
-    <div class="row">
-      <label for="smsTo" class="sr" data-i18n="sms_ph">Phone number or email</label>
-      <input type="text" id="smsTo" data-i18n-ph="sms_ph" style="max-width:20rem" autocomplete="off">
-      <button class="btn" id="smsBtn" type="button" data-i18n="sms_btn">Preview my reminders</button>
-    </div>
-    <ul id="smsList" class="preview"></ul>
-  </section>
-
-  <!-- Help: people first, then common questions -->
-  <section id="view-help" class="view" hidden aria-labelledby="help-h">
-    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
-    <h1 id="help-h" tabindex="-1" data-i18n="help_page_h">Help and answers</h1>
-    <h2 data-i18n="help_people_h">Talk to a real person</h2>
-    <p class="small" data-i18n="help_people_p"></p>
-    <ul class="plain-list helplist">
-      <li><a href="https://indianalegalhelp.org/" target="_blank" rel="noopener">Indiana Legal Help</a></li>
-      <li><a href="https://www.indianalegalservices.org/" target="_blank" rel="noopener">Indiana Legal Services</a></li>
-      <li data-i18n="help_211">Call 2-1-1 for local programs</li>
-      <li><a href="https://public.courts.in.gov/mycase/" target="_blank" rel="noopener" data-i18n="help_mycase">Look up your case on MyCase</a></li>
-    </ul>
-    <p class="support" data-support></p>
-    <h2 id="faq-h" data-i18n="faq_h">Common questions</h2>
-    <p class="lede" data-i18n="faq_p"></p>
-    <div id="faq"></div>
-    <ul class="plain-list helplist">
-      <li><a href="#papers" data-i18n="help_ask_link">Ask about your own paper</a></li>
-      <li><a href="#privacy" data-i18n="help_privacy_link">How we protect your privacy</a></li>
-    </ul>
-  </section>
-
-  <!-- Privacy -->
-  <section id="view-privacy" class="view" hidden aria-labelledby="privacy-h">
-    <a class="back-home" href="#help"><span aria-hidden="true">‹</span> <span data-i18n="nav_help">Help</span></a>
-    <h1 id="privacy-h" tabindex="-1" data-i18n="privacy_h">Your privacy</h1>
-    <h2 data-i18n="privacy_now_h">How this prototype handles your papers</h2>
-    <ul class="plain-list" id="privNow"></ul>
-    <div class="field" style="max-width:30rem">
-      <label for="extraNames" data-i18n="names_label">Extra names to hide</label>
-      <input type="text" id="extraNames" autocomplete="off">
-      <span class="small" data-i18n="names_hint"></span>
-    </div>
-    <h2 data-i18n="privacy_launch_h">What a real launch would need</h2>
-    <ul class="plain-list" id="privLaunch"></ul>
-    <div class="danger-zone">
-      <p data-i18n="clear_warn"></p>
-      <div class="row"><button class="btn danger" id="clearAll" type="button" data-i18n="clear_all">Clear everything</button></div>
-      <div id="clearConfirm" class="row" hidden role="alertdialog" aria-labelledby="clearSure">
-        <strong id="clearSure" data-i18n="clear_sure"></strong>
-        <button class="btn danger-solid" id="clearYes" type="button" data-i18n="clear_yes">Yes, clear everything</button>
-        <button class="btn" id="clearNo" type="button" data-i18n="clear_no">Cancel</button>
-      </div>
-    </div>
-    <p class="small" data-i18n="hide_note"></p>
-  </section>
+  <!-- include: /web/screens/privacy/view.html -->
 </main>
 
 <footer><p data-i18n="footer"></p><p data-support></p></footer>

@@ -1,0 +1,48 @@
+  <!-- My dates -->
+  <section id="view-dates" class="view" hidden aria-labelledby="dates-h">
+    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
+    <h1 id="dates-h" tabindex="-1" data-i18n="dates_h">Your important dates</h1>
+    <p class="lede" data-i18n="dates_p"></p>
+    <div id="hearingCard" class="hearing" hidden aria-live="polite">
+      <div class="label"><span data-i18n="next_hearing">Your hearing</span><span id="hcFrom" class="from" hidden data-i18n="from_paper">From your paper</span></div>
+      <div class="big"><mark id="hcDate"></mark></div>
+      <div class="sub" id="hcSub"></div>
+    </div>
+
+    <h2 data-i18n="dates_hearing_h">Your court hearing</h2>
+    <div class="fields">
+      <div class="field"><label for="fHearing" data-i18n="f_hearing">Hearing date</label><input type="date" id="fHearing"></div>
+      <div class="field"><label for="fTime" data-i18n="f_time">Hearing time</label><input type="time" id="fTime"></div>
+      <div class="field"><label for="fPlace" data-i18n="f_place">Court and room</label><input type="text" id="fPlace" data-i18n-ph="f_place_ph"></div>
+    </div>
+    <details class="more" id="otherDates">
+      <summary data-i18n="dates_other_sum">Other dates (optional)</summary>
+      <div class="fields">
+        <div class="field"><label for="fNotice" data-i18n="f_notice">Date you got the landlord’s notice</label><input type="date" id="fNotice"></div>
+        <div class="field"><label for="fDays" data-i18n="f_notice_days">Days the notice gives you</label><input type="number" id="fDays" min="1" max="90" value="15" inputmode="numeric"></div>
+        <div class="field"><label for="fServed" data-i18n="f_served">Date you got the court papers</label><input type="date" id="fServed"></div>
+      </div>
+    </details>
+
+    <h2 data-i18n="rem_h">Reminders</h2>
+    <p class="small" data-i18n="rem_p"></p>
+    <div class="quick rem-chips" role="group"></div>
+
+    <div id="noDates"><p class="small" data-i18n="no_dates"></p><a class="btn primary" href="#papers" data-i18n="no_dates_cta">Add your paper</a></div>
+    <ol id="dateList" class="timeline"></ol>
+    <p class="small" data-i18n="cal_note"></p>
+    <div id="icsBox" hidden>
+      <div class="row"><button id="icsBtn" class="btn primary" type="button" data-i18n="save_ics">Add all to my calendar (.ics file)</button></div>
+      <p class="small" data-i18n="ics_note"></p>
+    </div>
+    <div class="row"><button id="saveDates" class="btn" type="button" hidden data-i18n="save_dates">Save my dates (text file)</button></div>
+
+    <h2 data-i18n="sms_h">Text or email reminders</h2>
+    <p class="small" data-i18n="sms_p"></p>
+    <div class="row">
+      <label for="smsTo" class="sr" data-i18n="sms_ph">Phone number or email</label>
+      <input type="text" id="smsTo" data-i18n-ph="sms_ph" style="max-width:20rem" autocomplete="off">
+      <button class="btn" id="smsBtn" type="button" data-i18n="sms_btn">Preview my reminders</button>
+    </div>
+    <ul id="smsList" class="preview"></ul>
+  </section>
