@@ -3,7 +3,8 @@ import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import Anthropic from "@anthropic-ai/sdk";
 import { createApp } from "../server/http/app.js";
-import { createAi, parseJson, mapError } from "../server/anthropic.js";
+import { createAnthropicAi, mapError } from "../server/ai/adapters/anthropic.js";
+import { parseJson } from "../server/ai/json.js";
 import { validateTranslation } from "../server/translate.js";
 import { I18N } from "../shared/i18n/languages.js";
 import { FAQ } from "../shared/i18n/faq.js";
@@ -41,7 +42,7 @@ function fakeClient(script) {
 
 async function start({ script = () => ({ deltas: ["ok"] }), ai = true, config = {} } = {}) {
   const client = fakeClient(script);
-  const app = createApp({ ai: ai ? createAi({ client, model: "test-model", effort: "medium" }) : null, config: { log: false, ...config } });
+  const app = createApp({ ai: ai ? createAnthropicAi({ client, model: "test-model", effort: "medium" }) : null, config: { log: false, ...config } });
   const server = await new Promise((r) => { const s = app.listen(0, "127.0.0.1", () => r(s)); });
   open.add(server);
   const base = "http://127.0.0.1:" + server.address().port;
@@ -317,7 +318,7 @@ test("a client that disconnects cancels the upstream call", async () => {
       })
     }
   };
-  const app = createApp({ ai: createAi({ client, model: "m" }), config: { log: false } });
+  const app = createApp({ ai: createAnthropicAi({ client, model: "m" }), config: { log: false } });
   const server = await new Promise((r) => { const s = app.listen(0, "127.0.0.1", () => r(s)); });
   open.add(server);
   const ac = new AbortController();
@@ -331,8 +332,8 @@ test("a client that disconnects cancels the upstream call", async () => {
 });
 
 test("demo mode answers from the paper, labels every answer, and is announced to the page", async () => {
-  const { demoClient } = await import("../server/demo-client.js");
-  const app = createApp({ ai: createAi({ client: demoClient(), model: "demo" }), config: { log: false, demo: true } });
+  const { demoClient } = await import("../server/ai/adapters/demo-client.js");
+  const app = createApp({ ai: createAnthropicAi({ client: demoClient(), model: "demo" }), config: { log: false, demo: true } });
   const server = await new Promise((r) => { const x = app.listen(0, "127.0.0.1", () => r(x)); });
   open.add(server);
   const base = "http://127.0.0.1:" + server.address().port;

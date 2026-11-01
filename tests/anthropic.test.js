@@ -3,7 +3,7 @@ import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import Anthropic from "@anthropic-ai/sdk";
 import { createApp } from "../server/http/app.js";
-import { createAi } from "../server/anthropic.js";
+import { createAnthropicAi } from "../server/ai/adapters/anthropic.js";
 import { ApiError } from "../server/errors.js";
 import { protect } from "../shared/safety/protect.js";
 import { FORM_SAMPLE } from "../shared/sample-papers.js";
@@ -16,7 +16,7 @@ const throwsAtOnce = (err) => ({ messages: { stream() { throw err; } } });
 const betaThrowsAtOnce = (err) => ({ beta: { messages: { stream() { throw err; } } } });
 
 async function start(client, options = {}) {
-  const app = createApp({ ai: createAi({ client, model: "m", ...options }), config: { log: false } });
+  const app = createApp({ ai: createAnthropicAi({ client, model: "m", ...options }), config: { log: false } });
   const server = await new Promise((r) => { const s = app.listen(0, "127.0.0.1", () => r(s)); });
   open.add(server);
   const base = "http://127.0.0.1:" + server.address().port;
@@ -53,8 +53,8 @@ test("an Anthropic call that fails before any answer arrives still gets the code
 });
 
 test("the Anthropic adapter itself turns a call that fails at once into one of our errors", async () => {
-  const ai = createAi({ client: throwsAtOnce(Object.create(Anthropic.RateLimitError.prototype)), model: "m" });
+  const ai = createAnthropicAi({ client: throwsAtOnce(Object.create(Anthropic.RateLimitError.prototype)), model: "m" });
   await assert.rejects(ai.stream({ messages: [{ role: "user", content: "hi" }] }), (e) => e instanceof ApiError && e.code === "rate_limited" && e.status === 429 && !("text" in e));
-  const beta = createAi({ client: betaThrowsAtOnce(Object.create(Anthropic.AuthenticationError.prototype)), model: "m", fallback: true });
+  const beta = createAnthropicAi({ client: betaThrowsAtOnce(Object.create(Anthropic.AuthenticationError.prototype)), model: "m", fallback: true });
   await assert.rejects(beta.json({ messages: [{ role: "user", content: "hi" }] }), (e) => e instanceof ApiError && e.code === "unavailable" && e.status === 503);
 });

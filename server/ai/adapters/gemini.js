@@ -6,8 +6,8 @@
 //   config: systemInstruction, maxOutputTokens, responseMimeType, thinkingConfig.thinkingLevel, abortSignal
 //   each chunk: .text, .candidates[0].finishReason, .promptFeedback.blockReason, .usageMetadata
 import { ApiError as GeminiApiError } from "@google/genai";
-import { ApiError } from "./errors.js";
-import { parseJson } from "./json.js";
+import { ApiError } from "../../errors.js";
+import { parseJson } from "../json.js";
 
 // Why Gemini stopped for a safety reason: the answer was withheld.
 const WITHHELD = new Set(["SAFETY", "RECITATION", "BLOCKLIST", "PROHIBITED_CONTENT", "SPII", "LANGUAGE"]);
@@ -37,6 +37,7 @@ export function toContents(messages) {
   return out;
 }
 
+/** @returns {import("../port.js").Ai} */
 export function createGeminiAi({ client, model, thinkingLevel = "", maxOutputTokens = 32768 }) {
   async function stream({ system, messages, maxTokens = 16000, signal, onText, asJson = false }) {
     const config = { maxOutputTokens: Math.min(maxTokens, maxOutputTokens), abortSignal: signal };

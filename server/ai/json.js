@@ -1,4 +1,4 @@
-import { ApiError } from "./errors.js";
+import { ApiError } from "../errors.js";
 
 // Models sometimes wrap JSON in a code fence or add a sentence around it.
 export function parseJson(text) {

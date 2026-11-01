@@ -1,8 +1,7 @@
 // The only file that talks to the Anthropic API. The key never leaves the server.
 import Anthropic from "@anthropic-ai/sdk";
-import { ApiError } from "./errors.js";
-import { parseJson } from "./json.js";
-export { parseJson }; // kept here for older imports
+import { ApiError } from "../../errors.js";
+import { parseJson } from "../json.js";
 
 // Turns an SDK error into one of the codes the page already knows how to show.
 export function mapError(err, text) {
@@ -15,7 +14,8 @@ export function mapError(err, text) {
   return new ApiError("generic", 502, extra);
 }
 
-export function createAi({ client, model, effort = "medium", fallback = false }) {
+/** @returns {import("../port.js").Ai} */
+export function createAnthropicAi({ client, model, effort = "medium", fallback = false }) {
   async function stream({ system, messages, maxTokens = 16000, signal, onText }) {
     const base = { model, max_tokens: maxTokens, system, messages, output_config: { effort } };
     let text = "";

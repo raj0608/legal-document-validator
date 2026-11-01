@@ -7,8 +7,8 @@
 // everything else still works. `choose` only decides; `build` creates the connection.
 import { GoogleGenAI } from "@google/genai";
 import Anthropic from "@anthropic-ai/sdk";
-import { createAi } from "./anthropic.js";
-import { createGeminiAi } from "./gemini.js";
+import { createAnthropicAi } from "./adapters/anthropic.js";
+import { createGeminiAi } from "./adapters/gemini.js";
 
 export const DEFAULT_GEMINI_MODEL = "gemini-3.5-flash-lite"; // the current stable "basic" model, available on Google's free tier
 
@@ -33,7 +33,7 @@ export function build(env, pick = choose(env)) {
     });
   }
   if (pick.name === "anthropic") {
-    const ai = createAi({
+    const ai = createAnthropicAi({
       client: new Anthropic(),
       model: env.ANTHROPIC_MODEL || "claude-sonnet-5-5",
       effort: env.AI_EFFORT || "medium",

@@ -2,7 +2,7 @@
 // to people, without an API key or any cost. Nothing here calls a model: the "answers" are templates filled in
 // from the paper itself (its dates, its blank lines, the problems a clerk lists), and every one starts with [Demo].
 // The page shows a bar saying so. Translation is not faked: it reports a failure, like a real outage would.
-import { findDates } from "../shared/analysis/paper-dates.js";
+import { findDates } from "../../../shared/analysis/paper-dates.js";
 
 const long = (d) => new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }).format(d);
 
