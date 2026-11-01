@@ -75,7 +75,7 @@ Paper says: `Defendant: Kimi Sample, 123 Example Street… (260) 555-0147`
 | Folder | In plain words |
 |---|---|
 | `public/` | What people see: the page, its look, and one small program per screen. |
-| `shared/` | Code used by the page, the server **and** the tests, so they can’t disagree: the privacy shield, date math, court holidays, PDF reading, the map of screens, and **all the page text** (`i18n.js`). |
+| `shared/` | Code used by the page, the server **and** the tests, so they can’t disagree: the privacy shield, date math, court holidays, PDF reading, the map of screens, and **all the page text** (`i18n/`). |
 | `server/` | The server: the AI rules (`prompts.js`), the double-check (`checks.js`), the AI connections (`gemini.js`, `anthropic.js`, chosen by `provider.js`), and the demo (`demo-client.js`). |
 | `tests/` | about 100 automatic checks. `tests/fixtures/` has sample PDFs; `tests/fixtures/real/` has two real public court forms. |
 | `docs/` | This guide and the design write-up. |

@@ -1,7 +1,8 @@
 // The rules the AI follows live here, on the server, so they cannot be changed from the browser.
 // The wording of the rules is unchanged from the single-file prototype.
 import crypto from "node:crypto";
-import { LANG, I18N, FAQ } from "../shared/i18n.js";
+import { LANG, I18N } from "../shared/i18n/languages.js";
+import { FAQ } from "../shared/i18n/faq.js";
 
 export function baseRules(langCode) {
   return [

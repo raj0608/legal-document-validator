@@ -1,8 +1,10 @@
 // "My dates": the timeline, Google Calendar links, the reminder preview and the saved text file.
 import { $, el, t, state, locale, fmtDate, fmtShort, fmtTime, toast } from "./core.js";
 import { renderNext } from "./home.js";
-import { REMS, computeDates, eventStart, remindersFor, dayDiff, fromISO, ymd, hm, addDays, toISO } from "/shared/dates.js";
-import { buildIcs } from "/shared/ics.js";
+import { REMS, eventStart, remindersFor } from "/shared/dates/reminders.js";
+import { computeDates } from "/shared/dates/case-dates.js";
+import { dayDiff, fromISO, ymd, hm, addDays, toISO } from "/shared/dates/date-math.js";
+import { buildIcs } from "/shared/dates/ics.js";
 
 function gcal(title, start, end, allDay, details, place) {
   const dates = allDay ? ymd(start) + "/" + ymd(addDays(start, 1)) : ymd(start) + "T" + hm(start) + "/" + ymd(end) + "T" + hm(end);

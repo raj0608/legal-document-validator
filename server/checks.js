@@ -1,8 +1,9 @@
 // What the server checks on every request before anything goes to the AI.
 // The browser already hid private details and removed instruction-like text. This is the second line:
 // it never trusts the browser, and it fails closed.
-import { LANG } from "../shared/i18n.js";
-import { sanitize, findResidualPii } from "../shared/safety.js";
+import { LANG } from "../shared/i18n/languages.js";
+import { sanitize } from "../shared/safety/injection-filter.js";
+import { findResidualPii } from "../shared/safety/protect.js";
 import { ApiError, bad } from "./errors.js";
 
 export const LIMITS = { doc: 45000, question: 2000, answer: 12000, turns: 10 };

@@ -1,8 +1,10 @@
 // "My papers": the plain-words explanation, dates and laws found in the paper, and the chat.
 import { $, el, t, state, fmtDate, fmtTime, toast, answerHtml } from "./core.js";
-import { findDates, findCites } from "/shared/analysis.js";
-import { toISO, dayDiff } from "/shared/dates.js";
-import { looksLikeInjection, unredact, redactText, createTokenState } from "/shared/safety.js";
+import { findDates } from "/shared/analysis/paper-dates.js";
+import { findCites } from "/shared/analysis/citations.js";
+import { toISO, dayDiff } from "/shared/dates/date-math.js";
+import { looksLikeInjection } from "/shared/safety/injection-filter.js";
+import { unredact, redactText, createTokenState } from "/shared/safety/redaction.js";
 import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag, addDateFlag } from "./ai.js";
 import * as api from "./api-client.js";
 import { registerSlot, currentExtraNames } from "./docs.js";

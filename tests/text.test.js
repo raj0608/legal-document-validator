@@ -1,8 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { markDates, datesIn, unsupportedDates } from "../shared/text.js";
-import { allowedDates } from "../shared/analysis.js";
-import { SAMPLE, CLERK_SAMPLE } from "../shared/samples.js";
+import { markDates, datesIn, unsupportedDates, allowedDates } from "../shared/answer-dates.js";
+import { SAMPLE, CLERK_SAMPLE } from "../shared/sample-papers.js";
 
 test("a date the AI forgot to highlight is highlighted, with the right weekday added", () => {
   assert.equal(markDates("The hearing is on November 24, 2026 at 9:00 a.m."), "The hearing is on ==Tuesday, November 24, 2026== at 9:00 a.m.");

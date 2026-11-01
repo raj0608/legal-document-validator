@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { protect, sanitize, redact, redactText, createTokenState, unredact, looksLikeInjection, findResidualPii, parseExtraNames, luhn } from "../shared/safety.js";
+import { protect, findResidualPii } from "../shared/safety/protect.js";
+import { sanitize, looksLikeInjection } from "../shared/safety/injection-filter.js";
+import { redact, redactText, createTokenState, unredact, parseExtraNames, luhn } from "../shared/safety/redaction.js";
 import * as C from "./golden/cases.js";
 
 test("every sample paper restores exactly on screen", () => {

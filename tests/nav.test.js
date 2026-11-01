@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseRoute, hashFor, guard, menuItemFor, MENU, VIEWS, PAPER_STEPS } from "../shared/nav.js";
+import { parseRoute, hashFor, guard, menuItemFor, MENU, VIEWS, PAPER_STEPS } from "../shared/screen-map.js";
 
 test("addresses parse to a screen, and an empty or unknown one goes Home", () => {
   assert.deepEqual(parseRoute(""), { view: "home" });

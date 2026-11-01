@@ -1,6 +1,6 @@
 // Language picker. English and Spanish are built in; the others are machine-translated by the server.
 import { $, el, t, state, TR, toast } from "./core.js";
-import { LANGS, I18N } from "/shared/i18n.js";
+import { LANGS, I18N } from "/shared/i18n/languages.js";
 import { ai, PERMANENT, disableAi } from "./ai.js";
 import * as api from "./api-client.js";
 

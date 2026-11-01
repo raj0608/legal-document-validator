@@ -3,9 +3,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { protect } from "../shared/safety.js";
-import { findDates, findCites, formType, checkForm, findDeadline } from "../shared/analysis.js";
-import { toISO } from "../shared/dates.js";
+import { protect } from "../shared/safety/protect.js";
+import { findDates } from "../shared/analysis/paper-dates.js";
+import { findCites } from "../shared/analysis/citations.js";
+import { formType, checkForm } from "../shared/analysis/form-checklist.js";
+import { findDeadline } from "../shared/analysis/fix-by-date.js";
+import { toISO } from "../shared/dates/date-math.js";
 import * as C from "./golden/cases.js";
 
 const golden = JSON.parse(fs.readFileSync(new URL("./golden/original.json", import.meta.url), "utf8"));

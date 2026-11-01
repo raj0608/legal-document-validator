@@ -1,6 +1,7 @@
 // Machine translation of the page's own text. No user text is involved, so nothing private can be in it,
 // and the result is the same for everyone: it is cached in memory per language for the life of the process.
-import { I18N, FAQ } from "../shared/i18n.js";
+import { I18N } from "../shared/i18n/languages.js";
+import { FAQ } from "../shared/i18n/faq.js";
 import { ApiError } from "./errors.js";
 import { translationPrompts } from "./prompts.js";
 

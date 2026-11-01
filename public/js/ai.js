@@ -1,8 +1,7 @@
 // Whether the AI helper is available, and how its errors and replies are shown.
 import { $, el, t } from "./core.js";
-import { looksLikeAdvice } from "/shared/safety.js";
-import { unsupportedDates } from "/shared/text.js";
-import { allowedDates } from "/shared/analysis.js";
+import { looksLikeAdvice } from "/shared/safety/advice.js";
+import { unsupportedDates, allowedDates } from "/shared/answer-dates.js";
 import * as api from "./api-client.js";
 
 export const ai = { on: false, demo: false };

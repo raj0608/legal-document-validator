@@ -68,7 +68,7 @@ Steps 2 to 4 need a paper. If someone arrives without one (a reload, or Back aft
 
 ## What we built
 
-- `shared/nav.js`: the map above as code (pure, tested).
+- `shared/screen-map.js`: the map above as code (pure, tested).
 - `public/js/nav.js`: screens, steps, focus, titles. `public/js/home.js`: the next-date card and strip.
 - Phone layout: bottom menu, compact top, **Hide this page** stays on screen in the corner.
 - `tests/ui-structure.test.js`: every id, link and line of text the page needs exists in English and Spanish; one heading per screen; a way back on every screen; no advice words in page text.

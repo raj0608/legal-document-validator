@@ -1,7 +1,7 @@
 // Shared page state and small helpers. State lives in memory only: nothing is written to storage.
-import { LANG, I18N } from "/shared/i18n.js";
-import { unredact } from "/shared/safety.js";
-import { markDates } from "/shared/text.js";
+import { LANG, I18N } from "/shared/i18n/languages.js";
+import { unredact } from "/shared/safety/redaction.js";
+import { markDates } from "/shared/answer-dates.js";
 
 export const state = {
   lang: "en",

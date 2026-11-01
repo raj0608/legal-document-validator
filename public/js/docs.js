@@ -1,7 +1,8 @@
 // Loading a paper (PDF, pasted text or a sample), protecting it, and showing the privacy summary.
 // The same loader serves three slots: papers, form and clerk.
 import { $, el, t, state, locale } from "./core.js";
-import { protect, parseExtraNames } from "/shared/safety.js";
+import { protect } from "/shared/safety/protect.js";
+import { parseExtraNames } from "/shared/safety/redaction.js";
 import { extractPdfText } from "/shared/pdf-text.js";
 
 const hooks = {};

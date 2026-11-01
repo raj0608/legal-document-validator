@@ -1,7 +1,7 @@
 // The "next date" reminders: a card on Home and a thin strip at the top of the other screens.
 // The person should never have to open a screen to remember when they need to be in court.
 import { $, t, state, fmtDate, fmtShort, fmtTime } from "./core.js";
-import { fromISO, dayDiff } from "/shared/dates.js";
+import { fromISO, dayDiff } from "/shared/dates/date-math.js";
 
 const countdown = (diff) => (diff > 1 ? t("in_days", { n: diff }) : diff === 1 ? t("in_day") : t("is_today"));
 

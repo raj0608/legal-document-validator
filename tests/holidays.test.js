@@ -1,8 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { holidaysForYear, holidayOn, isCourtDay, addCourtDays, nextCourtDay, previousCourtDay, holidaysBetween, COUNTED_IDS, UNCOUNTED_IDS } from "../shared/holidays.js";
-import { toISO, fromISO } from "../shared/dates.js";
+import { holidaysForYear, holidayOn, isCourtDay, addCourtDays, nextCourtDay, previousCourtDay, holidaysBetween, COUNTED_IDS, UNCOUNTED_IDS } from "../shared/dates/holidays.js";
+import { toISO, fromISO } from "../shared/dates/date-math.js";
 
 const published = JSON.parse(fs.readFileSync(new URL("./fixtures/court-holidays-published.json", import.meta.url), "utf8"));
 const d = fromISO;

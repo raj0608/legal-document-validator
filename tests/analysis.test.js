@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { formType, checkForm } from "../shared/analysis.js";
+import { formType, checkForm } from "../shared/analysis/form-checklist.js";
 
 const status = (text, lbl) => checkForm(text, { hearingDays: null }).find((c) => c.lbl === lbl).st;
 const pad = "line\n".repeat(8);

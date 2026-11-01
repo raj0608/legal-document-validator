@@ -1,33 +1,3 @@
-// Deterministic protection that runs before any AI call: invisible-character removal, removal of
-// text that looks like instructions to an AI, and replacement of private details with tokens like
-// [NAME_1]. Tokens are restored only on screen. Pure functions, no DOM, so the same code runs in the
-// browser, in the server's second check, and in the tests.
-
-export const DOC_CAP = 30000;
-
-// ---------- Injection filter ----------
-export const INVISIBLE = /[​-‏‪-‮⁠-⁤﻿­]/g;
-export const INJ = [
-  /\b(ignore|disregard|forget|override|bypass)\b[^\n]{0,60}\b(instructions?|rules?|prompts?|guidelines|polic(?:y|ies)|above|previous|prior|system)\b/i,
-  /\b(you are now|act as|pretend (?:to be|you are)|roleplay as|new instructions|system prompt|developer mode|jailbreak|do anything now)\b/i,
-  /<\/?\s*(system|assistant|user|instructions?|prompt)\s*>/i,
-  /^\s*(system|assistant|developer)\s*:/i,
-  /\b(note|message|instructions?)\s+(to|for)\s+(the\s+)?(ai|assistant|model|chatbot|llm)s?\b/i,
-  /\b(tell|advise|recommend|instruct)\s+(the\s+)?(user|tenant|reader|person)\s+(to|that)\b/i
-];
-export const INJ_LINE = "[Removed: text that looked like instructions to an AI]";
-export function looksLikeInjection(s) { return INJ.some((r) => r.test(s.replace(INVISIBLE, ""))); }
-export function sanitize(text) {
-  let removed = 0;
-  const lines = text.replace(INVISIBLE, "").split("\n").map((line) => {
-    if (!looksLikeInjection(line)) return line;
-    if (/^\s*(system|assistant|developer)\s*:/i.test(line.replace(INVISIBLE, ""))) { removed++; return INJ_LINE; }
-    const parts = line.split(/(?<=[.!?])\s+/);
-    return parts.map((p) => { if (looksLikeInjection(p)) { removed++; return INJ_LINE; } return p; }).join(" ");
-  });
-  return { text: lines.join("\n"), removed };
-}
-
 // ---------- Redaction ----------
 const STREET = "(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr|Lane|Ln|Court|Ct|Way|Place|Pl|Circle|Cir|Parkway|Pkwy|Terrace|Ter|Highway|Hwy|Trail|Trl)";
 export const ADDR_RE = new RegExp("\\b\\d{1,6}\\s+(?:[A-Za-z0-9.'-]+\\s+){0,4}" + STREET + "\\b\\.?(?:,?\\s*(?:Apt|Apartment|Unit|Suite|Ste|Lot|#)\\.?\\s*#?[\\w-]+)?", "g");
@@ -143,44 +113,3 @@ export function unredact(s, back) {
   if (!back) return s;
   return s.replace(new RegExp("\\[(?:" + TOKEN_TYPES + ")_\\d+\\]", "g"), (m) => (back[m] !== undefined ? back[m] : m));
 }
-
-// Build what is sent: injection filter first, then redaction.
-export function protect(raw, opts = {}) {
-  const clean = raw.replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
-  const capped = clean.slice(0, DOC_CAP);
-  const san = sanitize(capped);
-  const red = redact(san.text, opts);
-  return { raw: capped, truncated: clean.length > DOC_CAP, safe: red.text, back: red.back, counts: red.counts, removed: san.removed, tokens: red.tokens };
-}
-
-// Used by the server as a second check: structured identifiers that should already be tokens.
-// Names and ZIP codes are heuristic, so they are not treated as proof that redaction failed.
-export function findResidualPii(text) {
-  return Object.keys(redact(text).counts).filter((k) => k !== "NAME" && k !== "ZIP");
-}
-
-// ---------- "Should/must" detector for model replies ----------
-// The detector below is lexical, so it also fires on the sentence the rules REQUIRE when someone asks for advice
-// ("I can't advise you on what you should do") and on a reply that says the paper does not state "whether you should…".
-// Warning someone about the very reply that refuses to advise them is confusing and teaches them to ignore the warning.
-// So these exact constructions, and only these, are set aside before testing. Anything else in the sentence still counts:
-// "I can't advise you on what you should do, but you should file a motion" is still flagged (by the second "you should").
-const REFUSALS = [
-  /\b(?:can(?:not|['’]t)|can not|am unable to|am not able to)\s+(?:advise|tell|say)(?:\s+you)?\s+(?:on\s+|about\s+)?(?:what|whether|if)\s+you\s+(?:should|must|need to)(?:\s+do)?\b/gi,
-  /\b(?:do|does|did)(?:n['’]t|\s+not)\s+(?:say|state|tell|specify|address|explain|mention)\s+(?:what|whether|if)\s+you\s+(?:should|must|need to)\b/gi,
-  /\bno puedo\s+(?:aconsejar|asesorar|decir)(?:le|te)?\s+(?:sobre\s+)?(?:qu[eé]|lo que|si)\s+(?:usted\s+)?(?:deber[ií]a(?:s|n)?|debe(?:s|n)?)(?:\s+hacer)?/gi,
-  /\bno\s+(?:dice|dicen|indica|indican|establece|establecen|especifica|especifican)\s+(?:qu[eé]|lo que|si)\s+(?:usted\s+)?(?:deber[ií]a(?:s|n)?|debe(?:s|n)?)/gi
-];
-export function looksLikeAdvice(text) {
-  let s = String(text);
-  for (const re of REFUSALS) s = s.replace(re, " ");
-  return ADVICE.test(s);
-}
-
-export const ADVICE = new RegExp([
-  "\\b(you should|you shouldn['’]t|you must|you need to|i recommend|i suggest|i advise|my advice)\\b",
-  "deber[ií]a(?:s|n)?\\b|le recomiendo|te recomiendo|le sugiero|le aconsejo",
-  "vous devriez|je vous recommande|você deveria|você deve|recomendo que|sie sollten|ich empfehle|dovresti|dovrebbe|ti consiglio",
-  "bạn nên|你应该|您应该|你應該|您應該|建议您|建議您|해야 합니다|하셔야|추천합니다|вам следует|вы должны|рекомендую",
-  "ou ta dwe|ou dwe|आपको चाहिए|सलाह देता|powinien|powinna|powinieneś|べきです|することをお勧め|يجب عليك|ينبغي|أنصحك|باید|آپ کو چاہیے"
-].join("|"), "i");

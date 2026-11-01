@@ -4,9 +4,12 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { extractPdfText } from "../shared/pdf-text.js";
-import { protect, findResidualPii } from "../shared/safety.js";
-import { findDates, findCites, checkForm, findDeadline, formType } from "../shared/analysis.js";
-import { toISO } from "../shared/dates.js";
+import { protect, findResidualPii } from "../shared/safety/protect.js";
+import { findDates } from "../shared/analysis/paper-dates.js";
+import { findCites } from "../shared/analysis/citations.js";
+import { checkForm, formType } from "../shared/analysis/form-checklist.js";
+import { findDeadline } from "../shared/analysis/fix-by-date.js";
+import { toISO } from "../shared/dates/date-math.js";
 
 const lib = await import("pdfjs-dist/legacy/build/pdf.mjs"); // the Node-compatible build of the same pdf.js the page loads
 const read = (name) => new Uint8Array(fs.readFileSync(new URL("./fixtures/" + name, import.meta.url)));
@@ -110,7 +113,7 @@ test("a password-protected PDF and an unreadable file give distinct errors", asy
   await assert.rejects(extractPdfText(xfa, new Uint8Array(1)), { code: "xfa" });
 });
 
-// Pinned copies of two public forms (downloaded 2026-10-30 from the sources listed in shared/i18n.js: SRC.allen, SRC.cont).
+// Pinned copies of two public forms (downloaded 2026-10-30 from the sources listed in shared/i18n/sources.js: SRC.allen, SRC.cont).
 test("Allen County Notice of Eviction Claim (a printable form, no fillable fields)", async () => {
   const r = await extract("real/allen-notice-of-eviction-claim-1-25.pdf");
   assert.equal(r.pages, 2); assert.equal(r.fields, 0);

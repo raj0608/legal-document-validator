@@ -5,7 +5,7 @@ import zlib from "node:zlib";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-import { SAMPLE, CLERK_SAMPLE } from "../../shared/samples.js";
+import { SAMPLE, CLERK_SAMPLE } from "../../shared/sample-papers.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const out = (name, bytes) => { fs.writeFileSync(path.join(here, name), bytes); console.log(name, bytes.length + " bytes"); };

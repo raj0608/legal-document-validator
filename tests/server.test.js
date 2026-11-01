@@ -5,9 +5,10 @@ import Anthropic from "@anthropic-ai/sdk";
 import { createApp } from "../server/app.js";
 import { createAi, parseJson, mapError } from "../server/anthropic.js";
 import { validateTranslation } from "../server/translate.js";
-import { I18N, FAQ } from "../shared/i18n.js";
-import { protect } from "../shared/safety.js";
-import { SAMPLE, CLERK_SAMPLE, FORM_SAMPLE } from "../shared/samples.js";
+import { I18N } from "../shared/i18n/languages.js";
+import { FAQ } from "../shared/i18n/faq.js";
+import { protect } from "../shared/safety/protect.js";
+import { SAMPLE, CLERK_SAMPLE, FORM_SAMPLE } from "../shared/sample-papers.js";
 import { docBlock } from "../server/prompts.js";
 
 const open = new Set();
@@ -278,7 +279,7 @@ test("the page and shared modules are served, with security headers", async () =
   assert.match(csp, /connect-src 'self'/);
   assert.doesNotMatch(csp, /https?:\/\//, "no third-party hosts are allowed");
   assert.equal(home.headers.get("x-powered-by"), null);
-  assert.equal((await s.get("/shared/safety.js")).status, 200);
+  assert.equal((await s.get("/shared/safety/protect.js")).status, 200);
   // pdf.js and the font are served from this site, so the page makes no request to any other host
   const html = await (await s.get("/")).text();
   assert.doesNotMatch(html, /<(?:link|script|img|iframe)\b[^>]*(?:href|src)="(?:https?:)?\/\//i, "scripts, styles and fonts are never loaded from another host");

@@ -1,4 +1,7 @@
 // Small helpers for showing the AI's words. Pure functions, no DOM.
+import { FAQ } from "./i18n/faq.js";
+import { findDates } from "./analysis/paper-dates.js";
+import { toISO } from "./dates/date-math.js";
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -43,4 +46,10 @@ export function unsupportedDates(answer, allowedIso) {
   const seen = new Set(), out = [];
   for (const d of datesIn(answer)) if (!allowedIso.has(d.iso) && !seen.has(d.iso)) { seen.add(d.iso); out.push(d.text); }
   return out;
+}
+
+// Dates an answer may mention: the ones written in the paper, and the ones in our own FAQ sources (such as July 1, 2025).
+const FAQ_DATES = FAQ.flatMap((f) => findDates(f.a.en).map((d) => toISO(d.date)));
+export function allowedDates(paperText) {
+  return new Set([...(paperText ? findDates(paperText).map((d) => toISO(d.date)) : []), ...FAQ_DATES]);
 }

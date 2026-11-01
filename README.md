@@ -154,7 +154,7 @@ Known side effect: a court’s own street address (for example the Allen Superio
 
 ## Calendar file and checklist boxes
 
-**My dates → “Add all to my calendar (.ics file)”** makes one file with every upcoming date and the reminders the person chose as built-in alarms (`shared/ics.js`). It is made in the browser and works with iPhone, Google, Outlook and desktop calendars. Times are “floating” (9:00 means 9:00 on the phone that opens it) and alarms are relative to the start, which every calendar app understands. The Google Calendar links are still there.
+**My dates → “Add all to my calendar (.ics file)”** makes one file with every upcoming date and the reminders the person chose as built-in alarms (`shared/dates/ics.js`). It is made in the browser and works with iPhone, Google, Outlook and desktop calendars. Times are “floating” (9:00 means 9:00 on the phone that opens it) and alarms are relative to the start, which every calendar app understands. The Google Calendar links are still there.
 
 **Checklist boxes:** an unchecked `[ ]` counts as a blank unless it is in a group of boxes (on neighbouring lines) where another box is checked, because then the person has already chosen.
 
@@ -167,9 +167,9 @@ Business-day counts (the clerk’s “three business days”, Trial Rule 88) ski
 
 Sources (read 2026-10-30): [Trial Rule 6(A)](https://rules.incourts.gov/Content/trial/rule6/current.htm) (legal holidays “as defined by state statute”), [Trial Rule 88](https://rules.incourts.gov/Content/trial/rule88/current.htm) (says “business days”, defines nothing), IC 1-1-9-1 (the holidays and the Saturday/Sunday rule), and the courts’ [state holidays page](https://secure.in.gov/courts/holidays) (dates for 2026 and 2027).
 
-`shared/holidays.js` works out the dates from the statute’s rules, so any year works with no yearly update. For 2026 and 2027 a test checks it against the court’s published list (`tests/fixtures/court-holidays-published.json`).
+`shared/dates/holidays.js` works out the dates from the statute’s rules, so any year works with no yearly update. For 2026 and 2027 a test checks it against the court’s published list (`tests/fixtures/court-holidays-published.json`).
 
-**Decision for the court:** the statute and the court’s list disagree on two holidays. Lincoln’s Birthday is Feb 12 in the statute but the Friday after Thanksgiving on the court’s list; Washington’s Birthday is the third Monday in February in the statute but Dec 24 (2026) on the court’s list. The code counts neither, because counting a day that is not a holiday would make a deadline later than it really is. It counts the twelve holidays both sources agree on. If the court says which dates are right, flip `counted` in `shared/holidays.js`. The courts’ page also says county clerk’s offices may keep different holidays, so the page still tells people to check with the clerk.
+**Decision for the court:** the statute and the court’s list disagree on two holidays. Lincoln’s Birthday is Feb 12 in the statute but the Friday after Thanksgiving on the court’s list; Washington’s Birthday is the third Monday in February in the statute but Dec 24 (2026) on the court’s list. The code counts neither, because counting a day that is not a holiday would make a deadline later than it really is. It counts the twelve holidays both sources agree on. If the court says which dates are right, flip `counted` in `shared/dates/holidays.js`. The courts’ page also says county clerk’s offices may keep different holidays, so the page still tells people to check with the clerk.
 
 ## Live testing with Gemini (2026-10-31)
 

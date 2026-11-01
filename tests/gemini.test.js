@@ -6,8 +6,8 @@ import { createGeminiAi, mapGeminiError, toContents } from "../server/gemini.js"
 import { choose, build, DEFAULT_GEMINI_MODEL } from "../server/provider.js";
 import { createApp } from "../server/app.js";
 import { ApiError } from "../server/errors.js";
-import { protect } from "../shared/safety.js";
-import { SAMPLE, FORM_SAMPLE } from "../shared/samples.js";
+import { protect } from "../shared/safety/protect.js";
+import { SAMPLE, FORM_SAMPLE } from "../shared/sample-papers.js";
 
 // script(params) -> { chunks: [chunk | "ERR"], error }
 function fakeGemini(script) {

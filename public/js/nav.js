@@ -1,7 +1,7 @@
 // Moving around: which screen is showing, the four-step "My papers" path, and where keyboard focus goes.
-// The addresses are plain links (see shared/nav.js), so the phone's Back button always works.
+// The addresses are plain links (see shared/screen-map.js), so the phone's Back button always works.
 import { $, el, t, state } from "./core.js";
-import { parseRoute, hashFor, guard, menuItemFor, VIEWS, PAPER_STEPS } from "/shared/nav.js";
+import { parseRoute, hashFor, guard, menuItemFor, VIEWS, PAPER_STEPS } from "/shared/screen-map.js";
 import { setMode } from "./check-view.js";
 import { renderNext } from "./home.js";
 

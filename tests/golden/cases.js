@@ -1,7 +1,7 @@
 // Inputs for the golden-output tests. The golden JSON files next to this one were generated
 // from the ORIGINAL single-file code (legacy/ready-for-court.original.html), so any difference
 // the new modules produce is a deliberate behavior change that has to be reviewed.
-import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "../../shared/samples.js";
+import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "../../shared/sample-papers.js";
 
 export const FILLED_FORM = `STATE OF INDIANA, COUNTY OF ALLEN
 IN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION

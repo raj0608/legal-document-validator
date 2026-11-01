@@ -1,7 +1,7 @@
 // Let’s Get Ready for Court: page start-up, routing, language text, and the clear / hide / text-size controls.
 import { $, t, state, TR, renderSupport, toast } from "./core.js";
-import { LANG } from "/shared/i18n.js";
-import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "/shared/samples.js";
+import { LANG } from "/shared/i18n/languages.js";
+import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "/shared/sample-papers.js";
 import { initAi } from "./ai.js";
 import { makeLoader, removeDoc, renderDoc } from "./docs.js";
 import { renderDates, renderRemChips, initDates } from "./dates-view.js";
