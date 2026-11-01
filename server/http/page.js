@@ -2,16 +2,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import { root } from "./repo-root.js";
+import { modulesImportedBy } from "./module-preload.js";
 
 const INCLUDE = /^[ \t]*<!-- include: (\S+) -->[ \t]*\r?$/gm;
+const PRELOAD = /^[ \t]*<!-- modulepreload: (\S+) -->[ \t]*\r?$/gm;
 
 export function buildPage(url = "/web/index.html") {
   const html = fs.readFileSync(path.join(root, url), "utf8");
   const page = html.replace(INCLUDE, (line, part) => {
     if (!fs.existsSync(path.join(root, part))) throw new Error(url + " includes " + part + ", which does not exist");
     return buildPage(part).replace(/\r?\n$/, "");
-  });
-  if (page.includes("<!-- include:")) throw new Error(url + ": an include line must hold nothing else");
+  }).replace(PRELOAD, (line, entry) => modulesImportedBy(entry).map((m) => '<link rel="modulepreload" href="' + m + '">').join("\n"));
+  if (page.includes("<!-- include:") || page.includes("<!-- modulepreload:")) throw new Error(url + ": an include or modulepreload line must hold nothing else");
   return page;
 }
 
