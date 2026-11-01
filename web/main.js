@@ -14,7 +14,9 @@ import { renderDates, renderRemChips, initDates } from "/web/screens/dates/scree
 import { registerPapersSlot, initPapers } from "/web/screens/papers/screen.js";
 import { renderFound } from "/web/screens/papers/components/found-in-paper.js";
 import { renderQuick, abortChat } from "/web/screens/papers/components/chat.js";
-import { renderChecks, renderCure, initCheck } from "/web/screens/check/screen.js";
+import { registerCheckSlots, initCheck } from "/web/screens/check/screen.js";
+import { renderChecks } from "/web/screens/check/components/form-checklist.js";
+import { renderCure } from "/web/screens/check/components/fix-by-date.js";
 import { renderFaq } from "/web/screens/help/screen.js";
 import { renderPrivacy, initPrivacy } from "/web/screens/privacy/screen.js";
 import { initClearEverything } from "/web/screens/privacy/components/clear-everything.js";
@@ -51,6 +53,7 @@ function clearAll() {
 }
 
 // ---------- Start ----------
+registerCheckSlots();
 registerPapersSlot();
 initClearEverything(clearAll);
 initPageControls(clearAll);
