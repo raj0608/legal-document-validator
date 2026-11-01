@@ -2,7 +2,7 @@
 import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import Anthropic from "@anthropic-ai/sdk";
-import { createApp } from "../server/app.js";
+import { createApp } from "../server/http/app.js";
 import { createAi, parseJson, mapError } from "../server/anthropic.js";
 import { validateTranslation } from "../server/translate.js";
 import { I18N } from "../shared/i18n/languages.js";

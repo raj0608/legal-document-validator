@@ -1,5 +1,5 @@
 // `npm run demo`: the real site with sample answers instead of the AI. No key, no cost. See demo-client.js.
-import { createApp } from "./app.js";
+import { createApp } from "./http/app.js";
 import { createAi } from "./anthropic.js";
 import { demoClient } from "./demo-client.js";
 
