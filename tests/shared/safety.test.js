@@ -1,9 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { protect, findResidualPii } from "../shared/safety/protect.js";
-import { sanitize, looksLikeInjection } from "../shared/safety/injection-filter.js";
-import { redact, redactText, createTokenState, unredact, parseExtraNames, luhn } from "../shared/safety/redaction.js";
-import * as C from "./golden/cases.js";
+import { protect, findResidualPii } from "../../shared/safety/protect.js";
+import { sanitize, looksLikeInjection } from "../../shared/safety/injection-filter.js";
+import { redact, redactText, createTokenState, unredact, parseExtraNames, luhn } from "../../shared/safety/redaction.js";
+import * as C from "../golden/cases.js";
 
 test("every sample paper restores exactly on screen", () => {
   for (const [name, raw] of Object.entries(C.SAFETY_CASES)) {

@@ -194,4 +194,4 @@ Checked and fine: streaming, a 29k paper (about 1.5 s), Arabic, Burmese, Amharic
 
 ## Known gaps
 
-See `test.todo` in `tests/advice.test.js`: the should/must detector has no patterns for Tagalog, Somali, Burmese, Bengali, Gujarati, Punjabi, Nepali or Amharic, and only catches second-person phrasing in English. A deadline given in hours (“within 72 hours”) is still counted in calendar days. Also not done yet: OCR, citation lookup, real text/email reminders, human review of translations.
+See `test.todo` in `tests/shared/advice.test.js`: the should/must detector has no patterns for Tagalog, Somali, Burmese, Bengali, Gujarati, Punjabi, Nepali or Amharic, and only catches second-person phrasing in English. A deadline given in hours (“within 72 hours”) is still counted in calendar days. Also not done yet: OCR, citation lookup, real text/email reminders, human review of translations.

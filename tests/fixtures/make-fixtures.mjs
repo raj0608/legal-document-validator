@@ -1,4 +1,4 @@
-// Builds the PDF fixtures used by tests/pdf.test.js. Run: node tests/fixtures/make-fixtures.mjs
+// Builds the PDF fixtures used by tests/shared/pdf-text.test.js. Run: node tests/fixtures/make-fixtures.mjs
 // All content is fictional. The PDFs are committed, so this only needs re-running to change them.
 import fs from "node:fs";
 import zlib from "node:zlib";

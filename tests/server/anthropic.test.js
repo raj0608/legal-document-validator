@@ -2,11 +2,11 @@
 import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import Anthropic from "@anthropic-ai/sdk";
-import { createApp } from "../server/http/app.js";
-import { createAnthropicAi } from "../server/ai/adapters/anthropic.js";
-import { ApiError } from "../server/errors.js";
-import { protect } from "../shared/safety/protect.js";
-import { FORM_SAMPLE } from "../shared/sample-papers.js";
+import { createApp } from "../../server/http/app.js";
+import { createAnthropicAi } from "../../server/ai/adapters/anthropic.js";
+import { ApiError } from "../../server/errors.js";
+import { protect } from "../../shared/safety/protect.js";
+import { FORM_SAMPLE } from "../../shared/sample-papers.js";
 
 const open = new Set();
 const shutdown = (server) => new Promise((r) => { open.delete(server); server.closeAllConnections(); server.close(() => r()); });

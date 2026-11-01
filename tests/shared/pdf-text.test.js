@@ -3,16 +3,16 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { extractPdfText } from "../shared/pdf-text.js";
-import { protect, findResidualPii } from "../shared/safety/protect.js";
-import { findDates } from "../shared/analysis/paper-dates.js";
-import { findCites } from "../shared/analysis/citations.js";
-import { checkForm, formType } from "../shared/analysis/form-checklist.js";
-import { findDeadline } from "../shared/analysis/fix-by-date.js";
-import { toISO } from "../shared/dates/date-math.js";
+import { extractPdfText } from "../../shared/pdf-text.js";
+import { protect, findResidualPii } from "../../shared/safety/protect.js";
+import { findDates } from "../../shared/analysis/paper-dates.js";
+import { findCites } from "../../shared/analysis/citations.js";
+import { checkForm, formType } from "../../shared/analysis/form-checklist.js";
+import { findDeadline } from "../../shared/analysis/fix-by-date.js";
+import { toISO } from "../../shared/dates/date-math.js";
 
 const lib = await import("pdfjs-dist/legacy/build/pdf.mjs"); // the Node-compatible build of the same pdf.js the page loads
-const read = (name) => new Uint8Array(fs.readFileSync(new URL("./fixtures/" + name, import.meta.url)));
+const read = (name) => new Uint8Array(fs.readFileSync(new URL("../fixtures/" + name, import.meta.url)));
 const extract = (name, opts) => extractPdfText(lib, read(name), opts);
 const check = (text) => Object.fromEntries(checkForm(text, { hearingDays: 25 }).map((c) => [c.lbl, c.st]));
 
@@ -145,7 +145,7 @@ test("Indiana Legal Help continuance packet (fillable: 86 fields, printed check 
 
 // Any PDFs dropped in tests/fixtures/real/ (for example the court's own forms) are read and reported, never asserted on.
 test("real forms in tests/fixtures/real, if any, can be read and protected", async (t) => {
-  const dir = new URL("./fixtures/real/", import.meta.url);
+  const dir = new URL("../fixtures/real/", import.meta.url);
   if (!fs.existsSync(dir)) return t.skip("no real forms there");
   for (const f of fs.readdirSync(dir).filter((n) => n.endsWith(".pdf"))) {
     const r = await extractPdfText(lib, new Uint8Array(fs.readFileSync(new URL(f, dir))));

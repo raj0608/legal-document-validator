@@ -4,8 +4,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { buildPage } from "../server/http/page.js";
-import { root } from "../server/http/repo-root.js";
+import { buildPage } from "../../server/http/page.js";
+import { root } from "../../server/http/repo-root.js";
 
 test("the page holds every screen, and no include or preload line is left in it", () => {
   const page = buildPage();

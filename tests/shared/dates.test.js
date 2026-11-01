@@ -1,8 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { addBusinessDays, addDays, dayDiff, toISO, fromISO } from "../shared/dates/date-math.js";
-import { computeDates } from "../shared/dates/case-dates.js";
-import { remindersFor } from "../shared/dates/reminders.js";
+import { addBusinessDays, addDays, dayDiff, toISO, fromISO } from "../../shared/dates/date-math.js";
+import { computeDates } from "../../shared/dates/case-dates.js";
+import { remindersFor } from "../../shared/dates/reminders.js";
 
 const d = (s) => fromISO(s);
 

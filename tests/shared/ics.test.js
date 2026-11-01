@@ -1,9 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildIcs, before, fold, escapeText } from "../shared/dates/ics.js";
-import { computeDates } from "../shared/dates/case-dates.js";
-import { remindersFor, eventStart } from "../shared/dates/reminders.js";
-import { addDays } from "../shared/dates/date-math.js";
+import { buildIcs, before, fold, escapeText } from "../../shared/dates/ics.js";
+import { computeDates } from "../../shared/dates/case-dates.js";
+import { remindersFor, eventStart } from "../../shared/dates/reminders.js";
+import { addDays } from "../../shared/dates/date-math.js";
 
 const now = new Date(2026, 10, 1, 12, 0); // Nov 1, 2026, noon
 const unfold = (s) => s.replace(/\r\n /g, "");

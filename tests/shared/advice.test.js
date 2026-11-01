@@ -2,7 +2,7 @@
 // it does not change the reply. These tests pin what it catches today and list what it does not yet.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { ADVICE, looksLikeAdvice } from "../shared/safety/advice.js";
+import { ADVICE, looksLikeAdvice } from "../../shared/safety/advice.js";
 
 const FLAGGED = {
   en: "You should file a motion.",
