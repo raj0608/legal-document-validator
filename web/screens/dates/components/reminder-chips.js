@@ -1,0 +1,20 @@
+// The reminder choices, as chips that turn on and off.
+import { el } from "/web/shared/lib/dom.js";
+import { t } from "/web/shared/lib/page-text.js";
+import { state } from "/web/shared/state.js";
+import { REMS } from "/shared/dates/reminders.js";
+import { renderDates } from "/web/screens/dates/screen.js";
+
+// The reminder choices appear on My dates and, inside the four-step path, on step 3, so nobody has to leave the path to use them.
+export function renderRemChips() {
+  document.querySelectorAll(".rem-chips").forEach((box) => {
+    box.textContent = "";
+    REMS.forEach((r) => {
+      const b = el("button", "chip", t(r.key));
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(!!state.rems[r.k]));
+      b.addEventListener("click", () => { state.rems[r.k] = !state.rems[r.k]; renderRemChips(); renderDates(); });
+      box.appendChild(b);
+    });
+  });
+}
