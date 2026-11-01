@@ -1,0 +1,54 @@
+/* ---------- Wayfinding: simple menu, big choices, steps ---------- */
+.skip { position: absolute; inset-inline-start: -999px; top: 0; z-index: 70; background: var(--surface); color: var(--ink); padding: 0.7rem 1rem; border: 2px solid var(--focus); border-radius: 8px; }
+.skip:focus { inset-inline-start: 0.5rem; top: 0.5rem; }
+main:focus, h1:focus, h2:focus { outline: none; }
+
+.main-nav { max-width: 50rem; margin: 0 auto; padding: 0 1.25rem; display: flex; gap: 0.25rem; }
+.main-nav a { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--muted); padding: 0.6rem 0.9rem; min-height: 48px; border-bottom: 4px solid transparent; font-weight: 700; }
+.main-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--action); }
+.main-nav svg { width: 1.35rem; height: 1.35rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+.demo-bar { margin: 0; padding: 0.5rem 1.25rem; text-align: center; background: var(--mark); color: var(--mark-ink); font-weight: 700; }
+.back-home { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; margin: 0 0 0.25rem; font-weight: 700; text-decoration: none; }
+.back-home:hover { text-decoration: underline; }
+[dir="rtl"] .back-home > span:first-child, [dir="rtl"] .chev { display: inline-block; transform: scaleX(-1); }
+
+.next-strip { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; justify-content: space-between; margin: 0 0 1rem; padding: 0.7rem 1rem; min-height: 48px; border-radius: 12px; background: var(--action-soft); border: 1px solid var(--action); color: var(--ink); text-decoration: none; }
+.next-strip strong { color: var(--action); text-decoration: underline; }
+
+.cards { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+.card-link { display: flex; align-items: center; gap: 1rem; min-height: 84px; padding: 1rem; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; color: var(--ink); text-decoration: none; }
+.card-link:hover { border-color: var(--action); }
+.card-ico { flex: 0 0 3rem; width: 3rem; height: 3rem; border-radius: 50%; background: var(--action-soft); color: var(--action); display: grid; place-items: center; }
+.card-ico svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.card-text { display: grid; gap: 0.1rem; }
+.card-text strong { font-size: 1.15rem; line-height: 1.3; }
+.card-text span { color: var(--muted); font-size: 0.95rem; }
+.chev { margin-inline-start: auto; font-size: 1.8rem; color: var(--action); line-height: 1; }
+.cards.compact .card-link { min-height: 64px; }
+
+.reassure { list-style: none; padding: 0; margin: 1.25rem 0 0.5rem; display: grid; gap: 0.4rem; max-width: 64ch; }
+.reassure li { position: relative; padding-inline-start: 1.7rem; }
+.reassure li::before { content: "✓"; position: absolute; inset-inline-start: 0; color: var(--ok); font-weight: 700; }
+.helplist a { display: inline-block; min-height: 44px; padding: 0.5rem 0; }
+
+.steps { margin: 0.25rem 0 0.75rem; }
+.steps ol { list-style: none; padding: 0; margin: 0; display: flex; gap: 0.4rem; }
+.steps li { flex: 1 1 0; min-width: 0; text-align: center; font-size: 0.85rem; }
+.steps .num { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; margin: 0 auto 0.2rem; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); font-weight: 700; color: var(--muted); }
+.steps li.done .num { background: var(--action-soft); border-color: var(--action); color: var(--action); }
+.steps li[aria-current="step"] .num { background: var(--action); border-color: var(--action); color: var(--action-ink); }
+.steps li[aria-current="step"] .label { font-weight: 700; color: var(--ink); }
+.steps .label { color: var(--muted); display: block; overflow-wrap: anywhere; }
+.steps a { color: inherit; text-decoration: none; display: block; min-height: 44px; }
+.steps .count { margin: 0 0 0.4rem; font-weight: 700; }
+.step h2 { margin-top: 1rem; font-size: 1.4rem; }
+.step-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.btn.big { min-height: 56px; font-size: 1.1rem; padding-inline: 1.5rem; }
+details.more { margin: 1.25rem 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+details.more > summary { cursor: pointer; font-weight: 700; padding: 0.9rem 1rem; min-height: 48px; }
+details.more > :not(summary) { margin-inline: 1rem; }
+details.more[open] { padding-bottom: 0.5rem; }
+
+#noDates { margin: 1rem 0; }
+.ask { bottom: calc(env(safe-area-inset-bottom, 0px)); }

@@ -1,0 +1,22 @@
+/* The header bar and its controls, the language note, the main column, headings and text. */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top-row { max-width: 50rem; margin: 0 auto; padding: 0.75rem 1.25rem 0.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; }
+.brand { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
+.brand-name { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+.brand-sub { color: var(--muted); font-size: 0.85rem; }
+.controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+select, .ctl-btn { font: inherit; font-size: 0.9rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; min-height: 44px; padding: 0.3rem 0.7rem; }
+select { max-width: 12rem; }
+.ctl-btn { cursor: pointer; font-weight: 700; }
+.ctl-btn[aria-pressed="true"] { background: var(--action-soft); border-color: var(--action); }
+.hide-btn { color: var(--warn); border-color: currentColor; background: transparent; }
+.langnote { max-width: 50rem; margin: 0.75rem auto 0; padding: 0 1.25rem; color: var(--muted); font-size: 0.9rem; }
+
+main { max-width: 50rem; margin: 0 auto; padding: 1.25rem 1.25rem 3rem; }
+.view[hidden] { display: none; }
+h1 { font-size: 2rem; line-height: 1.15; margin: 0.5rem 0 0.75rem; letter-spacing: -0.015em; max-width: 24ch; }
+h2 { font-size: 1.2rem; margin: 2rem 0 0.5rem; }
+h3 { font-size: 1.05rem; margin: 1.25rem 0 0.4rem; }
+.lede { font-size: 1.05rem; max-width: 62ch; margin: 0 0 0.75rem; }
+.small { color: var(--muted); font-size: 0.9rem; max-width: 64ch; margin: 0.25rem 0 0.75rem; }
+.disclaim { border-inline-start: 4px solid var(--action); padding-block: 0.2rem; padding-inline-start: 0.75rem; color: var(--muted); font-size: 0.92rem; margin: 1rem 0 1.25rem; max-width: 64ch; }

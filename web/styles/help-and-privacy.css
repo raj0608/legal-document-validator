@@ -1,0 +1,10 @@
+/* The common questions on Help with their sources, and the plain lists on Help and Privacy. */
+details.faq { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 0.6rem; }
+details.faq summary { cursor: pointer; font-weight: 700; padding: 0.9rem 1rem; min-height: 48px; }
+details.faq[open] summary { border-bottom: 1px solid var(--line); }
+details.faq .ans { padding: 0.8rem 1rem 1rem; max-width: 64ch; }
+details.faq .ans p { margin: 0 0 0.6rem; }
+.srcs { font-size: 0.9rem; color: var(--muted); }
+.srcs a { overflow-wrap: anywhere; }
+.plain-list { padding-inline-start: 1.2rem; max-width: 64ch; }
+.plain-list li { margin-bottom: 0.35rem; }

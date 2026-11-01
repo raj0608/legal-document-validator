@@ -1,0 +1,22 @@
+/* Phones: the menu is a bar at the bottom, in reach of a thumb. */
+@media (max-width: 720px) {
+  .main-nav { position: fixed; inset: auto 0 0 0; z-index: 20; max-width: none; margin: 0; padding: 0 0 env(safe-area-inset-bottom, 0px); gap: 0; background: var(--surface); border-top: 1px solid var(--line); }
+  .main-nav a { flex: 1 1 0; flex-direction: column; justify-content: center; gap: 0.15rem; min-height: 64px; padding: 0.4rem 0.2rem; font-size: 0.85rem; border-bottom: 0; border-top: 4px solid transparent; text-align: center; }
+  .main-nav a[aria-current="page"] { border-top-color: var(--action); }
+  main { padding-bottom: 6.5rem; }
+  footer { padding-bottom: 5.5rem; }
+  .ask { bottom: calc(env(safe-area-inset-bottom, 0px) + 64px); }
+  .steps li:not([aria-current="step"]) .label { display: none; }
+  .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 5rem); }
+  /* The top of the page stays small and scrolls away. "Hide this page" stays on screen, in the corner. */
+  html { scroll-padding-top: 1rem; }
+  .next-strip { font-size: 0.9rem; padding: 0.5rem 0.8rem; margin-bottom: 0.5rem; }
+  #view-papers h1 { font-size: 1.4rem; margin: 0 0 0.3rem; }
+  .steps .num { width: 2rem; height: 2rem; }
+  .steps .count { margin-bottom: 0.2rem; }
+  .top { position: static; }
+  .top-row { padding-top: 0.6rem; gap: 0.4rem; }
+  .brand { padding-inline-end: 9.5rem; min-height: 44px; justify-content: center; }
+  .controls { width: 100%; justify-content: space-between; }
+  .hide-btn { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 8px); inset-inline-end: 8px; z-index: 30; background: var(--surface); }
+}

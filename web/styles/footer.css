@@ -1,0 +1,12 @@
+/* The footer, the cover, the toast, and small changes for narrow screens and reduced motion. */
+footer { max-width: 50rem; margin: 0 auto; padding: 1rem 1.25rem 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); }
+.cover { position: fixed; inset: 0; z-index: 50; background: var(--bg); display: grid; place-items: center; padding: 2rem; text-align: center; }
+.cover[hidden] { display: none; }
+.toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 0.6rem 1rem; border-radius: 10px; font-weight: 700; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 40; max-width: calc(100% - 2rem); text-align: center; }
+.toast.show { opacity: 1; }
+@media (max-width: 560px) {
+  h1 { font-size: 1.65rem; }
+  .brand-sub { display: none; }
+  .hearing .big { font-size: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }

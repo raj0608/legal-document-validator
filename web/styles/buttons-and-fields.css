@@ -1,0 +1,21 @@
+/* Buttons, the danger zone, the paper loader, text fields, and status and warning notes. */
+.btn { font: inherit; font-weight: 700; min-height: 48px; padding: 0.55rem 1rem; border-radius: 10px; border: 2px solid var(--action); background: transparent; color: var(--action); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; text-decoration: none; }
+.btn.primary { background: var(--action); color: var(--action-ink); }
+.btn.ghost { border-color: transparent; text-decoration: underline; padding-inline: 0.4rem; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+[hidden] { display: none !important; }
+.btn.danger { border-color: var(--warn); color: var(--warn); }
+.btn.danger-solid { border-color: var(--warn); background: var(--warn); color: var(--surface); }
+.danger-zone { margin-top: 1.75rem; padding: 1rem; border: 2px solid var(--warn); border-radius: 12px; background: var(--warn-bg); max-width: 40rem; }
+.danger-zone p { margin: 0 0 0.6rem; }
+.support { margin-top: 1rem; font-weight: 700; }
+.link-btn { font: inherit; background: none; border: 0; color: var(--action); text-decoration: underline; cursor: pointer; padding: 0.4rem 0; min-height: 44px; }
+.loader { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.file-btn:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.paste { margin-top: 0.9rem; display: grid; gap: 0.5rem; }
+textarea, input[type="date"], input[type="time"], input[type="number"], input[type="text"] {
+  font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.6rem 0.75rem; width: 100%; min-height: 48px;
+}
+textarea { resize: vertical; }
+.status { margin-top: 0.9rem; padding: 0.7rem 0.9rem; border-radius: 10px; background: var(--action-soft); }
+.warn { background: var(--warn-bg); color: var(--ink); border-inline-start: 4px solid var(--warn); padding: 0.6rem 0.8rem; border-radius: 6px; font-size: 0.95rem; }
