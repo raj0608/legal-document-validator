@@ -11,7 +11,9 @@ import { renderSize, initPageControls } from "/web/shared/layout/page-controls.j
 import { initLang } from "/web/shared/layout/language-picker.js";
 import { route, initNav, refreshNav } from "/web/shared/layout/router.js";
 import { renderDates, renderRemChips, initDates } from "/web/screens/dates/screen.js";
-import { renderFound, renderQuick, initPapers, abortChat } from "/web/screens/papers/screen.js";
+import { registerPapersSlot, initPapers } from "/web/screens/papers/screen.js";
+import { renderFound } from "/web/screens/papers/components/found-in-paper.js";
+import { renderQuick, abortChat } from "/web/screens/papers/components/chat.js";
 import { renderChecks, renderCure, initCheck } from "/web/screens/check/screen.js";
 import { renderFaq } from "/web/screens/help/screen.js";
 import { renderPrivacy, initPrivacy } from "/web/screens/privacy/screen.js";
@@ -49,6 +51,7 @@ function clearAll() {
 }
 
 // ---------- Start ----------
+registerPapersSlot();
 initClearEverything(clearAll);
 initPageControls(clearAll);
 // The "safety test paper" is for the team, not for the people this is built for: it only shows up with ?tester in the address.
