@@ -1,10 +1,9 @@
-// "Questions" (FAQ) and "Privacy" tabs.
+// "Questions" (FAQ): the common questions, with their sources.
 import { $, el } from "/web/shared/lib/dom.js";
 import { t } from "/web/shared/lib/page-text.js";
 import { state, TR } from "/web/shared/state.js";
 import { FAQ } from "/shared/i18n/faq.js";
 import { SRC } from "/shared/i18n/sources.js";
-import { reprotectAll } from "/web/shared/ui/document-slot.js";
 
 export function renderFaq() {
   const box = $("faq");
@@ -28,14 +27,4 @@ export function renderFaq() {
     d.appendChild(ans);
     box.appendChild(d);
   });
-}
-
-export function renderPrivacy() {
-  const fill = (id, arr) => { const ul = $(id); ul.textContent = ""; arr.forEach((x) => ul.appendChild(el("li", null, x))); };
-  fill("privNow", t("privacy_now"));
-  fill("privLaunch", t("privacy_launch"));
-}
-
-export function initPrivacy() {
-  $("extraNames").addEventListener("change", reprotectAll);
 }

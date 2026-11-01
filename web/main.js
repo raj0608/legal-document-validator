@@ -1,8 +1,7 @@
-// Let’s Get Ready for Court: page start-up, routing, language text, and the Clear everything button.
+// Let’s Get Ready for Court: page start-up, routing and language text.
 import { $ } from "/web/shared/lib/dom.js";
 import { t } from "/web/shared/lib/page-text.js";
 import { state, TR } from "/web/shared/state.js";
-import { toast } from "/web/shared/ui/toast.js";
 import { LANG } from "/shared/i18n/languages.js";
 import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "/shared/sample-papers.js";
 import { initAi } from "/web/shared/ui/ai-helper.js";
@@ -14,7 +13,9 @@ import { route, initNav, refreshNav } from "/web/shared/layout/router.js";
 import { renderDates, renderRemChips, initDates } from "/web/screens/dates/screen.js";
 import { renderFound, renderQuick, initPapers, abortChat } from "/web/screens/papers/screen.js";
 import { renderChecks, renderCure, initCheck } from "/web/screens/check/screen.js";
-import { renderFaq, renderPrivacy, initPrivacy } from "/web/screens/help/screen.js";
+import { renderFaq } from "/web/screens/help/screen.js";
+import { renderPrivacy, initPrivacy } from "/web/screens/privacy/screen.js";
+import { initClearEverything } from "/web/screens/privacy/components/clear-everything.js";
 
 // ---------- Static text and language ----------
 function applyText() {
@@ -46,12 +47,9 @@ function clearAll() {
   state.dates = { notice: "", days: 15, served: "", hearing: "", time: "", place: "", cure: "", fromPaper: false };
   renderDates();
 }
-const closeConfirm = () => { $("clearConfirm").hidden = true; $("clearAll").hidden = false; };
-$("clearAll").addEventListener("click", () => { $("clearAll").hidden = true; $("clearConfirm").hidden = false; $("clearNo").focus(); });
-$("clearNo").addEventListener("click", () => { closeConfirm(); $("clearAll").focus(); });
-$("clearYes").addEventListener("click", () => { clearAll(); closeConfirm(); toast(t("cleared")); });
 
 // ---------- Start ----------
+initClearEverything(clearAll);
 initPageControls(clearAll);
 // The "safety test paper" is for the team, not for the people this is built for: it only shows up with ?tester in the address.
 const tester = /[?&]tester\b/.test(location.search);
