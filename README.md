@@ -67,7 +67,7 @@ Want Claude instead? Put `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...` in 
 | “Too many questions at once” | Gemini’s free tier allows only a few requests a minute per project. Wait a minute and try again. |
 | Page text is in English after choosing a language | Only English and Spanish are built in; the others are translated by the AI, which is off in demo mode. |
 
-Learning the project? Read [docs/study-guide.md](docs/study-guide.md) first, then [docs/design.md](docs/design.md).
+Learning the project? Read [docs/study-guide.md](docs/study-guide.md) first, then [docs/design.md](docs/design.md). Changing the code, alone or with an AI tool? Read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Settings
 
@@ -133,9 +133,11 @@ server/    the server: it keeps the AI key and the rules, and is the only part t
                             page.js      puts the page together from web/index.html and each screen’s view.html
 tests/     node:test, in the same folders as the code: shared/, server/, web/
              layout.test.js       checks the layout rules below
+             agent-rules.test.js  keeps the AI coding tools’ rule files (AGENTS.md) in shape
              golden/      outputs captured from the original single-file code
              fixtures/    fictional PDFs (rebuild with node tests/fixtures/make-fixtures.mjs) and two real court forms
 legacy/    the original single-file prototype, kept for reference
+AGENTS.md  the rules AI coding tools follow in this repo (web/, server/ and shared/ add their own); see CONTRIBUTING.md
 ```
 
 ### The rules the layout follows
