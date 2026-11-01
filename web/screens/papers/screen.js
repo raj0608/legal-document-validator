@@ -1,15 +1,21 @@
 // "My papers": the plain-words explanation, dates and laws found in the paper, and the chat.
-import { $, el, t, state, fmtDate, fmtTime, toast, answerHtml } from "/web/js/core.js";
+import { $, el } from "/web/shared/lib/dom.js";
+import { t } from "/web/shared/lib/page-text.js";
+import { state } from "/web/shared/state.js";
+import { fmtDate, fmtTime } from "/web/shared/lib/date-format.js";
+import { toast } from "/web/shared/ui/toast.js";
+import { answerHtml } from "/web/shared/lib/answer-html.js";
 import { findDates } from "/shared/analysis/paper-dates.js";
 import { findCites } from "/shared/analysis/citations.js";
 import { toISO, dayDiff } from "/shared/dates/date-math.js";
 import { looksLikeInjection } from "/shared/safety/injection-filter.js";
 import { unredact, redactText, createTokenState } from "/shared/safety/redaction.js";
-import { ai, PERMANENT, errCopy, disableAi, addAdviceFlag, addDateFlag } from "/web/js/ai.js";
-import * as api from "/web/js/api-client.js";
-import { registerSlot, currentExtraNames } from "/web/js/docs.js";
+import { ai, PERMANENT, errCopy, disableAi } from "/web/shared/ui/ai-helper.js";
+import { addAdviceFlag, addDateFlag } from "/web/shared/ui/answer-flags.js";
+import * as api from "/web/shared/api/client.js";
+import { registerSlot, currentExtraNames } from "/web/shared/ui/document-slot.js";
 import { renderDates } from "/web/screens/dates/screen.js";
-import { refreshStepControls } from "/web/js/nav.js";
+import { refreshStepControls } from "/web/shared/layout/router.js";
 
 // ---------- Dates and laws found in the paper (no AI) ----------
 function autoDatesFromPapers() {

@@ -1,6 +1,10 @@
 // "My dates": the timeline, Google Calendar links, the reminder preview and the saved text file.
-import { $, el, t, state, locale, fmtDate, fmtShort, fmtTime, toast } from "/web/js/core.js";
-import { renderNext } from "/web/js/home.js";
+import { $, el } from "/web/shared/lib/dom.js";
+import { t, locale } from "/web/shared/lib/page-text.js";
+import { state } from "/web/shared/state.js";
+import { fmtDate, fmtShort, fmtTime } from "/web/shared/lib/date-format.js";
+import { toast } from "/web/shared/ui/toast.js";
+import { renderNext } from "/web/shared/layout/next-date.js";
 import { REMS, eventStart, remindersFor } from "/shared/dates/reminders.js";
 import { computeDates } from "/shared/dates/case-dates.js";
 import { dayDiff, fromISO, ymd, hm, addDays, toISO } from "/shared/dates/date-math.js";

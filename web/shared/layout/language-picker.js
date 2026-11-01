@@ -1,8 +1,10 @@
 // Language picker. English and Spanish are built in; the others are machine-translated by the server.
-import { $, el, t, state, TR, toast } from "./core.js";
+import { $, el } from "/web/shared/lib/dom.js";
+import { state, TR } from "/web/shared/state.js";
+import { toast } from "/web/shared/ui/toast.js";
 import { LANGS, I18N } from "/shared/i18n/languages.js";
-import { ai, PERMANENT, disableAi } from "./ai.js";
-import * as api from "./api-client.js";
+import { ai, PERMANENT, disableAi } from "/web/shared/ui/ai-helper.js";
+import * as api from "/web/shared/api/client.js";
 
 async function translateTo(code) {
   if (code === "en" || code === "es" || TR[code]) return true;

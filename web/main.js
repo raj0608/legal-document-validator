@@ -1,23 +1,22 @@
-// Let’s Get Ready for Court: page start-up, routing, language text, and the clear / hide / text-size controls.
-import { $, t, state, TR, renderSupport, toast } from "/web/js/core.js";
+// Let’s Get Ready for Court: page start-up, routing, language text, and the Clear everything button.
+import { $ } from "/web/shared/lib/dom.js";
+import { t } from "/web/shared/lib/page-text.js";
+import { state, TR } from "/web/shared/state.js";
+import { toast } from "/web/shared/ui/toast.js";
 import { LANG } from "/shared/i18n/languages.js";
 import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE } from "/shared/sample-papers.js";
-import { initAi } from "/web/js/ai.js";
-import { makeLoader, removeDoc, renderDoc } from "/web/js/docs.js";
+import { initAi } from "/web/shared/ui/ai-helper.js";
+import { makeLoader, removeDoc, renderDoc } from "/web/shared/ui/document-slot.js";
+import { renderSupport } from "/web/shared/layout/support-line.js";
+import { renderSize, initPageControls } from "/web/shared/layout/page-controls.js";
+import { initLang } from "/web/shared/layout/language-picker.js";
+import { route, initNav, refreshNav } from "/web/shared/layout/router.js";
 import { renderDates, renderRemChips, initDates } from "/web/screens/dates/screen.js";
 import { renderFound, renderQuick, initPapers, abortChat } from "/web/screens/papers/screen.js";
 import { renderChecks, renderCure, initCheck } from "/web/screens/check/screen.js";
 import { renderFaq, renderPrivacy, initPrivacy } from "/web/screens/help/screen.js";
-import { initLang } from "/web/js/lang.js";
-import { route, initNav, refreshNav } from "/web/js/nav.js";
 
 // ---------- Static text and language ----------
-function renderSize() {
-  const big = document.documentElement.classList.contains("big");
-  $("sizeIcon").textContent = big ? "A−" : "A+";
-  $("sizeLabel").textContent = big ? t("size_down") : t("size_up");
-}
-
 function applyText() {
   const L = LANG[state.lang];
   document.documentElement.lang = state.lang === "en" || state.lang === "es" || TR[state.lang] ? state.lang : "en";
@@ -35,7 +34,7 @@ function applyText() {
   refreshNav();
 }
 
-// ---------- Clear, hide, text size ----------
+// ---------- Clear everything ----------
 function clearAll() {
   abortChat();
   ["papers", "form", "clerk"].forEach(removeDoc);
@@ -51,14 +50,9 @@ const closeConfirm = () => { $("clearConfirm").hidden = true; $("clearAll").hidd
 $("clearAll").addEventListener("click", () => { $("clearAll").hidden = true; $("clearConfirm").hidden = false; $("clearNo").focus(); });
 $("clearNo").addEventListener("click", () => { closeConfirm(); $("clearAll").focus(); });
 $("clearYes").addEventListener("click", () => { clearAll(); closeConfirm(); toast(t("cleared")); });
-$("hide").addEventListener("click", () => { clearAll(); $("cover").hidden = false; $("startOver").focus(); });
-$("startOver").addEventListener("click", () => { $("cover").hidden = true; location.hash = "#home"; });
-$("size").addEventListener("click", () => {
-  document.documentElement.classList.toggle("big", !document.documentElement.classList.contains("big"));
-  renderSize();
-});
 
 // ---------- Start ----------
+initPageControls(clearAll);
 // The "safety test paper" is for the team, not for the people this is built for: it only shows up with ?tester in the address.
 const tester = /[?&]tester\b/.test(location.search);
 makeLoader("papers", [{ btn: "sample_btn", name: "sample_name", text: SAMPLE }].concat(tester ? [{ btn: "test_btn", name: "test_name", text: TEST_PAPER }] : []));
