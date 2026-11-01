@@ -53,7 +53,7 @@ The `.env` file is ignored by git, so your key is never uploaded, and the key st
 
 Want Claude instead? Put `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...` in `.env` (paid).
 
-**Checking it works:** `npm test` runs the automatic checks (about 100, a few seconds, no key needed).
+**Checking it works:** `npm test` runs the automatic checks (about 140, a few seconds, no key needed).
 
 **If something goes wrong**
 
@@ -90,21 +90,64 @@ All in `.env` (see `.env.example`). Only one AI key is needed.
 ## How it is put together
 
 ```
-public/    the page: index.html, styles.css, js/ (one module per screen, nav.js, home.js, api-client.js)
+web/       the page, as the browser loads it (no bundler)
+             index.html   the frame of the page: header, menu, footer; each screen’s markup is pulled in by an include line
+             main.js      starts the page
+             screens/     one folder per screen: home, papers, check, dates, help, privacy
+                            view.html    the screen’s markup
+                            screen.js    the functions main.js calls to set the screen up and draw it
+                            components/  the parts of the screen, one file each
+                            lib/         what only this screen’s parts share (My dates has one)
+             shared/      what belongs to no single screen
+                            state.js     the page’s state, in memory only
+                            layout/      menu and steps, language picker, page controls, support line, next-date strip
+                            ui/          toast, paper loader, AI helper, warnings under AI answers
+                            api/         calls to our own server (/api)
+                            lib/         finding elements, page text, writing dates, showing answers, reading PDFs
+             styles/      the look, in several files loaded in order
 shared/    code and data used by the browser, the server and the tests
-             safety.js    injection filter, redaction, should/must detector
-             dates.js     date and reminder math
-             analysis.js  dates, citations, form checklist, fix-by date (no AI)
-             pdf-text.js  reads a PDF with pdf.js, including typed form-field values
-             holidays.js  court holidays and court-day counting
-             nav.js       the map of screens and the four-step path
-             i18n.js      all page text, FAQ, source links
-server/    Express app: routes, input checks, prompts (the rules live here), and the AI connections
-             (gemini.js, anthropic.js; provider.js picks one from .env)
-tests/     node:test; golden/ holds outputs captured from the original single-file code;
-             fixtures/ holds fictional PDFs (rebuild with node tests/fixtures/make-fixtures.mjs)
+             safety/      injection filter, redaction, what is sent (protect.js), should/must detector
+             analysis/    dates, citations, form checklist, fix-by date (no AI)
+             dates/       date math, court holidays, case dates, reminders, the calendar file
+             i18n/        the languages and all page text, FAQ, source links
+             answer-dates.js   dates in AI answers: highlighted, and checked against the paper
+             pdf-text.js       reads a PDF with pdf.js, including typed form-field values
+             screen-map.js     the map of screens and the four-step path
+             sample-papers.js  the fictional sample papers
+server/    the server: it keeps the AI key and the rules, and is the only part that talks to the AI
+             main.js      npm start: reads .env, picks the AI, starts the server
+             demo.js      npm run demo: the same server with sample answers instead of the AI
+             config.js    the settings read from .env
+             checks.js    the second check on every request, before anything goes to the AI
+             prompts.js   the rules the AI follows (they live here)
+             translate.js machine translation of the page text
+             errors.js    the error codes the page knows how to show
+             ai/          the AI connections
+                            port.js      what every AI connection offers: stream and json
+                            choose.js    picks one from .env and builds it
+                            json.js      reads an answer given as JSON
+                            adapters/    gemini.js, anthropic.js; demo-client.js stands in for Anthropic’s client in the demo
+             http/        the web server
+                            app.js       puts it together: security headers, request log, limits, routes,
+                                         streaming, error replies, the page and the static files
+                            page.js      puts the page together from web/index.html and each screen’s view.html
+tests/     node:test, in the same folders as the code: shared/, server/, web/
+             layout.test.js       checks the layout rules below
+             golden/      outputs captured from the original single-file code
+             fixtures/    fictional PDFs (rebuild with node tests/fixtures/make-fixtures.mjs) and two real court forms
 legacy/    the original single-file prototype, kept for reference
 ```
+
+### The rules the layout follows
+
+- **One job per file, named for what it holds.** `holidays.js` holds court holidays and `checks.js` holds the server’s checks. There is no `utils.js`. A file that grows past about 200 lines is split by what its parts do.
+- **A screen is a folder.** Everything for one screen is in `web/screens/<screen>/`: `view.html` (its markup), `screen.js` (the functions `main.js` calls to set the screen up and draw it) and `components/` (its parts, one file each; `main.js` also calls some of them directly). Home has only `view.html`: its card is drawn by `web/shared/layout/next-date.js`. A screen uses another screen only through its `screen.js`.
+- **Shared parts live in shared folders.** What belongs to no single screen (the menu and steps, the paper loader, the toast, the page text) is in `web/shared/`. A screen’s own drawing stays in its folder even when another screen asks for it: My papers and Check my form call the dates screen’s `renderDates`. What the browser, the server and the tests all use is in the top-level `shared/`. It holds only plain code (nothing that needs a browser, Node or a package), so the same file runs in all three places and they cannot disagree.
+- **An import names the file that holds the thing.** For example `import { protect } from "/shared/safety/protect.js"`. No `index.js` file passes things on. Files in `web/` import by the address from the site root (`/web/...`, `/shared/...`), even from the same folder, so an import reads the same wherever it is. Files in `shared/` import each other by relative path, because Node runs them too.
+- **The AI is plugged in, not built in.** `server/ai/port.js` says what every AI connection offers: an answer streamed piece by piece (`stream`) and an answer read as data (`json`), with every failure turned into one of the error codes the page knows. `gemini.js` and `anthropic.js` in `server/ai/adapters/` each do that for one AI. `demo-client.js` stands in for the Anthropic client, so the demo runs through `anthropic.js` with sample answers. `server/ai/choose.js` picks one from `.env`. The rest of the server only uses the AI it is given, so another AI means one new adapter and a few lines in `choose.js`, and nothing in `server/http/` changes.
+- **The page is put together when it is served.** `web/index.html` is the frame. A line like `<!-- include: /web/screens/home/view.html -->` is replaced by that file (`server/http/page.js`). There is no bundler: edit a `view.html` and reload. If an included file is missing, the page does not load, and the server’s console names the file. The line `<!-- modulepreload: /web/main.js -->` becomes one preload link for every module `main.js` needs, so the browser asks for them all at once instead of one import level at a time.
+- **Only the start files start things.** `web/main.js`, `server/main.js` and `server/demo.js` are the only files that do something as soon as they load. Every other file only defines functions and data.
+- **Tests follow the same layout.** `tests/shared/`, `tests/server/` and `tests/web/` test the folders of the same name. `tests/layout.test.js` checks the rules above: every import points at a real file and a real name, `web/` imports by the address from the site root, `shared/` imports only `shared/` and uses nothing that only a browser or Node has, a screen uses another screen only through its `screen.js`, only `server/ai/` and the start files know which AI is used, and no file passes 200 lines or has a catch-all name like `utils`.
 
 ### What protects a paper before any AI call
 
