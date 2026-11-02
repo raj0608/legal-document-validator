@@ -8,7 +8,7 @@ Rules in the root AGENTS.md apply here too. This file only adds rules for `app/`
 ## Traps
 
 - `app/main.js` calls each page's `init...` and `render...` functions in a fixed order, and that order is behavior: listeners are added and text is drawn in it. Add a new call next to its neighbours, not at the end.
-- Markup lives in each page's `page.html`. `app/layout.html` pulls each one in with a line that holds only `<!-- include: /app/... -->`. If an included file is missing, the page refuses to load, and the server's console names the file.
+- Markup lives next to the code that fills it: a page's `page.html`, and a component's `.html` beside its `.js` (`dates/components/timeline.html` and `timeline.js`). `app/layout.html` pulls each page in, and a page pulls in its components, with a line that holds only `<!-- include: /app/... -->`. If an included file is missing, the page refuses to load, and the server's console names the file.
 - `tests/app/ui-structure.test.js` finds sections by their HTML comments, for example `<!-- Check my form -->` at the top of `check/page.html`. Keep those comments.
 - Put text on the page with `textContent` or `el()` from `app/shared/lib/dom.js`. Use `innerHTML` only with the output of `app/shared/lib/answer-html.js`, which escapes first. AI answers and paper text are untrusted.
 - Page state is `app/shared/state.js`, in memory only. A person may be on a shared or watched computer, and "Hide this page" must leave nothing behind.

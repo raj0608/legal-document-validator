@@ -12,23 +12,12 @@
     <div id="formPanel">
       <div id="formLoader"></div>
       <div id="formDoc"></div>
-      <div id="formOut" hidden>
-        <p class="small" id="formType"></p>
-        <h2 data-i18n="checklist_h">Checklist</h2>
-        <ul id="checks" class="checks"></ul>
-        <div class="row"><button class="btn primary" id="blanksBtn" type="button" data-i18n="blanks_explain_btn">Explain what each blank asks for</button></div>
-        <div id="blanksOut"></div>
-      </div>
+      <!-- include: /app/check/components/form-checklist.html -->
     </div>
 
     <div id="clerkPanel" hidden>
       <div id="clerkLoader"></div>
       <div id="clerkDoc"></div>
-      <div id="clerkOut" hidden>
-        <div id="cureCard" class="hearing"></div>
-        <div class="row"><button class="btn primary" id="clerkBtn" type="button" data-i18n="clerk_explain_btn">Explain this notice in simple words</button></div>
-        <div id="clerkAi"></div>
-        <div class="row"><button class="btn" id="recheckBtn" type="button" data-i18n="recheck_btn">Check my fixed form</button></div>
-      </div>
+      <!-- include: /app/check/components/fix-by-date.html -->
     </div>
   </section>

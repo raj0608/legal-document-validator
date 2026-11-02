@@ -24,25 +24,10 @@
       </div>
     </details>
 
-    <h2 data-i18n="rem_h">Reminders</h2>
-    <p class="small" data-i18n="rem_p"></p>
-    <div class="quick rem-chips" role="group"></div>
+    <!-- include: /app/dates/components/reminder-chips.html -->
 
-    <div id="noDates"><p class="small" data-i18n="no_dates"></p><a class="btn primary" href="#papers" data-i18n="no_dates_cta">Add your paper</a></div>
-    <ol id="dateList" class="timeline"></ol>
-    <p class="small" data-i18n="cal_note"></p>
-    <div id="icsBox" hidden>
-      <div class="row"><button id="icsBtn" class="btn primary" type="button" data-i18n="save_ics">Add all to my calendar (.ics file)</button></div>
-      <p class="small" data-i18n="ics_note"></p>
-    </div>
-    <div class="row"><button id="saveDates" class="btn" type="button" hidden data-i18n="save_dates">Save my dates (text file)</button></div>
+    <!-- include: /app/dates/components/timeline.html -->
+    <!-- include: /app/dates/components/date-files.html -->
 
-    <h2 data-i18n="sms_h">Text or email reminders</h2>
-    <p class="small" data-i18n="sms_p"></p>
-    <div class="row">
-      <label for="smsTo" class="sr" data-i18n="sms_ph">Phone number or email</label>
-      <input type="text" id="smsTo" data-i18n-ph="sms_ph" style="max-width:20rem" autocomplete="off">
-      <button class="btn" id="smsBtn" type="button" data-i18n="sms_btn">Preview my reminders</button>
-    </div>
-    <ul id="smsList" class="preview"></ul>
+    <!-- include: /app/dates/components/reminder-preview.html -->
   </section>

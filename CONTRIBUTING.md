@@ -19,6 +19,7 @@ npm test         # every check, a few seconds, no key needed
 The folder map and the rules behind it are in README.md, under "How it is put together". In short:
 - one concern per file, named for what it holds;
 - a page is the folder of its address in `app/`, so `#check` is `app/check/` and `#help/privacy` is `app/help/privacy/`;
+- a component's markup sits beside its code: `timeline.html` next to `timeline.js`;
 - code that two pages use goes in `app/shared/`, and code the server uses too goes in `shared/`;
 - the AI sits behind `server/ai/port.js`.
 
