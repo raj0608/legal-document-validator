@@ -1,22 +1,41 @@
-/* Phones: the menu is a bar at the bottom, in reach of a thumb. */
+/* Phones: the menu is a bar at the bottom, in reach of a thumb, and the cards go edge to edge. */
 @media (max-width: 720px) {
-  .main-nav { position: fixed; inset: auto 0 0 0; z-index: 20; max-width: none; margin: 0; padding: 0 0 env(safe-area-inset-bottom, 0px); gap: 0; background: var(--surface); border-top: 1px solid var(--line); }
-  .main-nav a { flex: 1 1 0; flex-direction: column; justify-content: center; gap: 0.15rem; min-height: 64px; padding: 0.4rem 0.2rem; font-size: 0.85rem; border-bottom: 0; border-top: 4px solid transparent; text-align: center; }
-  .main-nav a[aria-current="page"] { border-top-color: var(--action); }
-  main { padding-bottom: 6.5rem; }
-  footer { padding-bottom: 5.5rem; }
+  .main-nav { position: fixed; inset: auto 0 0 0; z-index: 20; flex-wrap: nowrap; justify-content: stretch; gap: 0; padding: 0 0 env(safe-area-inset-bottom, 0px); background: var(--surface); border-top: 1px solid var(--navy); }
+  .main-nav a { flex: 1 1 0; flex-direction: column; justify-content: center; gap: 0.15rem; min-height: 64px; padding: 0.4rem 0.2rem; font-size: 0.8rem; border-radius: 0; border-top: 4px solid transparent; text-align: center; }
+  .main-nav a:not([data-view="home"]) svg { display: block; }
+  .main-nav svg { width: 1.35rem; height: 1.35rem; }
+  .main-nav a:hover { background: transparent; color: var(--navy); }
+  .main-nav a[aria-current="page"] { background: var(--mist); color: var(--heading); border-top-color: var(--navy); }
+  main { padding: 1rem 0.75rem 6.5rem; }
+  .foot-body { padding-bottom: 5.5rem; }
   .ask { bottom: calc(env(safe-area-inset-bottom, 0px) + 64px); }
   .steps li:not([aria-current="step"]) .label { display: none; }
   .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 5rem); }
   /* The top of the page stays small and scrolls away. "Hide this page" stays on screen, in the corner. */
   html { scroll-padding-top: 1rem; }
-  .next-strip { font-size: 0.9rem; padding: 0.5rem 0.8rem; margin-bottom: 0.5rem; }
-  #view-papers h1 { font-size: 1.4rem; margin: 0 0 0.3rem; }
+  .next-strip { font-size: 0.9rem; padding: 0.6rem 0.9rem; margin-bottom: 0.75rem; }
+  #view-papers h1 { font-size: 1.4rem; }
   .steps .num { width: 2rem; height: 2rem; }
+  .steps li + li::before { top: calc(1rem - 1.5px); }
   .steps .count { margin-bottom: 0.2rem; }
+  .sliver p { padding-block: 0.45rem; padding-inline: 1rem 10.5rem; min-height: 60px; display: flex; align-items: center; }
   .top { position: static; }
-  .top-row { padding-top: 0.6rem; gap: 0.4rem; }
-  .brand { padding-inline-end: 9.5rem; min-height: 44px; justify-content: center; }
+  .top-row { min-height: 0; padding: 0.6rem 1rem; gap: 0.4rem; }
+  .brand { min-height: 44px; justify-content: center; }
   .controls { width: 100%; justify-content: space-between; }
-  .hide-btn { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 8px); inset-inline-end: 8px; z-index: 30; background: var(--surface); }
+  .hide-btn { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 8px); inset-inline-end: 8px; z-index: 30; }
+  .page-title { padding: 1rem; margin-bottom: 0.75rem; border-radius: 24px; background: radial-gradient(circle at 100% 0%, var(--sun) 0 2.75rem, transparent 2.75rem), var(--navy); }
+  .title-card { width: 100%; padding: 1rem 1.25rem; border-radius: 16px; }
+  .page-body { padding: 1.25rem; border-radius: 24px; }
+  .hero { padding: 1.25rem 1rem; border-radius: 24px; gap: 1rem; margin-bottom: 0.75rem; background: radial-gradient(circle at 100% 0%, var(--sun) 0 3.5rem, transparent 3.5rem), var(--navy); }
+  .hero-card { padding: 1.25rem; }
+  .home-card { padding: 1.25rem; border-radius: 24px; margin-bottom: 0.75rem; }
+  .home-card .big { font-size: 1.35rem; }
+  .cards { grid-template-columns: 1fr; gap: 0.75rem; }
+  .card-link { flex-direction: row; text-align: start; padding: 1rem 1.25rem; border-radius: 24px; }
+  footer { grid-template-columns: 1fr; margin-top: 1rem; }
+  .foot-brand { padding: 1.25rem 1.5rem; }
+  .foot-body { padding-inline: 1.5rem; padding-top: 1.25rem; }
+  .foot-cols { grid-template-columns: 1fr 1fr; gap: 1.25rem 1.5rem; }
+  .foot-cols > :last-child { grid-column: 1 / -1; }
 }

@@ -1,37 +1,30 @@
-/* Colours for light and dark, the bigger-text size, and the rules every element starts from. */
+/* Colours (the Indiana courts site's palette, which stays light even in dark mode, like that site), the bigger-text size, and the rules every element starts from. */
 :root {
-  --bg: #F3F6F7; --surface: #FFFFFF; --ink: #16293B; --muted: #4E5D6B; --line: #D3DCE2;
-  --action: #0B6E69; --action-ink: #FFFFFF; --action-soft: #E3F1EF;
-  --mark: #FFE36E; --mark-ink: #16293B; --warn: #9E2A2B; --warn-bg: #FBEDEC; --ok: #1E6B3A; --focus: #1B5FD9;
+  --bg: #F4F4F4; --surface: #FEFEFE; --ink: #333333; --ink-strong: #1E1E1E; --muted: #555555; --line: #DDDDDD; --field: #EEEEEE; --field-line: #8C8C8C;
+  --navy: #013B5A; --navy-hover: #01486E; --navy-dark: #001A28; --navy-ink: #FEFEFE; --mist: #E5EBEE; --foot-tint: #DCE2E5; --foot-head: #444444;
+  --link: #013B5A; --link-hover: #01486E; --heading: #013B5A;
+  --action: #CF4217; --action-ink: #FEFEFE; --action-soft: #E5EBEE;
+  --callout: #C5E1F1; --callout-line: #8BC4E2; --sun: #F6A93B;
+  --mark: #FFE36E; --mark-ink: #1E1E1E; --warn: #B03A2E; --warn-bg: #FBECEA; --ok: #1B6E3A; --focus: #1779BA;
+  --radius: 32px; --radius-sm: 16px; --shadow: 1px 1px 3px rgba(51, 51, 51, 0.15);
+  --font-head: "Readex Pro", "Rethink Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
   color-scheme: light;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
-  font-size: 112.5%;
+  font-size: 100%;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0E1821; --surface: #16232F; --ink: #E7EEF3; --muted: #A9B7C3; --line: #2C3D4C;
-    --action: #4FC0B6; --action-ink: #06231F; --action-soft: #173634;
-    --mark: #E9CB4D; --mark-ink: #16202A; --warn: #F29B94; --warn-bg: #3A1F21; --ok: #7FD29A; --focus: #8AB4FF;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0E1821; --surface: #16232F; --ink: #E7EEF3; --muted: #A9B7C3; --line: #2C3D4C;
-  --action: #4FC0B6; --action-ink: #06231F; --action-soft: #173634;
-  --mark: #E9CB4D; --mark-ink: #16202A; --warn: #F29B94; --warn-bg: #3A1F21; --ok: #7FD29A; --focus: #8AB4FF;
-  color-scheme: dark;
-}
-:root.big { font-size: 131.25%; }
-*, *::before, *::after { box-sizing: inherit; }
+:root.big { font-size: 125%; }
+*, *::before, *::after { box-sizing: border-box; } /* set on every element: inside an open details box Chrome adds a layer that breaks inheriting it */
 html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 9rem); }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
-  font-family: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Myanmar", "Myanmar Text", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans CJK SC", Arial, sans-serif;
-  line-height: 1.55; -webkit-text-size-adjust: 100%;
+  font-family: "Rethink Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Myanmar", "Myanmar Text", "Noto Sans Arabic", "Noto Sans Devanagari", "Noto Sans CJK SC", Arial, sans-serif;
+  line-height: 1.5; -webkit-text-size-adjust: 100%;
 }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--navy-dark); }
 .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-a { color: var(--action); }
+a { color: var(--link); text-underline-offset: 2px; }
+a:hover { color: var(--link-hover); }
+h1, h2, h3 { font-family: var(--font-head); font-weight: 600; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }

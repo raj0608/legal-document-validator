@@ -1,52 +1,90 @@
-/* ---------- Wayfinding: simple menu, big choices, steps ---------- */
+/* ---------- Wayfinding: the menu bar, big choices, steps ---------- */
 .skip { position: absolute; inset-inline-start: -999px; top: 0; z-index: 70; background: var(--surface); color: var(--ink); padding: 0.7rem 1rem; border: 2px solid var(--focus); border-radius: 8px; }
 .skip:focus { inset-inline-start: 0.5rem; top: 0.5rem; }
 main:focus, h1:focus, h2:focus { outline: none; }
 
-.main-nav { max-width: 50rem; margin: 0 auto; padding: 0 1.25rem; display: flex; gap: 0.25rem; }
-.main-nav a { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--muted); padding: 0.6rem 0.9rem; min-height: 48px; border-bottom: 4px solid transparent; font-weight: 700; }
-.main-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--action); }
-.main-nav svg { width: 1.35rem; height: 1.35rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+/* The menu bar under the header, as on the courts site: a pale band, the current place in navy. */
+.main-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.25rem; padding: 0.4rem 1rem; background: var(--mist); border-top: 1px solid var(--navy); }
+.main-nav a { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.45rem; text-decoration: none; color: var(--ink-strong); padding: 0.45rem 0.9rem; min-height: 44px; border-radius: 6px; font-weight: 600; font-size: 0.95rem; }
+.main-nav a:hover, .main-nav a[aria-current="page"] { background: var(--navy); color: var(--navy-ink); }
+.main-nav svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.main-nav a:not([data-view="home"]) svg { display: none; }
 
-.demo-bar { margin: 0; padding: 0.5rem 1.25rem; text-align: center; background: var(--mark); color: var(--mark-ink); font-weight: 700; }
-.back-home { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; margin: 0 0 0.25rem; font-weight: 700; text-decoration: none; }
-.back-home:hover { text-decoration: underline; }
-[dir="rtl"] .back-home > span:first-child, [dir="rtl"] .chev { display: inline-block; transform: scaleX(-1); }
+.demo-bar { margin: 0; padding: 0.5rem 1.25rem; text-align: center; background: var(--callout); border-bottom: 1px solid var(--callout-line); color: var(--ink-strong); font-weight: 600; }
+/* The trail on a title card: a house for Home, each place on the way, then this page (not a link). */
+.crumbs { display: flex; flex-wrap: wrap; align-items: center; margin: 0; font-size: 0.95rem; }
+.crumbs a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 32px; font-weight: 600; text-decoration: none; color: var(--link); }
+.crumbs a:hover { text-decoration: underline; }
+.crumbs svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.crumbs > * + *::before { content: ""; display: inline-block; width: 0.4rem; height: 0.4rem; margin-inline: 0.4rem 0.65rem; border-block-start: 2px solid var(--muted); border-inline-end: 2px solid var(--muted); transform: rotate(45deg); }
+[dir="rtl"] .crumbs > * + *::before { transform: rotate(-45deg); }
+[dir="rtl"] .chev { display: inline-block; transform: scaleX(-1); }
 
-.next-strip { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; justify-content: space-between; margin: 0 0 1rem; padding: 0.7rem 1rem; min-height: 48px; border-radius: 12px; background: var(--action-soft); border: 1px solid var(--action); color: var(--ink); text-decoration: none; }
-.next-strip strong { color: var(--action); text-decoration: underline; }
+.next-strip { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; justify-content: space-between; margin: 0 0 1rem; padding: 0.8rem 1.25rem; min-height: 48px; border-radius: var(--radius-sm); background: var(--surface); box-shadow: var(--shadow); border-inline-start: 6px solid var(--navy); color: var(--ink); text-decoration: none; }
+.next-strip strong { color: var(--link); text-decoration: underline; }
 
-.cards { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
-.card-link { display: flex; align-items: center; gap: 1rem; min-height: 84px; padding: 1rem; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; color: var(--ink); text-decoration: none; }
-.card-link:hover { border-color: var(--action); }
-.card-ico { flex: 0 0 3rem; width: 3rem; height: 3rem; border-radius: 50%; background: var(--action-soft); color: var(--action); display: grid; place-items: center; }
-.card-ico svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.card-text { display: grid; gap: 0.1rem; }
-.card-text strong { font-size: 1.15rem; line-height: 1.3; }
-.card-text span { color: var(--muted); font-size: 0.95rem; }
-.chev { margin-inline-start: auto; font-size: 1.8rem; color: var(--action); line-height: 1; }
-.cards.compact .card-link { min-height: 64px; }
+/* The four choices on Home, as tiles in the banner. */
+.cards { list-style: none; padding: 0; margin: 0; width: 100%; max-width: 46rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+@media (min-width: 1100px) { .cards { max-width: 66rem; grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.card-link { height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.6rem; padding: 1.5rem 1.25rem; background: var(--mist); border-radius: var(--radius); box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); color: var(--ink); text-decoration: none; border: 2px solid transparent; }
+.card-link:hover { border-color: var(--navy-ink); background: var(--surface); color: var(--ink); }
+.card-ico { width: 2.75rem; height: 2.75rem; color: var(--heading); display: grid; place-items: center; }
+.card-ico svg { width: 2rem; height: 2rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.card-text { display: grid; gap: 0.2rem; }
+.card-text strong { font-family: var(--font-head); font-weight: 600; font-size: 1.1rem; line-height: 1.3; color: var(--heading); text-wrap: balance; }
+.card-text span { color: var(--muted); font-size: 0.95rem; text-wrap: pretty; }
+.chev { display: none; }
+/* Home under the banner: the next date and the privacy promise are cards read from the left, an icon over a heading, like the link cards on the courts site. Side by side on a wide screen; without a date the privacy card takes the row. */
+#view-home:not([hidden]) { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 1.5rem; }
+#view-home > .hero, #nextCard[hidden] + .home-card { grid-column: 1 / -1; }
+@media (min-width: 1024px) { #view-home:not([hidden]) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.home-card { display: grid; align-content: start; justify-items: start; gap: 0.35rem; margin-bottom: 1.5rem; padding: 2rem; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); }
+.home-card .card-ico { width: auto; height: auto; margin-bottom: 0.35rem; }
+.home-card h2 { margin: 0 0 0.35rem; font-size: 1.25rem; font-weight: 700; }
+.home-card .big { font-family: var(--font-head); font-size: 1.5rem; line-height: 1.25; font-weight: 700; text-wrap: balance; }
+.home-card .sub { font-size: 1.05rem; }
+.home-card .btn { margin-top: 0.85rem; }
+.home-card .reassure { margin: 0; }
+.home-card .disclaim { text-align: start; margin: 1rem 0 0; }
 
-.reassure { list-style: none; padding: 0; margin: 1.25rem 0 0.5rem; display: grid; gap: 0.4rem; max-width: 64ch; }
+.reassure { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.4rem; max-width: 64ch; }
 .reassure li { position: relative; padding-inline-start: 1.7rem; }
 .reassure li::before { content: "✓"; position: absolute; inset-inline-start: 0; color: var(--ok); font-weight: 700; }
 .helplist a { display: inline-block; min-height: 44px; padding: 0.5rem 0; }
 
-.steps { margin: 0.25rem 0 0.75rem; }
-.steps ol { list-style: none; padding: 0; margin: 0; display: flex; gap: 0.4rem; }
-.steps li { flex: 1 1 0; min-width: 0; text-align: center; font-size: 0.85rem; }
-.steps .num { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; margin: 0 auto 0.2rem; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); font-weight: 700; color: var(--muted); }
-.steps li.done .num { background: var(--action-soft); border-color: var(--action); color: var(--action); }
-.steps li[aria-current="step"] .num { background: var(--action); border-color: var(--action); color: var(--action-ink); }
+.steps { margin: 0 0 1rem; }
+/* The steps are joined by a line that turns navy up to the step the person is on. */
+.steps ol { list-style: none; padding: 0; margin: 0; display: flex; }
+.steps li { position: relative; flex: 1 1 0; min-width: 0; text-align: center; font-size: 0.85rem; }
+.steps li + li::before { content: ""; position: absolute; top: calc(1.1rem - 1.5px); inset-inline-end: 50%; width: 100%; height: 3px; background: var(--line); }
+.steps li.done + li::before { background: var(--navy); }
+.steps .num { position: relative; z-index: 1; display: grid; place-items: center; width: 2.2rem; height: 2.2rem; margin: 0 auto 0.2rem; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); font-weight: 700; color: var(--muted); }
+.steps li.done .num { background: var(--mist); border-color: var(--navy); color: var(--navy); }
+.steps li[aria-current="step"] .num { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
 .steps li[aria-current="step"] .label { font-weight: 700; color: var(--ink); }
 .steps .label { color: var(--muted); display: block; overflow-wrap: anywhere; }
 .steps a { color: inherit; text-decoration: none; display: block; min-height: 44px; }
-.steps .count { margin: 0 0 0.4rem; font-weight: 700; }
-.step h2 { margin-top: 1rem; font-size: 1.4rem; }
-.step-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-.btn.big { min-height: 56px; font-size: 1.1rem; padding-inline: 1.5rem; }
-details.more { margin: 1.25rem 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
-details.more > summary { cursor: pointer; font-weight: 700; padding: 0.9rem 1rem; min-height: 48px; }
+.steps .count { margin: 0 0 0.4rem; font-weight: 700; text-align: center; }
+/* Each step of My papers is one task: its heading, words and main buttons sit on the centre line; results below stay left-aligned. */
+.step h2 { margin-top: 1.25rem; }
+.step > h2, .step > .lede, .step > .small, .step > .status { text-align: center; margin-inline: auto; }
+.step .loader, .step .row { justify-content: center; }
+/* On My papers the step's heading and words come first, above the step line, and the rest flows under them. */
+#view-papers .page-body { display: flex; flex-direction: column; }
+#view-papers .step:not([hidden]) { display: contents; }
+#view-papers .step > h2 { order: -2; margin: 0 auto 0.4rem; font-size: 1.75rem; }
+#view-papers .step > .lede { order: -1; margin-bottom: 1.5rem; }
+#view-check .page-body > .lede { text-align: center; margin-inline: auto; }
+#view-check .seg { display: flex; width: fit-content; margin-inline: auto; }
+#view-check .loader { justify-content: center; }
+/* Back and Continue sit together on the centre line, under a rule, on every step. Continue is navy: the one orange button is the step's own action. */
+.step-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.step-actions .btn.primary { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
+.step-actions .btn.primary:hover { background: var(--surface); color: var(--navy); }
+.step-actions .btn.primary:disabled, .step-actions .btn.primary:disabled:hover { background: var(--navy); color: var(--navy-ink); }
+.btn.big { min-height: 48px; font-size: 1.05rem; padding-inline: 1.5rem; }
+details.more { margin: 1.25rem 0; border: 1px solid var(--line); border-radius: 12px; }
+details.more > summary { cursor: pointer; font-weight: 600; color: var(--link); padding: 0.6rem 1rem; }
 details.more > :not(summary) { margin-inline: 1rem; }
 details.more[open] { padding-bottom: 0.5rem; }
 

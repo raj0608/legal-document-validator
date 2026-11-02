@@ -1,16 +1,22 @@
   <!-- Privacy -->
   <section id="view-privacy" class="view" hidden aria-labelledby="privacy-h">
-    <a class="back-home" href="#help"><span aria-hidden="true">‹</span> <span data-i18n="nav_help">Help</span></a>
-    <h1 id="privacy-h" tabindex="-1" data-i18n="privacy_h">Your privacy</h1>
-    <h2 data-i18n="privacy_now_h">How this prototype handles your papers</h2>
-    <ul class="plain-list" id="privNow"></ul>
-    <div class="field" style="max-width:30rem">
-      <label for="extraNames" data-i18n="names_label">Extra names to hide</label>
-      <input type="text" id="extraNames" autocomplete="off">
-      <span class="small" data-i18n="names_hint"></span>
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><a href="#help" data-i18n="nav_help">Help</a><span class="crumb-here" aria-hidden="true" data-i18n="privacy_h">Your privacy</span></p>
+        <h1 id="privacy-h" tabindex="-1" data-i18n="privacy_h">Your privacy</h1>
+      </div>
     </div>
-    <h2 data-i18n="privacy_launch_h">What a real launch would need</h2>
-    <ul class="plain-list" id="privLaunch"></ul>
-    <!-- include: /app/help/privacy/components/clear-everything.html -->
-    <p class="small" data-i18n="hide_note"></p>
+    <div class="page-body under-title">
+      <h2 data-i18n="privacy_now_h">How this prototype handles your papers</h2>
+      <ul class="plain-list" id="privNow"></ul>
+      <div class="field" style="max-width:30rem">
+        <label for="extraNames" data-i18n="names_label">Extra names to hide</label>
+        <input type="text" id="extraNames" autocomplete="off">
+        <span class="small" data-i18n="names_hint"></span>
+      </div>
+      <h2 data-i18n="privacy_launch_h">What a real launch would need</h2>
+      <ul class="plain-list" id="privLaunch"></ul>
+      <!-- include: /app/help/privacy/components/clear-everything.html -->
+      <p class="small" data-i18n="hide_note"></p>
+    </div>
   </section>

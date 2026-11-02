@@ -1,35 +1,44 @@
   <!-- Home: start from the person's situation, not from our tools -->
   <section id="view-home" class="view" aria-labelledby="home-h">
-    <h1 id="home-h" tabindex="-1" data-i18n="home_h">What do you need help with?</h1>
-    <p class="lede" data-i18n="home_p">Pick one. We will walk you through it, one step at a time.</p>
-    <div id="nextCard" class="hearing" hidden aria-live="polite">
-      <div class="label" data-i18n="next_card_h">Your next date</div>
+    <div class="hero">
+      <div class="hero-card">
+        <h1 id="home-h" tabindex="-1" data-i18n="home_h">What do you need help with?</h1>
+        <p class="lede" data-i18n="home_p">Pick one. We will walk you through it, one step at a time.</p>
+      </div>
+      <ul class="cards">
+        <li><a class="card-link" href="#papers">
+          <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6zM14 2v6h6M9 13h8M9 17h8"/></svg></span>
+          <span class="card-text"><strong data-i18n="card_papers_t">I got court papers</strong><span data-i18n="card_papers_d"></span></span>
+          <span class="chev" aria-hidden="true">›</span></a></li>
+        <li><a class="card-link" href="#check">
+          <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M9 14l2 2 4-4"/></svg></span>
+          <span class="card-text"><strong data-i18n="card_form_t">I want to check a form before I file it</strong><span data-i18n="card_form_d"></span></span>
+          <span class="chev" aria-hidden="true">›</span></a></li>
+        <li><a class="card-link" href="#check/clerk">
+          <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg></span>
+          <span class="card-text"><strong data-i18n="card_clerk_t">The clerk sent my filing back</strong><span data-i18n="card_clerk_d"></span></span>
+          <span class="chev" aria-hidden="true">›</span></a></li>
+        <li><a class="card-link" href="#help">
+          <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.2a2.6 2.6 0 1 1 3.7 2.3c-.8.4-1.2 1-1.2 1.8M12 17h.01"/></svg></span>
+          <span class="card-text"><strong data-i18n="card_help_t">I just have a question</strong><span data-i18n="card_help_d"></span></span>
+          <span class="chev" aria-hidden="true">›</span></a></li>
+      </ul>
+    </div>
+    <div id="nextCard" class="home-card" hidden aria-live="polite">
+      <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v16H4zM4 10h16M8 3v4M16 3v4"/></svg></span>
+      <h2 data-i18n="next_card_h">Your next date</h2>
       <div class="big"><mark id="nextDate"></mark></div>
       <div class="sub" id="nextSub"></div>
-      <a class="btn" href="#dates" data-i18n="see_dates">See my dates</a>
+      <a class="btn primary" href="#dates" data-i18n="see_dates">See my dates</a>
     </div>
-    <ul class="cards">
-      <li><a class="card-link" href="#papers">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6zM14 2v6h6M9 13h8M9 17h8"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_papers_t">I got court papers</strong><span data-i18n="card_papers_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-      <li><a class="card-link" href="#check">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M9 14l2 2 4-4"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_form_t">I want to check a form before I file it</strong><span data-i18n="card_form_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-      <li><a class="card-link" href="#check/clerk">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_clerk_t">The clerk sent my filing back</strong><span data-i18n="card_clerk_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-      <li><a class="card-link" href="#help">
-        <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.2a2.6 2.6 0 1 1 3.7 2.3c-.8.4-1.2 1-1.2 1.8M12 17h.01"/></svg></span>
-        <span class="card-text"><strong data-i18n="card_help_t">I just have a question</strong><span data-i18n="card_help_d"></span></span>
-        <span class="chev" aria-hidden="true">›</span></a></li>
-    </ul>
-    <ul class="reassure">
-      <li data-i18n="trust_1">Free. You don’t make an account.</li>
-      <li data-i18n="trust_2">We don’t save your papers. When you close this page, they are gone.</li>
-      <li><a href="#help/privacy" data-i18n="help_privacy_link">How we protect your privacy</a></li>
-    </ul>
-    <p class="disclaim" data-i18n="notice_banner"></p>
+    <div class="home-card">
+      <span class="card-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
+      <h2 data-i18n="home_trust_h">Free and private</h2>
+      <ul class="reassure">
+        <li data-i18n="trust_1">Free. You don’t make an account.</li>
+        <li data-i18n="trust_2">We don’t save your papers. When you close this page, they are gone.</li>
+        <li><a href="#help/privacy" data-i18n="help_privacy_link">How we protect your privacy</a></li>
+      </ul>
+      <p class="disclaim" data-i18n="notice_banner"></p>
+    </div>
   </section>

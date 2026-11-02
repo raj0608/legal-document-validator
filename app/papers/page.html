@@ -1,15 +1,21 @@
   <!-- My papers: four steps -->
   <section id="view-papers" class="view" hidden aria-labelledby="papers-h">
-    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
-    <h1 id="papers-h" tabindex="-1" data-i18n="papers_h">Your court papers</h1>
-    <nav id="paperSteps" class="steps" aria-label="Steps"></nav>
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><span class="crumb-here" aria-hidden="true" data-i18n="papers_h">Your court papers</span></p>
+        <h1 id="papers-h" tabindex="-1" data-i18n="papers_h">Your court papers</h1>
+      </div>
+    </div>
+    <div class="page-body">
+      <nav id="paperSteps" class="steps" aria-label="Steps"></nav>
 
-    <!-- include: /app/papers/components/steps/1-add-your-paper.html -->
+      <!-- include: /app/papers/components/steps/1-add-your-paper.html -->
 
-    <!-- include: /app/papers/components/steps/2-what-it-says.html -->
+      <!-- include: /app/papers/components/steps/2-what-it-says.html -->
 
-    <!-- include: /app/papers/components/steps/3-your-dates.html -->
+      <!-- include: /app/papers/components/steps/3-your-dates.html -->
 
-    <!-- include: /app/papers/components/steps/4-whats-next.html -->
-    <p class="disclaim" data-i18n="notice_banner"></p>
+      <!-- include: /app/papers/components/steps/4-whats-next.html -->
+      <p class="disclaim" data-i18n="notice_banner"></p>
+    </div>
   </section>

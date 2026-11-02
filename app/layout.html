@@ -4,9 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Let’s Get Ready for Court</title>
-<link rel="stylesheet" href="/vendor/fonts/400.css">
-<link rel="stylesheet" href="/vendor/fonts/700.css">
-<link rel="stylesheet" href="/vendor/fonts/400-italic.css">
+<link rel="stylesheet" href="/vendor/fonts/rethink-sans/400.css">
+<link rel="stylesheet" href="/vendor/fonts/rethink-sans/400-italic.css">
+<link rel="stylesheet" href="/vendor/fonts/rethink-sans/600.css">
+<link rel="stylesheet" href="/vendor/fonts/rethink-sans/700.css">
+<link rel="stylesheet" href="/vendor/fonts/readex-pro/600.css">
+<link rel="stylesheet" href="/vendor/fonts/readex-pro/700.css">
 <link rel="stylesheet" href="/app/styles/base.css">
 <link rel="stylesheet" href="/app/styles/header-and-text.css">
 <link rel="stylesheet" href="/app/styles/buttons-and-fields.css">
@@ -22,9 +25,11 @@
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">Skip to the main part of the page</a>
+<div class="sliver"><p data-i18n="sliver">A student prototype for the Indiana Judicial Branch. Not an official court website.</p></div>
 <header class="top">
   <div class="top-row">
     <a class="brand" href="#home">
+      <span class="brand-court" data-i18n="court_name">Indiana Judicial Branch</span>
       <span class="brand-name" data-i18n="brand">Let’s Get Ready for Court</span>
       <span class="brand-sub" data-i18n="tagline">Legal document validator for Indiana courts</span>
     </a>
@@ -72,7 +77,45 @@
   <!-- include: /app/help/privacy/page.html -->
 </main>
 
-<footer><p data-i18n="footer"></p><p data-support></p></footer>
+<footer>
+  <div class="foot-brand"><span data-i18n="court_name">Indiana Judicial Branch</span></div>
+  <div class="foot-body">
+    <div class="foot-cols">
+      <div>
+        <h2 data-i18n="foot_links_h">Helpful Links</h2>
+        <ul>
+          <li><a href="https://workforindiana.in.gov/search/" target="_blank" rel="noopener" data-i18n="foot_jobs">Jobs</a></li>
+          <li><a href="https://courts-ingov.zendesk.com/hc/en-us/categories/115000874788-Judicial-System-Indiana" target="_blank" rel="noopener" data-i18n="foot_faqs">FAQs</a></li>
+          <li><a href="https://events.in.gov/courts" target="_blank" rel="noopener" data-i18n="foot_calendar">Calendar</a></li>
+          <li><a href="https://www.in.gov/courts/holidays" target="_blank" rel="noopener" data-i18n="foot_hours">Hours &amp; Holidays</a></li>
+          <li><a href="#help" data-i18n="nav_help">Help</a></li>
+          <li><a href="https://www.in.gov/courts/contact" target="_blank" rel="noopener" data-i18n="foot_contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 data-i18n="foot_policies_h">Policies</h2>
+        <ul>
+          <li><a href="https://www.in.gov/courts/policies/ada" target="_blank" rel="noopener" data-i18n="foot_ada">ADA Accommodation</a></li>
+          <li><a href="https://www.in.gov/courts/policies/lap" target="_blank" rel="noopener" data-i18n="foot_lap">Language Access Plan</a></li>
+          <li><a href="https://www.in.gov/courts/policies" target="_blank" rel="noopener" data-i18n="foot_data">Data &amp; Technology</a></li>
+          <li><a href="#help/privacy" data-i18n="foot_privacy">Privacy</a></li>
+          <li><a href="https://www.in.gov/courts/policies" target="_blank" rel="noopener" data-i18n="foot_more_policies">More Policies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 data-i18n="foot_social_h">Social Media</h2>
+        <ul class="social">
+          <li><a href="https://www.twitter.com/incourts" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="sr" data-i18n="foot_x">X (Twitter)</span></a></li>
+          <li><a href="https://www.youtube.com/incourts" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span class="sr" data-i18n="foot_youtube">YouTube</span></a></li>
+          <li><a href="https://www.linkedin.com/company/indiana-supreme-court/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="sr" data-i18n="foot_linkedin">LinkedIn</span></a></li>
+          <li><a href="https://www.flickr.com/photos/incourts/sets/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.334 6.666C2.388 6.666 0 9.055 0 12c0 2.946 2.388 5.334 5.334 5.334 2.946 0 5.332-2.388 5.332-5.334 0-2.945-2.386-5.334-5.332-5.334zm13.332 0c-2.946 0-5.332 2.389-5.332 5.334 0 2.946 2.386 5.334 5.332 5.334C21.612 17.334 24 14.946 24 12c0-2.945-2.388-5.334-5.334-5.334z"/></svg><span class="sr" data-i18n="foot_flickr">Flickr</span></a></li>
+          <li><a href="https://www.in.gov/courts/subscribe" target="_blank" rel="noopener"><svg class="line" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM3 6l9 7 9-7"/></svg><span class="sr" data-i18n="foot_email">Email updates</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-notes"><p data-i18n="footer"></p><p data-support></p></div>
+  </div>
+</footer>
 <div id="cover" class="cover" hidden>
   <div><p data-i18n="hidden_msg">This page was cleared.</p><button class="btn" id="startOver" type="button" data-i18n="start_over">Start over</button></div>
 </div>

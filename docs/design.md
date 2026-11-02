@@ -24,7 +24,8 @@ Gaps: we found no study that tests *tenants’* comprehension of eviction forms 
 6. **Say what will happen to their information before they give it.** Home says: free, no account, nothing saved.
 7. **Real people are never more than one tap away.** Help is in the menu; the support phone number is in the footer and on the Help screen.
 8. **Information, never advice.** Unchanged and protected: see the rules in the README.
-9. **Calm.** Nothing moves, nothing times out, no pop-ups, one accent colour, one warning style.
+9. **Calm.** Nothing moves, nothing times out, no pop-ups. Navy shows where you are, one action colour marks the next step, and there is one warning style.
+10. **Part of the courts site.** The page uses the Indiana courts site’s palette, typefaces (Readex Pro and Rethink Sans), header, menu bar, cards and footer, so it could sit inside in.gov/courts. It never claims to be official: no state seal, and the top strip says it is a student prototype.
 
 ## The map
 

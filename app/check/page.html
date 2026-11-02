@@ -1,23 +1,29 @@
   <!-- Check my form -->
   <section id="view-check" class="view" hidden aria-labelledby="check-h">
-    <a class="back-home" href="#home"><span aria-hidden="true">‹</span> <span data-i18n="back_home">Home</span></a>
-    <h1 id="check-h" tabindex="-1" data-i18n="check_h">Check my form</h1>
-    <p class="lede" data-i18n="check_p"></p>
-    <p class="disclaim" data-i18n="notice_banner"></p>
-    <div class="seg" role="group" aria-label="Mode">
-      <button type="button" id="modeForm" aria-pressed="true" data-i18n="mode_form">A form I filled in</button>
-      <button type="button" id="modeClerk" aria-pressed="false" data-i18n="mode_clerk">My filing came back</button>
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><span class="crumb-here" aria-hidden="true" data-i18n="check_h">Check my form</span></p>
+        <h1 id="check-h" tabindex="-1" data-i18n="check_h">Check my form</h1>
+      </div>
     </div>
+    <div class="page-body">
+      <p class="lede" data-i18n="check_p"></p>
+      <p class="disclaim" data-i18n="notice_banner"></p>
+      <div class="seg" role="group" aria-label="Mode">
+        <button type="button" id="modeForm" aria-pressed="true" data-i18n="mode_form">A form I filled in</button>
+        <button type="button" id="modeClerk" aria-pressed="false" data-i18n="mode_clerk">My filing came back</button>
+      </div>
 
-    <div id="formPanel">
-      <div id="formLoader"></div>
-      <div id="formDoc"></div>
-      <!-- include: /app/check/components/form-checklist.html -->
-    </div>
+      <div id="formPanel">
+        <div id="formLoader"></div>
+        <div id="formDoc"></div>
+        <!-- include: /app/check/components/form-checklist.html -->
+      </div>
 
-    <div id="clerkPanel" hidden>
-      <div id="clerkLoader"></div>
-      <div id="clerkDoc"></div>
-      <!-- include: /app/check/components/fix-by-date.html -->
+      <div id="clerkPanel" hidden>
+        <div id="clerkLoader"></div>
+        <div id="clerkDoc"></div>
+        <!-- include: /app/check/components/fix-by-date.html -->
+      </div>
     </div>
   </section>

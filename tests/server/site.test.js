@@ -34,7 +34,7 @@ test("the page and shared modules are served, with security headers", async () =
   // pdf.js and the font are served from this site, so the page makes no request to any other host
   const html = await (await s.get("/")).text();
   assert.doesNotMatch(html, /<(?:link|script|img|iframe)\b[^>]*(?:href|src)="(?:https?:)?\/\//i, "scripts, styles and fonts are never loaded from another host");
-  for (const url of ["/vendor/pdfjs/pdf.min.mjs", "/vendor/pdfjs/pdf.worker.min.mjs", "/vendor/pdfjs/cmaps/UniGB-UCS2-H.bcmap", "/vendor/pdfjs/wasm/openjpeg.wasm", "/vendor/pdfjs/standard_fonts/FoxitDingbats.pfb", "/vendor/fonts/400.css", "/vendor/fonts/files/atkinson-hyperlegible-latin-400-normal.woff2"]) {
+  for (const url of ["/vendor/pdfjs/pdf.min.mjs", "/vendor/pdfjs/pdf.worker.min.mjs", "/vendor/pdfjs/cmaps/UniGB-UCS2-H.bcmap", "/vendor/pdfjs/wasm/openjpeg.wasm", "/vendor/pdfjs/standard_fonts/FoxitDingbats.pfb", "/vendor/fonts/rethink-sans/400.css", "/vendor/fonts/rethink-sans/files/rethink-sans-latin-400-normal.woff2", "/vendor/fonts/readex-pro/600.css", "/vendor/fonts/readex-pro/files/readex-pro-latin-600-normal.woff2"]) {
     assert.equal((await s.get(url)).status, 200, url);
   }
   for (const m of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)) assert.equal((await s.get(m[1])).status, 200, m[1]);

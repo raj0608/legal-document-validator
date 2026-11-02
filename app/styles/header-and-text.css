@@ -1,22 +1,44 @@
-/* The header bar and its controls, the language note, the main column, headings and text. */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
-.top-row { max-width: 50rem; margin: 0 auto; padding: 0.75rem 1.25rem 0.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; }
-.brand { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
-.brand-name { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
-.brand-sub { color: var(--muted); font-size: 0.85rem; }
-.controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
-select, .ctl-btn { font: inherit; font-size: 0.9rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; min-height: 44px; padding: 0.3rem 0.7rem; }
-select { max-width: 12rem; }
-.ctl-btn { cursor: pointer; font-weight: 700; }
-.ctl-btn[aria-pressed="true"] { background: var(--action-soft); border-color: var(--action); }
-.hide-btn { color: var(--warn); border-color: currentColor; background: transparent; }
-.langnote { max-width: 50rem; margin: 0.75rem auto 0; padding: 0 1.25rem; color: var(--muted); font-size: 0.9rem; }
+/* The top strip, the header and its controls, the language note, the page width, the title and body cards, headings and text. */
+.sliver { background: var(--navy-dark); color: #CCCCCC; font-size: 0.8rem; line-height: 1.3; }
+.sliver p { max-width: 78rem; margin: 0 auto; padding: 0.45rem 2rem; }
 
-main { max-width: 50rem; margin: 0 auto; padding: 1.25rem 1.25rem 3rem; }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--navy); }
+.top-row { max-width: 78rem; min-height: 68px; margin: 0 auto; padding: 0.6rem 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; align-items: center; justify-content: space-between; }
+.brand { text-decoration: none; display: flex; flex-direction: column; }
+.brand-court { font-family: var(--font-head); font-weight: 600; font-size: 1.6rem; line-height: 1.2; color: var(--heading); }
+.brand-name { font-size: 0.9rem; font-weight: 600; color: var(--muted); }
+.brand-sub { display: none; }
+.controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+select, .ctl-btn { font: inherit; font-size: 0.9rem; color: var(--ink); background: var(--field); border: 1px solid transparent; border-radius: 8px; min-height: 44px; padding: 0.3rem 0.8rem; }
+select { max-width: 12rem; }
+.ctl-btn { cursor: pointer; font-weight: 600; }
+.ctl-btn:hover { border-color: var(--field-line); }
+.ctl-btn[aria-pressed="true"] { background: var(--mist); border-color: var(--navy); }
+.hide-btn { background: var(--action); border: 2px solid var(--action); color: var(--action-ink); font-family: var(--font-head); font-weight: 700; }
+.hide-btn:hover { background: var(--surface); color: var(--action); border-color: var(--action); }
+.langnote { max-width: 78rem; margin: 1rem auto 0; padding: 0 2rem; color: var(--muted); font-size: 0.9rem; }
+
+main { max-width: 78rem; margin: 0 auto; padding: 2rem 2rem 3rem; }
 .view[hidden] { display: none; }
-h1 { font-size: 2rem; line-height: 1.15; margin: 0.5rem 0 0.75rem; letter-spacing: -0.015em; max-width: 24ch; }
-h2 { font-size: 1.2rem; margin: 2rem 0 0.5rem; }
-h3 { font-size: 1.05rem; margin: 1.25rem 0 0.4rem; }
-.lede { font-size: 1.05rem; max-width: 62ch; margin: 0 0 0.75rem; }
+/* Each page opens like an inner page of the courts site: a band (navy, where they use a photo) with a white title card on the left, the heading over the trail back. Then the page in a wide body card, its content in one centred column. */
+.page-title { margin-bottom: 1rem; padding: 2rem; border-radius: var(--radius); background: radial-gradient(circle at 100% 0%, var(--sun) 0 4.5rem, transparent 4.5rem), var(--navy); }
+.title-card { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 0.35rem; width: fit-content; max-width: 100%; padding: 1.5rem 2rem; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); }
+.title-card h1 { margin: 0; }
+.page-body { padding-inline: max(2rem, calc((100% - 46rem) / 2)); }
+.page-body { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding-block: 2rem; }
+/* Dates, Help and Privacy read like the courts site's content pages: their text starts on the line of the title card's heading (the band's 2rem plus the card's 2rem). */
+@media (width > 720px) { .page-body.under-title { padding-inline: 4rem max(4rem, calc(100% - 50rem)); } }
+.page-body > :first-child, .page-body > .step > :first-child { margin-top: 0; }
+.page-body > :last-child { margin-bottom: 0; }
+/* Home: the question on a white card inside a navy banner, with the four choices under it. */
+.hero { position: relative; overflow: hidden; display: grid; justify-items: center; gap: 1.5rem; margin-bottom: 1.5rem; padding: 2.5rem 2rem; border-radius: var(--radius); background: radial-gradient(circle at 96% 0%, var(--sun) 0 7.5rem, transparent 7.5rem), radial-gradient(circle at 0% 100%, var(--sun) 0 6rem, transparent 6rem), var(--navy); }
+.hero-card { width: 100%; max-width: 46rem; background: var(--surface); border-radius: var(--radius-sm); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 2rem; text-align: center; }
+.hero-card h1 { font-size: 2.5rem; line-height: 1.2; color: var(--ink); max-width: none; }
+.hero-card .lede { margin: 0.75rem auto 0; }
+
+h1 { font-size: 1.75rem; line-height: 1.15; margin: 0; color: var(--heading); max-width: 30ch; }
+h2 { font-size: 1.5rem; line-height: 1.25; color: var(--ink); margin: 2rem 0 0.5rem; }
+h3 { font-size: 1.2rem; color: var(--ink); margin: 1.25rem 0 0.4rem; }
+.lede { font-size: 1.1rem; max-width: 62ch; margin: 0 0 0.75rem; }
 .small { color: var(--muted); font-size: 0.9rem; max-width: 64ch; margin: 0.25rem 0 0.75rem; }
-.disclaim { border-inline-start: 4px solid var(--action); padding-block: 0.2rem; padding-inline-start: 0.75rem; color: var(--muted); font-size: 0.92rem; margin: 1rem 0 1.25rem; max-width: 64ch; }
+.disclaim { text-align: center; color: var(--muted); font-size: 0.875rem; margin: 1.5rem auto 0; max-width: 64ch; }

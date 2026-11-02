@@ -174,11 +174,11 @@ Behavior is meant to be identical except these deliberate fixes, each covered by
 
 ## Design
 
-How people move through the product (home, the four-step “My papers” path, the four-item menu, phone layout) and the research behind it are in [docs/design.md](docs/design.md), including a script for testing it with real litigants. Two switches for the team: `npm run demo` (sample answers) and `?tester` at the end of the address (shows the safety test paper).
+How people move through the product (home, the four-step “My papers” path, the four-item menu, phone layout) and the research behind it are in [docs/design.md](docs/design.md), including a script for testing it with real litigants. The look follows the Indiana courts site (in.gov/courts), so the page could sit inside it: the same palette, typefaces, header and menu bar, title and body cards, and footer. It does not use the state seal or call itself an official site; the strip at the top says it is a student prototype. Two switches for the team: `npm run demo` (sample answers) and `?tester` at the end of the address (shows the safety test paper).
 
 ## PDFs
 
-The PDF is read inside the browser and never uploaded. pdf.js and the Atkinson Hyperlegible font are served from this site (`/vendor`, from the pinned npm packages), so a visit makes no request to Google, a CDN or anyone else, and the page’s security policy allows none.
+The PDF is read inside the browser and never uploaded. pdf.js and the fonts (Readex Pro and Rethink Sans) are served from this site (`/vendor`, from the pinned npm packages), so a visit makes no request to Google, a CDN or anyone else, and the page’s security policy allows none.
 
 What the reader handles, each covered by a test on a real PDF:
 

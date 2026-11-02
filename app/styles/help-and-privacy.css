@@ -1,8 +1,9 @@
 /* The common questions on Help with their sources, and the plain lists on Help and Privacy. */
-details.faq { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 0.6rem; }
-details.faq summary { cursor: pointer; font-weight: 700; padding: 0.9rem 1rem; min-height: 48px; }
-details.faq[open] summary { border-bottom: 1px solid var(--line); }
-details.faq .ans { padding: 0.8rem 1rem 1rem; max-width: 64ch; }
+details.faq { border-bottom: 1px solid var(--line); }
+details.faq:first-of-type { border-top: 1px solid var(--line); }
+details.faq summary { cursor: pointer; font-weight: 600; color: var(--link); padding: 0.75rem 0.25rem; }
+details.faq summary:hover { color: var(--link-hover); text-decoration: underline; }
+details.faq .ans { padding: 0 0.25rem 1rem; max-width: 64ch; }
 details.faq .ans p { margin: 0 0 0.6rem; }
 .srcs { font-size: 0.9rem; color: var(--muted); }
 .srcs a { overflow-wrap: anywhere; }

@@ -1,20 +1,20 @@
 /* Date cards and fields, the timeline, button rows and the reminder preview. */
-.hearing { background: var(--surface); border: 2px solid var(--ink); border-radius: 14px; padding: 1.1rem 1.2rem; margin: 1rem 0 1.5rem; }
+.hearing { background: var(--mist); border-inline-start: 6px solid var(--navy); border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; margin: 1rem 0 1.5rem; }
 .hearing .label { font-weight: 700; color: var(--muted); }
-.hearing .big { font-size: 2rem; line-height: 1.2; font-weight: 700; margin: 0.3rem 0; }
+.hearing .big { font-family: var(--font-head); font-size: 2rem; line-height: 1.2; font-weight: 700; margin: 0.3rem 0; color: var(--heading); }
 .hearing .sub { font-size: 1.05rem; }
-.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.9rem 1rem; margin: 1rem 0 1.5rem; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); align-items: end; gap: 0.9rem 1rem; margin: 1rem 0 1.5rem; }
 .field label { display: block; font-weight: 700; margin-bottom: 0.3rem; }
-.from { font-size: 0.8rem; font-weight: 700; color: var(--action); margin-inline-start: 0.3rem; }
+.from { font-size: 0.8rem; font-weight: 700; color: var(--navy); margin-inline-start: 0.3rem; }
 .timeline li { position: relative; padding-bottom: 1.25rem; padding-inline-start: 1.6rem; border-inline-start: 3px solid var(--line); margin-inline-start: 0.4rem; }
-.timeline li::before { content: ""; position: absolute; inset-inline-start: -0.6rem; top: 0.35rem; width: 0.9rem; height: 0.9rem; border-radius: 50%; background: var(--surface); border: 3px solid var(--action); }
+.timeline li::before { content: ""; position: absolute; inset-inline-start: -0.6rem; top: 0.35rem; width: 0.9rem; height: 0.9rem; border-radius: 50%; background: var(--surface); border: 3px solid var(--navy); }
 .timeline li.past { opacity: 0.6; }
 .timeline li:last-child { border-inline-start-color: transparent; }
-.tl-date { font-weight: 700; font-size: 1.1rem; }
+.tl-date { font-family: var(--font-head); font-weight: 600; font-size: 1.1rem; color: var(--heading); }
 .tl-title { display: block; font-weight: 700; margin-top: 0.15rem; }
 .tl-note { display: block; color: var(--muted); font-size: 0.92rem; max-width: 62ch; }
 .tl-links { margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 0.95rem; }
 .row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; align-items: center; }
 .preview { list-style: none; padding: 0; margin: 0.6rem 0 0; }
-.preview li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0.6rem 0.8rem; margin-bottom: 0.5rem; }
+.preview li { background: var(--bg); border-radius: 12px; padding: 0.6rem 0.9rem; margin-bottom: 0.5rem; }
 .preview .when { display: block; font-size: 0.85rem; color: var(--muted); font-weight: 700; }
