@@ -5,10 +5,10 @@ import { state } from "/app/shared/state.js";
 import { fmtDate, fmtTime } from "/app/shared/lib/date-format.js";
 import { renderNext } from "/app/shared/layout/next-date.js";
 import { dayDiff, fromISO } from "/shared/dates/date-math.js";
-import { items } from "/app/screens/dates/lib/date-items.js";
-import { renderTimeline } from "/app/screens/dates/components/timeline.js";
-import { initReminderPreview } from "/app/screens/dates/components/reminder-preview.js";
-import { initDateFiles } from "/app/screens/dates/components/date-files.js";
+import { items } from "/app/dates/lib/date-items.js";
+import { renderTimeline } from "/app/dates/components/timeline.js";
+import { initReminderPreview } from "/app/dates/components/reminder-preview.js";
+import { initDateFiles } from "/app/dates/components/date-files.js";
 
 export function renderDates() {
   $("fNotice").value = state.dates.notice; $("fDays").value = state.dates.days; $("fServed").value = state.dates.served;

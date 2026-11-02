@@ -6,7 +6,7 @@ import { fmtDate } from "/app/shared/lib/date-format.js";
 import { findDeadline } from "/shared/analysis/fix-by-date.js";
 import { toISO } from "/shared/dates/date-math.js";
 import { SRC } from "/shared/i18n/sources.js";
-import { renderDates } from "/app/screens/dates/screen.js";
+import { renderDates } from "/app/dates/page.js";
 
 export function renderCure() {
   const d = state.clerk;

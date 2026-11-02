@@ -7,7 +7,7 @@ import { toast } from "/app/shared/ui/toast.js";
 import { findDates } from "/shared/analysis/paper-dates.js";
 import { findCites } from "/shared/analysis/citations.js";
 import { toISO, dayDiff } from "/shared/dates/date-math.js";
-import { renderDates } from "/app/screens/dates/screen.js";
+import { renderDates } from "/app/dates/page.js";
 
 export function autoDatesFromPapers() {
   const d = state.papers;

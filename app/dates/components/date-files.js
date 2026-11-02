@@ -6,7 +6,7 @@ import { toast } from "/app/shared/ui/toast.js";
 import { eventStart } from "/shared/dates/reminders.js";
 import { dayDiff, toISO } from "/shared/dates/date-math.js";
 import { buildIcs } from "/shared/dates/ics.js";
-import { items, reminders, describe } from "/app/screens/dates/lib/date-items.js";
+import { items, reminders, describe } from "/app/dates/lib/date-items.js";
 
 function download(data, filename, type) {
   const url = URL.createObjectURL(new Blob([data], { type }));

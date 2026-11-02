@@ -3,7 +3,7 @@ import { $, el } from "/app/shared/lib/dom.js";
 import { t, locale } from "/app/shared/lib/page-text.js";
 import { fmtDate } from "/app/shared/lib/date-format.js";
 import { dayDiff } from "/shared/dates/date-math.js";
-import { items, reminders, describe } from "/app/screens/dates/lib/date-items.js";
+import { items, reminders, describe } from "/app/dates/lib/date-items.js";
 
 export function initReminderPreview() {
   // Preview only: nothing is sent or saved.

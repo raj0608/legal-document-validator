@@ -1,4 +1,4 @@
-// How the code is laid out, checked: imports resolve, shared/ stays plain, screens keep to themselves, only server/ai/ and the
+// How the code is laid out, checked: imports resolve, shared/ stays plain, pages keep to themselves, only server/ai/ and the
 // start files know which AI is used, and every file stays small and named for what it holds.
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -72,12 +72,21 @@ test("each thing is exported where it is written: no index.js files, and no expo
   }
 });
 
-test("a screen uses another screen only through its screen.js, never its components/ or lib/", () => {
-  for (const file of filesIn("app/screens")) {
-    const own = "/app/screens/" + path.relative(path.join(root, "app", "screens"), file).split(path.sep)[0] + "/";
+test("a page uses another page only through its page.js, never its components/ or lib/", () => {
+  const app = path.join(root, "app");
+  // A file belongs to the page whose folder holds it: the nearest folder above it, inside app/, with a page.html.
+  const pageOf = (file) => {
+    for (let dir = path.dirname(file); dir.startsWith(app + path.sep); dir = path.dirname(dir)) if (fs.existsSync(path.join(dir, "page.html"))) return dir;
+    return null;
+  };
+  for (const file of filesIn("app")) {
+    const own = pageOf(file);
+    if (!own) continue;
     for (const imp of importsOf(file)) {
-      if (!imp.spec.startsWith("/app/screens/") || imp.spec.startsWith(own)) continue;
-      assert.match(imp.spec, /^\/app\/screens\/[\w-]+\/screen\.js$/, show(file) + " imports " + imp.spec + "; move what both screens need to app/shared/");
+      const to = fileFor(imp);
+      const theirs = to && pageOf(to);
+      if (!theirs || theirs === own) continue;
+      assert.equal(to, path.join(theirs, "page.js"), show(file) + " imports " + imp.spec + "; use that page's page.js, or move what both pages need to app/shared/");
     }
   }
 });

@@ -90,15 +90,18 @@ All in `.env` (see `.env.example`). Only one AI key is needed.
 ## How it is put together
 
 ```
-app/       the page, as the browser loads it (no bundler)
-             index.html   the frame of the page: header, menu, footer; each screen’s markup is pulled in by an include line
+app/       the page, as the browser loads it (no bundler); each page is the folder of its address
+             layout.html  the frame of the page: header, menu, footer; each page’s markup is pulled in by an include line
              main.js      starts the page
-             screens/     one folder per screen: home, papers, check, dates, help, privacy
-                            view.html    the screen’s markup
-                            screen.js    the functions main.js calls to set the screen up and draw it
-                            components/  the parts of the screen, one file each
-                            lib/         what only this screen’s parts share (My dates has one)
-             shared/      what belongs to no single screen
+             page.html    Home (#home)
+             papers/      My papers (#papers, four steps)
+             check/       Check my form (#check), opened from Home
+             dates/       My dates (#dates)
+             help/        Help (#help)
+             privacy/     Privacy (#privacy)
+                            a page’s folder holds page.html (its markup), page.js (the functions main.js calls to
+                            set the page up and draw it), components/ (its parts) and, when they need one, lib/
+             shared/      what belongs to no single page
                             state.js     the page’s state, in memory only
                             layout/      menu and steps, language picker, page controls, support line, next-date strip
                             ui/          toast, paper loader, AI helper, warnings under AI answers
@@ -128,9 +131,9 @@ server/    the server: it keeps the AI key and the rules, and is the only part t
                             json.js      reads an answer given as JSON
                             adapters/    gemini.js, anthropic.js; demo-client.js stands in for Anthropic’s client in the demo
              http/        the web server
-                            app.js       puts it together: security headers, request log, limits, routes,
-                                         streaming, error replies, the page and the static files
-                            page.js      puts the page together from app/index.html and each screen’s view.html
+                            app.js         puts it together: security headers, request log, limits, routes,
+                                           streaming, error replies, the page and the static files
+                            serve-page.js  puts the page together from app/layout.html and each page’s page.html
 tests/     node:test, in the same folders as the code: shared/, server/, app/
              layout.test.js       checks the layout rules below
              agent-rules.test.js  keeps the AI coding tools’ rule files (AGENTS.md) in shape
@@ -143,13 +146,13 @@ AGENTS.md  the rules AI coding tools follow in this repo (app/, server/ and shar
 ### The rules the layout follows
 
 - **One job per file, named for what it holds.** `holidays.js` holds court holidays and `checks.js` holds the server’s checks. There is no `utils.js`. A file that grows past about 200 lines is split by what its parts do.
-- **A screen is a folder.** Everything for one screen is in `app/screens/<screen>/`: `view.html` (its markup), `screen.js` (the functions `main.js` calls to set the screen up and draw it) and `components/` (its parts, one file each; `main.js` also calls some of them directly). Home has only `view.html`: its card is drawn by `app/shared/layout/next-date.js`. A screen uses another screen only through its `screen.js`.
-- **Shared parts live in shared folders.** What belongs to no single screen (the menu and steps, the paper loader, the toast, the page text) is in `app/shared/`. A screen’s own drawing stays in its folder even when another screen asks for it: My papers and Check my form call the dates screen’s `renderDates`. What the browser, the server and the tests all use is in the top-level `shared/`. It holds only plain code (nothing that needs a browser, Node or a package), so the same file runs in all three places and they cannot disagree.
+- **A page is the folder of its address.** `#papers` is `app/papers/`, `#check` is `app/check/`, and Home is `app/page.html`. A page’s folder holds `page.html` (its markup), `page.js` (the functions `main.js` calls to set the page up and draw it) and `components/` (its parts, one file each; `main.js` also calls some of them directly). Home has only `page.html`: its card is drawn by `app/shared/layout/next-date.js`. A page uses another page only through its `page.js`.
+- **Shared parts live in shared folders.** What belongs to no single page (the menu and steps, the paper loader, the toast, the page text) is in `app/shared/`. A page’s own drawing stays in its folder even when another page asks for it: My papers and Check my form call the dates page’s `renderDates`. What the browser, the server and the tests all use is in the top-level `shared/`. It holds only plain code (nothing that needs a browser, Node or a package), so the same file runs in all three places and they cannot disagree.
 - **An import names the file that holds the thing.** For example `import { protect } from "/shared/safety/protect.js"`. No `index.js` file passes things on. Files in `app/` import by the address from the site root (`/app/...`, `/shared/...`), even from the same folder, so an import reads the same wherever it is. Files in `shared/` import each other by relative path, because Node runs them too.
 - **The AI is plugged in, not built in.** `server/ai/port.js` says what every AI connection offers: an answer streamed piece by piece (`stream`) and an answer read as data (`json`), with every failure turned into one of the error codes the page knows. `gemini.js` and `anthropic.js` in `server/ai/adapters/` each do that for one AI. `demo-client.js` stands in for the Anthropic client, so the demo runs through `anthropic.js` with sample answers. `server/ai/choose.js` picks one from `.env`. The rest of the server only uses the AI it is given, so another AI means one new adapter and a few lines in `choose.js`, and nothing in `server/http/` changes.
-- **The page is put together when it is served.** `app/index.html` is the frame. A line like `<!-- include: /app/screens/home/view.html -->` is replaced by that file (`server/http/page.js`). There is no bundler: edit a `view.html` and reload. If an included file is missing, the page does not load, and the server’s console names the file. The line `<!-- modulepreload: /app/main.js -->` becomes one preload link for every module `main.js` needs, so the browser asks for them all at once instead of one import level at a time.
+- **The page is put together when it is served.** `app/layout.html` is the frame. A line like `<!-- include: /app/papers/page.html -->` is replaced by that file (`server/http/serve-page.js`). There is no bundler: edit a `page.html` and reload. If an included file is missing, the page does not load, and the server’s console names the file. The line `<!-- modulepreload: /app/main.js -->` becomes one preload link for every module `main.js` needs, so the browser asks for them all at once instead of one import level at a time.
 - **Only the start files start things.** `app/main.js`, `server/main.js` and `server/demo.js` are the only files that do something as soon as they load. Every other file only defines functions and data.
-- **Tests follow the same layout.** `tests/shared/`, `tests/server/` and `tests/app/` test the folders of the same name. `tests/layout.test.js` checks the rules above: every import points at a real file and a real name, `app/` imports by the address from the site root, `shared/` imports only `shared/` and uses nothing that only a browser or Node has, a screen uses another screen only through its `screen.js`, only `server/ai/` and the start files know which AI is used, and no file passes 200 lines or has a catch-all name like `utils`.
+- **Tests follow the same layout.** `tests/shared/`, `tests/server/` and `tests/app/` test the folders of the same name. `tests/layout.test.js` checks the rules above: every import points at a real file and a real name, `app/` imports by the address from the site root, `shared/` imports only `shared/` and uses nothing that only a browser or Node has, a page uses another page only through its `page.js`, only `server/ai/` and the start files know which AI is used, and no file passes 200 lines or has a catch-all name like `utils`.
 
 ### What protects a paper before any AI call
 

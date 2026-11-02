@@ -2,10 +2,10 @@
 import { $ } from "/app/shared/lib/dom.js";
 import { state } from "/app/shared/state.js";
 import { registerSlot } from "/app/shared/ui/document-slot.js";
-import { renderDates } from "/app/screens/dates/screen.js";
-import { renderChecks } from "/app/screens/check/components/form-checklist.js";
-import { renderCure } from "/app/screens/check/components/fix-by-date.js";
-import { blanks, clerkNotice } from "/app/screens/check/components/ai-cards.js";
+import { renderDates } from "/app/dates/page.js";
+import { renderChecks } from "/app/check/components/form-checklist.js";
+import { renderCure } from "/app/check/components/fix-by-date.js";
+import { blanks, clerkNotice } from "/app/check/components/ai-cards.js";
 
 export function registerCheckSlots() {
   registerSlot("form", {

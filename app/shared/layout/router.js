@@ -4,7 +4,7 @@ import { $, el } from "/app/shared/lib/dom.js";
 import { t } from "/app/shared/lib/page-text.js";
 import { state } from "/app/shared/state.js";
 import { parseRoute, hashFor, guard, menuItemFor, VIEWS, PAPER_STEPS } from "/shared/screen-map.js";
-import { setMode } from "/app/screens/check/screen.js";
+import { setMode } from "/app/check/page.js";
 import { renderNext } from "/app/shared/layout/next-date.js";
 
 let current = { view: "home" };

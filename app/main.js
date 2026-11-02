@@ -10,17 +10,17 @@ import { renderSupport } from "/app/shared/layout/support-line.js";
 import { renderSize, initPageControls } from "/app/shared/layout/page-controls.js";
 import { initLang } from "/app/shared/layout/language-picker.js";
 import { route, initNav, refreshNav } from "/app/shared/layout/router.js";
-import { renderDates, initDates } from "/app/screens/dates/screen.js";
-import { renderRemChips } from "/app/screens/dates/components/reminder-chips.js";
-import { registerPapersSlot, initPapers } from "/app/screens/papers/screen.js";
-import { renderFound } from "/app/screens/papers/components/found-in-paper.js";
-import { renderQuick, abortChat } from "/app/screens/papers/components/chat.js";
-import { registerCheckSlots, initCheck } from "/app/screens/check/screen.js";
-import { renderChecks } from "/app/screens/check/components/form-checklist.js";
-import { renderCure } from "/app/screens/check/components/fix-by-date.js";
-import { renderFaq } from "/app/screens/help/screen.js";
-import { renderPrivacy, initPrivacy } from "/app/screens/privacy/screen.js";
-import { initClearEverything } from "/app/screens/privacy/components/clear-everything.js";
+import { renderDates, initDates } from "/app/dates/page.js";
+import { renderRemChips } from "/app/dates/components/reminder-chips.js";
+import { registerPapersSlot, initPapers } from "/app/papers/page.js";
+import { renderFound } from "/app/papers/components/found-in-paper.js";
+import { renderQuick, abortChat } from "/app/papers/components/chat.js";
+import { registerCheckSlots, initCheck } from "/app/check/page.js";
+import { renderChecks } from "/app/check/components/form-checklist.js";
+import { renderCure } from "/app/check/components/fix-by-date.js";
+import { renderFaq } from "/app/help/page.js";
+import { renderPrivacy, initPrivacy } from "/app/privacy/page.js";
+import { initClearEverything } from "/app/privacy/components/clear-everything.js";
 
 // ---------- Static text and language ----------
 function applyText() {

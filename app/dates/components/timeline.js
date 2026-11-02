@@ -4,8 +4,8 @@ import { t } from "/app/shared/lib/page-text.js";
 import { fmtDate, fmtShort, fmtTime } from "/app/shared/lib/date-format.js";
 import { dayDiff } from "/shared/dates/date-math.js";
 import { eventStart } from "/shared/dates/reminders.js";
-import { gcal } from "/app/screens/dates/lib/google-calendar.js";
-import { reminders, describe } from "/app/screens/dates/lib/date-items.js";
+import { gcal } from "/app/dates/lib/google-calendar.js";
+import { reminders, describe } from "/app/dates/lib/date-items.js";
 
 // One date on the timeline, with its calendar links. `upcomingOnly` leaves out dates that have passed (used inside the path).
 export function renderTimeline(list, all, { upcomingOnly = false } = {}) {

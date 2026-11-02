@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { I18N } from "../../shared/i18n/languages.js";
 import { parseRoute, hashFor, VIEWS, MENU } from "../../shared/screen-map.js";
-import { buildPage } from "../../server/http/page.js";
+import { buildPage } from "../../server/http/serve-page.js";
 
 const html = buildPage();
 const jsDir = new URL("../../app/", import.meta.url);

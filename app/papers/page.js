@@ -2,9 +2,9 @@
 import { $ } from "/app/shared/lib/dom.js";
 import { registerSlot } from "/app/shared/ui/document-slot.js";
 import { refreshStepControls } from "/app/shared/layout/router.js";
-import { autoDatesFromPapers, renderFound } from "/app/screens/papers/components/found-in-paper.js";
-import { abortChat, resetChat, ask } from "/app/screens/papers/components/chat.js";
-import { explain } from "/app/screens/papers/components/explanation.js";
+import { autoDatesFromPapers, renderFound } from "/app/papers/components/found-in-paper.js";
+import { abortChat, resetChat, ask } from "/app/papers/components/chat.js";
+import { explain } from "/app/papers/components/explanation.js";
 
 export function registerPapersSlot() {
   registerSlot("papers", {

@@ -1,10 +1,10 @@
-// The page is put together from app/index.html when it is served: include lines are filled in, every module main.js
+// The page is put together from app/layout.html when it is served: include lines are filled in, every module main.js
 // needs is preloaded, and a broken include stops the page instead of serving half of it.
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { buildPage } from "../../server/http/page.js";
+import { buildPage } from "../../server/http/serve-page.js";
 import { root } from "../../server/http/repo-root.js";
 
 test("the page holds every screen, and no include or preload line is left in it", () => {
