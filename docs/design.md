@@ -40,7 +40,7 @@ Home ── What do you need help with?
 My papers   1 Add your paper → 2 What it says → 3 Your dates → 4 What’s next
 My dates    your hearing, other dates, reminders, calendar links
 Help        talk to a real person · common questions · privacy
-            (Privacy is a screen of its own, reached from Home and Help)
+            (Privacy sits under Help, at #help/privacy; Home links to it too)
 ```
 
 “Check my form” is not in the menu because it is something people do from a situation (Home) or after their papers (step 4), not a place they come back to. Every screen that is not in the menu lights up its parent: Check my form → Home, Privacy → Help.

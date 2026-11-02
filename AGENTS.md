@@ -30,7 +30,7 @@ README.md, "How it is put together", is the map of the folders. Read it instead 
 - `shared/` is plain code that runs unchanged in the browser, in Node and in the tests: no DOM, no `node:` modules, no npm packages, and relative imports that stay inside `shared/`.
 - `app/` imports by address from the site root (`/app/...`, `/shared/...`), even inside one folder. Never a bare package name: there is no bundler.
 - `app/` and `server/` never import each other. Only `server/main.js`, `server/demo.js` and `server/ai/` know which AI is in use.
-- A page is the folder of its address in `app/`: `#check` is `app/check/`, and Home is `app/page.html`. Another page may call its `page.js`, never its `components/` or `lib/`. Code two pages need moves to `app/shared/`; code the server needs too moves to the top-level `shared/`.
+- A page is the folder of its address in `app/`: `#check` is `app/check/`, `#help/privacy` is `app/help/privacy/`, and Home is `app/page.html`. Another page may call its `page.js`, never its `components/` or `lib/`. Code two pages need moves to `app/shared/`; code the server needs too moves to the top-level `shared/`.
 - Only `app/main.js`, `server/main.js` and `server/demo.js` run code when they load. Every other file only defines functions and data.
 
 ## Contracts that span areas

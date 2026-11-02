@@ -5,7 +5,7 @@
 //   #check         check a form I filled in      #check/clerk   my filing came back
 //   #dates         my dates and reminders
 //   #help          free help from people, and common questions
-//   #privacy       how private details are handled
+//   #help/privacy  how private details are handled (a page under Help)
 //
 // Every address is a normal link, so the phone's Back button always does what the person expects.
 
@@ -26,7 +26,8 @@ const ALIASES = { questions: "help" }; // older links
 
 export function parseRoute(hash) {
   const parts = String(hash || "").replace(/^#\/?/, "").split("/");
-  let view = ALIASES[parts[0]] || parts[0];
+  // A page under another page has its address under that page's address, like its folder in app/: #help/privacy.
+  let view = parts[1] && PARENT[parts[1]] === parts[0] ? parts[1] : ALIASES[parts[0]] || parts[0];
   if (!VIEWS.includes(view)) view = "home";
   const route = { view };
   if (view === "papers") {
@@ -40,7 +41,8 @@ export function parseRoute(hash) {
 export function hashFor(route) {
   if (route.view === "papers") return route.step > 1 ? "#papers/" + route.step : "#papers";
   if (route.view === "check") return route.mode === "clerk" ? "#check/clerk" : "#check";
-  return "#" + route.view;
+  const parent = PARENT[route.view];
+  return parent && parent !== "home" ? "#" + parent + "/" + route.view : "#" + route.view; // Home's pages stay at the top
 }
 
 // Steps 2 to 4 need a paper. Without one (after a reload, or Back after clearing) the person is sent to step 1.

@@ -8,11 +8,17 @@ test("addresses parse to a screen, and an empty or unknown one goes Home", () =>
   assert.deepEqual(parseRoute("#nonsense"), { view: "home" });
   assert.deepEqual(parseRoute("#dates"), { view: "dates" });
   assert.deepEqual(parseRoute("#help"), { view: "help" });
-  assert.deepEqual(parseRoute("#privacy"), { view: "privacy" });
+  assert.deepEqual(parseRoute("#help/privacy"), { view: "privacy" });
 });
 
 test("the old Questions address still works", () => {
   assert.deepEqual(parseRoute("#questions"), { view: "help" });
+});
+
+test("Privacy lives under Help, and its old address still opens it", () => {
+  assert.equal(hashFor({ view: "privacy" }), "#help/privacy");
+  assert.deepEqual(parseRoute("#privacy"), { view: "privacy" });
+  assert.equal(hashFor({ view: "check", mode: "form" }), "#check", "a page under Home keeps a top-level address");
 });
 
 test("papers has four steps and a bad step number never breaks", () => {

@@ -19,8 +19,8 @@ import { registerCheckSlots, initCheck } from "/app/check/page.js";
 import { renderChecks } from "/app/check/components/form-checklist.js";
 import { renderCure } from "/app/check/components/fix-by-date.js";
 import { renderFaq } from "/app/help/page.js";
-import { renderPrivacy, initPrivacy } from "/app/privacy/page.js";
-import { initClearEverything } from "/app/privacy/components/clear-everything.js";
+import { renderPrivacy, initPrivacy } from "/app/help/privacy/page.js";
+import { initClearEverything } from "/app/help/privacy/components/clear-everything.js";
 
 // ---------- Static text and language ----------
 function applyText() {
