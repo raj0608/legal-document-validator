@@ -12,6 +12,7 @@ Rules in the root AGENTS.md apply here too. This file only adds rules for `app/`
 - `tests/app/ui-structure.test.js` finds sections by their HTML comments, for example `<!-- Check my form -->` at the top of `check/page.html`. Keep those comments.
 - Put text on the page with `textContent` or `el()` from `app/shared/lib/dom.js`. Use `innerHTML` only with the output of `app/shared/lib/answer-html.js`, which escapes first. AI answers and paper text are untrusted.
 - Page state is `app/shared/state.js`, in memory only. A person may be on a shared or watched computer, and "Hide this page" must leave nothing behind.
+- Colours, fonts, corner radii and shadows are tokens in `app/styles/base.css`, taken from the Indiana courts site so the page matches it. Use the tokens (`var(--navy)`, `var(--action)` and the rest), not new values.
 - The stylesheets in `app/styles/` are linked in a fixed order in `layout.html`, and that order is the cascade. Add a rule to the file for that part of the page; do not reorder the links.
 - The line `<!-- modulepreload: /app/main.js -->` makes the page ask for every module at once. The server follows the imports, so there is nothing to keep in sync, but every file in `app/` must be imported by something `main.js` loads (`tests/server/serve-page.test.js` checks this).
 - The server sends only `.js` and `.css` files from `app/` and `shared/` (`server/http/static-files.js`), so markup and notes like AGENTS.md stay off the site. A new kind of file the page loads, such as an image, needs its extension added there.
