@@ -69,9 +69,9 @@ Steps 2 to 4 need a paper. If someone arrives without one (a reload, or Back aft
 ## What we built
 
 - `shared/screen-map.js`: the map above as code (pure, tested).
-- `web/shared/layout/router.js`: screens, steps, focus, titles. `web/shared/layout/next-date.js`: the next-date card and strip.
+- `app/shared/layout/router.js`: screens, steps, focus, titles. `app/shared/layout/next-date.js`: the next-date card and strip.
 - Phone layout: bottom menu, compact top, **Hide this page** stays on screen in the corner.
-- `tests/web/ui-structure.test.js`: every id, link and line of text the page needs exists in English and Spanish; one heading per screen; a way back on every screen; no advice words in page text.
+- `tests/app/ui-structure.test.js`: every id, link and line of text the page needs exists in English and Spanish; one heading per screen; a way back on every screen; no advice words in page text.
 - `npm run demo`: the whole product with clearly labelled sample answers and no API key, for reviews and user testing. The “safety test paper” button now only shows with `?tester` in the address, because it is for the team.
 
 ## Test it with people before trusting it

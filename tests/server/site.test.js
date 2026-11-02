@@ -38,9 +38,9 @@ test("the page and shared modules are served, with security headers", async () =
     assert.equal((await s.get(url)).status, 200, url);
   }
   for (const m of html.matchAll(/(?:href|src)="(\/[^"]+)"/g)) assert.equal((await s.get(m[1])).status, 200, m[1]);
-  assert.equal((await s.get("/web/main.js")).status, 200);
-  // only scripts and styles are served from web/ and shared/: markup goes out inside the page, and the rule files never do
-  for (const url of ["/web/index.html", "/web/screens/home/view.html", "/web/AGENTS.md", "/shared/AGENTS.md"]) assert.equal((await s.get(url)).status, 404, url);
+  assert.equal((await s.get("/app/main.js")).status, 200);
+  // only scripts and styles are served from app/ and shared/: markup goes out inside the page, and the rule files never do
+  for (const url of ["/app/index.html", "/app/screens/home/view.html", "/app/AGENTS.md", "/shared/AGENTS.md"]) assert.equal((await s.get(url)).status, 404, url);
   const api = await s.get("/api/health");
   assert.equal(api.headers.get("cache-control"), "no-store");
   assert.equal((await s.get("/api/nope")).status, 404);

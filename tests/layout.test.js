@@ -17,12 +17,12 @@ const importsOf = (file) => [...fs.readFileSync(file, "utf8").matchAll(IMPORT)].
 const exportsOf = (file) => new Set([...fs.readFileSync(file, "utf8").matchAll(EXPORT)].map((m) => m[1]));
 
 function fileFor({ file, spec }) {
-  if (spec.startsWith("/web/") || spec.startsWith("/shared/")) return path.join(root, spec);
+  if (spec.startsWith("/app/") || spec.startsWith("/shared/")) return path.join(root, spec);
   if (spec.startsWith("./") || spec.startsWith("../")) return path.resolve(path.dirname(file), spec);
   return null;
 }
 
-const code = ["web", "shared", "server"].flatMap(filesIn);
+const code = ["app", "shared", "server"].flatMap(filesIn);
 const imports = [...code, ...filesIn("tests")].flatMap(importsOf);
 
 test("every import of a file in this project points at a file that exists", () => {
@@ -41,9 +41,9 @@ test("every name imported from a file in this project is exported by that file",
   }
 });
 
-test("files in web/ import by address from the site root, even files in the same folder", () => {
-  for (const imp of filesIn("web").flatMap(importsOf)) {
-    assert.match(imp.spec, /^\/(web|shared|vendor)\//, show(imp.file) + " imports " + imp.spec + "; browser imports start with /web/, /shared/ or /vendor/");
+test("files in app/ import by address from the site root, even files in the same folder", () => {
+  for (const imp of filesIn("app").flatMap(importsOf)) {
+    assert.match(imp.spec, /^\/(app|shared|vendor)\//, show(imp.file) + " imports " + imp.spec + "; browser imports start with /app/, /shared/ or /vendor/");
   }
 });
 
@@ -73,19 +73,19 @@ test("each thing is exported where it is written: no index.js files, and no expo
 });
 
 test("a screen uses another screen only through its screen.js, never its components/ or lib/", () => {
-  for (const file of filesIn("web/screens")) {
-    const own = "/web/screens/" + path.relative(path.join(root, "web", "screens"), file).split(path.sep)[0] + "/";
+  for (const file of filesIn("app/screens")) {
+    const own = "/app/screens/" + path.relative(path.join(root, "app", "screens"), file).split(path.sep)[0] + "/";
     for (const imp of importsOf(file)) {
-      if (!imp.spec.startsWith("/web/screens/") || imp.spec.startsWith(own)) continue;
-      assert.match(imp.spec, /^\/web\/screens\/[\w-]+\/screen\.js$/, show(file) + " imports " + imp.spec + "; move what both screens need to web/shared/");
+      if (!imp.spec.startsWith("/app/screens/") || imp.spec.startsWith(own)) continue;
+      assert.match(imp.spec, /^\/app\/screens\/[\w-]+\/screen\.js$/, show(file) + " imports " + imp.spec + "; move what both screens need to app/shared/");
     }
   }
 });
 
-test("server/ never imports web/", () => {
-  const web = path.join(root, "web") + path.sep;
+test("server/ never imports app/", () => {
+  const browser = path.join(root, "app") + path.sep;
   for (const imp of filesIn("server").flatMap(importsOf)) {
-    assert.ok(!(fileFor(imp) ?? "").startsWith(web), show(imp.file) + " imports " + imp.spec + "; the server only serves web/, it never runs it");
+    assert.ok(!(fileFor(imp) ?? "").startsWith(browser), show(imp.file) + " imports " + imp.spec + "; the server only serves app/, it never runs it");
   }
 });
 
@@ -101,7 +101,7 @@ test("files in shared/ use nothing that only a browser or only Node has", () => 
 
 test("files stay under 200 lines, so each one holds one concern", () => {
   const pageText = path.join(root, "shared", "i18n") + path.sep;
-  for (const dir of ["web", "shared", "server"]) {
+  for (const dir of ["app", "shared", "server"]) {
     for (const f of fs.readdirSync(path.join(root, dir), { recursive: true }).filter((f) => /\.(m?js|css|html)$/.test(f))) {
       const file = path.join(root, dir, f);
       if (file.startsWith(pageText)) continue; // the page text in each language is one long list by design
@@ -112,7 +112,7 @@ test("files stay under 200 lines, so each one holds one concern", () => {
 });
 
 test("no file or folder has a catch-all name like utils or helpers", () => {
-  for (const dir of ["web", "shared", "server", "tests"]) {
+  for (const dir of ["app", "shared", "server", "tests"]) {
     for (const f of fs.readdirSync(path.join(root, dir), { recursive: true })) {
       for (const part of f.split(path.sep)) {
         assert.doesNotMatch(part, /^(utils?|helpers?|misc|common|stuff)(\.\w+)?$/i, path.join(dir, f) + ": name it for what it holds");
@@ -121,8 +121,8 @@ test("no file or folder has a catch-all name like utils or helpers", () => {
   }
 });
 
-test("only web/main.js, server/main.js and server/demo.js do something when they load; every other file only defines things", () => {
-  const starts = ["web/main.js", "server/main.js", "server/demo.js"].map((f) => path.join(root, f));
+test("only app/main.js, server/main.js and server/demo.js do something when they load; every other file only defines things", () => {
+  const starts = ["app/main.js", "server/main.js", "server/demo.js"].map((f) => path.join(root, f));
   for (const file of code.filter((f) => !starts.includes(f))) {
     let inText = false; // inside a `...` text that spans lines, where a line may start with anything
     fs.readFileSync(file, "utf8").split("\n").forEach((line, i) => {

@@ -1,4 +1,4 @@
-// The page is put together from web/index.html when it is served: include lines are filled in, every module main.js
+// The page is put together from app/index.html when it is served: include lines are filled in, every module main.js
 // needs is preloaded, and a broken include stops the page instead of serving half of it.
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -17,8 +17,8 @@ test("the page preloads every module main.js needs, once each, so the browser as
   const preloaded = [...buildPage().matchAll(/<link rel="modulepreload" href="([^"]+)">/g)].map((m) => m[1]);
   assert.equal(new Set(preloaded).size, preloaded.length, "a module is preloaded twice");
   for (const url of preloaded) assert.ok(fs.existsSync(path.join(root, url)), url + " is preloaded but does not exist");
-  const web = fs.readdirSync(path.join(root, "web"), { recursive: true }).filter((f) => f.endsWith(".js")).map((f) => "/web/" + f.split(path.sep).join("/"));
-  for (const url of web.filter((u) => u !== "/web/main.js")) assert.ok(preloaded.includes(url), url + " is not imported by anything main.js loads");
+  const scripts = fs.readdirSync(path.join(root, "app"), { recursive: true }).filter((f) => f.endsWith(".js")).map((f) => "/app/" + f.split(path.sep).join("/"));
+  for (const url of scripts.filter((u) => u !== "/app/main.js")) assert.ok(preloaded.includes(url), url + " is not imported by anything main.js loads");
 });
 
 test("a missing include, or an include line with anything else on it, stops the page", () => {

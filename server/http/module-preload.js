@@ -13,7 +13,7 @@ export function modulesImportedBy(entry) {
     const src = fs.readFileSync(path.join(root, queue[i]), "utf8");
     for (const [, spec] of src.matchAll(IMPORT)) {
       const url = new URL(spec, "http://page" + queue[i]).pathname;
-      if (!/^\/(web|shared)\//.test(url) || found.includes(url)) continue;
+      if (!/^\/(app|shared)\//.test(url) || found.includes(url)) continue;
       found.push(url);
       queue.push(url);
     }

@@ -15,7 +15,7 @@ Run them from the repo root. They work in bash, PowerShell and cmd.
 
 ## Before you edit an area
 
-- Before editing anything under `web/`, read `web/AGENTS.md`.
+- Before editing anything under `app/`, read `app/AGENTS.md`.
 - Before editing anything under `server/`, read `server/AGENTS.md`.
 - Before editing anything under `shared/`, read `shared/AGENTS.md`.
 
@@ -28,16 +28,16 @@ README.md, "How it is put together", is the map of the folders. Read it instead 
 - One concern per file, named for what it holds. Never `utils`, `helpers`, `misc`, `common` or `index.js`. A file that passes 200 lines gets split by what its parts do.
 - An import names the file that defines the thing. No `export { } from`, no `export *`, no barrel files.
 - `shared/` is plain code that runs unchanged in the browser, in Node and in the tests: no DOM, no `node:` modules, no npm packages, and relative imports that stay inside `shared/`.
-- `web/` imports by address from the site root (`/web/...`, `/shared/...`), even inside one folder. Never a bare package name: there is no bundler.
-- `web/` and `server/` never import each other. Only `server/main.js`, `server/demo.js` and `server/ai/` know which AI is in use.
-- A screen is a folder in `web/screens/`. Another screen may call its `screen.js`, never its `components/` or `lib/`. Code two screens need moves to `web/shared/`; code the server needs too moves to the top-level `shared/`.
-- Only `web/main.js`, `server/main.js` and `server/demo.js` run code when they load. Every other file only defines functions and data.
+- `app/` imports by address from the site root (`/app/...`, `/shared/...`), even inside one folder. Never a bare package name: there is no bundler.
+- `app/` and `server/` never import each other. Only `server/main.js`, `server/demo.js` and `server/ai/` know which AI is in use.
+- A screen is a folder in `app/screens/`. Another screen may call its `screen.js`, never its `components/` or `lib/`. Code two screens need moves to `app/shared/`; code the server needs too moves to the top-level `shared/`.
+- Only `app/main.js`, `server/main.js` and `server/demo.js` run code when they load. Every other file only defines functions and data.
 
 ## Contracts that span areas
 
-- The API between `web/shared/api/client.js` and `server/http/routes.js`: change both sides, and their tests, in the same commit.
+- The API between `app/shared/api/client.js` and `server/http/routes.js`: change both sides, and their tests, in the same commit.
 - Errors reach the page as codes from `server/errors.js` (`ApiError`). The page has text for each code it knows, so a new code needs that text too.
-- Every word on the page is a key in both `shared/i18n/english.js` and `shared/i18n/spanish.js`. Every `$("id")` and `t("key")` in `web/` must exist; `tests/web/ui-structure.test.js` checks both.
+- Every word on the page is a key in both `shared/i18n/english.js` and `shared/i18n/spanish.js`. Every `$("id")` and `t("key")` in `app/` must exist; `tests/app/ui-structure.test.js` checks both.
 
 ## Privacy and safety
 
@@ -53,7 +53,7 @@ Never weaken these.
 
 ## Tests
 
-- `tests/` mirrors the code: `tests/shared/` tests `shared/`, `tests/server/` tests `server/`, `tests/web/` tests `web/`.
+- `tests/` mirrors the code: `tests/shared/` tests `shared/`, `tests/server/` tests `server/`, `tests/app/` tests `app/`.
 - Run the smallest relevant test file first, then `npm test` before you finish.
 - Never delete, skip or loosen a failing test to get green. Fix the code, or explain why the test is wrong and let a person decide.
 - New logic gets a test beside the existing ones for its area.
@@ -67,7 +67,7 @@ Never weaken these.
 ## Commits
 
 - One logical change per commit, and the tests pass at every commit.
-- Subject: `area: Imperative summary`, for example `web: Show the fix-by date on the clerk notice`. The area is `web`, `server`, `shared`, `tests`, `docs` or `ci`. No trailing period.
+- Subject: `area: Imperative summary`, for example `app: Show the fix-by date on the clerk notice`. The area is `app`, `server`, `shared`, `tests`, `docs` or `ci`. No trailing period.
 - Add a body only when the diff does not show why: a few plain sentences, as if telling a teammate. No bullet lists of changes, no headers.
 - No `Co-Authored-By` or "Generated with" lines.
 - Move or rename files with `git mv` so their history follows them.

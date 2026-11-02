@@ -1,4 +1,4 @@
-// The files the page loads: the browser app (web/), the shared modules, and the libraries and font from node_modules.
+// The files the page loads: the browser app (app/), the shared modules, and the libraries and font from node_modules.
 import path from "node:path";
 import express from "express";
 import { root } from "./repo-root.js";
@@ -14,5 +14,5 @@ export function serveStaticFiles(app) {
   app.use("/vendor/pdfjs", vendor("pdfjs-dist/build"));
   app.use("/vendor/fonts", vendor("@fontsource/atkinson-hyperlegible"));
   app.use("/shared", only(/\.js$/, express.static(path.join(root, "shared"), { redirect: false })));
-  app.use("/web", only(/\.(js|css)$/, express.static(path.join(root, "web"), { index: false, redirect: false })));
+  app.use("/app", only(/\.(js|css)$/, express.static(path.join(root, "app"), { index: false, redirect: false })));
 }

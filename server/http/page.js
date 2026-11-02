@@ -1,4 +1,4 @@
-// The page: web/index.html with each include line replaced by the file it names, put together on every request.
+// The page: app/index.html with each include line replaced by the file it names, put together on every request.
 import fs from "node:fs";
 import path from "node:path";
 import { root } from "./repo-root.js";
@@ -7,7 +7,7 @@ import { modulesImportedBy } from "./module-preload.js";
 const INCLUDE = /^[ \t]*<!-- include: (\S+) -->[ \t]*\r?$/gm;
 const PRELOAD = /^[ \t]*<!-- modulepreload: (\S+) -->[ \t]*\r?$/gm;
 
-export function buildPage(url = "/web/index.html") {
+export function buildPage(url = "/app/index.html") {
   const html = fs.readFileSync(path.join(root, url), "utf8");
   const page = html.replace(INCLUDE, (line, part) => {
     if (!fs.existsSync(path.join(root, part))) throw new Error(url + " includes " + part + ", which does not exist");
