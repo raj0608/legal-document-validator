@@ -78,3 +78,30 @@ Your filing has been returned for correction for the following reasons:
 3. The cause number is missing from the caption.
 
 You may correct these items and resubmit within three (3) business days of this notice. A filing corrected in time will be treated as filed on the original date. The Clerk cannot give legal advice.`;
+
+// For court staff: a fictional motion with two real cases, one real number under the wrong name, and one case that does not exist.
+// The demo lookup (server/citations/demo-lookup.js) knows the real ones. Do not use it as an example of how to cite.
+export const FILING_SAMPLE = `SAMPLE FILING FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL.
+
+STATE OF INDIANA, COUNTY OF ALLEN
+IN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION
+Cause No. 02D00-2611-SC-000000
+
+Maple Row Apartments LLC, Plaintiff,
+v.
+Kimi Sample, Defendant.
+
+DEFENDANT'S MOTION TO DISMISS
+
+The Defendant asks the Court to dismiss this case for the reasons below.
+
+1. A tenant has a right to be heard before losing a home. See Lindsey v. Normet, 405 U.S. 56, 63 (1972). Notice and a fair hearing are basic to fairness. Goldberg v. Kelly, 397 U.S. 254, 90 S. Ct. 1011 (1970).
+
+2. A court weighs the private interest, the risk of a wrong result, and the government's interest. Harper v. Riverside Management, 424 U.S. 319 (1976).
+
+3. Indiana courts have held that a landlord who skips the notice steps cannot get possession. Hoosier Tenants Union v. Lakeview Holdings, 912 N.E.2d 4471 (Ind. Ct. App. 2009).
+
+4. The Plaintiff also failed to meet IC 32-31-8-5 and Trial Rule 12(B).
+
+Respectfully submitted,
+Kimi Sample, Defendant, self-represented`;

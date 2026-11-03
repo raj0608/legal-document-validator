@@ -53,7 +53,7 @@ The `.env` file is ignored by git, so your key is never uploaded, and the key st
 
 Want Claude instead? Put `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...` in `.env` (paid).
 
-**Checking it works:** `npm test` runs the automatic checks (about 140, a few seconds, no key needed).
+**Checking it works:** `npm test` runs the automatic checks (about 170, a few seconds, no key needed).
 
 **If something goes wrong**
 
@@ -83,6 +83,7 @@ All in `.env` (see `.env.example`). Only one AI key is needed.
 | `ANTHROPIC_MODEL` | `claude-sonnet-5-5` | Model for answers and translation. |
 | `AI_EFFORT` | `medium` | Claude’s thinking depth. |
 | `AI_REFUSAL_FALLBACK` | off | `1` retries a Claude safety refusal on another model inside the same call. Not tested against the live API yet. |
+| `COURTLISTENER_TOKEN` | none | Free CourtListener token for the court staff page’s citation lookup. Stays on the server. Without it that page lists citations but checks none. |
 | `RATE_LIMIT_PER_MIN` | `20` | Per client address. |
 | `DAILY_REQUEST_CAP` | `2000` | All clients together; resets at midnight UTC. In memory only. |
 | `TRUST_PROXY` | unset | Number of proxies in front of the server (usually `1`), so rate limits see real addresses. |
@@ -97,6 +98,7 @@ app/       the page, as the browser loads it (no bundler); each page is the fold
              papers/      My papers (#papers, four steps)
              check/       Check my form (#check), opened from Home
              dates/       My dates (#dates)
+             court/       Filing check for court staff (#court), opened from the footer, not the menu
              help/        Help (#help)
                             privacy/     Privacy (#help/privacy), opened from Help
                             a page’s folder holds page.html (its markup), page.js (the functions main.js calls to
@@ -111,7 +113,7 @@ app/       the page, as the browser loads it (no bundler); each page is the fold
              styles/      the look, in several files loaded in order
 shared/    code and data used by the browser, the server and the tests
              safety/      injection filter, redaction, what is sent (protect.js), should/must detector
-             analysis/    dates, citations, form checklist, fix-by date (no AI)
+             analysis/    dates, laws and rules, case citations, case names, citation report, form checklist, fix-by date (no AI)
              dates/       date math, court holidays, case dates, reminders, the calendar file
              i18n/        the languages and all page text, FAQ, source links
              answer-dates.js   dates in AI answers: highlighted, and checked against the paper
@@ -125,6 +127,7 @@ server/    the server: it keeps the AI key and the rules, and is the only part t
              checks.js    the second check on every request, before anything goes to the AI
              prompts.js   the rules the AI follows (they live here)
              translate.js machine translation of the page text
+             citations/   the case-law lookup for the court staff page: courtlistener.js (the real one), demo-lookup.js, lookup-cache.js
              errors.js    the error codes the page knows how to show
              ai/          the AI connections
                             port.js      what every AI connection offers: stream and json
@@ -171,6 +174,17 @@ Behavior is meant to be identical except these deliberate fixes, each covered by
 - A card number no longer swallows the space after it.
 - New message `err_pii` (English and Spanish) for the refused-request case.
 - “Save my dates” now makes the file in the browser instead of using claude.ai’s downloads.
+
+## Filing check for court staff
+
+Open **For court staff** in the footer (`#court`). Add a filing (PDF, pasted text, or the sample filing) and press **Check the citations**. The page lists every case citation it can read (such as `397 U.S. 254`), looks each one up in [CourtListener](https://www.courtlistener.com), a free public case-law database, and shows one line for each: **Found**, **Name differs**, **Year differs**, **More than one match**, **Not found**, **Not recognised** or **Not checked**, the clearest signs first, with a link to the case. Laws and rules (`IC 32-31-8-5`, `Trial Rule 12(B)`) are listed with links but not checked. The report prints.
+
+- **It does not detect AI writing, and says so on the page.** Detectors are unreliable and flag people who write in a second language, and using AI is not the problem; made-up cases are.
+- **It decides nothing.** Under Trial Rule 88 a clerk can reject an e-filing only for an unpaid fee, a wrong case-management system, or the filer’s own request. Anything else is for a judge. “Not found” can also mean the database has a gap, and the page says so.
+- **The filing never leaves the browser.** Only `volume reporter page` for each citation goes to our server (`/api/cites`, which accepts nothing else and checks it in `server/checks.js`), and from there to CourtListener. Answers are remembered for an hour in memory only.
+- **Not checked yet:** whether a case says what the filing says it does, whether quotations are real, whether laws and rules exist, scanned filings (no OCR), and cites to `id.` or `supra`.
+- **Setup:** make a free CourtListener account, copy the API token from your profile, and put it in `.env` as `COURTLISTENER_TOKEN=`. `npm run demo` needs no token: it knows three real Supreme Court cases and calls everything else “not found”, so the sample filing shows each kind of line.
+- **Run against the live CourtListener API on 2026-11-03** with the sample filing: the three real Supreme Court cases were found with matching names, the wrong-name citation showed the real case, and the invented Indiana citation was not found. Indiana state-court coverage has not been measured yet. CourtListener’s own limits for a signed-in account are low (its docs say 5 requests a minute, 50 an hour, 125 a day), so ask Free Law Project about more before a real pilot.
 
 ## Design
 

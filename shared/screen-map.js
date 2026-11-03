@@ -3,13 +3,14 @@
 //   #home          what do you need help with?
 //   #papers/1..4   "I got court papers", as four steps (#papers is step 1)
 //   #check         check a form I filled in      #check/clerk   my filing came back
+//   #court         court staff: check the case citations in a filing (not in the menu; the footer links to it)
 //   #dates         my dates and reminders
 //   #help          free help from people, and common questions
 //   #help/privacy  how private details are handled (a page under Help)
 //
 // Every address is a normal link, so the phone's Back button always does what the person expects.
 
-export const VIEWS = ["home", "papers", "check", "dates", "help", "privacy"];
+export const VIEWS = ["home", "papers", "check", "dates", "help", "privacy", "court"];
 export const PAPER_STEPS = 4;
 
 // The four places in the menu, the same on every screen. A screen that is not one of them lights up its parent.
@@ -19,7 +20,7 @@ export const MENU = [
   { view: "dates", key: "nav_dates" },
   { view: "help", key: "nav_help" }
 ];
-const PARENT = { check: "home", privacy: "help" };
+const PARENT = { check: "home", privacy: "help", court: "home" };
 export const menuItemFor = (view) => PARENT[view] || view;
 
 const ALIASES = { questions: "help" }; // older links

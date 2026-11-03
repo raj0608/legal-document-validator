@@ -102,6 +102,7 @@ export function renderDoc(slot) {
   rm.addEventListener("click", () => removeDoc(slot));
   row.append(info, rm);
   card.appendChild(row);
+  if (slot === "filing") { root.appendChild(card); return; } // the court page sends only citation numbers, never the filing
   if (d.truncated) card.appendChild(el("p", "warn", t("doc_truncated")));
   // privacy and safety summary
   const total = Object.values(d.counts).reduce((a, b) => a + b, 0);

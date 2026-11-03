@@ -1,0 +1,21 @@
+  <!-- Filing check for court staff -->
+  <section id="view-court" class="view" hidden aria-labelledby="court-h">
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><span class="crumb-here" aria-hidden="true" data-i18n="court_h">Filing check for court staff</span></p>
+        <h1 id="court-h" tabindex="-1" data-i18n="court_h">Filing check for court staff</h1>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="lede" data-i18n="court_p"></p>
+      <p class="court-note" data-i18n="court_not_ai"></p>
+      <p class="small" data-i18n="court_privacy"></p>
+      <div id="filingLoader"></div>
+      <div id="filingDoc"></div>
+      <div id="citeRun" class="cite-run" hidden>
+        <button id="citeBtn" class="btn primary" type="button" data-i18n="court_run">Check the citations</button>
+        <span id="citeStatus" class="status" role="status" hidden></span>
+      </div>
+      <!-- include: /app/court/components/citation-report.html -->
+    </div>
+  </section>

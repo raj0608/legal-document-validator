@@ -47,3 +47,15 @@ export function checkTurns(turns) {
   if (!out.length || out.at(-1).role !== "user") throw bad("turns must end with a question");
   return out;
 }
+
+// The citations to look up: only a volume, a reporter and a page for each, so nothing else about a filing can ride along.
+export const MAX_CITES = 100;
+export function checkCites(cites) {
+  if (!Array.isArray(cites) || !cites.length) throw bad("cites is required");
+  if (cites.length > MAX_CITES) throw new ApiError("prompt_too_large", 413);
+  return cites.map((c) => {
+    if (!c || typeof c.volume !== "string" || typeof c.reporter !== "string" || typeof c.page !== "string") throw bad("bad citation");
+    if (!/^\d{1,4}$/.test(c.volume) || !/^\d{1,5}$/.test(c.page) || !/^[A-Za-z0-9.' ]{1,20}$/.test(c.reporter)) throw bad("bad citation");
+    return { volume: c.volume, reporter: c.reporter.trim(), page: c.page };
+  });
+}

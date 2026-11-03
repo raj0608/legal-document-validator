@@ -1,0 +1,19 @@
+/* The filing check for court staff: the report, and how it prints. */
+.court-note { background: var(--callout); border-inline-start: 4px solid var(--callout-line); border-radius: 6px; padding: 0.6rem 0.8rem; margin: 0 0 0.75rem; max-width: 64ch; }
+.cite-run { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 1rem; }
+.cite-report { margin-top: 1.5rem; }
+.cite-rows { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.cite-row { background: var(--bg); border-radius: 12px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; }
+.cite-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.cite-num { overflow-wrap: anywhere; }
+.cite-chip { font-weight: 700; font-size: 0.85rem; padding: 0.05rem 0.55rem; border-radius: 999px; border: 1px solid currentColor; }
+.cite-chip.ok { color: var(--ok); }
+.cite-chip.look { color: var(--warn); }
+.cite-chip.none { color: var(--muted); }
+.cite-line { margin: 0.3rem 0 0; max-width: 64ch; overflow-wrap: anywhere; }
+@media print {
+  .sliver, header.top, #demoBar, #langnote, #nextStrip, footer, #cover, .crumbs, #filingLoader, #citeRun, #citePrint, .doc button { display: none !important; }
+  body { background: #fff; }
+  .page-body, .title-card { box-shadow: none; padding-inline: 0; }
+  .cite-row { break-inside: avoid; border: 1px solid #999; }
+}

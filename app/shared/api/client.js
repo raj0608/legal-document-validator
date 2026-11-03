@@ -58,6 +58,11 @@ export async function json(path, body, { signal } = {}) {
   return (await res.json()).data;
 }
 
+// Which of these citations ({ volume, reporter, page }) a public case-law database knows: [{ status, clusters }], in the same order.
+export async function lookupCitations(cites, { signal } = {}) {
+  return (await json("cites", { cites }, { signal })).results;
+}
+
 // Machine translation of the page's own text: { ui, faq }.
 export async function translate(lang) {
   return (await request("translate", { lang })).json();
