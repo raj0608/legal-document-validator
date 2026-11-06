@@ -29,9 +29,11 @@ test("papers has four steps and a bad step number never breaks", () => {
   assert.deepEqual(parseRoute("#papers/abc"), { view: "papers", step: 1 });
 });
 
-test("check has two modes", () => {
+test("check has three modes: a form, a returned filing, and the cases a filing names", () => {
   assert.deepEqual(parseRoute("#check"), { view: "check", mode: "form" });
   assert.deepEqual(parseRoute("#check/clerk"), { view: "check", mode: "clerk" });
+  assert.deepEqual(parseRoute("#check/cites"), { view: "check", mode: "cites" });
+  assert.equal(hashFor({ view: "check", mode: "cites" }), "#check/cites");
   assert.deepEqual(parseRoute("#check/whatever"), { view: "check", mode: "form" });
 });
 

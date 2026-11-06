@@ -190,6 +190,15 @@ Open **For court staff** in the footer (`#court`). Add a filing (PDF, pasted tex
 - **Setup:** make a free CourtListener account, copy the API token from your profile, and put it in `.env` as `COURTLISTENER_TOKEN=`. `npm run demo` needs no token: it knows three real Supreme Court cases and calls everything else “not found”, so the sample filing shows each kind of line.
 - **Run against the live CourtListener API on 2026-11-03** with the sample filing: the three real Supreme Court cases were found with matching names, the wrong-name citation showed the real case, and the invented Indiana citation was not found. Indiana state-court coverage has not been measured yet. CourtListener’s own limits for a signed-in account are low (its docs say 5 requests a minute, 50 an hour, 125 a day), so ask Free Law Project about more before a real pilot.
 
+## Cases I name (tenants)
+
+On **Check my form**, the third button, **Cases I name** (`#check/cites`), is the tenant's version of the staff citation check. A tenant adds their own filing (PDF, pasted text or a sample motion) and presses **Look up my cases**. Each case the filing names is looked up in the same public case-law database, with the same engine and the same checks (name, year and court), and shown in plain words: **Matches a real case**, **Name does not match**, **Different court**, **Year does not match**, **More than one case**, **Not found**, **Not recognised** or **Not checked**.
+
+- **Information only, never advice.** The words say what we found (“You wrote… The case at this number is…”) and never tell the tenant what to do. A test checks that none of this text trips the advice warning. The page says what the check cannot do: read what a case says, or show that a case we could not find is not real.
+- **Same privacy as the staff page.** The filing is read in the browser and kept only in memory. Only the case numbers go to our server and on to the database. “Hide this page” empties it.
+- **It uses the same lookup limits.** Each check is one lookup plus a search for the cases' courts, shared with the staff page and subject to CourtListener's low limits, so it is shown with the sample motion in the demo and needs `COURTLISTENER_TOKEN` for real lookups. Without a token it lists the cases it found and says none were checked.
+- **Home is unchanged:** the mode is reached from Check my form.
+
 ## Return a filing for correction (court staff)
 
 Open **For court staff** in the footer, then **Return a filing** (`#court/return`). The clerk ticks what was wrong (or adds a few words of their own), picks the day the filing was returned, chooses English or Spanish and email or text, and types the filer’s email address or phone number. The page shows the **preview** of the message, with the last day to fix the filing.

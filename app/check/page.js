@@ -6,6 +6,7 @@ import { renderDates } from "/app/dates/page.js";
 import { renderChecks } from "/app/check/components/form-checklist.js";
 import { renderCure } from "/app/check/components/fix-by-date.js";
 import { blanks, clerkNotice } from "/app/check/components/ai-cards.js";
+import { clearCites, showCitesRun, runCites } from "/app/check/components/citation-check.js";
 
 export function registerCheckSlots() {
   registerSlot("form", {
@@ -16,13 +17,19 @@ export function registerCheckSlots() {
     onLoad() { $("clerkAi").textContent = ""; renderCure(); },
     onRemove() { $("clerkOut").hidden = true; $("clerkAi").textContent = ""; if (state.dates.cure) { state.dates.cure = ""; renderDates(); } }
   });
+  registerSlot("cites", {
+    onLoad() { clearCites(); showCitesRun(true); },
+    onRemove() { clearCites(); showCitesRun(false); }
+  });
 }
 
 export function setMode(m) {
   $("modeForm").setAttribute("aria-pressed", String(m === "form"));
   $("modeClerk").setAttribute("aria-pressed", String(m === "clerk"));
+  $("modeCites").setAttribute("aria-pressed", String(m === "cites"));
   $("formPanel").hidden = m !== "form";
   $("clerkPanel").hidden = m !== "clerk";
+  $("citesPanel").hidden = m !== "cites";
 }
 
 export function initCheck() {
@@ -31,4 +38,6 @@ export function initCheck() {
   $("recheckBtn").addEventListener("click", () => { setMode("form"); window.scrollTo(0, 0); });
   $("modeForm").addEventListener("click", () => setMode("form"));
   $("modeClerk").addEventListener("click", () => setMode("clerk"));
+  $("modeCites").addEventListener("click", () => setMode("cites"));
+  $("citesBtn").addEventListener("click", runCites);
 }

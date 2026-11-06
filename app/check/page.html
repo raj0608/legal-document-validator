@@ -12,6 +12,7 @@
       <div class="seg" role="group" aria-label="Mode">
         <button type="button" id="modeForm" aria-pressed="true" data-i18n="mode_form">A form I filled in</button>
         <button type="button" id="modeClerk" aria-pressed="false" data-i18n="mode_clerk">My filing came back</button>
+        <button type="button" id="modeCites" aria-pressed="false" data-i18n="mode_cites">Cases I name</button>
       </div>
 
       <div id="formPanel">
@@ -24,6 +25,12 @@
         <div id="clerkLoader"></div>
         <div id="clerkDoc"></div>
         <!-- include: /app/check/components/fix-by-date.html -->
+      </div>
+
+      <div id="citesPanel" hidden>
+        <div id="citesLoader"></div>
+        <div id="citesDoc"></div>
+        <!-- include: /app/check/components/citation-check.html -->
       </div>
     </div>
   </section>

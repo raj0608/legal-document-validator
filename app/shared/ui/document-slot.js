@@ -7,6 +7,8 @@ import { protect } from "/shared/safety/protect.js";
 import { parseExtraNames } from "/shared/safety/redaction.js";
 import { readPdf } from "/app/shared/lib/read-pdf.js";
 
+// Slots whose text is never sent to the AI, only its case numbers to a case-law lookup, so there is no privacy summary to show.
+const NOT_SENT = ["filing", "cites"];
 const hooks = {};
 export const registerSlot = (slot, h) => { hooks[slot] = h; };
 export const currentExtraNames = () => parseExtraNames($("extraNames").value);
@@ -102,7 +104,7 @@ export function renderDoc(slot) {
   rm.addEventListener("click", () => removeDoc(slot));
   row.append(info, rm);
   card.appendChild(row);
-  if (slot === "filing") { root.appendChild(card); return; } // the court page sends only citation numbers, never the filing
+  if (NOT_SENT.includes(slot)) { root.appendChild(card); return; } // these pages send only case numbers to look up, never the filing
   if (d.truncated) card.appendChild(el("p", "warn", t("doc_truncated")));
   // privacy and safety summary
   const total = Object.values(d.counts).reduce((a, b) => a + b, 0);

@@ -3,41 +3,7 @@ import { $, el } from "/app/shared/lib/dom.js";
 import { t } from "/app/shared/lib/page-text.js";
 import { state } from "/app/shared/state.js";
 import { buildReport } from "/shared/analysis/citation-report.js";
-import { courtText } from "/shared/analysis/filing-court.js";
-
-const CHIP = (v) => (v === "found" ? "ok" : v === "unchecked" ? "none" : "look");
-
-// Only courtlistener.com addresses become links, whatever the server sent.
-function safeUrl(u) {
-  try { const x = new URL(u); return x.protocol === "https:" && x.hostname === "www.courtlistener.com" ? x.href : null; } catch (e) { return null; }
-}
-
-function describe(row) {
-  const f = row.found;
-  if (row.verdict === "found") return t("cite_d_found", { db: f.name + (f.year ? " (" + f.year + ")" : "") });
-  if (row.verdict === "name_differs") return t("cite_d_name_differs", { filed: row.name, db: f.name });
-  if (row.verdict === "court_differs") return t("cite_d_court_differs", { c1: courtText(row.court), c2: f.courtName || f.court });
-  if (row.verdict === "year_differs") return t("cite_d_year_differs", { y1: row.year, y2: f.year });
-  return t("cite_d_" + row.verdict);
-}
-
-function drawRow(row) {
-  const li = el("li", "cite-row");
-  const head = el("div", "cite-head");
-  head.append(el("strong", "cite-num", row.cite), el("span", "cite-chip " + CHIP(row.verdict), t("cite_v_" + row.verdict)));
-  li.appendChild(head);
-  if (row.name) li.appendChild(el("p", "cite-line", t("cite_in_filing", { name: row.name + (row.year ? " (" + row.year + ")" : "") })));
-  li.appendChild(el("p", "cite-line", describe(row)));
-  if (row.count > 1) li.appendChild(el("p", "cite-line ctx", t("cite_times", { n: row.count })));
-  if (row.also.length) li.appendChild(el("p", "cite-line ctx", t("cite_also", { c: row.also.join("; ") })));
-  const url = row.found && safeUrl(row.found.url);
-  if (url) {
-    const a = el("a", null, t("court_open"));
-    a.href = url; a.target = "_blank"; a.rel = "noopener";
-    li.appendChild(a);
-  }
-  return li;
-}
+import { drawRows } from "/app/shared/ui/citation-rows.js";
 
 function drawSummary(box, cites, counts, rep) {
   box.textContent = "";
@@ -71,12 +37,10 @@ function drawRefs(box, refs) {
 export function renderReport() {
   const rep = state.filingReport;
   $("citeReport").hidden = !rep;
-  if (!rep) return;
+  if (!rep) { $("citeSummary").textContent = ""; $("citeRows").textContent = ""; $("citeRefs").textContent = ""; return; } // hidden is not gone: "Hide this page" must leave nothing in the page
   const { rows, counts } = buildReport(rep.cites, rep.results);
   drawSummary($("citeSummary"), rep.cites, counts, rep);
-  const list = $("citeRows");
-  list.textContent = "";
-  rows.forEach((r) => list.appendChild(drawRow(r)));
+  drawRows($("citeRows"), rows, "cite_");
   drawRefs($("citeRefs"), rep.refs);
   $("citePrint").hidden = !rep.cites.length && !rep.refs.length;
 }

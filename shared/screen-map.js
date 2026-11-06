@@ -2,7 +2,7 @@
 //
 //   #home          what do you need help with?
 //   #papers/1..4   "I got court papers", as four steps (#papers is step 1)
-//   #check         check a form I filled in      #check/clerk   my filing came back
+//   #check         check a form I filled in      #check/clerk   my filing came back      #check/cites   look up the cases I name
 //   #court         court staff: check the case citations in a filing (not in the menu; the footer links to it)
 //   #court/return  court staff: the message for a filing returned for correction (a page under #court)
 //   #dates         my dates and reminders
@@ -37,13 +37,13 @@ export function parseRoute(hash) {
     const n = parseInt(parts[1], 10);
     route.step = Number.isInteger(n) ? Math.min(PAPER_STEPS, Math.max(1, n)) : 1;
   }
-  if (view === "check") route.mode = parts[1] === "clerk" ? "clerk" : "form";
+  if (view === "check") route.mode = parts[1] === "clerk" ? "clerk" : parts[1] === "cites" ? "cites" : "form";
   return route;
 }
 
 export function hashFor(route) {
   if (route.view === "papers") return route.step > 1 ? "#papers/" + route.step : "#papers";
-  if (route.view === "check") return route.mode === "clerk" ? "#check/clerk" : "#check";
+  if (route.view === "check") return route.mode === "clerk" ? "#check/clerk" : route.mode === "cites" ? "#check/cites" : "#check";
   const parent = PARENT[route.view];
   return parent && parent !== "home" ? "#" + parent + "/" + route.view : "#" + route.view; // Home's pages stay at the top
 }

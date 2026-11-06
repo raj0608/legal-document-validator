@@ -17,6 +17,7 @@ import { renderFound } from "/app/papers/components/found-in-paper.js";
 import { renderQuick, abortChat } from "/app/papers/components/chat.js";
 import { registerCheckSlots, initCheck } from "/app/check/page.js";
 import { renderChecks } from "/app/check/components/form-checklist.js";
+import { renderCites } from "/app/check/components/citation-check.js";
 import { renderCure } from "/app/check/components/fix-by-date.js";
 import { registerCourtSlot, initCourt, renderCourt } from "/app/court/page.js";
 import { initReturn, renderReturn, clearReturn } from "/app/court/return/page.js";
@@ -35,8 +36,8 @@ function applyText() {
   $("langnote").textContent = note;
   $("langnote").hidden = !note;
   renderSize(); renderSupport(); renderQuick(); renderRemChips(); renderFaq(); renderPrivacy(); renderDates();
-  renderDoc("papers"); renderDoc("form"); renderDoc("clerk"); renderDoc("filing");
-  renderCourt(); renderReturn();
+  renderDoc("papers"); renderDoc("form"); renderDoc("clerk"); renderDoc("filing"); renderDoc("cites");
+  renderCourt(); renderReturn(); renderCites();
   if (state.papers) renderFound();
   if (state.form) renderChecks();
   if (state.clerk) renderCure();
@@ -46,7 +47,7 @@ function applyText() {
 // ---------- Clear everything ----------
 function clearAll() {
   abortChat();
-  ["papers", "form", "clerk", "filing"].forEach(removeDoc);
+  ["papers", "form", "clerk", "filing", "cites"].forEach(removeDoc);
   clearReturn();
   state.chatTokens = null;
   $("askInput").value = "";
@@ -68,6 +69,7 @@ const tester = /[?&]tester\b/.test(location.search);
 makeLoader("papers", [{ btn: "sample_btn", name: "sample_name", text: SAMPLE }].concat(tester ? [{ btn: "test_btn", name: "test_name", text: TEST_PAPER }] : []));
 makeLoader("form", [{ btn: "form_sample_btn", name: "form_sample_name", text: FORM_SAMPLE }]);
 makeLoader("clerk", [{ btn: "clerk_sample_btn", name: "clerk_sample_name", text: CLERK_SAMPLE }]);
+makeLoader("cites", [{ btn: "cites_sample_btn", name: "cites_sample_name", text: FILING_SAMPLE }]);
 makeLoader("filing", [{ btn: "filing_sample_btn", name: "filing_sample_name", text: FILING_SAMPLE }]);
 initLang(applyText);
 initDates(); initPapers(); initCheck(); initCourt(); initReturn(); initPrivacy();
