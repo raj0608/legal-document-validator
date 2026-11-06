@@ -146,6 +146,7 @@ tests/     node:test, in the same folders as the code: shared/, server/, app/
              agent-rules.test.js  keeps the AI coding tools’ rule files (AGENTS.md) in shape
              golden/      outputs captured from the original single-file code
              fixtures/    fictional PDFs (rebuild with node tests/fixtures/make-fixtures.mjs) and two real court forms
+data/      test data for the citation check (fake and real Indiana citations, made-up filings, saved CourtListener answers) and how to score it; see data/README.md
 legacy/    the original single-file prototype, kept for reference
 AGENTS.md  the rules AI coding tools follow in this repo (app/, server/ and shared/ add their own); see CONTRIBUTING.md
 ```
@@ -180,7 +181,7 @@ Behavior is meant to be identical except these deliberate fixes, each covered by
 
 ## Filing check for court staff
 
-Open **For court staff** in the footer (`#court`). Add a filing (PDF, pasted text, or the sample filing) and press **Check the citations**. The page lists every case citation it can read (such as `397 U.S. 254`), looks each one up in [CourtListener](https://www.courtlistener.com), a free public case-law database, and shows one line for each: **Found**, **Name differs**, **Year differs**, **More than one match**, **Not found**, **Not recognised** or **Not checked**, the clearest signs first, with a link to the case. Laws and rules (`IC 32-31-8-5`, `Trial Rule 12(B)`) are listed with links but not checked. The report prints.
+Open **For court staff** in the footer (`#court`). Add a filing (PDF, pasted text, or the sample filing) and press **Check the citations**. The page lists every case citation it can read (such as `397 U.S. 254`), looks each one up in [CourtListener](https://www.courtlistener.com), a free public case-law database, and shows one line for each: **Found**, **Name differs**, **Court differs**, **Year differs**, **More than one match**, **Not found**, **Not recognised** or **Not checked**, the clearest signs first, with a link to the case. Laws and rules (`IC 32-31-8-5`, `Trial Rule 12(B)`) are listed with links but not checked. The report prints.
 
 - **It does not detect AI writing, and says so on the page.** Detectors are unreliable and flag people who write in a second language, and using AI is not the problem; made-up cases are.
 - **It decides nothing.** Under Trial Rule 88 a clerk can reject an e-filing only for an unpaid fee, a wrong case-management system, or the filer’s own request. Anything else is for a judge. “Not found” can also mean the database has a gap, and the page says so.
@@ -202,13 +203,14 @@ Open **For court staff** in the footer, then **Return a filing** (`#court/return
 
 ### Evals
 
-`npm test` runs four graded checks in `tests/evals/`. Each prints a score and fails the run if it is under 100%, because a new gap here is a security or accuracy problem, not a flaky test.
+`npm test` runs five graded checks in `tests/evals/`. Each prints a score and fails the run if it is under 100%, because a new gap here is a security or accuracy problem, not a flaky test.
 
 | Eval | What it grades |
 |---|---|
 | `return-notice-abuse` | 112 hostile inputs (extra email headers and recipients, line breaks, links in disguise, look-alike letters, phone numbers that are not a person’s, instructions to an AI) must all be refused, honest inputs must be accepted, and 3,000 random inputs must never crash the checks or get through harmful. |
 | `return-notice-quality` | All 504 messages the form can write (every combination of reasons, two languages, email and text) must have no advice or threats, a test marker, one web address, no private details, exactly the reasons chosen, the right last day, English at or below 8th-grade reading level, and a text of sensible length. |
 | `return-notice-privacy` | What the clerk types never appears in the log or an error reply, a preview makes no network call, the code has no way to send or store anything, the page uses no browser storage, and limits and headers hold. |
+| `citation-checker-data` | The citation check scored on real Indiana citations, citations courts found fake, and 36 made-up filings with planted errors (invented cases, wrong names, years and courts), using saved CourtListener answers (`data/README.md`). |
 | `cure-deadline-reference` | The last day is checked against a day-by-day count using the court’s own published holiday list, for every day of 2026 and 2027. |
 
 ### Before real sending

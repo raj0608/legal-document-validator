@@ -1,0 +1,727 @@
+{
+ "about": "Citations that Indiana courts and federal courts in Indiana found to be fabricated or wrong, from decisions listed in Damien Charlotin's AI Hallucination Cases database.",
+ "license": "CC BY 4.0. Credit: AI Hallucination Cases Database, Damien Charlotin, https://www.damiencharlotin.com/hallucinations/ (CSV downloaded 2026-11-06).",
+ "howMade": "Read from the Indiana rows of the CSV (category Fabricated: Case Law). 20 citations came from the CSV text itself. 22 more came from the text of the 25 court decisions behind the rows that had no citation in the CSV (each citation was checked to appear in the decision). Not included: citations written as Westlaw numbers or slip opinions, which CourtListener's citation lookup does not read, and cases that exist but were misdescribed or misquoted.",
+ "expect": "Each should be flagged by the citation check (anything but 'Found'). Where the court said the citation belongs to a different real case, the check can only catch it if the filing gives a name, year or court that differs.",
+ "items": [
+  {
+   "cite": "621 F.2d 934",
+   "name": "Armstrong v. Kroger Co.",
+   "year": 1980,
+   "courtInFiling": "8th Cir.",
+   "courtFoundThat": "no case at this citation",
+   "decision": {
+    "caseId": 1236,
+    "court": "S.D. Indiana",
+    "date": "2026-09-11",
+    "party": "Lawyer",
+    "outcome": "Monetary Sanction"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3115/Virgil_v._Experian_USA_11_September_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "827 F.3d 129",
+   "name": "Hinkle v. CBE Grp.",
+   "year": 2016,
+   "courtInFiling": "5th Cir.",
+   "courtFoundThat": "no case at this citation",
+   "decision": {
+    "caseId": 1236,
+    "court": "S.D. Indiana",
+    "date": "2026-09-11",
+    "party": "Lawyer",
+    "outcome": "Monetary Sanction"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3115/Virgil_v._Experian_USA_11_September_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "396 F.2d 228",
+   "name": "Wigington v. Hill-Soberg Co.",
+   "year": 1968,
+   "courtInFiling": "5th Cir.",
+   "courtFoundThat": "no case at this citation",
+   "decision": {
+    "caseId": 1236,
+    "court": "S.D. Indiana",
+    "date": "2026-09-11",
+    "party": "Lawyer",
+    "outcome": "Monetary Sanction"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3115/Virgil_v._Experian_USA_11_September_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "736 F. Supp. 2d 962",
+   "name": "Jenkins v. Equifax Info. Servs., LLC",
+   "year": 2010,
+   "courtInFiling": "E.D. Va.",
+   "courtFoundThat": "no case at this citation",
+   "decision": {
+    "caseId": 1236,
+    "court": "S.D. Indiana",
+    "date": "2026-09-11",
+    "party": "Lawyer",
+    "outcome": "Monetary Sanction"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3115/Virgil_v._Experian_USA_11_September_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "750 F.3d 910",
+   "name": "Myers v. Asset Acceptance, LLC",
+   "year": 2014,
+   "courtInFiling": "11th Cir.",
+   "courtFoundThat": "no case at this citation",
+   "decision": {
+    "caseId": 1236,
+    "court": "S.D. Indiana",
+    "date": "2026-09-11",
+    "party": "Lawyer",
+    "outcome": "Monetary Sanction"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3115/Virgil_v._Experian_USA_11_September_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "133 N.E.3d 708",
+   "name": "Taylor v. State",
+   "year": 2019,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "not a published decision; the real Taylor decision is 7 N.E.3d 362",
+   "decision": {
+    "caseId": 1946,
+    "court": "CA Indiana",
+    "date": "2026-05-26",
+    "party": "Pro Se Litigant",
+    "outcome": "Admonishment"
+   },
+   "source": "https://www.damiencharlotin.com/documents/2234/Kalonji_v._Indiana_USA_26_May_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "393 F. Supp. 2d 1215",
+   "name": "Berg v. Symons",
+   "year": 2005,
+   "courtInFiling": "D. Minn.",
+   "courtFoundThat": "no case at this citation; a similarly titled real case is 393 F. Supp. 2d 525",
+   "decision": {
+    "caseId": 458,
+    "court": "S.D. Indiana",
+    "date": "2026-05-20",
+    "party": "Lawyer",
+    "outcome": "Monetary Sanction"
+   },
+   "source": "https://www.damiencharlotin.com/documents/2191/Davis_v._Marion_Country_Juvenile_DC_USA_20_May_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "24 F.3d 1001",
+   "name": "Kramer v. Trans-Lux Corp.",
+   "year": 1994,
+   "courtInFiling": "7th Cir.",
+   "courtFoundThat": "no such Seventh Circuit opinion; a District of Connecticut decision has that name",
+   "decision": {
+    "caseId": 1712,
+    "court": "S.D. Indiana",
+    "date": "2026-03-31",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/1986/Coleman_v._Nexo_Capital_USA_31_March_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "990 F. Supp. 2d 1035",
+   "name": "Knakmuhs v. Minneapolis Pub. Sch.",
+   "year": 2014,
+   "courtInFiling": "D. Minn.",
+   "courtFoundThat": "court could not locate the case; citation incorrect",
+   "decision": {
+    "caseId": 1497,
+    "court": "S.D. Indiana",
+    "date": "2026-03-19",
+    "party": "Pro Se Litigant",
+    "outcome": ""
+   },
+   "source": "https://www.damiencharlotin.com/documents/1763/James_v._Board_USA_19_March_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "994 N.E.2d 228",
+   "name": null,
+   "year": null,
+   "courtInFiling": null,
+   "courtFoundThat": "citation points to an unrelated Illinois decision, not the Indiana case claimed",
+   "decision": {
+    "caseId": 1416,
+    "court": "CA Indiana",
+    "date": "2026-03-10",
+    "party": "Pro Se Litigant",
+    "outcome": "Admonishment"
+   },
+   "source": "https://www.damiencharlotin.com/documents/1681/AK_v._MR_USA_10_March_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "106 N.E.3d 400",
+   "name": null,
+   "year": null,
+   "courtInFiling": null,
+   "courtFoundThat": "citation points to an unrelated Illinois decision, not the Indiana case claimed",
+   "decision": {
+    "caseId": 1416,
+    "court": "CA Indiana",
+    "date": "2026-03-10",
+    "party": "Pro Se Litigant",
+    "outcome": "Admonishment"
+   },
+   "source": "https://www.damiencharlotin.com/documents/1681/AK_v._MR_USA_10_March_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "212 N.E.3d 768",
+   "name": null,
+   "year": null,
+   "courtInFiling": null,
+   "courtFoundThat": "citation points to a Massachusetts decision, not the Indiana case claimed",
+   "decision": {
+    "caseId": 1416,
+    "court": "CA Indiana",
+    "date": "2026-03-10",
+    "party": "Pro Se Litigant",
+    "outcome": "Admonishment"
+   },
+   "source": "https://www.damiencharlotin.com/documents/1681/AK_v._MR_USA_10_March_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "811 N.E.2d 501",
+   "name": "Thompson v. State",
+   "year": null,
+   "courtInFiling": null,
+   "courtFoundThat": "no such Indiana case; the citation belongs to an unrelated Massachusetts case",
+   "decision": {
+    "caseId": 1241,
+    "court": "CA Indiana",
+    "date": "2026-02-06",
+    "party": "Pro Se Litigant",
+    "outcome": ""
+   },
+   "source": "https://www.damiencharlotin.com/documents/1507/Mutugu_v_Kiaraho.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "810 N.E.2d 1186",
+   "name": "Reed v. State",
+   "year": 2004,
+   "courtInFiling": "Ind.",
+   "courtFoundThat": "no such case; the citation belongs to an unrelated utility case",
+   "decision": {
+    "caseId": 1180,
+    "court": "CA Indiana",
+    "date": "2026-01-30",
+    "party": "Pro Se Litigant",
+    "outcome": ""
+   },
+   "source": "https://www.damiencharlotin.com/documents/1446/Wilcox_v_Gingrinch_USA_January_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "419 N.E.2d 489",
+   "name": "Lacy v. State",
+   "year": 1981,
+   "courtInFiling": "Ind.",
+   "courtFoundThat": "no such case; the citation belongs to an Illinois case",
+   "decision": {
+    "caseId": 1180,
+    "court": "CA Indiana",
+    "date": "2026-01-30",
+    "party": "Pro Se Litigant",
+    "outcome": ""
+   },
+   "source": "https://www.damiencharlotin.com/documents/1446/Wilcox_v_Gingrinch_USA_January_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "773 N.E.2d 157",
+   "name": "Graves v. State",
+   "year": 2002,
+   "courtInFiling": "Ind.",
+   "courtFoundThat": "no such case; the citation belongs to an Illinois case",
+   "decision": {
+    "caseId": 1180,
+    "court": "CA Indiana",
+    "date": "2026-01-30",
+    "party": "Pro Se Litigant",
+    "outcome": ""
+   },
+   "source": "https://www.damiencharlotin.com/documents/1446/Wilcox_v_Gingrinch_USA_January_2026.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "887 F.2d 1128",
+   "name": "Citizens Nat’l Bank of Paris v. Midwest Agri-Dev. Corp.",
+   "year": 1989,
+   "courtInFiling": "7th Cir.",
+   "courtFoundThat": "the citation belongs to an unrelated First Circuit opinion",
+   "decision": {
+    "caseId": 781,
+    "court": "N.D. Indiana",
+    "date": "2025-11-04",
+    "party": "Pro Se Litigant",
+    "outcome": ""
+   },
+   "source": "https://www.damiencharlotin.com/documents/1060/Smith_v._Santander_USA_4_November_2025.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "170 N.E.3d 1117",
+   "name": "Hamilton Cnty. Assessor v. Allisonville Rd. P’ship",
+   "year": 2021,
+   "courtInFiling": "Ind. Tax Ct.",
+   "courtFoundThat": "no such case",
+   "decision": {
+    "caseId": 626,
+    "court": "Indiana Tax Court",
+    "date": "2025-10-17",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/892/Tippecanoe_County_Assessor_v._Al._USA_17_October_2025.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "989 N.E.2d 830",
+   "name": "In re Marriage of Dunston",
+   "year": 2013,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "no such case; the citation points to unrelated decisions",
+   "decision": {
+    "caseId": 563,
+    "court": "CA Indiana",
+    "date": "2025-09-19",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/820/Cingel_v_Ferreri.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "924 N.E.2d 56",
+   "name": "McCain v. State",
+   "year": 2009,
+   "courtInFiling": "Ind.",
+   "courtFoundThat": "no such case at this citation",
+   "decision": {
+    "caseId": 563,
+    "court": "CA Indiana",
+    "date": "2025-09-19",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/820/Cingel_v_Ferreri.pdf",
+   "from": "CSV text"
+  },
+  {
+   "cite": "569 U.S. 764",
+   "name": "Davis v. United States",
+   "year": 2013,
+   "courtInFiling": null,
+   "courtFoundThat": "one of several cases in the brief that do not exist",
+   "decision": {
+    "caseId": 423,
+    "court": "CA Indiana",
+    "date": "2025-08-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Admonishment"
+   },
+   "source": "https://www.damiencharlotin.com/documents/715/Williams_v._Kirch_USA_18_August_2025.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "61 N.E.3d 1283",
+   "name": "Reynolds v. State",
+   "year": 2016,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 581,
+    "court": "CA Indiana",
+    "date": "2025-09-24",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/841/TM_Appellant-Respondent_v_MM_Appellee-Petitioner.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "3 N.E.3d 1027",
+   "name": "Robison v. Orthopedic & Sports Medicine Center",
+   "year": 2014,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 581,
+    "court": "CA Indiana",
+    "date": "2025-09-24",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/841/TM_Appellant-Respondent_v_MM_Appellee-Petitioner.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "755 N.E.2d 1144",
+   "name": "Bill v. Bill",
+   "year": 2001,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 581,
+    "court": "CA Indiana",
+    "date": "2025-09-24",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/841/TM_Appellant-Respondent_v_MM_Appellee-Petitioner.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "716 N.E.2d 612",
+   "name": "Wann v. Wann",
+   "year": 1999,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 581,
+    "court": "CA Indiana",
+    "date": "2025-09-24",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/841/TM_Appellant-Respondent_v_MM_Appellee-Petitioner.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "180 N.E.3d 281",
+   "name": "A.H.L. v. C.Y.L.",
+   "year": 2021,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 581,
+    "court": "CA Indiana",
+    "date": "2025-09-24",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/841/TM_Appellant-Respondent_v_MM_Appellee-Petitioner.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "821 N.E.2d 236",
+   "name": "Messina v. N. Cent. Distrib., Inc.",
+   "year": 2005,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "no such case in the Indiana Court of Appeals; the real case is 821 F.3d 1047 (8th Cir. 2016)",
+   "decision": {
+    "caseId": 788,
+    "court": "S.D. Indiana",
+    "date": "2025-11-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/1064/Nellum_v._Credit_Acceptance_Corp_USA_18_November_2025.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "150 N.E.3d 663",
+   "name": "S.S. v. D.M.",
+   "year": 2020,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "seemingly hallucinated",
+   "decision": {
+    "caseId": 1613,
+    "court": "CA Indiana",
+    "date": "2026-03-30",
+    "party": "Pro Se Litigant",
+    "outcome": "Warning"
+   },
+   "source": "https://www.damiencharlotin.com/documents/1876/Nicole_Olbera_et_al_Appellants_v_Tiara_Sykes_Appellee-Plaintiff.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "134 N.E.3d 523",
+   "name": "Greeson v. Seketa",
+   "year": 2019,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 2657,
+    "court": "CA Indiana",
+    "date": "2026-09-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order Affirmed"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3121/John_L_Englert_v._Gateway_Crossing_Property_Owners_USA_18_September_2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "166 N.E.3d 908",
+   "name": "Bennett v. Hidden Valley Lake Property Owners Association",
+   "year": 2021,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 2657,
+    "court": "CA Indiana",
+    "date": "2026-09-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order Affirmed"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3121/John_L_Englert_v._Gateway_Crossing_Property_Owners_USA_18_September_2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "855 N.E.2d 723",
+   "name": "Sunset Sailboat Sales, Inc. v. Trautman",
+   "year": 2006,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 2657,
+    "court": "CA Indiana",
+    "date": "2026-09-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order Affirmed"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3121/John_L_Englert_v._Gateway_Crossing_Property_Owners_USA_18_September_2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "838 N.E.2d 446",
+   "name": "St. Vincent Carmel Hosp., Inc. v. Morgan Stanley & Co., Inc.",
+   "year": 2005,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 2657,
+    "court": "CA Indiana",
+    "date": "2026-09-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order Affirmed"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3121/John_L_Englert_v._Gateway_Crossing_Property_Owners_USA_18_September_2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "31 N.E.3d 978",
+   "name": "Villa De Este Condo. Ass’n v. McKibben",
+   "year": 2015,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist",
+   "decision": {
+    "caseId": 2657,
+    "court": "CA Indiana",
+    "date": "2026-09-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order Affirmed"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3121/John_L_Englert_v._Gateway_Crossing_Property_Owners_USA_18_September_2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "508 N.E.2d 565",
+   "name": "Kroger Co. v. Blanke",
+   "year": 1987,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "no such case exists",
+   "decision": {
+    "caseId": 2657,
+    "court": "CA Indiana",
+    "date": "2026-09-18",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order Affirmed"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3121/John_L_Englert_v._Gateway_Crossing_Property_Owners_USA_18_September_2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "82 N.E.3d 319",
+   "name": "T.R. v. G.T.",
+   "year": 2017,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "no such case exists at this citation",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "871 N.E.2d 1039",
+   "name": "Estate of Rickert v. Robinson",
+   "year": 2007,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist at the citation provided",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "844 N.E.2d 198",
+   "name": "Horton v. Trueblood",
+   "year": 2006,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist at the citation provided",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "901 N.E.2d 1103",
+   "name": "Thompson v. Davis",
+   "year": 2009,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist at the citation provided",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "810 N.E.2d 335",
+   "name": "In re Estate of Arnett",
+   "year": 2004,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist at the citation provided",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "421 N.E.2d 251",
+   "name": "In re Estate of Rice",
+   "year": 1981,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist at the citation provided",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "675 N.E.2d 698",
+   "name": "Estate of Rhoades v. Rhoades",
+   "year": 1996,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "does not exist at the citation provided",
+   "decision": {
+    "caseId": 2820,
+    "court": "CA Indiana",
+    "date": "2026-10-14",
+    "party": "Pro Se Litigant",
+    "outcome": "Adverse Costs Order"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3282/Davis_v._Tressler_USA_14-10-2026.pdf",
+   "from": "decision text"
+  },
+  {
+   "cite": "123 N.E.3d 22",
+   "name": "Betclean v. Anstavel",
+   "year": 2019,
+   "courtInFiling": "Ind. Ct. App.",
+   "courtFoundThat": "a case that does not exist",
+   "decision": {
+    "caseId": 2918,
+    "court": "CA Indiana",
+    "date": "2026-10-29",
+    "party": "Pro Se Litigant",
+    "outcome": "Admonishment"
+   },
+   "source": "https://www.damiencharlotin.com/documents/3386/Nabors_v._Nabors_USA_29-10-2026.pdf",
+   "from": "decision text"
+  }
+ ],
+ "notReadable": [
+  {
+   "cite": "2019 WL 2450930",
+   "name": "Miller v. Credit Acceptance Corp.",
+   "court": "S.D. Ind. 2019",
+   "why": "Westlaw number: the court found the case does not exist (the number is a Utah habeas decision)",
+   "decision": {
+    "caseId": 788
+   }
+  },
+  {
+   "cite": "48T10-1705-TA-00014",
+   "name": "Rawles v. Monroe Cnty. Ass’r",
+   "court": "Ind. Tax Ct. 2019",
+   "why": "slip opinion number: the court could not find the case",
+   "decision": {
+    "caseId": 1002
+   }
+  },
+  {
+   "cite": "2015 WL 1298999",
+   "name": "Bodine v. Warwick Valley Central School District",
+   "court": "S.D.N.Y. 2015",
+   "why": "Westlaw number: alleged to be fictitious or not verifiable",
+   "decision": {
+    "caseId": 1400
+   }
+  },
+  {
+   "cite": "(IN 2014)",
+   "name": "Bourne v. Scarborough",
+   "court": "IN 2014",
+   "why": "no reporter citation was given",
+   "decision": {
+    "caseId": 423
+   }
+  },
+  {
+   "cite": "2016 IL App (5th) 150274",
+   "name": "In re Marriage of Nigh",
+   "court": "Ill. App. 2016",
+   "why": "a state neutral citation, not a reporter citation",
+   "decision": {
+    "caseId": 423
+   }
+  }
+ ]
+}

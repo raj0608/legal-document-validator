@@ -1,0 +1,1116 @@
+{
+ "about": "CourtListener citation-lookup answers for every citation in the data sets",
+ "fetched": "2026-11-06T22:52:30.481Z",
+ "unanswered": [],
+ "results": {
+  "131 N.E.2d 308": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Public Service Commission v. City of Indianapolis",
+     "year": 1956,
+     "url": "https://www.courtlistener.com/opinion/1989710/public-service-commission-v-city-of-indianapolis/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "104 N.E.2d 669": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Pokraka v. Lummus Co.",
+     "year": 1952,
+     "url": "https://www.courtlistener.com/opinion/2191958/pokraka-v-lummus-co/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "138 N.E.2d 891": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Guy v. SCHULDT",
+     "year": 1956,
+     "url": "https://www.courtlistener.com/opinion/2091640/guy-v-schuldt/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "139 N.E.2d 185": {
+   "status": "ambiguous",
+   "clusters": [
+    {
+     "name": "State ex rel. Delk v. Murray",
+     "year": 1957,
+     "url": "https://www.courtlistener.com/opinion/7149910/state-ex-rel-delk-v-murray/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    },
+    {
+     "name": "Flowers v. State",
+     "year": 1956,
+     "url": "https://www.courtlistener.com/opinion/2093610/flowers-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "297 N.E.2d 425": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Frampton v. Central Indiana Gas Company",
+     "year": 1973,
+     "url": "https://www.courtlistener.com/opinion/2031331/frampton-v-central-indiana-gas-company/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "398 N.E.2d 1260": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Loyd v. State",
+     "year": 1980,
+     "url": "https://www.courtlistener.com/opinion/2053452/loyd-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "404 N.E.2d 585": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Johnson v. St. Vincent Hospital, Inc.",
+     "year": 1980,
+     "url": "https://www.courtlistener.com/opinion/2021966/johnson-v-st-vincent-hospital-inc/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "324 N.E.2d 482": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Patterson v. State",
+     "year": 1975,
+     "url": "https://www.courtlistener.com/opinion/2016077/patterson-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "575 N.E.2d 992": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Webb v. Jarvis",
+     "year": 1991,
+     "url": "https://www.courtlistener.com/opinion/2101759/webb-v-jarvis/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "592 N.E.2d 1232": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Egly v. Blackford County Department of Public Welfare",
+     "year": 1992,
+     "url": "https://www.courtlistener.com/opinion/2237309/egly-v-blackford-county-department-of-public-welfare/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "622 N.E.2d 515": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Erie Insurance v. Hickman Ex Rel. Smith",
+     "year": 1993,
+     "url": "https://www.courtlistener.com/opinion/2101542/erie-insurance-v-hickman-ex-rel-smith/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "644 N.E.2d 72": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Collins v. Day",
+     "year": 1994,
+     "url": "https://www.courtlistener.com/opinion/2149780/collins-v-day/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "717 N.E.2d 32": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Richardson v. State",
+     "year": 1999,
+     "url": "https://www.courtlistener.com/opinion/853754/richardson-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "753 N.E.2d 591": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Timberlake v. State",
+     "year": 2001,
+     "url": "https://www.courtlistener.com/opinion/853338/timberlake-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "671 N.E.2d 98": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Quillen v. Quillen",
+     "year": 1996,
+     "url": "https://www.courtlistener.com/opinion/2015713/quillen-v-quillen/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "674 N.E.2d 1293": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "State v. Van Cleave",
+     "year": 1996,
+     "url": "https://www.courtlistener.com/opinion/2140929/state-v-van-cleave/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "895 N.E.2d 1219": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Cardwell v. State",
+     "year": 2008,
+     "url": "https://www.courtlistener.com/opinion/852415/cardwell-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "868 N.E.2d 482": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Anglemyer v. State",
+     "year": 2007,
+     "url": "https://www.courtlistener.com/opinion/852540/anglemyer-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "875 N.E.2d 218": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Anglemyer v. State",
+     "year": 2007,
+     "url": "https://www.courtlistener.com/opinion/852521/anglemyer-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "848 N.E.2d 1073": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Childress v. State",
+     "year": 2006,
+     "url": "https://www.courtlistener.com/opinion/852667/childress-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "989 N.E.2d 1225": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "R.C. v. Indiana Department of Child Services",
+     "year": 2013,
+     "url": "https://www.courtlistener.com/opinion/7167202/rc-v-indiana-department-of-child-services/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "15 N.E.3d 1000": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Antonio Hughley v. State of Indiana, The Consolidated City of Indianapolis/Marion County, and The Indianapolis Metropolitan Police Department",
+     "year": 2014,
+     "url": "https://www.courtlistener.com/opinion/2731311/antonio-hughley-v-state-of-indiana-the-consolidated-city-of/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "4 N.E.3d 636": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "In the Matter of the Termination of the Parent-Child Relationship of E.M. and El.M., E.M. v. Indiana Department of Child Services",
+     "year": 2014,
+     "url": "https://www.courtlistener.com/opinion/2656542/in-the-matter-of-the-termination-of-the-parent-child-relationship-of-em/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "29 N.E.3d 111": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Charles Stephenson v. State of Indiana",
+     "year": 2015,
+     "url": "https://www.courtlistener.com/opinion/2796329/charles-stephenson-v-state-of-indiana/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "244 N.E.2d 448": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Mayhew, Huston v. DEISTER",
+     "year": 1969,
+     "url": "https://www.courtlistener.com/opinion/1996448/mayhew-huston-v-deister/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "251 N.E.2d 688": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Doe v. Barnett",
+     "year": 1969,
+     "url": "https://www.courtlistener.com/opinion/2042971/doe-v-barnett/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "221 N.E.2d 824": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Kavanagh v. Butorac",
+     "year": 1966,
+     "url": "https://www.courtlistener.com/opinion/2144509/kavanagh-v-butorac/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "247 N.E.2d 215": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Wozniczka v. McKEAN",
+     "year": 1969,
+     "url": "https://www.courtlistener.com/opinion/1980389/wozniczka-v-mckean/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "455 N.E.2d 623": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Eby v. York-Division, Borg-Warner",
+     "year": 1983,
+     "url": "https://www.courtlistener.com/opinion/2046478/eby-v-york-division-borg-warner/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "422 N.E.2d 302": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "English Coal Co., Inc. v. Durcholz",
+     "year": 1981,
+     "url": "https://www.courtlistener.com/opinion/2245894/english-coal-co-inc-v-durcholz/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "388 N.E.2d 541": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Ortho Pharmaceutical Corp. v. Chapman",
+     "year": 1979,
+     "url": "https://www.courtlistener.com/opinion/2069787/ortho-pharmaceutical-corp-v-chapman/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "386 N.E.2d 1026": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Martin v. Platt",
+     "year": 1979,
+     "url": "https://www.courtlistener.com/opinion/2066651/martin-v-platt/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "644 N.E.2d 609": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Thakkar v. State",
+     "year": 1994,
+     "url": "https://www.courtlistener.com/opinion/2149853/thakkar-v-state/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "572 N.E.2d 1315": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "DeHaan v. DeHaan",
+     "year": 1991,
+     "url": "https://www.courtlistener.com/opinion/2068855/dehaan-v-dehaan/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "568 N.E.2d 564": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "W & W Equipment Co., Inc. v. Mink",
+     "year": 1991,
+     "url": "https://www.courtlistener.com/opinion/2094375/w-w-equipment-co-inc-v-mink/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "629 N.E.2d 873": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Daub v. Daub",
+     "year": 1994,
+     "url": "https://www.courtlistener.com/opinion/2158674/daub-v-daub/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "804 N.E.2d 258": {
+   "status": "ambiguous",
+   "clusters": [
+    {
+     "name": "Peterson v. Marion County Office of Family & Children",
+     "year": 2004,
+     "url": "https://www.courtlistener.com/opinion/7165696/peterson-v-marion-county-office-of-family-children/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    },
+    {
+     "name": "In Re Termination of Relationship of DD",
+     "year": 2004,
+     "url": "https://www.courtlistener.com/opinion/2208866/in-re-termination-of-relationship-of-dd/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "717 N.E.2d 204": {
+   "status": "ambiguous",
+   "clusters": [
+    {
+     "name": "Judy S. v. Noble County Office of Family & Children",
+     "year": 1999,
+     "url": "https://www.courtlistener.com/opinion/7164908/judy-s-v-noble-county-office-of-family-children/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    },
+    {
+     "name": "In Re LS",
+     "year": 1999,
+     "url": "https://www.courtlistener.com/opinion/2165500/in-re-ls/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "798 N.E.2d 185": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "McBride v. Monroe County Office of Family & Children",
+     "year": 2003,
+     "url": "https://www.courtlistener.com/opinion/2148459/mcbride-v-monroe-county-office-of-family-children/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "866 N.E.2d 867": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Rutherford v. State",
+     "year": 2007,
+     "url": "https://www.courtlistener.com/opinion/2026799/rutherford-v-state/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "894 N.E.2d 265": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "King v. State",
+     "year": 2008,
+     "url": "https://www.courtlistener.com/opinion/2014301/king-v-state/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "861 N.E.2d 366": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Lang v. Starke County Office of Family & Children",
+     "year": 2007,
+     "url": "https://www.courtlistener.com/opinion/2047968/lang-v-starke-county-office-of-family-children/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "924 N.E.2d 212": {
+   "status": "ambiguous",
+   "clusters": [
+    {
+     "name": "A.S. v. Indiana Department of Child Services",
+     "year": 2010,
+     "url": "https://www.courtlistener.com/opinion/7166629/as-v-indiana-department-of-child-services/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    },
+    {
+     "name": "In Re AK",
+     "year": 2010,
+     "url": "https://www.courtlistener.com/opinion/2114520/in-re-ak/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "987 N.E.2d 1150": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "In the Matter of the Termination of the Parent-Child Relationship of: A.D.S. & A.S. and L.S. v. The Indiana Department of Child Services",
+     "year": 2013,
+     "url": "https://www.courtlistener.com/opinion/2727526/in-the-matter-of-the-termination-of-the-parent-child-relationship-of/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "64 N.E.3d 1250": {
+   "status": "ambiguous",
+   "clusters": [
+    {
+     "name": "Mathews v. State",
+     "year": 2017,
+     "url": "https://www.courtlistener.com/opinion/7169069/mathews-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    },
+    {
+     "name": "David A. Mathews v. State of Indiana",
+     "year": 2016,
+     "url": "https://www.courtlistener.com/opinion/4329189/david-a-mathews-v-state-of-indiana/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "986 N.E.2d 852": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Kendall Johnson v. State of Indiana",
+     "year": 2013,
+     "url": "https://www.courtlistener.com/opinion/2727549/kendall-johnson-v-state-of-indiana/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "71 N.E.3d 839": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Keyshawn D. Sanders v. State of Indiana",
+     "year": 2017,
+     "url": "https://www.courtlistener.com/opinion/4370978/keyshawn-d-sanders-v-state-of-indiana/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "621 F.2d 934": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "827 F.3d 129": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "United Airlines, Inc. v. Federal Energy Regulatory Commission",
+     "year": 2016,
+     "url": "https://www.courtlistener.com/opinion/3219481/united-airlines-inc-v-federal-energy-regulatory-commission/",
+     "court": "cadc",
+     "courtName": "Court of Appeals for the D.C. Circuit"
+    }
+   ]
+  },
+  "396 F.2d 228": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Louisiana High School Athletic Ass'n. v. St. Augustine High School",
+     "year": 1968,
+     "url": "https://www.courtlistener.com/opinion/8892642/louisiana-high-school-athletic-assn-v-st-augustine-high-school/",
+     "court": "ca5",
+     "courtName": "Court of Appeals for the Fifth Circuit"
+    }
+   ]
+  },
+  "736 F. Supp. 2d 962": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "In Re KBR, Inc.",
+     "year": 2010,
+     "url": "https://www.courtlistener.com/opinion/2475652/in-re-kbr-inc/",
+     "court": "mdd",
+     "courtName": "District Court, D. Maryland"
+    }
+   ]
+  },
+  "750 F.3d 910": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "133 N.E.3d 708": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "393 F. Supp. 2d 1215": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Ward v. HEALTHSOUTH CORP.",
+     "year": 2005,
+     "url": "https://www.courtlistener.com/opinion/2455366/ward-v-healthsouth-corp/",
+     "court": "okwd",
+     "courtName": "District Court, W.D. Oklahoma"
+    }
+   ]
+  },
+  "24 F.3d 1001": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "990 F. Supp. 2d 1035": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Cooper v. Tokyo Electric Power Co.",
+     "year": 2013,
+     "url": "https://www.courtlistener.com/opinion/8730685/cooper-v-tokyo-electric-power-co/",
+     "court": "casd",
+     "courtName": "District Court, S.D. California"
+    }
+   ]
+  },
+  "994 N.E.2d 228": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "106 N.E.3d 400": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "212 N.E.3d 768": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "811 N.E.2d 501": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Lopes v. Commonwealth",
+     "year": 2004,
+     "url": "https://www.courtlistener.com/opinion/6578979/lopes-v-commonwealth/",
+     "court": "mass",
+     "courtName": "Massachusetts Supreme Judicial Court"
+    }
+   ]
+  },
+  "810 N.E.2d 1186": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Indiana Bell Telephone Co. v. Indiana Utility Regulatory Commission",
+     "year": 2004,
+     "url": "https://www.courtlistener.com/opinion/7165759/indiana-bell-telephone-co-v-indiana-utility-regulatory-commission/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "419 N.E.2d 489": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "People v. Harris",
+     "year": 1981,
+     "url": "https://www.courtlistener.com/opinion/7112779/people-v-harris/",
+     "court": "illappct",
+     "courtName": "Appellate Court of Illinois"
+    }
+   ]
+  },
+  "773 N.E.2d 157": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "887 F.2d 1128": {
+   "status": "ambiguous",
+   "clusters": [
+    {
+     "name": "Midwest Precision Services, Inc. v. PTM Industries Corp.",
+     "year": 1989,
+     "url": "https://www.courtlistener.com/opinion/8982241/midwest-precision-services-inc-v-ptm-industries-corp/",
+     "court": "ca1",
+     "courtName": "Court of Appeals for the First Circuit"
+    },
+    {
+     "name": "Midwest Precision Services, Inc. v. Ptm Industries Corporation, Midwest Precision Services, Inc. v. Ptm Industries Corporation, Appeal of Shawmut Bank of Boston, N.A.",
+     "year": 1989,
+     "url": "https://www.courtlistener.com/opinion/531009/midwest-precision-services-inc-v-ptm-industries-corporation-midwest/",
+     "court": "ca1",
+     "courtName": "Court of Appeals for the First Circuit"
+    }
+   ]
+  },
+  "170 N.E.3d 1117": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "989 N.E.2d 830": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "George Cole v. State of Indiana",
+     "year": 2013,
+     "url": "https://www.courtlistener.com/opinion/2727229/george-cole-v-state-of-indiana/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "924 N.E.2d 56": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "White v. GARLOCK SEALING TECHNOLOGIES, LLC",
+     "year": 2010,
+     "url": "https://www.courtlistener.com/opinion/2114207/white-v-garlock-sealing-technologies-llc/",
+     "court": "illappct",
+     "courtName": "Appellate Court of Illinois"
+    }
+   ]
+  },
+  "569 U.S. 764": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "61 N.E.3d 1283": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "3 N.E.3d 1027": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "In Re The Paternity of C.J.A.: G.C. (Mother) v. T.A. (Father)",
+     "year": 2014,
+     "url": "https://www.courtlistener.com/opinion/2725731/in-re-the-paternity-of-cja-gc-mother-v-ta-father/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "755 N.E.2d 1144": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Ford v. State",
+     "year": 2001,
+     "url": "https://www.courtlistener.com/opinion/2059124/ford-v-state/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "716 N.E.2d 612": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Smith v. Washington",
+     "year": 1999,
+     "url": "https://www.courtlistener.com/opinion/2074160/smith-v-washington/",
+     "court": null,
+     "courtName": null
+    },
+    {
+     "name": "Smith v. Washington",
+     "year": 1999,
+     "url": "https://www.courtlistener.com/opinion/2074160/smith-v-washington/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "180 N.E.3d 281": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "821 N.E.2d 236": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "150 N.E.3d 663": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "134 N.E.3d 523": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "166 N.E.3d 908": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "855 N.E.2d 723": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "838 N.E.2d 446": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "State Ex Rel. Indiana State Bar Ass'n v. Diaz",
+     "year": 2005,
+     "url": "https://www.courtlistener.com/opinion/852735/state-ex-rel-indiana-state-bar-assn-v-diaz/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "31 N.E.3d 978": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Jeri Good v. Indiana Teachers Retirement Fund",
+     "year": 2015,
+     "url": "https://www.courtlistener.com/opinion/2771209/jeri-good-v-indiana-teachers-retirement-fund/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "508 N.E.2d 565": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Kubiak v. State",
+     "year": 1987,
+     "url": "https://www.courtlistener.com/opinion/2122314/kubiak-v-state/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "82 N.E.3d 319": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Duke Energy Indiana, LLC v. Town of Avon, Indiana",
+     "year": 2017,
+     "url": "https://www.courtlistener.com/opinion/4421413/duke-energy-indiana-llc-v-town-of-avon-indiana/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "871 N.E.2d 1039": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "844 N.E.2d 198": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Buggs v. State",
+     "year": 2006,
+     "url": "https://www.courtlistener.com/opinion/2141920/buggs-v-state/",
+     "court": "indctapp",
+     "courtName": "Indiana Court of Appeals"
+    }
+   ]
+  },
+  "901 N.E.2d 1103": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "810 N.E.2d 335": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "State v. Evans",
+     "year": 2004,
+     "url": "https://www.courtlistener.com/opinion/852904/state-v-evans/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "421 N.E.2d 251": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Village of Oak Lawn v. Zagel",
+     "year": 1981,
+     "url": "https://www.courtlistener.com/opinion/7112844/village-of-oak-lawn-v-zagel/",
+     "court": "illappct",
+     "courtName": "Appellate Court of Illinois"
+    }
+   ]
+  },
+  "675 N.E.2d 698": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "Rhoades v. State",
+     "year": 1996,
+     "url": "https://www.courtlistener.com/opinion/2199831/rhoades-v-state/",
+     "court": "ind",
+     "courtName": "Indiana Supreme Court"
+    }
+   ]
+  },
+  "123 N.E.3d 22": {
+   "status": "found",
+   "clusters": [
+    {
+     "name": "People v. Kelly",
+     "year": 2018,
+     "url": "https://www.courtlistener.com/opinion/4572686/people-v-kelly/",
+     "court": null,
+     "courtName": null
+    }
+   ]
+  },
+  "880 F.3d 4291": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "482 F.3d 7561": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "592 N.E.2d 2884": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "320 F.3d 9889": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "451 N.E.2d 3385": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "612 N.E.2d 9776": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "347 N.E.2d 7388": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "89 N.E.3d 5819": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "844 F. Supp. 2d 9087": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "189 N.E.3d 3099": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "136 N.E.3d 4278": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "207 N.E.2d 8120": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "617 F.3d 5964": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "176 N.E.3d 5596": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "118 N.E.2d 6433": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "337 N.E.2d 6630": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "84 N.E.3d 5126": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "39 N.E.3d 3181": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "820 F. Supp. 2d 2615": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "121 F.3d 3702": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "113 F.3d 3451": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "846 F.3d 9375": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "360 N.E.2d 8753": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "341 F.3d 5001": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "304 N.E.2d 4727": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "26 N.E.3d 2727": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "620 N.E.2d 9767": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "510 F.3d 5192": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "34 N.E.3d 4486": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "40 N.E.3d 8069": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "700 N.E.2d 6878": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "170 N.E.3d 4247": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "120 N.E.2d 3861": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "281 F.3d 6475": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "189 N.E.2d 7603": {
+   "status": "not_found",
+   "clusters": []
+  },
+  "944 N.E.2d 9552": {
+   "status": "not_found",
+   "clusters": []
+  }
+ }
+}

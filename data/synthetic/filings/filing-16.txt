@@ -1,0 +1,23 @@
+SAMPLE FILING FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL. THE CASES BELOW ARE CITED TO TEST A CHECKER, NOT AS LEGAL AUTHORITY.
+
+STATE OF INDIANA, COUNTY OF ALLEN
+IN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION
+Cause No. 02D00-2611-SC-000016
+
+Hoosier Housing Partners, Plaintiff,
+v.
+Quimby Sample, Defendant.
+
+DEFENDANT'S MOTION
+
+The Defendant relies on the authorities below.
+
+1. See Thakkar v. State, 644 N.E.2d 609 (Ind. Ct. App. 1994).
+2. See also Martin v. Platt, 386 N.E.2d 1026 (Ind. Ct. App. 1986).
+3. See Kavanagh v. Butorac, 644 N.E.2d 72 (Ind. 1994).
+4. See Anglemyer v. State, 804 N.E.2d 258 (Ind. Ct. App. 2004).
+5. See also Erie Insurance v. Hickman Ex Rel. Smith, 622 N.E.2d 515 (Ind. 1993).
+6. See also Charles Stephenson v. State of Indiana, 64 N.E.3d 1250 (Ind. Ct. App. 2016).
+
+Respectfully submitted,
+Defendant, self-represented

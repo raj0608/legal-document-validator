@@ -1,0 +1,23 @@
+SAMPLE FILING FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL. THE CASES BELOW ARE CITED TO TEST A CHECKER, NOT AS LEGAL AUTHORITY.
+
+STATE OF INDIANA, COUNTY OF ALLEN
+IN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION
+Cause No. 02D00-2611-SC-000001
+
+Cedar Court Properties, Plaintiff,
+v.
+Marlowe Sample, Defendant.
+
+DEFENDANT'S MOTION
+
+The Defendant relies on the authorities below.
+
+1. See Kessler v. Cedar Court Properties, 880 F.3d 4291 (7th Cir. 2015).
+2. Cf. Ingram v. Lakeview Holdings, 482 F.3d 7561 (7th Cir. 2013).
+3. Cf. Cardwell v. State, 753 N.E.2d 591 (Ind. 2001).
+4. Cf. Kavanagh v. Butorac, 221 N.E.2d 824 (7th Cir. 1966).
+5. See Marlowe v. Old Mill Residential, 592 N.E.2d 2884 (Ind. 1997).
+6. Accord Erie Insurance v. Hickman Ex Rel. Smith, 622 N.E.2d 515 (Ind. 1993).
+
+Respectfully submitted,
+Defendant, self-represented
