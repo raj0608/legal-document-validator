@@ -17,7 +17,7 @@ const answer = (status, body) => async () => ({ status, ok: status >= 200 && sta
 
 // What CourtListener sends back for "397 U.S. 254\n912 N.E.2d 4471": an entry for each citation it read.
 const DB_REPLY = [
-  { citation: "397 U.S. 254", start_index: 0, end_index: 12, status: 200, clusters: [{ case_name: "Goldberg v. Kelly", date_filed: "1970-03-23", absolute_url: "/opinion/108223/goldberg-v-kelly/" }] },
+  { citation: "397 U.S. 254", start_index: 0, end_index: 12, status: 200, clusters: [{ id: 108100, case_name: "Goldberg v. Kelly", date_filed: "1970-03-23", absolute_url: "/opinion/108223/goldberg-v-kelly/" }] },
   { citation: "912 N.E.2d 4471", start_index: 13, end_index: 28, status: 404, error_message: "Citation not found: '912 N.E.2d 4471'", clusters: [] }
 ];
 
@@ -30,14 +30,70 @@ async function serve(citations) {
 }
 
 test("the adapter sends only citation numbers, with the token, and reads each answer in order", async () => {
-  let sent;
-  const lookup = createCourtListener({ token: "t0ken", fetchFn: async (url, init) => { sent = { url, init }; return answer(200, DB_REPLY)(); } });
+  const calls = [];
+  const lookup = createCourtListener({ token: "t0ken", fetchFn: async (url, init) => { calls.push({ url: String(url), init }); return answer(200, DB_REPLY)(); } });
   const out = await lookup.lookup([GOLDBERG, FAKE]);
-  assert.equal(sent.url, "https://www.courtlistener.com/api/rest/v4/citation-lookup/");
-  assert.equal(sent.init.headers.Authorization, "Token t0ken");
-  assert.equal(sent.init.body.get("text"), "397 U.S. 254\n912 N.E.2d 4471");
-  assert.deepEqual(out[0], { status: "found", clusters: [{ name: "Goldberg v. Kelly", year: 1970, url: "https://www.courtlistener.com/opinion/108223/goldberg-v-kelly/" }] });
+  assert.equal(calls[0].url, "https://www.courtlistener.com/api/rest/v4/citation-lookup/");
+  assert.equal(calls[0].init.headers.Authorization, "Token t0ken");
+  assert.equal(calls[0].init.body.get("text"), "397 U.S. 254\n912 N.E.2d 4471");
+  assert.deepEqual(out[0], { status: "found", clusters: [{ name: "Goldberg v. Kelly", year: 1970, url: "https://www.courtlistener.com/opinion/108223/goldberg-v-kelly/", court: null, courtName: null }] });
   assert.deepEqual(out[1], { status: "not_found", clusters: [] });
+});
+
+// A fake CourtListener: the lookup answers with `reply`, and a search says which court decided each cluster.
+function fakeDb(reply, { courts = {}, searchStatus = 200 } = {}) {
+  const calls = [];
+  const fetchFn = async (url, init) => {
+    calls.push(String(url));
+    if (String(url).includes("/search/")) {
+      const ids = (new URL(url).searchParams.get("q").match(/\d+/g) || []).map(Number);
+      return answer(searchStatus, { results: ids.filter((id) => courts[id]).map((id) => ({ cluster_id: id, court_id: courts[id][0], court: courts[id][1] })) })();
+    }
+    return answer(200, reply)();
+  };
+  return { calls, fetchFn };
+}
+
+test("each case also gets the court that decided it, from one search that sends only case ids", async () => {
+  const db = fakeDb(DB_REPLY, { courts: { 108100: ["scotus", "Supreme Court of the United States"] } });
+  const out = await createCourtListener({ token: "x", fetchFn: db.fetchFn }).lookup([GOLDBERG, FAKE]);
+  assert.equal(out[0].clusters[0].court, "scotus");
+  assert.equal(out[0].clusters[0].courtName, "Supreme Court of the United States");
+  assert.equal("id" in out[0].clusters[0], false, "the case id is not passed on");
+  const search = db.calls.filter((u) => u.includes("/search/"));
+  assert.equal(search.length, 1);
+  assert.equal(new URL(search[0]).searchParams.get("q"), "cluster_id:(108100)");
+  assert.doesNotMatch(search[0], /U\.S\.|254|Goldberg/, "no citation or name goes in the search");
+});
+
+test("a search that runs to a second page is followed, but only on CourtListener itself", async () => {
+  const two = [0, 1].map((i) => ({ start_index: i * 14, status: 200, clusters: [{ id: 500 + i, case_name: "A v. B", date_filed: "1990-01-01", absolute_url: "/opinion/" + i + "/a/" }] }));
+  const cites = [{ volume: "100", reporter: "N.E.2d", page: "10" }, { volume: "101", reporter: "N.E.2d", page: "10" }];
+  const seen = [];
+  const mk = (next) => async (url) => {
+    seen.push(String(url));
+    if (!String(url).includes("/search/")) return answer(200, two)();
+    if (String(url).includes("page2")) return answer(200, { results: [{ cluster_id: 501, court_id: "ind", court: "Indiana Supreme Court" }], next: "https://evil.example/steal" })();
+    return answer(200, { results: [{ cluster_id: 500, court_id: "indctapp", court: "Indiana Court of Appeals" }], next })();
+  };
+  const out = await createCourtListener({ token: "x", fetchFn: mk("https://www.courtlistener.com/api/rest/v4/search/?page2=1") }).lookup(cites);
+  assert.deepEqual(out.map((o) => o.clusters[0].court), ["indctapp", "ind"]);
+  assert.ok(!seen.some((u) => u.includes("evil.example")), "a next page on another site is never fetched");
+  const off = await createCourtListener({ token: "x", fetchFn: mk("https://evil.example/steal") }).lookup(cites);
+  assert.deepEqual(off.map((o) => o.clusters[0].court), ["indctapp", null]);
+  assert.ok(!seen.some((u) => u.includes("evil.example")));
+});
+
+test("many cases are searched 20 at a time, and a failed search leaves every answer in place with no court", async () => {
+  const many = Array.from({ length: 45 }, (_, i) => ({ start_index: i * 14, status: 200, clusters: [{ id: 1000 + i, case_name: "A v. B", date_filed: "1990-01-01", absolute_url: "/opinion/" + i + "/a/" }] }));
+  const cites = many.map((_, i) => ({ volume: String(100 + i), reporter: "N.E.2d", page: "10" }));
+  const db = fakeDb(many);
+  await createCourtListener({ token: "x", fetchFn: db.fetchFn }).lookup(cites);
+  assert.equal(db.calls.filter((u) => u.includes("/search/")).length, 3);
+  const down = fakeDb(DB_REPLY, { searchStatus: 500 });
+  const out = await createCourtListener({ token: "x", fetchFn: down.fetchFn }).lookup([GOLDBERG, FAKE]);
+  assert.deepEqual(out.map((o) => o.status), ["found", "not_found"]);
+  assert.equal(out[0].clusters[0].court, null);
 });
 
 test("every status the database can give is mapped, and a citation it did not answer for is called unrecognised", async () => {

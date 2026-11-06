@@ -16,15 +16,21 @@ const canonReporter = (raw) => { const k = raw.replace(/\s+/g, "").replace("’"
 // volume, reporter, first page, then an optional pinpoint page and an optional (court and year)
 const CITE = new RegExp(String.raw`\b(\d{1,4})\s+(${REPORTERS})\s+(\d{1,5})(?:,\s*(\d{1,5})(?!\d|\s*[A-Z]))?(?:\s*\(([^()]{1,60})\))?`, "g");
 
-// "Goldberg v. Kelly", read backwards from the citation
-const WORD = String.raw`(?:[A-Z][\w'’&.\-]*|of|the|and|for|in|ex|rel\.|de|la|del|on|at|to|a|an|\d+)`;
-const NAME = new RegExp(String.raw`(${WORD}(?:\s+${WORD})*?\s+v\.\s+${WORD}(?:\s+${WORD})*)[\s,]*$`);
+// "Goldberg v. Kelly", read backwards from the citation. Also "In re A.K." and "In the Matter of ...", which have no "v.".
+const WORD = String.raw`(?:[A-Z][\w'’&./\-]*|of|the|and|for|in|ex|rel\.|de|la|del|on|at|to|a|an|&|\d+)`;
+const CAP = String.raw`[A-Z][\w'’&./\-]*`;
+// the second party may be a list ("Eby v. York-Division, Borg-Warner")
+const NAME = new RegExp(String.raw`(${WORD}(?:\s+${WORD})*?\s+v\.\s+${WORD}(?:\s+${WORD}|,\s+(?:and\s+)?${CAP})*)[\s,]*$`);
+const IN_RE = new RegExp(String.raw`((?:In\s+re|In\s+the\s+Matter\s+of|Matter\s+of|Ex\s+parte)\s+${WORD}(?:\s+${WORD}){0,12})[\s,]*$`, "i");
 const LEAD = /^(?:(?:see|also|cf|accord|but|contra|e\.g|in|the)\.?,?\s+)+/i;
+// "Info. Servs., LLC" is one name: the comma before a company ending is not the end of it.
+const COMPANY_COMMA = /,\s+(?=(?:Inc|LLC|L\.L\.C|Ltd|Co|Corp|LLP|LP|P\.C|N\.A|Jr|Sr|II|III)\b)/gi;
 
 function nameBefore(text, index) {
-  const m = NAME.exec(text.slice(Math.max(0, index - 160), index));
-  const name = m ? m[1].replace(LEAD, "").trim() : "";
-  return name && name.length <= 100 ? name : null;
+  const before = text.slice(Math.max(0, index - 260), index).replace(COMPANY_COMMA, " ");
+  const v = NAME.exec(before), re = v ? null : IN_RE.exec(before);
+  const name = v ? v[1].replace(LEAD, "").trim() : re ? re[1].trim() : "";
+  return name && name.length <= 200 ? name : null;
 }
 
 const yearOf = (s) => { const m = /\b(1[89]\d\d|20\d\d)\b/.exec(s || ""); return m ? Number(m[1]) : null; };

@@ -3,6 +3,7 @@ import { $, el } from "/app/shared/lib/dom.js";
 import { t } from "/app/shared/lib/page-text.js";
 import { state } from "/app/shared/state.js";
 import { buildReport } from "/shared/analysis/citation-report.js";
+import { courtText } from "/shared/analysis/filing-court.js";
 
 const CHIP = (v) => (v === "found" ? "ok" : v === "unchecked" ? "none" : "look");
 
@@ -15,6 +16,7 @@ function describe(row) {
   const f = row.found;
   if (row.verdict === "found") return t("cite_d_found", { db: f.name + (f.year ? " (" + f.year + ")" : "") });
   if (row.verdict === "name_differs") return t("cite_d_name_differs", { filed: row.name, db: f.name });
+  if (row.verdict === "court_differs") return t("cite_d_court_differs", { c1: courtText(row.court), c2: f.courtName || f.court });
   if (row.verdict === "year_differs") return t("cite_d_year_differs", { y1: row.year, y2: f.year });
   return t("cite_d_" + row.verdict);
 }
