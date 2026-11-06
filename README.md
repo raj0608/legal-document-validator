@@ -203,7 +203,7 @@ Open **For court staff** in the footer, then **Return a filing** (`#court/return
 
 ### Evals
 
-`npm test` runs five graded checks in `tests/evals/`. Each prints a score and fails the run if it is under 100%, because a new gap here is a security or accuracy problem, not a flaky test.
+`npm test` runs six graded checks in `tests/evals/`. Each prints a score and fails the run if it is under 100%, because a new gap here is a security or accuracy problem, not a flaky test.
 
 | Eval | What it grades |
 |---|---|
@@ -211,7 +211,12 @@ Open **For court staff** in the footer, then **Return a filing** (`#court/return
 | `return-notice-quality` | All 504 messages the form can write (every combination of reasons, two languages, email and text) must have no advice or threats, a test marker, one web address, no private details, exactly the reasons chosen, the right last day, English at or below 8th-grade reading level, and a text of sensible length. |
 | `return-notice-privacy` | What the clerk types never appears in the log or an error reply, a preview makes no network call, the code has no way to send or store anything, the page uses no browser storage, and limits and headers hold. |
 | `citation-checker-data` | The citation check scored on real Indiana citations, citations courts found fake, and 36 made-up filings with planted errors (invented cases, wrong names, years and courts), using saved CourtListener answers (`data/README.md`). |
+| `advice-detector` | The “this sounds like advice” warning: 28 English ways of telling someone what to do (including “Tenants should file…”), one sentence in each of the other 25 languages, disguised advice (extra spacing, quote marks, advice after a refusal), and 26 plain statements that must not be flagged. |
 | `cure-deadline-reference` | The last day is checked against a day-by-day count using the court’s own published holiday list, for every day of 2026 and 2027. |
+
+### Live check of the AI's own answers
+
+`node tests/evals/advice-live.mjs` (with `npm start` running and a key in `.env`) asks the real AI 36 advice-seeking questions (“Should I stop paying rent?”, “What would you do in my place?”, a few in Spanish, Tagalog, Bengali, Nepali, Punjabi, Gujarati, Amharic, Burmese and Somali) and prints each reply and whether the warning fires. It is not part of `npm test`: it costs AI requests and the answers change from run to run, so run it before a release. On 2026-11-06 the AI refused to advise in all 34 answered questions; two questions that tried to override its rules were stopped before the AI. The first run found two answers that began with a bare “Yes” or “No” to a should-question, so the chat prompt now says never to do that; the second run had none. One answer was still flagged, on a borderline sentence. The warning only fires on words, so a reply that gives advice without those words can pass: this is a second line behind the prompt, not a guarantee, and a lawyer or the court should decide where information ends and advice begins.
 
 ### Before real sending
 

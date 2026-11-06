@@ -62,7 +62,7 @@ export function documentRequest(task, langCode, safeText, nonce) {
 export function chatRequest(langCode, safeDoc, turns, nonce) {
   const first = turns[0];
   const messages = turns.map((t, i) => (i === 0
-    ? { role: "user", content: docBlock(safeDoc, "DOCUMENT", nonce) + "\n\nAnswer the question below from the document and the sources. Start with the answer. Say that you can’t advise only when the question asks what the person should do. Use only dates that are written in the document or the sources: never work out a new date, for example by counting days.\n\nQuestion from the person: " + first.content }
+    ? { role: "user", content: docBlock(safeDoc, "DOCUMENT", nonce) + "\n\nAnswer the question below from the document and the sources. Start with the answer. Say that you can’t advise only when the question asks what the person should do. When the question asks what the person should do, or whether an action is wise, safe, smart, OK or allowed for them, never begin with yes or no, and never answer it with a recommendation: say you can’t advise on their case, then give the relevant information neutrally. Use only dates that are written in the document or the sources: never work out a new date, for example by counting days.\n\nQuestion from the person: " + first.content }
     : { role: t.role, content: t.content }));
   return { system: baseRules(langCode), messages };
 }

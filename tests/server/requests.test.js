@@ -2,7 +2,7 @@
 import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import { SAMPLE } from "../../shared/sample-papers.js";
-import { docBlock } from "../../server/prompts.js";
+import { docBlock, chatRequest, baseRules } from "../../server/prompts.js";
 import { open, shutdown, start, readSse, doc } from "./fake-anthropic.js";
 
 after(() => Promise.all([...open].map(shutdown)));
@@ -125,4 +125,13 @@ test("the explanation prompt names its headings, and the chat prompt says to ans
   // the rules themselves are untouched
   assert.match(s.client.calls[1].system, /Never tell the person what they should, must, or need to do in their own case/);
   await s.close();
+});
+
+test("the chat prompt forbids advice, and forbids starting with yes or no when the question asks what the person should do", () => {
+  const sent = chatRequest("en", "A paper.", [{ role: "user", content: "Should I move out?" }], "DOC-test");
+  assert.match(sent.system, /never legal advice/i);
+  assert.match(sent.system, /Never tell the person what they should, must, or need to do/);
+  assert.match(sent.messages[0].content, /never begin with yes or no/);
+  assert.match(sent.messages[0].content, /can’t advise on their case/);
+  assert.match(baseRules("es"), /Reply in Spanish/);
 });

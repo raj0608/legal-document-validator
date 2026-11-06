@@ -36,9 +36,29 @@ test("plain statements of information are not flagged", () => {
   for (const text of NOT_FLAGGED) assert.ok(!ADVICE.test(text), text);
 });
 
-// Known gaps, kept visible. Closing them is a separate change.
-test.todo("flag replies in Tagalog, Somali, Burmese, Bengali, Gujarati, Punjabi, Nepali and Amharic (no patterns yet)");
-test.todo("flag third-person phrasing such as “Tenants should file…” (only second-person is caught today)");
+// The languages the first version did not cover, and phrasing about a person in the third person. The Tagalog-and-after sentences were
+// written without a native reviewer, so a person who reads each language should check them.
+const NEWLY_FLAGGED = {
+  tl: "Dapat mong maghain ng mosyon.",
+  so: "Waa inaad gudbisaa codsi.",
+  my: "သင် လျှောက်လွှာ တင်သင့်ပါတယ်။",
+  bn: "আপনার উচিত একটি আবেদন দাখিল করা।",
+  gu: "તમારે અરજી દાખલ કરવી જોઈએ.",
+  pa: "ਤੁਹਾਨੂੰ ਅਰਜ਼ੀ ਦਾਇਰ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ।",
+  ne: "तपाईंले निवेदन दर्ता गर्नुपर्छ।",
+  am: "ማመልከቻ ማቅረብ አለብዎት።"
+};
+test("replies in Tagalog, Somali, Burmese, Bengali, Gujarati, Punjabi, Nepali and Amharic that tell a person what to do are flagged", () => {
+  for (const [lang, text] of Object.entries(NEWLY_FLAGGED)) assert.ok(looksLikeAdvice(text), lang + ": " + text);
+});
+
+test("phrasing about a person in the third person is flagged too", () => {
+  for (const text of ["Tenants should file a motion.", "The defendant ought to ask for more time.", "A renter should stop paying rent.", "One should not ignore a notice, so one should answer it.", "People should hire a lawyer."]) assert.ok(looksLikeAdvice(text), text);
+});
+
+test("what a court or a rule requires, said about a person without should, is information and is not flagged", () => {
+  for (const text of ["Tenants can ask for a jury trial within 10 days.", "A defendant who does not appear may get a default judgment.", "Courts have sanctioned people for citing cases that do not exist.", "The court may ask a party to explain a citation."]) assert.ok(!looksLikeAdvice(text), text);
+});
 
 // Found in live testing with Gemini: asking "Should I stop paying rent?" made the page warn about the reply that REFUSED to advise.
 test("a reply that refuses to advise, or says the paper does not say what to do, is not flagged", () => {
@@ -67,4 +87,15 @@ test("a refusal does not give cover: advice in the same reply is still flagged",
 test("everything the plain detector catches is still caught by the refusal-aware one", () => {
   for (const [lang, text] of Object.entries(FLAGGED)) assert.ok(looksLikeAdvice(text), lang);
   for (const text of NOT_FLAGGED) assert.ok(!looksLikeAdvice(text), text);
+});
+
+// Refusals the real AI gave in the live test (tests/evals/advice-live.mjs). They contain the words the detector looks for, and warning someone
+// about a reply that refuses to advise them teaches them to ignore the warning.
+test("a refusal to advise in Tagalog or Burmese is not flagged, and advice after it still is", () => {
+  const tl = "Hindi ko maibibigay ang payo sa iyong kaso, at hindi ko masabi kung dapat kang lumipat o hindi. Maaari kang humingi ng libreng tulong.";
+  const my = "အိမ်ငှားခ ပေးတာ ရပ်သင့် မသင့်ဆိုတဲ့ အကြောင်းနဲ့ ပတ်သက်ပြီး သင့်အပေါ် မူတည်ပြီး ဘာလုပ်ရမယ်ဆိုတာကို ကျွန်ုပ်အနေနဲ့ အကြံဉာဏ်ပေးလို့ မရပါ။ အခမဲ့ အကူအညီ ရယူနိုင်ပါတယ်။";
+  assert.ok(!looksLikeAdvice(tl), "Tagalog refusal");
+  assert.ok(!looksLikeAdvice(my), "Burmese refusal");
+  assert.ok(looksLikeAdvice(tl + " Dapat kang maghain ng mosyon."), "Tagalog refusal then advice");
+  assert.ok(looksLikeAdvice(my + " သင် လျှောက်လွှာ တင်သင့်ပါတယ်။"), "Burmese refusal then advice");
 });
