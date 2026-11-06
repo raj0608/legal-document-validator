@@ -63,6 +63,11 @@ export async function lookupCitations(cites, { signal } = {}) {
   return (await json("cites", { cites }, { signal })).results;
 }
 
+// The message for a filing returned for correction, written by the server and not sent: { channel, to, subject, body, fixBy, parts }.
+export async function previewReturnNotice(request, { signal } = {}) {
+  return json("return-notice/preview", request, { signal });
+}
+
 // Machine translation of the page's own text: { ui, faq }.
 export async function translate(lang) {
   return (await request("translate", { lang })).json();

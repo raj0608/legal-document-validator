@@ -22,7 +22,7 @@
 .loader > .btn.ghost { order: 2; }
 .file-btn:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
 .paste { margin-top: 0.9rem; display: grid; gap: 0.5rem; }
-textarea, input[type="date"], input[type="time"], input[type="number"], input[type="text"] {
+textarea, input[type="date"], input[type="time"], input[type="number"], input[type="text"], input[type="email"], input[type="tel"] {
   font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--field-line); border-radius: 8px; padding: 0.6rem 0.75rem; width: 100%; min-height: 48px;
 }
 textarea { resize: vertical; }

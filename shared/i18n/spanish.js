@@ -207,5 +207,25 @@ export const es = {
   cite_d_not_found: "Ningún caso con esta cita está en la base de datos. La base de datos tiene vacíos, así que búsquelo a mano.",
   cite_d_unknown_reporter: "La base de datos no reconoce este tipo de cita. Búsquela a mano.",
   cite_d_unchecked: "Esta no se revisó.",
-  cite_times: "Citada {n} veces en el escrito.", cite_also: "También citada como {c}."
+  cite_times: "Citada {n} veces en el escrito.", cite_also: "También citada como {c}.",
+  // Devolver un escrito para corrección
+  court_tabs_label: "Páginas del personal del tribunal", court_tab_cites: "Revisar citas", court_tab_return: "Devolver un escrito",
+  ret_h: "Devolver un escrito para corrección",
+  ret_p: "Elija qué estaba mal y el día en que devolvió el escrito. Esto redacta un mensaje corto para quien lo presentó, con el último día para corregirlo.",
+  ret_not_sent_note: "Esto solo muestra una vista previa. No se envía ningún correo ni mensaje de texto, y el correo o número que escriba no se guarda.",
+  ret_reasons_h: "Qué estaba mal",
+  ret_r_not_signed: "El documento no está firmado", ret_r_no_phone: "Falta un número de teléfono", ret_r_no_cause: "Falta el número de causa",
+  ret_r_no_caption: "Falta el nombre del tribunal o del caso arriba, o es incorrecto", ret_r_unreadable: "Parte del archivo es difícil de leer o falta", ret_r_wrong_form: "Se necesita otro formulario",
+  ret_other: "Algo más, con sus palabras (opcional)", ret_other_help: "Hasta 140 caracteres. Sin enlaces, correos ni números de teléfono.",
+  ret_date: "Día en que se devolvió", ret_lang: "Idioma del mensaje", ret_lang_en: "English", ret_lang_es: "Español",
+  ret_channel: "Enviar por", ret_email: "Correo electrónico", ret_sms: "Mensaje de texto",
+  ret_to_email: "Correo electrónico", ret_to_sms: "Número de teléfono", ret_to_note: "Se usa solo para esta vista previa. No se guarda ni se envía.",
+  ret_preview: "Ver el mensaje", ret_clear: "Borrar este formulario", ret_working: "Redactando la vista previa…",
+  ret_out_h: "Vista previa", ret_not_sent: "Solo una vista previa. No se envió nada.",
+  ret_to: "Para", ret_subject: "Asunto", ret_fixby: "Último día para corregirlo",
+  ret_parts_one: "Este mensaje de texto usa 1 parte.", ret_parts_many: "Este mensaje de texto usa {n} partes.",
+  ret_err_contact: "Ese correo o número de teléfono no parece correcto. Revíselo e intente de nuevo.",
+  ret_err_text: "No se pueden usar las palabras que agregó. Quite enlaces, correos, números de teléfono y símbolos.",
+  ret_err_date: "Use hoy, o un día de los últimos 30 días.",
+  ret_err_reason: "Elija al menos un motivo, o agregue sus propias palabras."
 };

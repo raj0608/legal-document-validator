@@ -6,12 +6,13 @@ import { requestLog } from "./request-log.js";
 import { perMinuteLimit, createDailyCap } from "./limits.js";
 import { addHealthRoute, addAiRoutes } from "./routes.js";
 import { addCitationRoutes } from "./citation-routes.js";
+import { addNoticeRoutes } from "./notice-routes.js";
 import { notFound, errorHandler } from "./error-responses.js";
 import { servePage } from "./serve-page.js";
 import { serveStaticFiles } from "./static-files.js";
 
 export function createApp({ ai = null, citations = null, config = {} } = {}) {
-  const cfg = { rateLimitPerMin: 20, dailyCap: 2000, log: true, trustProxy: undefined, demo: false, ...config };
+  const cfg = { rateLimitPerMin: 20, dailyCap: 2000, log: true, trustProxy: undefined, demo: false, now: () => new Date(), ...config };
   const app = express();
   app.disable("x-powered-by");
   if (cfg.trustProxy !== undefined) app.set("trust proxy", cfg.trustProxy);
@@ -28,6 +29,7 @@ export function createApp({ ai = null, citations = null, config = {} } = {}) {
   const spend = createDailyCap(cfg);
   addAiRoutes(api, { ai, spend });
   addCitationRoutes(api, { citations, spend });
+  addNoticeRoutes(api, { now: cfg.now });
 
   api.use(notFound);
   api.use(errorHandler);

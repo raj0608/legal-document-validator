@@ -54,3 +54,11 @@ test("the menu has four places, and every screen lights one of them", () => {
   assert.equal(menuItemFor("check"), "home");
   assert.equal(menuItemFor("privacy"), "help");
 });
+
+test("court staff pages are addresses of their own, and a page under a page keeps its parent's address", () => {
+  assert.deepEqual(parseRoute("#court"), { view: "court" });
+  assert.deepEqual(parseRoute("#court/return"), { view: "return" });
+  assert.equal(hashFor({ view: "return" }), "#court/return");
+  assert.equal(hashFor({ view: "court" }), "#court");
+  assert.deepEqual(parseRoute("#return"), { view: "return" }, "the short address still opens the page");
+});

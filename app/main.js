@@ -19,6 +19,7 @@ import { registerCheckSlots, initCheck } from "/app/check/page.js";
 import { renderChecks } from "/app/check/components/form-checklist.js";
 import { renderCure } from "/app/check/components/fix-by-date.js";
 import { registerCourtSlot, initCourt, renderCourt } from "/app/court/page.js";
+import { initReturn, renderReturn, clearReturn } from "/app/court/return/page.js";
 import { renderFaq } from "/app/help/page.js";
 import { renderPrivacy, initPrivacy } from "/app/help/privacy/page.js";
 import { initClearEverything } from "/app/help/privacy/components/clear-everything.js";
@@ -35,7 +36,7 @@ function applyText() {
   $("langnote").hidden = !note;
   renderSize(); renderSupport(); renderQuick(); renderRemChips(); renderFaq(); renderPrivacy(); renderDates();
   renderDoc("papers"); renderDoc("form"); renderDoc("clerk"); renderDoc("filing");
-  renderCourt();
+  renderCourt(); renderReturn();
   if (state.papers) renderFound();
   if (state.form) renderChecks();
   if (state.clerk) renderCure();
@@ -46,6 +47,7 @@ function applyText() {
 function clearAll() {
   abortChat();
   ["papers", "form", "clerk", "filing"].forEach(removeDoc);
+  clearReturn();
   state.chatTokens = null;
   $("askInput").value = "";
   $("smsTo").value = "";
@@ -68,7 +70,7 @@ makeLoader("form", [{ btn: "form_sample_btn", name: "form_sample_name", text: FO
 makeLoader("clerk", [{ btn: "clerk_sample_btn", name: "clerk_sample_name", text: CLERK_SAMPLE }]);
 makeLoader("filing", [{ btn: "filing_sample_btn", name: "filing_sample_name", text: FILING_SAMPLE }]);
 initLang(applyText);
-initDates(); initPapers(); initCheck(); initCourt(); initPrivacy();
+initDates(); initPapers(); initCheck(); initCourt(); initReturn(); initPrivacy();
 initNav();
 route({ initial: true });
 applyText();

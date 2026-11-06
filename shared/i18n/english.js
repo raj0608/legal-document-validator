@@ -207,5 +207,25 @@ export const en = {
   cite_d_not_found: "No case with this citation is in the database. The database has gaps, so look it up by hand.",
   cite_d_unknown_reporter: "The database does not recognise this kind of citation. Look it up by hand.",
   cite_d_unchecked: "This one was not checked.",
-  cite_times: "Cited {n} times in the filing.", cite_also: "Also cited as {c}."
+  cite_times: "Cited {n} times in the filing.", cite_also: "Also cited as {c}.",
+  // Return a filing for correction
+  court_tabs_label: "Court staff pages", court_tab_cites: "Check citations", court_tab_return: "Return a filing",
+  ret_h: "Return a filing for correction",
+  ret_p: "Choose what was wrong and the day you returned the filing. This writes a short message for the filer, with the last day to fix it.",
+  ret_not_sent_note: "This shows a preview only. No email or text is sent, and the address or number you type is not saved.",
+  ret_reasons_h: "What was wrong",
+  ret_r_not_signed: "The document is not signed", ret_r_no_phone: "A telephone number is missing", ret_r_no_cause: "The cause number is missing",
+  ret_r_no_caption: "The court name or case name at the top is missing or wrong", ret_r_unreadable: "Part of the file is hard to read or missing", ret_r_wrong_form: "A different form is needed",
+  ret_other: "Something else, in your words (optional)", ret_other_help: "Up to 140 characters. No links, email addresses or phone numbers.",
+  ret_date: "Day it was returned", ret_lang: "Language of the message", ret_lang_en: "English", ret_lang_es: "Español",
+  ret_channel: "Send by", ret_email: "Email", ret_sms: "Text message",
+  ret_to_email: "Email address", ret_to_sms: "Phone number", ret_to_note: "Used for this preview only. It is not saved and not sent.",
+  ret_preview: "Preview the message", ret_clear: "Clear this form", ret_working: "Writing the preview…",
+  ret_out_h: "Preview", ret_not_sent: "Preview only. Nothing was sent.",
+  ret_to: "To", ret_subject: "Subject", ret_fixby: "Last day to fix it",
+  ret_parts_one: "This text takes 1 part.", ret_parts_many: "This text takes {n} parts.",
+  ret_err_contact: "That email address or phone number does not look right. Check it and try again.",
+  ret_err_text: "The words you added can’t be used. Take out links, email addresses, phone numbers and symbols.",
+  ret_err_date: "Use today, or a day in the last 30 days.",
+  ret_err_reason: "Choose at least one reason, or add your own words."
 };

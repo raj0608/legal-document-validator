@@ -53,7 +53,7 @@ The `.env` file is ignored by git, so your key is never uploaded, and the key st
 
 Want Claude instead? Put `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...` in `.env` (paid).
 
-**Checking it works:** `npm test` runs the automatic checks (about 170, a few seconds, no key needed).
+**Checking it works:** `npm test` runs the automatic checks (about 210, a few seconds, no key needed).
 
 **If something goes wrong**
 
@@ -99,6 +99,7 @@ app/       the page, as the browser loads it (no bundler); each page is the fold
              check/       Check my form (#check), opened from Home
              dates/       My dates (#dates)
              court/       Filing check for court staff (#court), opened from the footer, not the menu
+                            return/    Return a filing for correction (#court/return), the message for a returned filing
              help/        Help (#help)
                             privacy/     Privacy (#help/privacy), opened from Help
                             a page’s folder holds page.html (its markup), page.js (the functions main.js calls to
@@ -128,6 +129,7 @@ server/    the server: it keeps the AI key and the rules, and is the only part t
              prompts.js   the rules the AI follows (they live here)
              translate.js machine translation of the page text
              citations/   the case-law lookup for the court staff page: courtlistener.js (the real one), demo-lookup.js, lookup-cache.js
+             notify/      the message for a returned filing: templates.js (the words, English and Spanish), return-message.js, contact.js (email and phone checks), sms-parts.js. It can only write a preview: it has no way to send.
              errors.js    the error codes the page knows how to show
              ai/          the AI connections
                             port.js      what every AI connection offers: stream and json
@@ -139,6 +141,7 @@ server/    the server: it keeps the AI key and the rules, and is the only part t
                                            streaming, error replies, the page and the static files
                             serve-page.js  puts the page together from app/layout.html and each page’s page.html
 tests/     node:test, in the same folders as the code: shared/, server/, app/
+             evals/               graded checks that fail the run under 100%: hostile input, message quality, privacy, the last day (see below)
              layout.test.js       checks the layout rules below
              agent-rules.test.js  keeps the AI coding tools’ rule files (AGENTS.md) in shape
              golden/      outputs captured from the original single-file code
@@ -185,6 +188,32 @@ Open **For court staff** in the footer (`#court`). Add a filing (PDF, pasted tex
 - **Not checked yet:** whether a case says what the filing says it does, whether quotations are real, whether laws and rules exist, scanned filings (no OCR), and cites to `id.` or `supra`.
 - **Setup:** make a free CourtListener account, copy the API token from your profile, and put it in `.env` as `COURTLISTENER_TOKEN=`. `npm run demo` needs no token: it knows three real Supreme Court cases and calls everything else “not found”, so the sample filing shows each kind of line.
 - **Run against the live CourtListener API on 2026-11-03** with the sample filing: the three real Supreme Court cases were found with matching names, the wrong-name citation showed the real case, and the invented Indiana citation was not found. Indiana state-court coverage has not been measured yet. CourtListener’s own limits for a signed-in account are low (its docs say 5 requests a minute, 50 an hour, 125 a day), so ask Free Law Project about more before a real pilot.
+
+## Return a filing for correction (court staff)
+
+Open **For court staff** in the footer, then **Return a filing** (`#court/return`). The clerk ticks what was wrong (or adds a few words of their own), picks the day the filing was returned, chooses English or Spanish and email or text, and types the filer’s email address or phone number. The page shows the **preview** of the message, with the last day to fix the filing.
+
+- **Nothing is sent.** No email or text service is connected, on purpose. The page says “Preview only. Nothing was sent.”, and the server answers `sent: false` however it is asked.
+- **The email address or number is used once and forgotten.** It is not stored, not logged and not kept in the page after “Clear this form” or “Hide this page”. The server log holds only method, path and status.
+- **The last day is worked out, not typed.** Trial Rule 88: three business days from the day it was returned, not counting weekends and court holidays (`shared/dates/cure-deadline.js`, the same holiday list as the rest of the site). A filing fixed in time is treated as filed on the original date.
+- **The words are fixed.** The wording lives on the server (`server/notify/templates.js`). Only the reasons, the last day and the clerk’s own words are filled in: no names, no case numbers, one fixed web address. Every message starts with a note that it is a test and not from a court, so it cannot pass for an official one. It states facts and never says “you should”.
+- **The clerk’s own words are the one free-text box**, so it is held tight: 140 characters, letters, digits and plain punctuation only, no links or addresses (however dressed up), no phone numbers, no instruction-like text, no mixed alphabets.
+- **A text message costs by the part.** English fits one part for one reason. Spanish accents switch a text to a wider encoding (70 letters a part), so a Spanish text takes more parts. The preview shows how many.
+
+### Evals
+
+`npm test` runs four graded checks in `tests/evals/`. Each prints a score and fails the run if it is under 100%, because a new gap here is a security or accuracy problem, not a flaky test.
+
+| Eval | What it grades |
+|---|---|
+| `return-notice-abuse` | 112 hostile inputs (extra email headers and recipients, line breaks, links in disguise, look-alike letters, phone numbers that are not a person’s, instructions to an AI) must all be refused, honest inputs must be accepted, and 3,000 random inputs must never crash the checks or get through harmful. |
+| `return-notice-quality` | All 504 messages the form can write (every combination of reasons, two languages, email and text) must have no advice or threats, a test marker, one web address, no private details, exactly the reasons chosen, the right last day, English at or below 8th-grade reading level, and a text of sensible length. |
+| `return-notice-privacy` | What the clerk types never appears in the log or an error reply, a preview makes no network call, the code has no way to send or store anything, the page uses no browser storage, and limits and headers hold. |
+| `cure-deadline-reference` | The last day is checked against a day-by-day count using the court’s own published holiday list, for every day of 2026 and 2027. |
+
+### Before real sending
+
+This was built as a preview on purpose. Before any real email or text goes out, the team has to decide and build: **a login for staff** (today anyone who can open the page can use it, which is fine for a preview and not for something that sends); **an allowlist** for test recipients while testing; **consent**, because texts to a person need their prior consent (US law, the Telephone Consumer Protection Act, and the carriers’ own rules); **a sender the court controls**, since a message from a student prototype must not look like the court’s; the **case number or filing** the message is about (left out now to keep private details out of a text); and **one more eval**, run against a sandbox email or text service, that the message really arrives and says the same thing. The sender would be one new file beside `server/notify/` and one route, with every check above kept in front of it.
 
 ## Design
 

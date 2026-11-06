@@ -4,6 +4,10 @@
 import { LANG } from "../shared/i18n/languages.js";
 import { sanitize } from "../shared/safety/injection-filter.js";
 import { findResidualPii } from "../shared/safety/protect.js";
+import { looksLikeInjection } from "../shared/safety/injection-filter.js";
+import { REASON_IDS, OTHER_MAX } from "../shared/notice/return-reasons.js";
+import { fromISO, toISO } from "../shared/dates/date-math.js";
+import { parseEmail, parsePhone } from "./notify/contact.js";
 import { ApiError, bad } from "./errors.js";
 
 export const LIMITS = { doc: 45000, question: 2000, answer: 12000, turns: 10 };
@@ -58,4 +62,44 @@ export function checkCites(cites) {
     if (!/^\d{1,4}$/.test(c.volume) || !/^\d{1,5}$/.test(c.page) || !/^[A-Za-z0-9.' ]{1,20}$/.test(c.reporter)) throw bad("bad citation");
     return { volume: c.volume, reporter: c.reporter.trim(), page: c.page };
   });
+}
+
+// A filing returned for correction: who to tell, why, and when it was returned. Anything that does not fit is refused.
+const refuse = (code) => new ApiError(code, 400);
+const OTHER_OK = /^[\p{L}\p{N} .,'’()\-:;?!&]+$/u; // letters, digits, spaces and plain punctuation: no slashes, line breaks, brackets, symbols or invisible marks
+// Anything that reads as a link or an address, however it is dressed up, and a word that mixes alphabets to pass for another word.
+const LINKISH = /:\/\/|www\.|@|[\p{L}\p{N}-]+\.\p{L}{2,}|\bdot\)?\s*(?:com|org|net|gov|edu|io|co|us|info)\b/iu;
+const MIXED_ALPHABETS = /(?=\S*\p{Script=Latin})(?=\S*[\p{Script=Cyrillic}\p{Script=Greek}])\S+/u;
+
+function checkOther(value) {
+  if (value === undefined || value === null || value === "") return "";
+  if (typeof value !== "string") throw refuse("invalid_text");
+  // NFKC first, so a fullwidth "ｗｗｗ.ｅｖｉｌ.ｃｏｍ" is read as the address it is.
+  const s = value.normalize("NFKC").trim().replace(/ {2,}/g, " ");
+  if (s.length > OTHER_MAX || !OTHER_OK.test(s) || LINKISH.test(s) || MIXED_ALPHABETS.test(s) || looksLikeInjection(s) || findResidualPii(s).length || /\d{5,}/.test(s)) throw refuse("invalid_text");
+  return s;
+}
+
+const DAY = 86400000;
+function checkReturnedOn(value, now) {
+  const d = typeof value === "string" ? fromISO(value) : null;
+  if (!d || toISO(d) !== value) throw refuse("invalid_date");
+  const days = Math.round((d - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / DAY);
+  if (days > 1 || days < -30) throw refuse("invalid_date"); // returned today or recently, not in the far past or future
+  return value;
+}
+
+export function checkReturnNotice(body, now = new Date()) {
+  if (!body || typeof body !== "object" || Array.isArray(body)) throw bad("body must be an object");
+  const lang = body.lang;
+  if (lang !== "en" && lang !== "es") throw bad("message language must be en or es");
+  const channel = body.channel;
+  if (channel !== "email" && channel !== "sms") throw bad("channel must be email or sms");
+  const reasons = body.reasons === undefined ? [] : body.reasons;
+  if (!Array.isArray(reasons) || reasons.length > REASON_IDS.length || new Set(reasons).size !== reasons.length || !reasons.every((r) => REASON_IDS.includes(r))) throw refuse("invalid_reason");
+  const other = checkOther(body.other);
+  if (!reasons.length && !other) throw refuse("invalid_reason");
+  const returnedOn = checkReturnedOn(body.returnedOn, now);
+  const to = channel === "email" ? parseEmail(body.to) : parsePhone(body.to);
+  return { lang, channel, reasons, other, returnedOn, to };
 }

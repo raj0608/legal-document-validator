@@ -1,0 +1,49 @@
+  <!-- Return a filing for correction -->
+  <section id="view-return" class="view" hidden aria-labelledby="return-h">
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><span class="crumb-here" aria-hidden="true" data-i18n="ret_h">Return a filing for correction</span></p>
+        <h1 id="return-h" tabindex="-1" data-i18n="ret_h">Return a filing for correction</h1>
+      </div>
+    </div>
+    <div class="page-body">
+      <nav class="court-tabs" aria-label="Court staff pages"><a href="#court" data-i18n="court_tab_cites">Check citations</a><a href="#court/return" aria-current="page" data-i18n="court_tab_return">Return a filing</a></nav>
+      <p class="lede" data-i18n="ret_p"></p>
+      <p class="court-note" data-i18n="ret_not_sent_note"></p>
+
+      <fieldset class="ret-reasons">
+        <legend data-i18n="ret_reasons_h">What was wrong</legend>
+        <div id="retReasons"></div>
+        <div class="field"><label for="retOther" data-i18n="ret_other">Something else, in your words (optional)</label><input type="text" id="retOther" maxlength="140" autocomplete="off"></div>
+        <p class="small" data-i18n="ret_other_help"></p>
+      </fieldset>
+
+      <div class="fields">
+        <div class="field"><label for="retDate" data-i18n="ret_date">Day it was returned</label><input type="date" id="retDate"></div>
+      </div>
+
+      <p class="ret-label" id="retLangLabel" data-i18n="ret_lang">Language of the message</p>
+      <div class="seg" role="group" aria-labelledby="retLangLabel">
+        <button type="button" id="retLangEn" aria-pressed="true" data-i18n="ret_lang_en">English</button>
+        <button type="button" id="retLangEs" aria-pressed="false" data-i18n="ret_lang_es">Español</button>
+      </div>
+
+      <p class="ret-label" id="retChannelLabel" data-i18n="ret_channel">Send by</p>
+      <div class="seg" role="group" aria-labelledby="retChannelLabel">
+        <button type="button" id="retModeEmail" aria-pressed="true" data-i18n="ret_email">Email</button>
+        <button type="button" id="retModeSms" aria-pressed="false" data-i18n="ret_sms">Text message</button>
+      </div>
+
+      <div class="fields">
+        <div class="field"><label for="retContact" id="retContactLabel" data-i18n="ret_to_email">Email address</label><input type="email" id="retContact" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="254"></div>
+      </div>
+      <p class="small" data-i18n="ret_to_note"></p>
+
+      <div class="cite-run">
+        <button id="retBtn" class="btn primary" type="button" data-i18n="ret_preview">Preview the message</button>
+        <button id="retClear" class="btn" type="button" data-i18n="ret_clear">Clear this form</button>
+        <span id="retStatus" class="status" role="status" hidden></span>
+      </div>
+      <!-- include: /app/court/return/components/message-preview.html -->
+    </div>
+  </section>

@@ -4,6 +4,7 @@ export const state = {
   lang: "en",
   papers: null, form: null, clerk: null,
   filing: null, filingReport: null, // court staff page: the filing, and its citation report
+  returnPreview: null, // court staff page: the message shown for a returned filing, never kept past this visit
   turns: [],
   chatTokens: null, // token state for chat questions when no paper is loaded
   dates: { notice: "", days: 15, served: "", hearing: "", time: "", place: "", cure: "", fromPaper: false },
