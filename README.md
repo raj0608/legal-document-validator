@@ -69,6 +69,20 @@ Want Claude instead? Put `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...` in 
 
 Learning the project? Read [docs/study-guide.md](docs/study-guide.md) first, then [docs/design.md](docs/design.md). Changing the code, alone or with an AI tool? Read [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Put the demo online for free
+
+To give someone a link (a professor, a class discussion), put the **demo** online on Render's free plan. It shows the sample answers and a short list of sample cases, so there is no key to leak and nothing to pay for.
+
+1. Make a Render account with **Sign in with GitHub**. Do **not** add a payment method: without one, Render suspends a free service that passes its monthly limits instead of billing for them.
+2. In Render choose **New → Blueprint**, pick this repository, and approve the plan it reads from `render.yaml` (a free web service that runs `npm run demo`).
+3. When the first deploy finishes, the link looks like `https://legal-document-validator.onrender.com`. It redeploys by itself on every push to `main`.
+
+Things to know:
+
+- **It sleeps after 15 minutes without a visit, and the first visit then takes about a minute.** Open the link a minute before showing it. That is fine for a prototype; a real launch needs better hosting.
+- **Keep it in demo mode.** Do not put `GEMINI_API_KEY` or `COURTLISTENER_TOKEN` on a public link: anyone could use up your free AI quota (Google’s free plan also uses what is sent to improve its products), and CourtListener allows only a few requests a day. A test checks that `render.yaml` stays on the free plan, runs the demo and holds no keys.
+- Render says free services are not for production use, and may restart them at any time.
+
 ## Settings
 
 All in `.env` (see `.env.example`). Only one AI key is needed.

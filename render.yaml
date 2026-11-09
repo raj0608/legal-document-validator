@@ -1,0 +1,17 @@
+# Puts the demo on Render's free plan: `npm run demo` with sample answers, so there is no key to leak and nothing to pay for.
+# In Render: New, then Blueprint, then pick this repository. Do not add a payment method: without one, Render suspends a free
+# service that passes its limits instead of billing. See "Put the demo online for free" in README.md.
+services:
+  - type: web
+    name: legal-document-validator
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm run demo
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: TRUST_PROXY
+        value: "1"
