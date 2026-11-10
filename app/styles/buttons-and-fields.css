@@ -13,7 +13,6 @@
 .btn.danger-solid { border-color: var(--warn); background: var(--warn); color: var(--surface); }
 .danger-zone { margin-top: 1.75rem; padding: 1.25rem; border: 1px solid var(--warn); border-radius: var(--radius-sm); background: var(--warn-bg); max-width: 40rem; }
 .danger-zone p { margin: 0 0 0.6rem; }
-.support { margin-top: 1rem; font-weight: 700; }
 .link-btn { font: inherit; background: none; border: 0; color: var(--link); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; padding: 0.4rem 0; min-height: 44px; }
 .link-btn:hover { color: var(--link-hover); }
 .loader { display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem; align-items: center; }

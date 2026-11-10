@@ -22,7 +22,7 @@ Gaps: we found no study that tests *tenants’* comprehension of eviction forms 
 4. **Back always works.** Every screen has a visible way back, and every address is a normal link, so the phone’s Back button does what people expect.
 5. **Don’t make people remember or calculate.** Dates are found, computed (business days, court holidays) and shown in a strip on every screen.
 6. **Say what will happen to their information before they give it.** Home says: free, no account, nothing saved.
-7. **Real people are never more than one tap away.** Help is in the menu; the support phone number is in the footer and on the Help screen.
+7. **Real people are never more than one tap away.** Help is in the menu, and the Help screen lists free legal help from real people.
 8. **Information, never advice.** Unchanged and protected: see the rules in the README.
 9. **Calm.** Nothing moves, nothing times out, no pop-ups. Navy shows where you are, one action colour marks the next step, and there is one warning style.
 10. **Part of the courts site.** The page uses the Indiana courts site’s palette, typefaces (Readex Pro and Rethink Sans), header, menu bar, cards and footer, so it could sit inside in.gov/courts. It never claims to be official: no state seal, and the top strip says it is a student prototype.
@@ -87,7 +87,6 @@ Everything above is informed by research, not yet by our users. Before launch, w
 
 ## Open questions for the court and the team
 
-- Should the support phone number be in the header on every screen, not only the footer and Help?
 - Should “Hide this page” also reset to a neutral page (for example a search engine)? Today it clears the screen and shows a blank cover.
 - How should the product say “nothing is saved” and also help someone who closes the tab by accident? (Today: the “Save my dates” text file and the calendar `.ics` file.)
 - Which languages come first for human review?

@@ -6,7 +6,6 @@ import { LANG } from "/shared/i18n/languages.js";
 import { SAMPLE, TEST_PAPER, FORM_SAMPLE, CLERK_SAMPLE, FILING_SAMPLE } from "/shared/sample-papers.js";
 import { initAi } from "/app/shared/ui/ai-helper.js";
 import { makeLoader, removeDoc, renderDoc } from "/app/shared/ui/document-slot.js";
-import { renderSupport } from "/app/shared/layout/support-line.js";
 import { renderSize, initPageControls } from "/app/shared/layout/page-controls.js";
 import { initLang } from "/app/shared/layout/language-picker.js";
 import { route, initNav, refreshNav } from "/app/shared/layout/router.js";
@@ -35,7 +34,7 @@ function applyText() {
   const note = state.lang === "en" ? "" : t("lang_machine");
   $("langnote").textContent = note;
   $("langnote").hidden = !note;
-  renderSize(); renderSupport(); renderQuick(); renderRemChips(); renderFaq(); renderPrivacy(); renderDates();
+  renderSize(); renderQuick(); renderRemChips(); renderFaq(); renderPrivacy(); renderDates();
   renderDoc("papers"); renderDoc("form"); renderDoc("clerk"); renderDoc("filing"); renderDoc("cites");
   renderCourt(); renderReturn(); renderCites();
   if (state.papers) renderFound();

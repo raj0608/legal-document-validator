@@ -166,7 +166,6 @@ export const es = {
   clear_all: "Borrar todo", cleared: "Se borró todo",
   clear_warn: "Cuidado: esto quita para siempre sus papeles, fechas, recordatorios y chat de esta página. No se puede deshacer.",
   clear_sure: "¿Está seguro? No se puede deshacer.", clear_yes: "Sí, borrar todo", clear_no: "Cancelar",
-  support_line: "¿Necesita ayuda para usar este sitio? Comuníquese con Keira al {p}.",
   hide_note: "«Ocultar esta página» borra todo lo que escribió. No borra el historial de su navegador.",
   hidden_msg: "Se borró esta página.", start_over: "Empezar de nuevo",
   foot_links_h: "Enlaces útiles", foot_jobs: "Empleos", foot_faqs: "Preguntas frecuentes", foot_calendar: "Calendario", foot_hours: "Horario y días festivos", foot_contact: "Contáctenos",

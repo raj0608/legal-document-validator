@@ -166,7 +166,6 @@ export const en = {
   clear_all: "Clear everything", cleared: "Everything was cleared",
   clear_warn: "Careful: this permanently removes your papers, dates, reminders, and chat from this page. It can’t be undone.",
   clear_sure: "Are you sure? This can’t be undone.", clear_yes: "Yes, clear everything", clear_no: "Cancel",
-  support_line: "Need help using this site? Contact Keira at {p} for support.",
   hide_note: "“Hide this page” clears everything you entered. It does not erase your browser history.",
   hidden_msg: "This page was cleared.", start_over: "Start over",
   foot_links_h: "Helpful Links", foot_jobs: "Jobs", foot_faqs: "FAQs", foot_calendar: "Calendar", foot_hours: "Hours & Holidays", foot_contact: "Contact Us",
