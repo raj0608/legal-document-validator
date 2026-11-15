@@ -215,7 +215,7 @@ export const es = {
   cites_run: "Buscar mis casos", cites_running: "Buscando {n} casos…",
   cites_sum_h: "Casos mencionados en su escrito: {n}", cites_sum_found: "{n} coinciden con un caso real", cites_sum_check: "{n} necesitan una mirada más de cerca", cites_sum_unchecked: "{n} sin revisar",
   cites_cap: "Solo se buscaron los primeros {n} casos.",
-  cites_none: "No encontramos casos mencionados en este escrito.", cites_none_note: "Solo leemos las formas comunes de escribir la cita de un caso, así que esto no significa que no haya ninguno.",
+  cites_sum_none: "No encontramos casos mencionados en este escrito.", cites_none_note: "Solo leemos las formas comunes de escribir la cita de un caso, así que esto no significa que no haya ninguno.",
   cites_off: "Buscar casos no está disponible ahora. Los casos que encontramos aparecen abajo, pero no se revisó ninguno.",
   cites_err_rate: "La base de datos de casos está ocupada. Espere un minuto e intente de nuevo.",
   cites_limits: "Esto solo revisa que un caso exista y coincida con el nombre, el año y el tribunal que usted escribió. No puede saber si un caso dice lo que su escrito afirma: una persona tiene que leer cada caso. Un caso que no encontramos puede faltar en nuestra lista, así que eso solo no demuestra que el caso no sea real.",

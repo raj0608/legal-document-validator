@@ -20,7 +20,7 @@ export function showCitesRun(on) { $("citesRun").hidden = !on; }
 
 function drawSummary(box, rep, counts) {
   box.textContent = "";
-  box.appendChild(el("h3", null, rep.cites.length ? t("cites_sum_h", { n: rep.cites.length }) : t("cites_none")));
+  box.appendChild(el("h3", null, rep.cites.length ? t("cites_sum_h", { n: rep.cites.length }) : t("cites_sum_none")));
   if (!rep.cites.length) { box.appendChild(el("p", null, t("cites_none_note"))); return; }
   const ul = el("ul");
   ul.append(el("li", null, t("cites_sum_found", { n: counts.found })), el("li", null, t("cites_sum_check", { n: counts.check })));

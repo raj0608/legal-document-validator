@@ -215,7 +215,7 @@ export const en = {
   cites_run: "Look up my cases", cites_running: "Looking up {n} cases…",
   cites_sum_h: "Cases named in your filing: {n}", cites_sum_found: "{n} match a real case", cites_sum_check: "{n} need a closer look", cites_sum_unchecked: "{n} not checked",
   cites_cap: "Only the first {n} cases were looked up.",
-  cites_none: "We did not find any cases named in this filing.", cites_none_note: "We only read common ways of writing a case citation, so this does not mean there are none.",
+  cites_sum_none: "We did not find any cases named in this filing.", cites_none_note: "We only read common ways of writing a case citation, so this does not mean there are none.",
   cites_off: "Looking up cases is not available right now. The cases we found are listed below, but none were checked.",
   cites_err_rate: "The case database is busy. Wait a minute, then try again.",
   cites_limits: "This only checks that a case exists and matches the name, year and court that you wrote. It cannot tell whether a case says what your filing uses it for: a person has to read each case. A case we could not find may be missing from our list, so that alone does not show the case is not real.",
