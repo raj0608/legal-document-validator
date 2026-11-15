@@ -1,0 +1,23 @@
+  <!-- 90-day pauses -->
+  <section id="view-diversion" class="view" hidden aria-labelledby="diversion-h">
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><a href="#court" data-i18n="staff_h">For court staff</a><span class="crumb-here" aria-hidden="true" data-i18n="pauses_h">90-day pauses</span></p>
+        <h1 id="diversion-h" tabindex="-1" data-i18n="pauses_h">90-day pauses</h1>
+      </div>
+    </div>
+    <div class="page-body under-title">
+      <p class="lede" data-i18n="pauses_p"></p>
+      <p class="small" data-i18n="pauses_sample"></p>
+      <p id="pausesDown" class="warn" hidden data-i18n="live_down"></p>
+      <div id="pausesWeek" class="week"></div>
+      <h2 data-i18n="sec_paused">Paused</h2>
+      <ul id="pausesActive" class="pause-list"></ul>
+      <h2 data-i18n="sec_resolved">Resolved</h2>
+      <ul id="pausesResolved" class="pause-list"></ul>
+      <h2 data-i18n="sec_lifted">Back on the regular docket</h2>
+      <ul id="pausesLifted" class="pause-list"></ul>
+      <p><a href="#agency" data-i18n="pauses_agency_link">Open the rental-aid agency’s page</a></p>
+      <!-- include: /app/court/diversion/components/pause-dialog.html -->
+    </div>
+  </section>

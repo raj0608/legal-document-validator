@@ -68,6 +68,20 @@ export async function previewReturnNotice(request, { signal } = {}) {
   return json("return-notice/preview", request, { signal });
 }
 
+// ---------- Court staff pages ----------
+// Their shared state, live from the server: onState gets each new state, onDown(true) when the connection drops
+// (the browser reconnects by itself) and onDown(false) when it is back. Returns a function that stops it.
+export function watchCourt(onState, onDown) {
+  const es = new EventSource("/api/court/live");
+  es.addEventListener("state", (e) => { try { onState(JSON.parse(e.data)); } catch (err) { /* a broken message: the next one follows */ } });
+  es.addEventListener("open", () => onDown(false));
+  es.addEventListener("error", () => onDown(true));
+  return () => es.close();
+}
+
+// One change on the court staff pages ("board/c3", "pauses/p2", "pauses/p2/aid", "reset"). Answers with the new state.
+export const courtChange = (path, body) => json("court/" + path, body);
+
 // Machine translation of the page's own text: { ui, faq }.
 export async function translate(lang) {
   return (await request("translate", { lang })).json();

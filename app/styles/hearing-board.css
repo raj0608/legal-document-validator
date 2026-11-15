@@ -1,0 +1,45 @@
+/* Hearing day: who is before the judge now, the five lanes, and the case cards in them. The board uses the full width. */
+#view-hearings .page-body { padding-inline: 2rem; }
+.board-body .lede { max-width: 64ch; }
+.board-now { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 1rem 0 1.25rem; border: 2px solid var(--navy); border-radius: var(--radius-sm); }
+.now-col { display: grid; align-content: start; justify-items: start; gap: 0.3rem; padding: 1rem 1.25rem; }
+.now-col.next { border-inline-start: 1px solid var(--line); }
+.now-h { margin: 0; font-size: 1rem; color: var(--heading); }
+.now-names { margin: 0.15rem 0 0; font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; line-height: 1.3; }
+.now-col .case-cause { margin: 0; }
+.now-col .btn { margin-top: 0.4rem; }
+.now-none { margin: 0.15rem 0 0; color: var(--muted); }
+
+.lanes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; align-items: start; }
+.lane { background: var(--mist); border-radius: var(--radius-sm); padding: 0.75rem; }
+.lane-h { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin: 0 0 0.6rem; font-size: 1rem; color: var(--heading); }
+.lane-n { font-family: var(--font-head); font-weight: 700; background: var(--surface); border-radius: 999px; min-width: 1.8rem; padding: 0 0.45rem; text-align: center; }
+.lane-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.lane-empty { margin: 0; color: var(--muted); font-size: 0.9rem; list-style: none; }
+
+.case-card { display: grid; gap: 0.25rem; width: 100%; padding: 0.6rem 0.7rem; text-align: start; font: inherit; color: var(--ink); background: var(--surface); border: 0; border-inline-start: 4px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); cursor: pointer; }
+.case-card:hover { outline: 2px solid var(--navy); outline-offset: 0; }
+.case-card.stage-here { border-inline-start-color: var(--navy); }
+.case-card.stage-talking { border-inline-start-color: var(--callout-line); }
+.case-card.stage-ready { border-inline-start-color: var(--sun); }
+.case-card.stage-done { border-inline-start-color: var(--ok); }
+.case-cause { font-size: 0.75rem; color: var(--muted); overflow-wrap: anywhere; }
+.case-names { font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+.case-info { font-size: 0.85rem; font-weight: 600; color: var(--heading); }
+.case-seal { font-size: 0.8rem; font-weight: 700; color: var(--warn); }
+.case-who { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.75rem; }
+.who { padding: 0 0.45rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+.who.in { border-color: var(--ok); color: var(--ok); font-weight: 700; }
+.who.in::before { content: "✓ "; }
+.board-foot { margin: 1.25rem 0 0; }
+
+@media (max-width: 1099px) {
+  .lanes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lane-done { grid-column: 1 / -1; }
+}
+@media (max-width: 720px) {
+  #view-hearings .page-body { padding-inline: 1.25rem; }
+  .board-now { grid-template-columns: 1fr; }
+  .now-col.next { border-inline-start: 0; border-top: 1px solid var(--line); }
+  .lanes { grid-template-columns: 1fr; }
+}

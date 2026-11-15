@@ -1,0 +1,32 @@
+  <!-- Rental-aid agency -->
+  <section id="view-agency" class="view" hidden aria-labelledby="agency-h">
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><span class="crumb-here" aria-hidden="true" data-i18n="agency_h">Rental-aid updates</span></p>
+        <h1 id="agency-h" tabindex="-1" data-i18n="agency_h">Rental-aid updates</h1>
+      </div>
+    </div>
+    <div class="page-body under-title">
+      <p class="lede" data-i18n="agency_p"></p>
+      <p class="court-note" data-i18n="agency_sample"></p>
+      <p id="agencyDown" class="warn" hidden data-i18n="live_down"></p>
+      <h2 data-i18n="agency_form_h">Post an update</h2>
+      <p id="agencyAs" class="small"></p>
+      <div class="aid-form">
+        <div class="field"><label for="aidCase" data-i18n="f_case">Case</label><select id="aidCase"></select></div>
+        <div class="field"><label for="aidStatus" data-i18n="f_status">Rental-aid status</label>
+          <select id="aidStatus">
+            <option value="applied" data-i18n="aid_applied">Application received</option>
+            <option value="documents" data-i18n="aid_documents">Documents needed</option>
+            <option value="approved" data-i18n="aid_approved">Approved</option>
+            <option value="paid" data-i18n="aid_paid">Payment sent</option>
+            <option value="denied" data-i18n="aid_denied">Denied</option>
+          </select></div>
+        <div class="field" id="aidAmountField" hidden><label for="aidAmount" data-i18n="f_amount">Amount, in whole dollars</label><input type="number" id="aidAmount" min="1" max="100000" step="1" inputmode="numeric"></div>
+        <div class="field aid-note-field"><label for="aidNote" data-i18n="f_note">Note for the clerk (optional)</label><input type="text" id="aidNote" maxlength="200" autocomplete="off"></div>
+        <p class="aid-send"><button id="aidSend" class="btn primary" type="button" data-i18n="agency_send">Send update</button></p>
+      </div>
+      <h2 data-i18n="agency_list_h">Paused cases</h2>
+      <ul id="agencyList" class="pause-list"></ul>
+    </div>
+  </section>

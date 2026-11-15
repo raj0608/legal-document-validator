@@ -1,0 +1,45 @@
+/* 90-day pauses and the rental-aid agency's page: a card for each case, its three dates, the aid status, the steps. */
+.week { margin: 1.5rem 0 0.5rem; }
+.week h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+.pause-list { list-style: none; padding: 0; margin: 0.75rem 0 1.75rem; display: grid; gap: 0.75rem; }
+.pause { background: var(--bg); border-radius: var(--radius-sm); padding: 1rem 1.1rem; }
+.pause.fresh { outline: 3px solid var(--sun); }
+.pause-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; }
+.pause-head h3, .pause > h3 { margin: 0; font-size: 1.1rem; }
+.pause-meta { margin: 0.2rem 0 0.75rem; color: var(--muted); font-size: 0.9rem; }
+
+.milestones { list-style: none; padding: 0; margin: 0 0 0.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+.ms { background: var(--surface); border-top: 3px solid var(--line); border-radius: 12px; padding: 0.5rem 0.65rem; }
+.ms.done { border-top-color: var(--ok); }
+.ms.soon { border-top-color: var(--sun); }
+.ms.late { border-top-color: var(--warn); }
+.ms-name { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.ms-date { display: block; font-weight: 700; }
+.ms-state { display: block; font-size: 0.9rem; }
+.ms.done .ms-state { color: var(--ok); font-weight: 700; }
+.ms.late .ms-state { color: var(--warn); font-weight: 700; }
+
+.aid { background: var(--surface); border-radius: 12px; padding: 0.6rem 0.75rem; margin-bottom: 0.75rem; }
+.aid-h { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.aid-status { font-weight: 700; }
+.aid-when { margin-inline-start: 0.5rem; color: var(--muted); font-size: 0.9rem; }
+.aid-line { margin: 0; }
+.new-badge { margin-inline-start: 0.5rem; padding: 0.05rem 0.5rem; border-radius: 999px; background: var(--sun); color: var(--ink-strong); font-size: 0.75rem; font-weight: 700; }
+.aid-note { margin: 0.3rem 0 0; font-style: italic; }
+
+.pause-acts { display: grid; gap: 0.5rem; }
+.acts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.acts-label { font-weight: 700; font-size: 0.9rem; min-width: 9.5rem; }
+.acts-row .btn { min-height: 40px; padding: 0.3rem 0.8rem; font-size: 0.95rem; }
+
+/* The agency's form. */
+.aid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.9rem 1rem; align-items: end; margin: 0.75rem 0 1.75rem; padding: 1.1rem; background: var(--bg); border-radius: var(--radius-sm); }
+.aid-form select { font: inherit; width: 100%; max-width: none; min-height: 48px; padding: 0.5rem 0.75rem; color: var(--ink); background: var(--surface); border: 1px solid var(--field-line); border-radius: 8px; }
+.aid-note-field { grid-column: 1 / -1; }
+.aid-send { margin: 0; }
+
+@media (max-width: 560px) {
+  .milestones { gap: 0.35rem; }
+  .ms { padding: 0.45rem 0.5rem; }
+  .acts-label { flex-basis: 100%; }
+}

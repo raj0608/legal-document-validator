@@ -8,6 +8,7 @@ import { looksLikeInjection } from "../shared/safety/injection-filter.js";
 import { REASON_IDS, OTHER_MAX } from "../shared/notice/return-reasons.js";
 import { fromISO, toISO } from "../shared/dates/date-math.js";
 import { parseEmail, parsePhone } from "./notify/contact.js";
+import { NOTE_MAX } from "../shared/court/pause-case.js";
 import { ApiError, bad } from "./errors.js";
 
 export const LIMITS = { doc: 45000, question: 2000, answer: 12000, turns: 10 };
@@ -102,4 +103,17 @@ export function checkReturnNotice(body, now = new Date()) {
   const returnedOn = checkReturnedOn(body.returnedOn, now);
   const to = channel === "email" ? parseEmail(body.to) : parsePhone(body.to);
   return { lang, channel, reasons, other, returnedOn, to };
+}
+
+// A change from a court staff page: a plain object of a few known fields, each a short word, true or false, a whole
+// number or nothing. Whether the change makes sense for that case is checked again by shared/court/, which also fails closed.
+const COURT_FIELDS = new Set(["type", "party", "here", "with", "value", "outcome", "which", "how", "status", "amount", "note"]);
+export function checkCourtChange(x) {
+  if (!x || typeof x !== "object" || Array.isArray(x)) throw bad("a change is required");
+  for (const [k, v] of Object.entries(x)) {
+    if (!COURT_FIELDS.has(k)) throw bad("unknown field");
+    const ok = v === null || typeof v === "boolean" || Number.isInteger(v) || (typeof v === "string" && v.length <= (k === "note" ? NOTE_MAX : 24));
+    if (!ok) throw bad("bad field");
+  }
+  return x;
 }

@@ -112,8 +112,12 @@ app/       the page, as the browser loads it (no bundler); each page is the fold
              papers/      My papers (#papers, four steps)
              check/       Check my form (#check), opened from Home
              dates/       My dates (#dates)
-             court/       Filing check for court staff (#court), opened from the footer, not the menu
-                            return/    Return a filing for correction (#court/return), the message for a returned filing
+             court/       For court staff (#court), opened from the footer, not the menu
+                            hearings/    Hearing day (#court/hearings): the live board for the morning docket
+                            diversion/   90-day pauses (#court/diversion): the diversion program's paused cases
+                            citations/   Citation check (#court/citations)
+                            return/      Return a filing for correction (#court/return), the message for a returned filing
+             agency/      Rental-aid updates (#agency), for an agency working with the court
              help/        Help (#help)
                             privacy/     Privacy (#help/privacy), opened from Help
                             a page’s folder holds page.html (its markup), page.js (the functions main.js calls to
@@ -129,6 +133,7 @@ app/       the page, as the browser loads it (no bundler); each page is the fold
 shared/    code and data used by the browser, the server and the tests
              safety/      injection filter, redaction, what is sent (protect.js), should/must detector
              analysis/    dates, laws and rules, case citations, case names, citation report, form checklist, fix-by date (no AI)
+             court/       the hearing-day board, the 90-day pause dates and steps, drafted docket entries (no AI)
              dates/       date math, court holidays, case dates, reminders, the calendar file
              i18n/        the languages and all page text, FAQ, source links
              answer-dates.js   dates in AI answers: highlighted, and checked against the paper
@@ -142,8 +147,9 @@ server/    the server: it keeps the AI key and the rules, and is the only part t
              checks.js    the second check on every request, before anything goes to the AI
              prompts.js   the rules the AI follows (they live here)
              translate.js machine translation of the page text
-             citations/   the case-law lookup for the court staff page: courtlistener.js (the real one), demo-lookup.js, lookup-cache.js
+             citations/   the case-law lookup for the citation check: courtlistener.js (the real one), demo-lookup.js, lookup-cache.js
              notify/      the message for a returned filing: templates.js (the words, English and Spanish), return-message.js, contact.js (email and phone checks), sms-parts.js. It can only write a preview: it has no way to send.
+             court/       the court staff pages' shared board, in memory (live-court.js), and the made-up docket (sample-docket.js)
              errors.js    the error codes the page knows how to show
              ai/          the AI connections
                             port.js      what every AI connection offers: stream and json
@@ -193,9 +199,29 @@ Behavior is meant to be identical except these deliberate fixes, each covered by
 - New message `err_pii` (English and Spanish) for the refused-request case.
 - “Save my dates” now makes the file in the browser instead of using claude.ai’s downloads.
 
-## Filing check for court staff
+## For court staff
 
-Open **For court staff** in the footer (`#court`). Add a filing (PDF, pasted text, or the sample filing) and press **Check the citations**. The page lists every case citation it can read (such as `397 U.S. 254`), looks each one up in [CourtListener](https://www.courtlistener.com), a free public case-law database, and shows one line for each: **Found**, **Name differs**, **Court differs**, **Year differs**, **More than one match**, **Not found**, **Not recognised** or **Not checked**, the clearest signs first, with a link to the case. Laws and rules (`IC 32-31-8-5`, `Trial Rule 12(B)`) are listed with links but not checked. The report prints.
+Open **For court staff** in the footer (`#court`). It holds four tools for the eviction docket. Hearing day and the 90-day pauses run on made-up cases: nothing is connected to Odyssey, and `server/court/sample-docket.js` makes up the docket where an Odyssey connection would go.
+
+**What the server keeps.** Every staff screen has to see the same board, so the server keeps the board and the paused cases in memory, made inside `createApp`. Nothing is written to disk, and it is gone when the server stops. This is the only shared state in the app; the side for tenants still stores nothing. A real version would need staff sign-in, a record of who changed what, and a data-sharing agreement with each agency.
+
+### Hearing day (`#court/hearings`)
+
+The morning docket as a live board: **Not here yet**, **Here**, **Talking** (with the landlord’s lawyer, a mediator or legal aid), **Ready** and **Done**, with who is before the judge now and who is next in line. A change on one screen shows on every open screen at once (server-sent events, the way the AI’s answers stream). The judge records the pre-eviction diversion advisement, which Odyssey logs as its own event, and the outcome. A 90-day pause moves the case to the next page. For each finished case the clerk gets a drafted docket entry, and a dismissed case also gets a drafted sealing order.
+
+### 90-day pauses (`#court/diversion`)
+
+Under Indiana Supreme Court order 22S-MS-308 (2022), when both sides agree to take part in pre-eviction diversion, the case is stayed for ninety days with status conferences at thirty and sixty days (a written status report can take a conference’s place), and the court records are confidential. The page lists each paused case with those dates, what is due in the next seven days, and the rental-aid agency’s latest update, which arrives live from `#agency`. The dates are a guide: a conference that lands on a weekend or court holiday moves to the next court day, and the court’s own case management order sets the real ones.
+
+- **One click from a step to its entry.** Recording a conference, a dismissal, an agreement or a lifted stay drafts its docket entry. Lifting a stay asks first, because it ends confidentiality.
+- **Sealing.** Since July 2025, Indiana Code 32-31-11-3 has the court seal a qualifying dismissed eviction record on its own motion, so a dismissal is flagged until the sealing order is entered.
+- **The agency.** The order lets courts share these confidential records with rental-assistance providers. A real version would show each agency only the cases referred to it.
+- **Drafts, not filings.** Entries and orders are fixed templates in `shared/court/docket-drafts.js`, in English, the language of the record, for the clerk to check, edit and paste into Odyssey. No AI writes them, and the agency’s free-text note never goes into one.
+- **Sources (read 2026-11-06):** [order 22S-MS-308](https://www.in.gov/courts/files/order-other-2022-22S-MS-308.pdf) and [the courts’ housing page](https://www.in.gov/courts/housing/). The 2025 sealing wording is as quoted in *Anderson v. Advantix Development Corp.* (Ind. Ct. App. Mar. 6, 2026); check the statute’s current text on iga.in.gov before a real launch.
+
+### Citation check (`#court/citations`)
+
+Add a filing (PDF, pasted text, or the sample filing) and press **Check the citations**. The page lists every case citation it can read (such as `397 U.S. 254`), looks each one up in [CourtListener](https://www.courtlistener.com), a free public case-law database, and shows one line for each: **Found**, **Name differs**, **Court differs**, **Year differs**, **More than one match**, **Not found**, **Not recognised** or **Not checked**, the clearest signs first, with a link to the case. Laws and rules (`IC 32-31-8-5`, `Trial Rule 12(B)`) are listed with links but not checked. The report prints.
 
 - **It does not detect AI writing, and says so on the page.** Detectors are unreliable and flag people who write in a second language, and using AI is not the problem; made-up cases are.
 - **It decides nothing.** Under Trial Rule 88 a clerk can reject an e-filing only for an unpaid fee, a wrong case-management system, or the filer’s own request. Anything else is for a judge. “Not found” can also mean the database has a gap, and the page says so.

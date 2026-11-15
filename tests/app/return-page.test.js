@@ -53,10 +53,10 @@ test("Return a filing sits under court staff, which sits under Home, and its add
   assert.equal(menuItemFor("court"), "home");
 });
 
-test("both court staff pages link to each other, and mark the one you are on", () => {
-  const court = /<section id="view-court"[\s\S]*?<\/section>/.exec(html)[0], ret = /<section id="view-return"[\s\S]*?<\/section>/.exec(html)[0];
-  for (const page of [court, ret]) assert.match(page, /<nav class="court-tabs"[\s\S]*href="#court"[\s\S]*href="#court\/return"/);
-  assert.match(court, /href="#court" aria-current="page"/);
+test("both filing pages for court staff link to each other, and mark the one you are on", () => {
+  const court = /<section id="view-citations"[\s\S]*?<\/section>/.exec(html)[0], ret = /<section id="view-return"[\s\S]*?<\/section>/.exec(html)[0];
+  for (const page of [court, ret]) assert.match(page, /<nav class="court-tabs"[\s\S]*href="#court\/citations"[\s\S]*href="#court\/return"/);
+  assert.match(court, /href="#court\/citations" aria-current="page"/);
   assert.match(ret, /href="#court\/return" aria-current="page"/);
 });
 

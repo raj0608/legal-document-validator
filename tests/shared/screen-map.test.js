@@ -38,7 +38,7 @@ test("check has three modes: a form, a returned filing, and the cases a filing n
 });
 
 test("every address the page builds parses back to the same screen", () => {
-  for (const r of [{ view: "home" }, { view: "papers", step: 1 }, { view: "papers", step: 4 }, { view: "check", mode: "form" }, { view: "check", mode: "clerk" }, { view: "dates" }, { view: "help" }, { view: "privacy" }]) {
+  for (const r of [{ view: "home" }, { view: "papers", step: 1 }, { view: "papers", step: 4 }, { view: "check", mode: "form" }, { view: "check", mode: "clerk" }, { view: "dates" }, { view: "help" }, { view: "privacy" }, { view: "court" }, { view: "hearings" }, { view: "diversion" }, { view: "citations" }, { view: "agency" }]) {
     assert.deepEqual(parseRoute(hashFor(r)), r, hashFor(r));
   }
 });
@@ -63,4 +63,15 @@ test("court staff pages are addresses of their own, and a page under a page keep
   assert.equal(hashFor({ view: "return" }), "#court/return");
   assert.equal(hashFor({ view: "court" }), "#court");
   assert.deepEqual(parseRoute("#return"), { view: "return" }, "the short address still opens the page");
+});
+
+test("the court staff tools live under #court and light up Home in the menu; the agency's page has its own address", () => {
+  assert.equal(hashFor({ view: "hearings" }), "#court/hearings");
+  assert.equal(hashFor({ view: "diversion" }), "#court/diversion");
+  assert.equal(hashFor({ view: "citations" }), "#court/citations");
+  assert.equal(hashFor({ view: "return" }), "#court/return");
+  assert.deepEqual(parseRoute("#court/hearings"), { view: "hearings" });
+  assert.deepEqual(parseRoute("#court"), { view: "court" });
+  assert.equal(hashFor({ view: "agency" }), "#agency");
+  for (const v of ["court", "hearings", "diversion", "citations", "return", "agency"]) assert.equal(menuItemFor(v), "home", v);
 });

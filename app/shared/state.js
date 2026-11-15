@@ -10,6 +10,7 @@ export const state = {
   chatTokens: null, // token state for chat questions when no paper is loaded
   dates: { notice: "", days: 15, served: "", hearing: "", time: "", place: "", cure: "", fromPaper: false },
   rems: { "1w": false, "3d": false, "1d": true, "2h": true, "1h": false },
-  lastCure: null
+  lastCure: null,
+  court: null, courtSkew: 0, courtDown: false // court staff pages: the shared state from the server, how far its clock is from this one, and whether the live feed is down
 };
 export const TR = {}; // machine translations, kept for this visit only

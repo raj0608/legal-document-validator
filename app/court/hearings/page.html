@@ -1,0 +1,18 @@
+  <!-- Hearing day -->
+  <section id="view-hearings" class="view" hidden aria-labelledby="hearings-h">
+    <div class="page-title">
+      <div class="title-card">
+        <p class="crumbs"><a class="back-home" href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg><span data-i18n="back_home">Home</span></a><a href="#court" data-i18n="staff_h">For court staff</a><span class="crumb-here" aria-hidden="true" data-i18n="hearings_h">Hearing day</span></p>
+        <h1 id="hearings-h" tabindex="-1" data-i18n="hearings_h">Hearing day</h1>
+      </div>
+    </div>
+    <div class="page-body board-body">
+      <p class="lede" data-i18n="hearings_p"></p>
+      <p id="boardDay" class="small"></p>
+      <p id="boardDown" class="warn" hidden data-i18n="live_down"></p>
+      <div id="boardNow" class="board-now"></div>
+      <div id="boardLanes" class="lanes"></div>
+      <p class="board-foot"><button id="boardReset" class="btn ghost" type="button" data-i18n="board_reset">Start the sample over</button></p>
+      <!-- include: /app/court/hearings/components/case-dialog.html -->
+    </div>
+  </section>

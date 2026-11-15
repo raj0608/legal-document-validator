@@ -2,6 +2,7 @@
 import { createApp } from "./http/app.js";
 import { choose, build } from "./ai/choose.js";
 import { createCourtListener } from "./citations/courtlistener.js";
+import { sampleDocket } from "./court/sample-docket.js";
 import { readConfig, readPort } from "./config.js";
 
 const env = process.env;
@@ -12,7 +13,8 @@ const ai = build(env, pick);
 // The citation lookup for the court staff page needs a free CourtListener token. Without one that page lists citations but checks none.
 const citations = env.COURTLISTENER_TOKEN ? createCourtListener({ token: env.COURTLISTENER_TOKEN }) : null;
 
-const app = createApp({ ai, citations, config: readConfig(env) });
+// The court staff pages need the day's docket. A prototype has no connection to Odyssey, so this is a made-up one.
+const app = createApp({ ai, citations, docket: sampleDocket, config: readConfig(env) });
 
 const port = readPort(env);
 const server = app.listen(port, () => {

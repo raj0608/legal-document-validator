@@ -6,6 +6,7 @@ import { state } from "/app/shared/state.js";
 import { parseRoute, hashFor, guard, menuItemFor, VIEWS, PAPER_STEPS } from "/shared/screen-map.js";
 import { setMode } from "/app/check/page.js";
 import { renderNext } from "/app/shared/layout/next-date.js";
+import { syncLive } from "/app/shared/api/court-feed.js";
 
 let current = { view: "home" };
 
@@ -56,6 +57,7 @@ export function route({ initial = false } = {}) {
   const changedView = r.view !== current.view;
   current = r;
   document.body.dataset.view = r.view;
+  syncLive(r.view); // the court staff pages' live feed is open only while one of them shows
   VIEWS.forEach((v) => { $("view-" + v).hidden = v !== r.view; });
   document.querySelectorAll(".main-nav a").forEach((a) => {
     if (a.dataset.view === menuItemFor(r.view)) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");

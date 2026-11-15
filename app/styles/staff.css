@@ -1,0 +1,43 @@
+/* The court staff pages: their home with the list of tools, the dialogs, the drafts for the clerk, and small shared marks. */
+.staff-tools { list-style: none; padding: 0; margin: 1.5rem 0 0; border-top: 1px solid var(--line); }
+.tool-row { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0.25rem; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+.tool-row:hover .tool-t { text-decoration: underline; }
+.tool-row .card-ico { flex: none; }
+.tool-text { display: grid; gap: 0.15rem; flex: 1; }
+.tool-t { font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; color: var(--heading); }
+.tool-d { color: var(--muted); }
+.tool-row::after { content: "›"; font-size: 1.75rem; line-height: 1; color: var(--heading); }
+[dir="rtl"] .tool-row::after { transform: scaleX(-1); }
+.staff-agency { margin: 1.25rem 0 0; }
+
+/* A dialog over the page: one case's controls, or a draft. */
+.staff-dialog { border: 0; border-radius: var(--radius-sm); box-shadow: var(--shadow); padding: 1.5rem; width: min(38rem, calc(100% - 2rem)); max-height: calc(100% - 2rem); color: var(--ink); background: var(--surface); }
+.staff-dialog::backdrop { background: color-mix(in srgb, var(--navy-dark) 60%, transparent); }
+.staff-dialog h2 { margin: 0 0 0.25rem; font-size: 1.35rem; color: var(--heading); }
+.dlg-sub { margin: 0.5rem 0 0.25rem; font-size: 1.1rem; }
+.dlg-meta { margin: 0 0 1rem; color: var(--muted); font-size: 0.95rem; }
+.dlg-group { margin: 0 0 1rem; }
+.dlg-label { margin: 0 0 0.4rem; font-weight: 700; }
+.dlg-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.dlg-note { background: var(--callout); border-inline-start: 4px solid var(--callout-line); border-radius: 6px; padding: 0.5rem 0.75rem; }
+.dlg-foot { display: flex; justify-content: flex-end; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.btn[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
+.btn[aria-pressed="true"]::before { content: "✓"; }
+.seal-flag { background: var(--warn-bg); border-inline-start: 4px solid var(--warn); border-radius: 6px; padding: 0.5rem 0.75rem; font-weight: 600; }
+
+/* A drafted docket entry or order. */
+.draft { margin: 0.5rem 0 1rem; }
+.draft-case { margin: 0 0 0.2rem; font-weight: 700; }
+.draft textarea { line-height: 1.45; }
+.draft-row { margin-top: 0.6rem; align-items: center; }
+.recorded { font-weight: 700; color: var(--ok); }
+.end-choice { display: grid; justify-items: start; gap: 0.25rem; padding: 0.75rem 0; border-top: 1px solid var(--line); }
+.end-choice p { margin: 0; }
+
+/* Marks on a case: its record status, and this week's counts. */
+.badge { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.05rem 0.55rem; border-radius: 999px; border: 1px solid currentColor; }
+.badge.conf { color: var(--navy); }
+.badge.public { color: var(--muted); }
+.badge.sealed { color: var(--ok); }
+.chips-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; }
+.week-chip { background: var(--mist); border-radius: 999px; padding: 0.3rem 0.85rem; font-weight: 600; }

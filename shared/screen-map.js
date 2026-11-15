@@ -3,26 +3,32 @@
 //   #home          what do you need help with?
 //   #papers/1..4   "I got court papers", as four steps (#papers is step 1)
 //   #check         check a form I filled in      #check/clerk   my filing came back      #check/cites   look up the cases I name
-//   #court         court staff: check the case citations in a filing (not in the menu; the footer links to it)
-//   #court/return  court staff: the message for a filing returned for correction (a page under #court)
+//   #court             court staff: their tools (not in the menu; the footer links to it)
+//   #court/hearings    hearing day: who is here, talking or ready for the judge, live on every staff screen
+//   #court/diversion   cases paused for 90 days in the pre-eviction diversion program
+//   #court/citations   check the case citations in a filing
+//   #court/return      the message for a filing returned for correction
+//   #agency            a rental-aid agency posts updates on paused cases (opened from the court staff page)
 //   #dates         my dates and reminders
 //   #help          free help from people, and common questions
 //   #help/privacy  how private details are handled (a page under Help)
 //
 // Every address is a normal link, so the phone's Back button always does what the person expects.
 
-export const VIEWS = ["home", "papers", "check", "dates", "help", "privacy", "court", "return"];
+export const VIEWS = ["home", "papers", "check", "dates", "help", "privacy", "court", "hearings", "diversion", "citations", "return", "agency"];
+// The screens for court staff and their partners, not for the people facing eviction.
+export const STAFF_VIEWS = ["court", "hearings", "diversion", "citations", "return", "agency"];
 export const PAPER_STEPS = 4;
 
-// The four places in the menu, the same on every screen. A screen that is not one of them lights up its parent.
+// The four places in the menu, the same on every screen. A screen that is not one of them lights up the nearest place above it that is.
 export const MENU = [
   { view: "home", key: "nav_home" },
   { view: "papers", key: "nav_papers" },
   { view: "dates", key: "nav_dates" },
   { view: "help", key: "nav_help" }
 ];
-const PARENT = { check: "home", privacy: "help", court: "home", return: "court" };
-// The menu item a screen lights up: its nearest ancestor that is in the menu (Return a filing is under court staff, which is under Home).
+const PARENT = { check: "home", privacy: "help", court: "home", hearings: "court", diversion: "court", citations: "court", return: "court", agency: "home" };
+// The menu item a screen lights up: its nearest ancestor that is in the menu (a court staff tool is under court staff, which is under Home).
 export function menuItemFor(view) { let v = view; while (PARENT[v]) v = PARENT[v]; return v; }
 
 const ALIASES = { questions: "help" }; // older links

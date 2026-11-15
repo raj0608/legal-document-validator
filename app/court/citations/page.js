@@ -1,4 +1,4 @@
-// Filing check for court staff: reads the case citations in a filing and checks them against a public case-law database.
+// Citation check for court staff (#court/citations): reads the case citations in a filing and checks them against a public case-law database.
 // The filing is read in the browser. Only the citation numbers go to our server, and from there to the database.
 import { $ } from "/app/shared/lib/dom.js";
 import { t } from "/app/shared/lib/page-text.js";
@@ -7,7 +7,7 @@ import { registerSlot } from "/app/shared/ui/document-slot.js";
 import { findCaseCitations } from "/shared/analysis/case-citations.js";
 import { findCites } from "/shared/analysis/citations.js";
 import { lookupCitations } from "/app/shared/api/client.js";
-import { renderReport } from "/app/court/components/citation-report.js";
+import { renderReport } from "/app/court/citations/components/citation-report.js";
 
 const MAX_CITES = 100; // the most the server looks up at a time
 const LAW_KINDS = ["kind_code", "kind_trial", "kind_sc"]; // laws and rules are listed with links, not checked
