@@ -3,12 +3,13 @@
 import { $, el } from "/app/shared/lib/dom.js";
 import { t } from "/app/shared/lib/page-text.js";
 import { state } from "/app/shared/state.js";
-import { parseRoute, hashFor, guard, menuItemFor, VIEWS, PAPER_STEPS } from "/shared/screen-map.js";
+import { parseRoute, hashFor, guard, menuItemFor, staffMenuItemFor, sideFor, VIEWS, PAPER_STEPS } from "/shared/screen-map.js";
 import { setMode } from "/app/check/page.js";
 import { renderNext } from "/app/shared/layout/next-date.js";
 import { syncLive } from "/app/shared/api/court-feed.js";
 
 let current = { view: "home" };
+const lastOn = { tenant: "#home", court: "#court" }; // the last screen on each side, so the switch at the top goes back to it
 
 export function renderSteps() {
   const box = $("paperSteps");
@@ -51,6 +52,22 @@ export function refreshNav() {
   renderNext();
 }
 
+// The switch at the top (tenants or court staff), and the menu for the side that shows.
+function showSide(r) {
+  const side = sideFor(r.view);
+  lastOn[side] = hashFor(r);
+  $("tenantNav").hidden = side === "court";
+  $("staffNav").hidden = side !== "court";
+  const lit = side === "court" ? staffMenuItemFor(r.view) : menuItemFor(r.view);
+  document.querySelectorAll(".main-nav a").forEach((a) => {
+    if (a.dataset.view === lit) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  for (const [id, s] of [["sideTenant", "tenant"], ["sideCourt", "court"]]) {
+    $(id).href = lastOn[s];
+    if (s === side) $(id).setAttribute("aria-current", "true"); else $(id).removeAttribute("aria-current");
+  }
+}
+
 export function route({ initial = false } = {}) {
   let r = guard(parseRoute(location.hash), Boolean(state.papers));
   if (r.view === "papers" && parseRoute(location.hash).step !== r.step) history.replaceState(null, "", hashFor(r));
@@ -59,9 +76,7 @@ export function route({ initial = false } = {}) {
   document.body.dataset.view = r.view;
   syncLive(r.view); // the court staff pages' live feed is open only while one of them shows
   VIEWS.forEach((v) => { $("view-" + v).hidden = v !== r.view; });
-  document.querySelectorAll(".main-nav a").forEach((a) => {
-    if (a.dataset.view === menuItemFor(r.view)) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
-  });
+  showSide(r);
   let heading = $("view-" + r.view).querySelector("h1");
   if (r.view === "papers") {
     document.querySelectorAll("#view-papers .step").forEach((s) => { s.hidden = +s.dataset.step !== r.step; });

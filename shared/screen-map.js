@@ -3,7 +3,7 @@
 //   #home          what do you need help with?
 //   #papers/1..4   "I got court papers", as four steps (#papers is step 1)
 //   #check         check a form I filled in      #check/clerk   my filing came back      #check/cites   look up the cases I name
-//   #court             court staff: their tools (not in the menu; the footer links to it)
+//   #court             court staff: their tools (the switch at the top of every page and the footer link to it)
 //   #court/hearings    hearing day: who is here, talking or ready for the judge, live on every staff screen
 //   #court/diversion   cases paused for 90 days in the pre-eviction diversion program
 //   #court/citations   check the case citations in a filing
@@ -30,6 +30,22 @@ export const MENU = [
 const PARENT = { check: "home", privacy: "help", court: "home", hearings: "court", diversion: "court", citations: "court", return: "court", agency: "home" };
 // The menu item a screen lights up: its nearest ancestor that is in the menu (a court staff tool is under court staff, which is under Home).
 export function menuItemFor(view) { let v = view; while (PARENT[v]) v = PARENT[v]; return v; }
+
+// The two sides of the site, switched at the very top of every page: the tenant's side and the court staff's side.
+export const sideFor = (view) => (STAFF_VIEWS.includes(view) ? "court" : "tenant");
+
+// The court staff's menu, shown in place of the four places while a staff page shows. Return a filing lights Filings,
+// beside the citation check. The agency's page lights none: it is the agency's, not the court's.
+export const STAFF_MENU = [
+  { view: "court", key: "nav_staff" },
+  { view: "hearings", key: "hearings_h" },
+  { view: "diversion", key: "pauses_h" },
+  { view: "citations", key: "nav_filings" }
+];
+export function staffMenuItemFor(view) {
+  if (view === "return") return "citations";
+  return STAFF_MENU.some((m) => m.view === view) ? view : null;
+}
 
 const ALIASES = { questions: "help" }; // older links
 

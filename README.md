@@ -112,7 +112,7 @@ app/       the page, as the browser loads it (no bundler); each page is the fold
              papers/      My papers (#papers, four steps)
              check/       Check my form (#check), opened from Home
              dates/       My dates (#dates)
-             court/       For court staff (#court), opened from the footer, not the menu
+             court/       For court staff (#court), opened from the switch at the top and the footer
                             hearings/    Hearing day (#court/hearings): the live board for the morning docket
                             diversion/   90-day pauses (#court/diversion): the diversion program's paused cases
                             citations/   Citation check (#court/citations)
@@ -201,7 +201,7 @@ Behavior is meant to be identical except these deliberate fixes, each covered by
 
 ## For court staff
 
-Open **For court staff** in the footer (`#court`). It holds four tools for the eviction docket. Hearing day and the 90-day pauses run on made-up cases: nothing is connected to Odyssey, and `server/court/sample-docket.js` makes up the docket where an Odyssey connection would go.
+The switch at the top of every page goes between the two sides: **For tenants** and **For court staff** (`#court`), and it goes back to the last page open on each side. On the staff side the menu is the staff's own: **Staff home**, **Hearing day**, **90-day pauses** and **Filings** (the citation check and Return a filing). The footer also links to the staff side. It holds four tools for the eviction docket. Hearing day and the 90-day pauses run on made-up cases: nothing is connected to Odyssey, and `server/court/sample-docket.js` makes up the docket where an Odyssey connection would go.
 
 **What the server keeps.** Every staff screen has to see the same board, so the server keeps the board and the paused cases in memory, made inside `createApp`. Nothing is written to disk, and it is gone when the server stops. This is the only shared state in the app; the side for tenants still stores nothing. A real version would need staff sign-in, a record of who changed what, and a data-sharing agreement with each agency.
 
@@ -241,7 +241,7 @@ On **Check my form**, the third button, **Cases I name** (`#check/cites`), is th
 
 ## Return a filing for correction (court staff)
 
-Open **For court staff** in the footer, then **Return a filing** (`#court/return`). The clerk ticks what was wrong (or adds a few words of their own), picks the day the filing was returned, chooses English or Spanish and email or text, and types the filer’s email address or phone number. The page shows the **preview** of the message, with the last day to fix the filing.
+Open **For court staff** at the top of the page, then **Filings** and **Return a filing** (`#court/return`). The clerk ticks what was wrong (or adds a few words of their own), picks the day the filing was returned, chooses English or Spanish and email or text, and types the filer’s email address or phone number. The page shows the **preview** of the message, with the last day to fix the filing.
 
 - **Nothing is sent.** No email or text service is connected, on purpose. The page says “Preview only. Nothing was sent.”, and the server answers `sent: false` however it is asked.
 - **The email address or number is used once and forgotten.** It is not stored, not logged and not kept in the page after “Clear this form” or “Hide this page”. The server log holds only method, path and status.

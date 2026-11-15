@@ -253,6 +253,9 @@ export const es = {
   ret_err_date: "Use hoy, o un día de los últimos 30 días.",
   ret_err_reason: "Elija al menos un motivo, o agregue sus propias palabras.",
   // The court staff pages: their tools, hearing day, 90-day pauses, the rental-aid agency
+  side_label: "Para quién es",
+  side_tenant: "Para inquilinos", side_court: "Para el tribunal",
+  nav_staff: "Inicio del personal", nav_filings: "Escritos",
   staff_h: "Para el personal del tribunal",
   staff_p: "Herramientas para la lista de casos de desalojo. Es un prototipo de estudiantes: no está conectado a Odyssey y todos los casos de estas páginas son inventados.",
   staff_hearings_d: "Quién está, quién está hablando y quién está listo para el juez, en vivo en todas las pantallas del personal.",

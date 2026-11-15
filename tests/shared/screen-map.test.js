@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseRoute, hashFor, guard, menuItemFor, MENU, VIEWS, PAPER_STEPS } from "../../shared/screen-map.js";
+import { parseRoute, hashFor, guard, menuItemFor, staffMenuItemFor, sideFor, MENU, STAFF_MENU, VIEWS, STAFF_VIEWS, PAPER_STEPS } from "../../shared/screen-map.js";
 
 test("addresses parse to a screen, and an empty or unknown one goes Home", () => {
   assert.deepEqual(parseRoute(""), { view: "home" });
@@ -74,4 +74,14 @@ test("the court staff tools live under #court and light up Home in the menu; the
   assert.deepEqual(parseRoute("#court"), { view: "court" });
   assert.equal(hashFor({ view: "agency" }), "#agency");
   for (const v of ["court", "hearings", "diversion", "citations", "return", "agency"]) assert.equal(menuItemFor(v), "home", v);
+});
+
+test("every screen is on one of two sides, and the staff menu lights the right place", () => {
+  for (const v of VIEWS) assert.equal(sideFor(v), STAFF_VIEWS.includes(v) ? "court" : "tenant", v);
+  assert.equal(sideFor("home"), "tenant");
+  assert.equal(sideFor("agency"), "court");
+  for (const m of STAFF_MENU) assert.equal(staffMenuItemFor(m.view), m.view);
+  assert.equal(staffMenuItemFor("return"), "citations", "Return a filing sits under Filings, beside the citation check");
+  assert.equal(staffMenuItemFor("agency"), null, "the agency's page is not one of the court's places");
+  assert.equal(staffMenuItemFor("papers"), null);
 });

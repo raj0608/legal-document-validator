@@ -253,6 +253,9 @@ export const en = {
   ret_err_date: "Use today, or a day in the last 30 days.",
   ret_err_reason: "Choose at least one reason, or add your own words.",
   // The court staff pages: their tools, hearing day, 90-day pauses, the rental-aid agency
+  side_label: "Who this is for",
+  side_tenant: "For tenants", side_court: "For court staff",
+  nav_staff: "Staff home", nav_filings: "Filings",
   staff_h: "For court staff",
   staff_p: "Tools for the eviction docket. This is a student prototype: it is not connected to Odyssey, and every case on these pages is made up.",
   staff_hearings_d: "Who is here, who is talking, and who is ready for the judge, live on every staff screen.",

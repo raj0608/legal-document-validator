@@ -9,6 +9,7 @@ main:focus, h1:focus, h2:focus { outline: none; }
 .main-nav a:hover, .main-nav a[aria-current="page"] { background: var(--navy); color: var(--navy-ink); }
 .main-nav svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .main-nav a:not([data-view="home"]) svg { display: none; }
+.staff-nav a[data-view="court"] svg { display: block; } /* the staff side's home keeps its icon, like Home */
 
 .demo-bar { margin: 0; padding: 0.5rem 1.25rem; text-align: center; background: var(--callout); border-bottom: 1px solid var(--callout-line); color: var(--ink-strong); font-weight: 600; }
 /* The trail on a title card: a house for Home, each place on the way, then this page (not a link). */
