@@ -44,6 +44,7 @@ README.md, "How it is put together", is the map of the folders. Read it instead 
 Never weaken these.
 
 - Nothing about a person is stored: no database, no files, no `localStorage`, `sessionStorage`, cookies or IndexedDB. Page state lives in memory only.
+- The court staff pages are the one place the server keeps state: the hearing board and the paused cases, in memory (`server/court/live-court.js`), filled from the made-up docket in `server/court/sample-docket.js`. Never write that state to disk or a database, and never send anything from a tenant's pages into it. Real cases would first need staff sign-in and a data-sharing agreement.
 - Server logs hold method, path, status, time and token counts. Never a request body, a paper or a question.
 - Text goes to an AI only after the browser protects it with `shared/safety/`: `protect()` for a paper, and for a chat question `looksLikeInjection()` and then `redactText()` with the paper's token numbers. The server checks both again in `server/checks.js`. A new AI route goes through the same checks.
 - Legal information, not advice. Page text never says "you should", "you must", "you need to" or "we recommend" (a test rejects them), and AI answers that do are flagged.
