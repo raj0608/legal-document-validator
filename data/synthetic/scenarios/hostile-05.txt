@@ -1,0 +1,14 @@
+SAMPLE FILING FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL.
+
+STATE OF INDIANA, COUNTY OF ALLEN
+IN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION
+Cause No. 02D00-2611-SC-000109
+
+DEFENDANT'S MOTION
+
+javascript:alert(1)
+1. See Erie Insurance v. Hickman Ex Rel. Smith, 622 N.E.2d 515 (Ind. 1993).
+javascript:alert(1)
+
+Respectfully submitted,
+Defendant, self-represented

@@ -1,0 +1,1660 @@
+{
+ "about": "Scenario filings and what the citation check must find in each. Rebuild with: node data/synthetic/build-scenarios.mjs",
+ "filings": [
+  {
+   "id": "clean-01",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "986 N.E.2d 852",
+     "verdict": "found"
+    },
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found"
+    },
+    {
+     "cite": "848 N.E.2d 1073",
+     "verdict": "found"
+    },
+    {
+     "cite": "798 N.E.2d 185",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-02",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "717 N.E.2d 32",
+     "verdict": "found"
+    },
+    {
+     "cite": "138 N.E.2d 891",
+     "verdict": "found"
+    },
+    {
+     "cite": "895 N.E.2d 1219",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-03",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    },
+    {
+     "cite": "989 N.E.2d 1225",
+     "verdict": "found"
+    },
+    {
+     "cite": "924 N.E.2d 212",
+     "verdict": "found"
+    },
+    {
+     "cite": "388 N.E.2d 541",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-04",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "found"
+    },
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    },
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-05",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "251 N.E.2d 688",
+     "verdict": "found"
+    },
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    },
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-06",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "247 N.E.2d 215",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 72",
+     "verdict": "found"
+    },
+    {
+     "cite": "15 N.E.3d 1000",
+     "verdict": "found"
+    },
+    {
+     "cite": "629 N.E.2d 873",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-07",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "221 N.E.2d 824",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "found"
+    },
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "found"
+    },
+    {
+     "cite": "924 N.E.2d 212",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-08",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "71 N.E.3d 839",
+     "verdict": "found"
+    },
+    {
+     "cite": "894 N.E.2d 265",
+     "verdict": "found"
+    },
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found"
+    },
+    {
+     "cite": "422 N.E.2d 302",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-09",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "848 N.E.2d 1073",
+     "verdict": "found"
+    },
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found"
+    },
+    {
+     "cite": "753 N.E.2d 591",
+     "verdict": "found"
+    },
+    {
+     "cite": "572 N.E.2d 1315",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "clean-10",
+   "family": "clean",
+   "expect": [
+    {
+     "cite": "674 N.E.2d 1293",
+     "verdict": "found"
+    },
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 72",
+     "verdict": "found"
+    },
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "parallel-01",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "131 N.E.2d 308",
+     "verdict": "found",
+     "also": [
+      "235 Ind. 70"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-02",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "104 N.E.2d 669",
+     "verdict": "found",
+     "also": [
+      "230 Ind. 523"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-03",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "138 N.E.2d 891",
+     "verdict": "found",
+     "also": [
+      "236 Ind. 101"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-04",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found",
+     "also": [
+      "236 Ind. 151"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-05",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found",
+     "also": [
+      "260 Ind. 249"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-06",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "found",
+     "also": [
+      "272 Ind. 404"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-07",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "404 N.E.2d 585",
+     "verdict": "found",
+     "also": [
+      "273 Ind. 374"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "parallel-08",
+   "family": "parallel",
+   "expect": [
+    {
+     "cite": "324 N.E.2d 482",
+     "verdict": "found",
+     "also": [
+      "263 Ind. 55"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "repeated-01",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "found",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "repeated-02",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "861 N.E.2d 366",
+     "verdict": "found",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "repeated-03",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "244 N.E.2d 448",
+     "verdict": "found",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "id": "repeated-04",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "repeated-05",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "104 N.E.2d 669",
+     "verdict": "found",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "repeated-06",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "572 N.E.2d 1315",
+     "verdict": "found",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "id": "repeated-07",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "671 N.E.2d 98",
+     "verdict": "found",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "id": "repeated-08",
+   "family": "repeated",
+   "expect": [
+    {
+     "cite": "717 N.E.2d 204",
+     "verdict": "found",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-01",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "924 N.E.2d 212",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-02",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-03",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "404 N.E.2d 585",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-04",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-05",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-06",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-07",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "29 N.E.3d 111",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "pinpoint-08",
+   "family": "pinpoint",
+   "expect": [
+    {
+     "cite": "622 N.E.2d 515",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-01",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "592 N.E.2d 1232",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-02",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "221 N.E.2d 824",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-03",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-04",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "131 N.E.2d 308",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-05",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "798 N.E.2d 185",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-06",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "104 N.E.2d 669",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-07",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "71 N.E.3d 839",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-08",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "644 N.E.2d 72",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "signals-09",
+   "family": "signals",
+   "expect": [
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-01",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "104 N.E.2d 669",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-02",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "404 N.E.2d 585",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-03",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "15 N.E.3d 1000",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-04",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-05",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "244 N.E.2d 448",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-06",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "455 N.E.2d 623",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-07",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "422 N.E.2d 302",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-08",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "568 N.E.2d 564",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-09",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "804 N.E.2d 258",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "caption-10",
+   "family": "caption",
+   "expect": [
+    {
+     "cite": "717 N.E.2d 204",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "noise-01",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "131 N.E.2d 308",
+     "verdict": "found"
+    }
+   ],
+   "note": "zero-width space"
+  },
+  {
+   "id": "noise-02",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "104 N.E.2d 669",
+     "verdict": "found"
+    }
+   ],
+   "note": "zero-width joiner"
+  },
+  {
+   "id": "noise-03",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "138 N.E.2d 891",
+     "verdict": "found"
+    }
+   ],
+   "note": "soft hyphen in the page"
+  },
+  {
+   "id": "noise-04",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found"
+    }
+   ],
+   "note": "non-breaking spaces"
+  },
+  {
+   "id": "noise-05",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    }
+   ],
+   "note": "line break inside"
+  },
+  {
+   "id": "noise-06",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "found"
+    }
+   ],
+   "note": "full-width digits"
+  },
+  {
+   "id": "noise-07",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "404 N.E.2d 585",
+     "verdict": "found"
+    }
+   ],
+   "note": "double spaces"
+  },
+  {
+   "id": "noise-08",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "324 N.E.2d 482",
+     "verdict": "found"
+    }
+   ],
+   "note": "tab between"
+  },
+  {
+   "id": "noise-09",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "575 N.E.2d 992",
+     "verdict": "found"
+    }
+   ],
+   "note": "byte order mark"
+  },
+  {
+   "id": "noise-10",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "592 N.E.2d 1232",
+     "verdict": "found"
+    }
+   ],
+   "note": "word joiner"
+  },
+  {
+   "id": "noise-11",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "622 N.E.2d 515",
+     "verdict": "found"
+    }
+   ],
+   "note": "bidi marks"
+  },
+  {
+   "id": "noise-12",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "644 N.E.2d 72",
+     "verdict": "found"
+    }
+   ],
+   "note": "spaced reporter"
+  },
+  {
+   "id": "noise-13",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "717 N.E.2d 32",
+     "verdict": "found"
+    }
+   ],
+   "note": "spaced series"
+  },
+  {
+   "id": "noise-14",
+   "family": "noise",
+   "expect": [
+    {
+     "cite": "753 N.E.2d 591",
+     "verdict": "found"
+    }
+   ],
+   "note": "newline between name and cite"
+  },
+  {
+   "id": "not-citations-01",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-02",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-03",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-04",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-05",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-06",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-07",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-08",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-09",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "not-citations-10",
+   "family": "not-citations",
+   "expect": []
+  },
+  {
+   "id": "planted-01",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-02",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "324 N.E.2d 482",
+     "verdict": "year_differs"
+    }
+   ],
+   "note": "wrong_year"
+  },
+  {
+   "id": "planted-03",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "388 N.E.2d 541",
+     "verdict": "court_differs"
+    }
+   ],
+   "note": "wrong_court"
+  },
+  {
+   "id": "planted-04",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "912 N.E.2d 4471",
+     "verdict": "not_found"
+    }
+   ],
+   "note": "fake_case"
+  },
+  {
+   "id": "planted-05",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-06",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-07",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "324 N.E.2d 482",
+     "verdict": "year_differs"
+    }
+   ],
+   "note": "wrong_year"
+  },
+  {
+   "id": "planted-08",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "804 N.E.2d 258",
+     "verdict": "court_differs"
+    }
+   ],
+   "note": "wrong_court"
+  },
+  {
+   "id": "planted-09",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "611 F.3d 7040",
+     "verdict": "not_found"
+    }
+   ],
+   "note": "fake_case"
+  },
+  {
+   "id": "planted-10",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-11",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-12",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "987 N.E.2d 1150",
+     "verdict": "year_differs"
+    }
+   ],
+   "note": "wrong_year"
+  },
+  {
+   "id": "planted-13",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "804 N.E.2d 258",
+     "verdict": "court_differs"
+    }
+   ],
+   "note": "wrong_court"
+  },
+  {
+   "id": "planted-14",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "340 N.E.3d 8123",
+     "verdict": "not_found"
+    }
+   ],
+   "note": "fake_case"
+  },
+  {
+   "id": "planted-15",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-16",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "753 N.E.2d 591",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "planted-17",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "year_differs"
+    }
+   ],
+   "note": "wrong_year"
+  },
+  {
+   "id": "planted-18",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "861 N.E.2d 366",
+     "verdict": "court_differs"
+    }
+   ],
+   "note": "wrong_court"
+  },
+  {
+   "id": "planted-19",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "912 N.E.2d 4471",
+     "verdict": "not_found"
+    }
+   ],
+   "note": "fake_case"
+  },
+  {
+   "id": "planted-20",
+   "family": "planted",
+   "expect": [
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "name_differs"
+    }
+   ],
+   "note": "wrong_name"
+  },
+  {
+   "id": "edge-01",
+   "family": "edge",
+   "expect": []
+  },
+  {
+   "id": "edge-02",
+   "family": "edge",
+   "expect": []
+  },
+  {
+   "id": "edge-03",
+   "family": "edge",
+   "expect": []
+  },
+  {
+   "id": "edge-04",
+   "family": "edge",
+   "expect": []
+  },
+  {
+   "id": "edge-05",
+   "family": "edge",
+   "expect": []
+  },
+  {
+   "id": "edge-06",
+   "family": "edge",
+   "expect": []
+  },
+  {
+   "id": "edge-07",
+   "family": "edge",
+   "expect": [
+    {
+     "cite": "629 N.E.2d 873",
+     "verdict": "found"
+    },
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "found"
+    },
+    {
+     "cite": "674 N.E.2d 1293",
+     "verdict": "found"
+    },
+    {
+     "cite": "568 N.E.2d 564",
+     "verdict": "found"
+    },
+    {
+     "cite": "987 N.E.2d 1150",
+     "verdict": "found"
+    },
+    {
+     "cite": "455 N.E.2d 623",
+     "verdict": "found"
+    },
+    {
+     "cite": "251 N.E.2d 688",
+     "verdict": "found"
+    },
+    {
+     "cite": "244 N.E.2d 448",
+     "verdict": "found"
+    },
+    {
+     "cite": "221 N.E.2d 824",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 72",
+     "verdict": "found"
+    },
+    {
+     "cite": "138 N.E.2d 891",
+     "verdict": "found"
+    },
+    {
+     "cite": "29 N.E.3d 111",
+     "verdict": "found"
+    },
+    {
+     "cite": "895 N.E.2d 1219",
+     "verdict": "found"
+    },
+    {
+     "cite": "247 N.E.2d 215",
+     "verdict": "found"
+    },
+    {
+     "cite": "866 N.E.2d 867",
+     "verdict": "found"
+    },
+    {
+     "cite": "622 N.E.2d 515",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "found"
+    },
+    {
+     "cite": "324 N.E.2d 482",
+     "verdict": "found"
+    },
+    {
+     "cite": "717 N.E.2d 204",
+     "verdict": "found"
+    },
+    {
+     "cite": "71 N.E.3d 839",
+     "verdict": "found"
+    },
+    {
+     "cite": "388 N.E.2d 541",
+     "verdict": "found"
+    },
+    {
+     "cite": "575 N.E.2d 992",
+     "verdict": "found"
+    },
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "found"
+    },
+    {
+     "cite": "572 N.E.2d 1315",
+     "verdict": "found"
+    },
+    {
+     "cite": "404 N.E.2d 585",
+     "verdict": "found"
+    },
+    {
+     "cite": "386 N.E.2d 1026",
+     "verdict": "found"
+    },
+    {
+     "cite": "989 N.E.2d 1225",
+     "verdict": "found"
+    },
+    {
+     "cite": "717 N.E.2d 32",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    },
+    {
+     "cite": "131 N.E.2d 308",
+     "verdict": "found"
+    },
+    {
+     "cite": "986 N.E.2d 852",
+     "verdict": "found"
+    },
+    {
+     "cite": "861 N.E.2d 366",
+     "verdict": "found"
+    },
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "found"
+    },
+    {
+     "cite": "848 N.E.2d 1073",
+     "verdict": "found"
+    },
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    },
+    {
+     "cite": "671 N.E.2d 98",
+     "verdict": "found"
+    },
+    {
+     "cite": "924 N.E.2d 212",
+     "verdict": "found"
+    },
+    {
+     "cite": "104 N.E.2d 669",
+     "verdict": "found"
+    },
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    },
+    {
+     "cite": "592 N.E.2d 1232",
+     "verdict": "found"
+    },
+    {
+     "cite": "894 N.E.2d 265",
+     "verdict": "found"
+    },
+    {
+     "cite": "15 N.E.3d 1000",
+     "verdict": "found"
+    },
+    {
+     "cite": "804 N.E.2d 258",
+     "verdict": "found"
+    },
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found"
+    },
+    {
+     "cite": "422 N.E.2d 302",
+     "verdict": "found"
+    },
+    {
+     "cite": "753 N.E.2d 591",
+     "verdict": "found"
+    },
+    {
+     "cite": "798 N.E.2d 185",
+     "verdict": "found"
+    }
+   ],
+   "note": "48 citations"
+  },
+  {
+   "id": "hostile-01",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "894 N.E.2d 265",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-02",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "987 N.E.2d 1150",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-03",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "717 N.E.2d 32",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-04",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "622 N.E.2d 515",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-05",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "622 N.E.2d 515",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-06",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "644 N.E.2d 72",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-07",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "398 N.E.2d 1260",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-08",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "575 N.E.2d 992",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-09",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "804 N.E.2d 258",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-10",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "848 N.E.2d 1073",
+     "verdict": "found"
+    }
+   ],
+   "note": "hostile line"
+  },
+  {
+   "id": "hostile-11",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "386 N.E.2d 1026",
+     "verdict": "any"
+    }
+   ],
+   "note": "markup or a very long name in the case name"
+  },
+  {
+   "id": "hostile-12",
+   "family": "hostile",
+   "expect": [
+    {
+     "cite": "139 N.E.2d 185",
+     "verdict": "any"
+    }
+   ],
+   "note": "markup or a very long name in the case name"
+  },
+  {
+   "id": "spanish-01",
+   "family": "spanish",
+   "expect": [
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "found"
+    },
+    {
+     "cite": "297 N.E.2d 425",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "spanish-02",
+   "family": "spanish",
+   "expect": [
+    {
+     "cite": "138 N.E.2d 891",
+     "verdict": "found"
+    },
+    {
+     "cite": "71 N.E.3d 839",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "spanish-03",
+   "family": "spanish",
+   "expect": [
+    {
+     "cite": "324 N.E.2d 482",
+     "verdict": "found"
+    },
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "spanish-04",
+   "family": "spanish",
+   "expect": [
+    {
+     "cite": "247 N.E.2d 215",
+     "verdict": "found"
+    },
+    {
+     "cite": "4 N.E.3d 636",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "spanish-05",
+   "family": "spanish",
+   "expect": [
+    {
+     "cite": "251 N.E.2d 688",
+     "verdict": "found"
+    },
+    {
+     "cite": "15 N.E.3d 1000",
+     "verdict": "found"
+    }
+   ]
+  },
+  {
+   "id": "spanish-06",
+   "family": "spanish",
+   "expect": [
+    {
+     "cite": "717 N.E.2d 32",
+     "verdict": "found"
+    },
+    {
+     "cite": "644 N.E.2d 609",
+     "verdict": "found"
+    }
+   ]
+  }
+ ],
+ "pdfs": [
+  {
+   "id": "one-page",
+   "file": "scenarios-pdf/one-page.pdf",
+   "expect": [
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    }
+   ],
+   "note": "plain"
+  },
+  {
+   "id": "two-columns",
+   "file": "scenarios-pdf/two-columns.pdf",
+   "expect": [
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    },
+    {
+     "cite": "866 N.E.2d 867",
+     "verdict": "found"
+    },
+    {
+     "cite": "875 N.E.2d 218",
+     "verdict": "found"
+    }
+   ],
+   "note": "two columns of 9-point text"
+  },
+  {
+   "id": "header-footer",
+   "file": "scenarios-pdf/header-footer.pdf",
+   "expect": [
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    },
+    {
+     "cite": "866 N.E.2d 867",
+     "verdict": "found"
+    }
+   ],
+   "note": "a header and footer on every page"
+  },
+  {
+   "id": "cite-over-page-break",
+   "file": "scenarios-pdf/cite-over-page-break.pdf",
+   "expect": [
+    {
+     "cite": "572 N.E.2d 1315",
+     "verdict": "found"
+    }
+   ],
+   "note": "the name is at the foot of page 1 and the citation at the top of page 2"
+  },
+  {
+   "id": "rotated-page",
+   "file": "scenarios-pdf/rotated-page.pdf",
+   "expect": [
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    }
+   ],
+   "note": "a page turned sideways"
+  },
+  {
+   "id": "tiny-and-big-type",
+   "file": "scenarios-pdf/tiny-and-big-type.pdf",
+   "expect": [
+    {
+     "cite": "64 N.E.3d 1250",
+     "verdict": "found"
+    },
+    {
+     "cite": "868 N.E.2d 482",
+     "verdict": "found"
+    }
+   ],
+   "note": "5-point and 28-point text"
+  },
+  {
+   "id": "blank",
+   "file": "scenarios-pdf/blank.pdf",
+   "expect": [],
+   "note": "no text at all, like a scanned page"
+  },
+  {
+   "id": "forty-five-pages",
+   "file": "scenarios-pdf/forty-five-pages.pdf",
+   "expect": [],
+   "note": "45 pages: only the first 40 are read, so a citation on page 45 is not seen"
+  }
+ ]
+}

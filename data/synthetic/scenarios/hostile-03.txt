@@ -1,0 +1,14 @@
+SAMPLE FILING FOR TESTING. ALL NAMES AND NUMBERS ARE FICTIONAL.
+
+STATE OF INDIANA, COUNTY OF ALLEN
+IN THE ALLEN SUPERIOR COURT, SMALL CLAIMS DIVISION
+Cause No. 02D00-2611-SC-000107
+
+DEFENDANT'S MOTION
+
+<script>alert(1)</script>
+1. See Richardson v. State, 717 N.E.2d 32 (Ind. 1999).
+<script>alert(1)</script>
+
+Respectfully submitted,
+Defendant, self-represented

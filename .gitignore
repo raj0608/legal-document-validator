@@ -4,3 +4,4 @@ node_modules/
 !.env.example
 *.log
 .DS_Store
+tests/evals/redteam-last-run.json
