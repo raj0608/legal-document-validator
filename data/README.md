@@ -7,6 +7,7 @@ Three small data sets, plus the saved answers from CourtListener, so the citatio
 | `citations/fake-indiana-citations.json` | Citations that Indiana courts, and federal courts in Indiana, found to be fake or wrong (and 5 more it lists as not readable) | 42 | Damien Charlotin's AI Hallucination Cases database: 20 from its CSV, 22 from the text of the court decisions behind it |
 | `citations/real-indiana-citations.json` | Real Indiana citations, spread over the 1950s to 2017, Supreme Court and Court of Appeals | 48 | CourtListener search |
 | `synthetic/` | Made-up filings with planted citation errors, and an answer key | 36 filings, 216 citations | We create them (`node data/synthetic/build.mjs`, same result every time) |
+| `synthetic/scenarios/`, `synthetic/scenarios-pdf/` | Made-up filings built to go wrong in ways a real one might: lists of cites, parallel cites, pinpoint pages, no case name, look-alike names, and noise such as addresses, lease clauses, zero-width characters and line breaks inside names. `scenarios-key.json` says what the checker must find or leave alone. | 122 text filings, 8 PDFs | We create them (`node data/synthetic/build-scenarios.mjs`) |
 | `snapshots/` | What CourtListener answered for every citation above (125 distinct), with the court that decided each case | 1 file | CourtListener citation lookup, 2026-11-06 |
 
 ## Credit
