@@ -4,6 +4,7 @@ import { t } from "/app/shared/lib/page-text.js";
 import { state } from "/app/shared/state.js";
 import { answerHtml } from "/app/shared/lib/answer-html.js";
 import { looksLikeInjection } from "/shared/safety/injection-filter.js";
+import { asksForAdvice } from "/shared/safety/advice-question.js";
 import { redactText, createTokenState } from "/shared/safety/redaction.js";
 import { ai, PERMANENT, errCopy, disableAi } from "/app/shared/ui/ai-helper.js";
 import { addAdviceFlag, addDateFlag } from "/app/shared/ui/answer-flags.js";
@@ -48,6 +49,8 @@ function setBusy(b) {
 export async function ask(question) {
   const q = (question || "").trim();
   if (!q) return;
+  // A question that asks what to do in the person's own case gets a fixed answer from the site, with or without the AI.
+  if (asksForAdvice(q)) { $("askInput").value = ""; addMsg("user", q); addMsg("assistant", t("advice_gate")); return; }
   if (!ai.on) { $("chatOff").hidden = false; return; }
   $("askInput").value = "";
   addMsg("user", q);

@@ -102,3 +102,44 @@ test("a client that disconnects cancels the upstream call", async () => {
   assert.ok(sawAbort);
   await shutdown(server);
 });
+
+// A question that asks what to do in the person's own case never reaches the AI: the server answers with a fixed refusal.
+test("an advice question gets the fixed refusal, with the AI never called, and an information question still goes to the AI", async () => {
+  const { I18N } = await import("../../shared/i18n/languages.js");
+  const s = await start({ script: () => ({ deltas: ["From the AI."] }) });
+  const chat = async (lang, q) => readSse(await s.post("/api/chat", { lang, doc: doc(SAMPLE), turns: [{ role: "user", content: q }] }));
+  const text = (ev) => ev.filter((e) => e.event === "text").map((e) => e.data.t).join("");
+
+  const en = await chat("en", "Should I stop paying rent?");
+  assert.equal(text(en), I18N.en.advice_gate);
+  assert.equal(en.find((e) => e.event === "done").data.gated, true);
+  assert.equal((await chat("es", "¿Debo dejar de pagar la renta?")).length > 0 && text(await chat("es", "¿Qué debería hacer?")), I18N.es.advice_gate);
+  assert.equal(s.client.calls.length, 0, "the AI was not called for any advice question");
+
+  assert.equal(text(await chat("en", "What should I bring to the hearing?")), "From the AI.");
+  assert.equal(s.client.calls.length, 1, "an information question reaches the AI");
+  await s.close();
+});
+
+test("an advice question is answered even when no AI is set up, and a question in another language still goes to the AI", async () => {
+  const off = await start({ ai: false });
+  const r = await off.post("/api/chat", { lang: "en", doc: doc(SAMPLE), turns: [{ role: "user", content: "What should I do?" }] });
+  assert.equal(r.status, 200);
+  assert.match((await readSse(r)).find((e) => e.event === "text").data.t, /can’t tell you what to do/);
+  const info = await off.post("/api/chat", { lang: "en", doc: doc(SAMPLE), turns: [{ role: "user", content: "What is a continuance?" }] });
+  assert.equal(info.status, 503, "an information question still needs the AI");
+  await off.close();
+
+  const s = await start({ script: () => ({ deltas: ["Respuesta."] }) });
+  await readSse(await s.post("/api/chat", { lang: "tl", doc: doc(SAMPLE), turns: [{ role: "user", content: "Should I move out?" }] }));
+  assert.equal(s.client.calls.length, 1, "other languages are left to the AI and the answer warning");
+  await s.close();
+});
+
+test("the advice gate looks only at the last question, and the fixed reply is never logged with the question", async () => {
+  const s = await start({ script: () => ({ deltas: ["ok"] }) });
+  const turns = [{ role: "user", content: "Should I move out?" }, { role: "assistant", content: "x" }, { role: "user", content: "What is a continuance?" }];
+  await readSse(await s.post("/api/chat", { lang: "en", doc: doc(SAMPLE), turns }));
+  assert.equal(s.client.calls.length, 1, "the earlier advice question does not gate a later information question");
+  await s.close();
+});

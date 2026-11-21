@@ -72,6 +72,7 @@ export const es = {
   chat_off: "La ayuda con IA no está disponible aquí. Las fechas, la revisión de formularios y las preguntas siguen funcionando.",
   q1: "¿Qué es este papel?", q2: "¿Qué fechas tiene?", q3: "¿Qué me pide que lleve?", q4: "¿Qué pasa después?", q5: "¿Qué significan estas palabras legales?",
   you: "Usted", helper: "Ayuda",
+  advice_gate: "No puedo decirle qué hacer en su propio caso. Eso sería asesoría legal, y solo un abogado puede darla. Para ayuda gratis de personas reales, comuníquese con Indiana Legal Help (indianalegalhelp.org) o Indiana Legal Services, o llame al 2-1-1. Sí puedo explicarle qué dice su papel, qué significa una palabra o para qué sirve una fecha.",
   advice_flag: "Esta respuesta usa palabras como «debería» o «debe». Decirle qué hacer en su propio caso sería asesoría legal, así que consulte este punto con ayuda legal.",
   blocked_q: "Esta pregunta parece intentar cambiar las reglas de la ayuda, así que no se envió. Pregúntela de otra manera.",
   err_rate: "Demasiadas solicitudes a la vez. Espere un minuto y vuelva a intentarlo.",

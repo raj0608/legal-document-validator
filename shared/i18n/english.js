@@ -72,6 +72,7 @@ export const en = {
   chat_off: "The AI helper isn’t available in this view. Dates, form checks, and questions still work.",
   q1: "What is this paper?", q2: "What dates are in it?", q3: "What does it ask me to bring?", q4: "What happens next?", q5: "What do these legal words mean?",
   you: "You", helper: "Helper",
+  advice_gate: "I can’t tell you what to do in your own case. That would be legal advice, and only a lawyer can give it. For free help from real people, contact Indiana Legal Help (indianalegalhelp.org) or Indiana Legal Services, or call 2-1-1. I can still explain what your paper says, what a word means, or what a date is for.",
   advice_flag: "This reply uses words like “should” or “must.” Telling you what to do in your own case would be legal advice, so check this point with legal aid.",
   blocked_q: "This question looks like it’s trying to change the helper’s rules, so it wasn’t sent. Ask it another way.",
   err_rate: "Too many questions at once. Wait a minute, then try again.",
