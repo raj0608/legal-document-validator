@@ -28,6 +28,9 @@ export function createApp({ ai = null, citations = null, docket = null, config =
   addHealthRoute(api, { ai, cfg });
 
   api.use(express.json({ limit: "256kb" }));
+  // A body that is not JSON (a form, plain text, nothing) leaves req.body empty: treat it as an empty object, so the routes refuse it with a plain
+  // "bad request" and not a server error.
+  api.use((req, res, next) => { if (!req.body || typeof req.body !== "object") req.body = {}; next(); });
   // The court staff pages: in front of the AI's per-minute limit, with a higher one of their own (a board is many quick taps).
   if (docket) addCourtRoutes(api, { court: createLiveCourt({ docket, now: () => cfg.now().getTime() }), cfg });
   api.use(perMinuteLimit(cfg));
