@@ -32,7 +32,7 @@ export function renderDates() {
     if (state.dates.time) parts.push(t("at_time", { t: fmtTime(state.dates.time) }));
     if (state.dates.place) parts.push(state.dates.place);
     $("hcSub").textContent = parts.join(". ");
-  }
+  } else { $("hcDate").textContent = ""; $("hcSub").textContent = ""; } // hidden is not gone: the card held the place from the paper
   renderNext();
 }
 

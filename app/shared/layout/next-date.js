@@ -24,5 +24,7 @@ export function renderNext() {
   if (upcoming) {
     $("nextDate").textContent = when;
     $("nextSub").textContent = [countdown(dayDiff(hearing)), state.dates.place].filter(Boolean).join(". ");
+  } else { // hidden is not gone: these held the hearing date and place from the paper
+    $("nextDate").textContent = ""; $("nextSub").textContent = ""; $("nextStripText").textContent = "";
   }
 }

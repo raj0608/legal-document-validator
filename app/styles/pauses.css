@@ -30,7 +30,7 @@
 .pause-acts { display: grid; gap: 0.5rem; }
 .acts-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 .acts-label { font-weight: 700; font-size: 0.9rem; min-width: 9.5rem; }
-.acts-row .btn { min-height: 40px; padding: 0.3rem 0.8rem; font-size: 0.95rem; }
+.acts-row .btn { min-height: 44px; padding: 0.3rem 0.8rem; font-size: 0.95rem; }
 
 /* The agency's form. */
 .aid-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.9rem 1rem; align-items: end; margin: 0.75rem 0 1.75rem; padding: 1.1rem; background: var(--bg); border-radius: var(--radius-sm); }

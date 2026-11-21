@@ -26,7 +26,8 @@ export function autoDatesFromPapers() {
 
 export function renderFound() {
   const d = state.papers;
-  if (!d) return;
+  // With no paper there is nothing to show, and what was shown must not stay in the page: it holds snippets of the paper.
+  if (!d) { $("foundDates").textContent = ""; $("foundCites").textContent = ""; return; }
   const ul = $("foundDates");
   ul.textContent = "";
   const dates = findDates(d.raw);

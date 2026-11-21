@@ -12,7 +12,7 @@ export function registerPapersSlot() {
       resetChat(); autoDatesFromPapers(); renderFound(); refreshStepControls();
       $("papersNext1").focus(); // the next thing to do, and it scrolls into view on a phone
     },
-    onRemove() { resetChat(); refreshStepControls(); }
+    onRemove() { resetChat(); renderFound(); refreshStepControls(); }
   });
 }
 
